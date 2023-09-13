@@ -2,163 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-.general{
-    @apply flex flex-col place-items-center;
-}
-
 h1{
-    @apply font-bold text-2xl text-gray-800;
+    @apply font-bold text-2xl ;
 }
-
-input{
-    @apply outline-none border-2 border-gray-300 focus:border-indigo-500 px-2 py-1 rounded-lg
- }
- 
- label{
+label{
      @apply flex flex-col
  }
  
- .primary-button{
-     @apply bg-[#7ed956] text-gray-800 px-3 py-2 rounded-lg shadow-lg hover:bg-[#63b63e];
- }
- 
- .secondary-button{
-     @apply bg-gray-200 text-gray-800 px-3 py-2 rounded-lg shadow-lg hover:bg-gray-300;
- }
-
- 
-
- .Logo{
-    background-image: url(../public/escudoUdeA.png);
- }
- .dropzone{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 360px;
-    width: 360px;
-    border: 4px dashed #000000;
-    padding: 20px;
-    margin-top: 10%; /* Margen superior de 20 píxeles */
-    margin-bottom: 20px; /* Margen inferior de 20 píxeles */
- }
-
- /* .menu {
-    width: 10%;
-    height: 100vh;
-    justify-content: start;
-    display: flex;
-    flex-direction: row;
-  }
-  .main {
-    width: 90%;
-    height: 100%;
-    display: flex;
-    float: right; 
-  } */
- .menu {
-    width: 250px;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-  }
-  .main {
-    width: 100%;
-    height: 100%;
-    padding-left: 250px;
-  }
-
- .dropdownmenu{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 50px;
-    margin: 0 auto;
- }
-
- .chart{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 300px;
-  margin-top: 100px;
-  margin: 0 auto;
-}
-
- button{
+button{
     padding: 12px;
     font-size: medium;
-    background-color: #787878;
- }
-
- .welcome {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-  padding: 50px;
-  margin-bottom: 200px;
-	height: 100vh;
-  margin: 0 auto;
-}
-
-.logform {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-    padding: 150px;
-	height: 10vh;
-    margin: 0 auto;
-}
-
-
-.Sidebar {
-    height: 100%;
-    width: 250px;
-    background-color: #00a226;
-  }
-
-.SidebarList {
-    height: auto;
-    padding: 0;
-    width: 100%;
-  }
-  
-  .SidebarList .row {
-    width: 100%;
-    height: 60px;
-    list-style-type: none;
-    margin: 0%;
-    display: flex;
-    flex-direction: row;
-    color: rgb(255, 255, 255);
-    justify-content: center;
-    align-items: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  }
-  
-  .SidebarList .row:hover {
-    cursor: pointer;
-    background-color: #009732;
-  }
-  .SidebarList #active {
-    background-color: #00bd72;
-  
-  }
-  .row #icon {
-    flex: 30%;
-    display: grid;
-    place-items: center;
-  }
-  
-  .row #title {
-    flex: 70%;
-  
+    /* background-color: #787878; */
   }
 
 .debug {
@@ -192,25 +46,13 @@ input{
 }
 
 .input-form {
-  @apply px-1 py-1 border border-2 rounded-none focus:border-black;
+  @apply px-1 py-1 border border-2 rounded-none focus:border-black outline-none;
   border-top: none;
   border-left: none;
   border-right: none;
   border-color: #5F5F5F;
-  /* transition: box-shadow 0.3s; */
 }
-/* .input-form:hover {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
-} */
-/* .button:hover {
-  background-image: linear-gradient(120deg, #4CAF50 0%, #78d362 100%); 
-} */
-/*
-tambien puede ser asi, con el selector de etiqueta para no poner el className
-input{
-  @apply outline-none px-2 py-1 border rounded-none outline-none;
-}
-*/
+
 .logo-container {
   position: fixed;
   bottom: 0;
@@ -218,12 +60,6 @@ input{
   padding: 38px; /* Agrega un poco de espacio para que no esté demasiado pegado al borde */
 }
 
-
-
-
-/*
-este es el que estoy creando
-*/
 .button-form{
   border-radius: 28px;
   background-image: linear-gradient(120deg, #026937 0%, #35944B 100%);
@@ -233,12 +69,9 @@ este es el que estoy creando
 .button-form:hover {
   background-image: linear-gradient(120deg, #35944B 0%, #026937 100%); /* Nuevo degradado en hover */
 }
-.debug {
-  border: 1px solid red;
-}
+
 .background-register{
   background-image: linear-gradient(306deg, #026937 0%, #35944B 100%);
-  /* clip-path: polygon(5% 0, 100% 0, 100% 100%, 0% 100%); */
 }
 .button-secondary {
   @apply bg-white text-[#026937] shadow-lg font-bold text-base rounded-lg;
