@@ -1,6 +1,8 @@
 import mongoose, { Schema } from "mongoose";
+import { UsuarioModel } from "./usuarioModel";
 
 interface perfil {
+    usuario: Schema.Types.ObjectId,
     foto: string,
     facultad: string,
     carrera: string,
@@ -11,7 +13,12 @@ interface perfil {
     enlaces: string
 }
 
-const perfilSchema = new mongoose.Schema<perfil>({
+const perfilSchema = new Schema<perfil>({
+    usuario: {
+        type: Schema.Types.ObjectId,
+        ref: UsuarioModel,
+        required: true,
+    },
     foto: {
         type: String,
         required: false,
