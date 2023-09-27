@@ -1,26 +1,20 @@
 import mongoose, { Schema } from "mongoose";
-import { PerfilModel, perfil } from "./perfilModel";
 
 interface usuario {
-    correo: string,
-    nombre: string,
-    // perfil: typeof PerfilModel
+    email: string,
+    password: string,
 }
 
 const usuarioSchema = new mongoose.Schema<usuario>({
-    correo: {
+    email: {
         type: String,
         unique: true,
         required: true,
     },
-    nombre: {
+    password: {
         type: String,
         required: true,
     },
-    // perfil: {
-    //     type: PerfilModel,
-    //     required: true,
-    // }
 });
 
 const UsuarioModel = mongoose.models.Usuario || mongoose.model("Usuario", usuarioSchema);
