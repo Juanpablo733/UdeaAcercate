@@ -1,4 +1,3 @@
-// import { request, response } from 'http';
 import { NextApiRequest, NextApiResponse } from 'next';
 import conectarBD from '../../lib/dbConnection'
 import { PerfilModel } from '../../models/perfilModel';
@@ -22,7 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             )
     }
     if (req.method === "GET") {
-        await PerfilModel.find()
+        await PerfilModel.find().populate('usuario')
             .then(
                 (p) => {
                     console.log("Perfiles: ", p);
