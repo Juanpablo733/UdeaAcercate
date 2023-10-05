@@ -15,7 +15,7 @@ const Home = () => {
         asistentes: 5
     }
   return (
-    <div className='flex flex-col gap-10 mb-4 Yellow-little'>
+    <div className='flex flex-col gap-10 pb-4 Yellow-little debug'>
         <Navbar>
             <div className='flex gap-4 items-center'>
                 <span className='debug text-white font-bold'>Juan Pablo Bedoya Sanchez</span>

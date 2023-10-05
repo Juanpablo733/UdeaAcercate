@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 import auth0 from '@/lib/auth0Connecion';
 
-const auth0Domain = process.env.AUTH0_ISSUER;
+const auth0Domain = process.env.AUTH0_ISSUER;   
 const auth0Url = `${auth0Domain}/api/v2/users`;
 const regex: RegExp = /^[a-zA-Z0-9._%+-]+@udea\.edu\.co$/;
 
@@ -10,6 +10,7 @@ const regex: RegExp = /^[a-zA-Z0-9._%+-]+@udea\.edu\.co$/;
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
 
     if (!regex.test(req.body.email)) {
+        console.log('Correo no válido:', req.body.email);
         res.status(422);
         res.send("El correo debe ser institucional, terminado en \"@udea.edu.co\"");
         return;
