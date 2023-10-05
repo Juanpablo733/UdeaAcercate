@@ -21,7 +21,10 @@ h1{
 label{
      @apply flex flex-col
  }
- 
+ button {
+  padding: 8px;
+  font-size: medium;
+ }
  .ButtonCard {
   /* width: 100%; */
   color: #ffffff;

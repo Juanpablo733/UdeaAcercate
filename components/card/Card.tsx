@@ -5,9 +5,9 @@ import Image from 'next/image';
 
 const Card = () => {
   return (
-    <div className='w-[700px] h-[500px] debug rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col'>
-      <nav className='flex justify-between debug'>
-        <div className='debug flex gap-1'>
+    <div className='w-[700px] h-[500px] debug rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl'>
+      <div className='flex justify-between debug items-center'>
+        <div className='debug flex gap-1 h-max '>
           <MdOutlineLabel className="h-8 w-8"/>
           <TagType type={'Deportivo'} />
         </div>
@@ -15,11 +15,11 @@ const Card = () => {
           <span className='text-lg font-bold'>Juan Pablo Bedoya Sanchez</span>
           <Image src={'/juan.png'} alt={'avatar-image'} height={30} width={30} className='debug'/>
           <button className='debug'>
-            <MdClose className="h-8 w-8"/>
-          </button>
+            <MdClose className="h-8 w-8 debug"/>
+          </button> 
         </div>
-      </nav>
-      <h2 className='text-base debug flex justify-center'>Salida campus Medellín</h2>
+      </div>
+      <h2 className='text-base debug flex justify-center text-black'>Salida campus Medellín</h2>
       <div className='debug h-1/2 flex gap-5'>
 
         <div className='debug'>

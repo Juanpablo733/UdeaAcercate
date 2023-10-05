@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const auth0Domain = process.env.AUTH0_ISSUER;
+const auth0Domain = process.env.AUTH0_ISSUER; 
 const clientId = process.env.AUTH0_CLIENT_ID;
 const clientSecret = process.env.AUTH0_CLIENT_SECRET;
 
@@ -21,6 +21,7 @@ let token:string;
 async function auth0Connection() {
   await axios(optionsPost).then(response => {
     token = response.data.access_token;
+    console.log('token: ', token)
   })
   .catch(error => {
     console.log("Error al pedir token", error.response);
