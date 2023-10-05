@@ -2,23 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --green-hard: #026937;
+  --green-mid: #35944B;
+  --green-little: #43B649;
+  --blue-dark: #205B70;
+  --blue-mid: #0E7774;
+  --light-grey: #5F5F5F;
+  --dark-grey: #393636;
+  --bg-main: linear-gradient(120deg, #026937 0%, #35944b 100%);
+  --bg-secondary: linear-gradient(306deg, #026937 0%, #35944b 100%);
+  --bg-third: linear-gradient(90deg, #43b649 0%, #12803f 100%);
+}
+
 h1{
     @apply font-bold text-2xl ;
 }
 label{
      @apply flex flex-col
  }
- 
-button{
-    padding: 12px;
-    font-size: medium;
-    /* background-color: #787878; */
-  }
+ button {
+  padding: 8px;
+  font-size: medium;
+ }
+ .ButtonCard {
+  /* width: 100%; */
+  color: #ffffff;
+  /* background-image: var(--bg-main); */
+  background: var(--bg-main);
+  font-weight: bold;
+  font-size: 16px;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.ButtonCard:hover {
+  background: var(--bg-third);
+}
 
 .debug {
   border: 2px solid red;
 }
-
+.Yellow-little{
+  background-color: #f3f3e3;
+}
 .Green-Hard{
   color: #026937;
 }
