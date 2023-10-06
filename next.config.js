@@ -4,3 +4,5 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
+
+const { withAuth0 } = require('next-auth/providers/auth0');
