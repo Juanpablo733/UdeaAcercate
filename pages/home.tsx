@@ -1,4 +1,5 @@
 import { Card } from '@/components/card/Card';
+import {MiniCard} from '@/components/card/MiniCard';
 import { Navbar } from '@/components/navbar/Navbar';
 import Image from 'next/image';
 import React from 'react'
@@ -38,8 +39,9 @@ const Home = () => {
                 <MdOutlineSearch className="h-8 w-8"/>
             </div>
         </div>
-        <div className='flex justify-center'>
+        <div className=' debug flex flex-col justify-center items-center gap-4'>
             <Card/>
+            <MiniCard nombre='Juan Pablo Bedoya Sánchez' tipo='Deportivo' titulo='Estudio Parcial Teoría de Lenguajes' asistentes={10} fecha='29-01-24'/>
         </div>
     </div>
   )
