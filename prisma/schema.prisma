@@ -5,6 +5,12 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator typegraphql {
+  provider           = "typegraphql-prisma"
+  output             = "../prisma/generated/type-graphql"
+  emitTranspiledCode = true
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -38,14 +44,17 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String     @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?    @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
   profile       Profile?
+  eventsCreated Event[]
+  attendees     Attendee[]
+  comments      Comment[]
 }
 
 model VerificationToken {
@@ -57,14 +66,14 @@ model VerificationToken {
 }
 
 model Profile {
-  userId String @unique
-  user   User   @relation(fields: [userId], references: [id])
-  faculty String
-  career String
-  type UserType
-  campus Campus
-  description String
-  hobbies String
+  userId      String    @unique
+  user        User      @relation(fields: [userId], references: [id])
+  faculty     String?
+  career      String?
+  type        UserType?
+  campus      Campus?
+  description String?
+  hobbies     String[]
   socialLinks String[]
 }
 
@@ -92,4 +101,38 @@ enum Campus {
   Seccional_Occidente_de_la_Universidad_de_Antioquia
   Seccional_Bajo_Cauca
   Sede_Sonson_de_la_Universidad_de_Antioquia
+}
+
+model Event {
+  id          String     @id @default(cuid())
+  title       String
+  author      User       @relation(fields: [authorId], references: [id])
+  authorId    String
+  description String
+  tag         Tag
+  place       String
+  comments    Comment[]
+  attendees   Attendee[]
+  date        DateTime
+  image       String?
+  hashtags    String[]
+}
+
+model Attendee {
+  user    User   @relation(fields: [userId], references: [id])
+  userId  String
+  event   Event  @relation(fields: [eventId], references: [id])
+  eventId String
+
+  @@id([userId, eventId])
+}
+
+model Comment {
+  id       String   @id @default(cuid())
+  text     String
+  userId   String
+  user     User     @relation(fields: [userId], references: [id])
+  eventId  String
+  event    Event    @relation(fields: [eventId], references: [id])
+  dateTime DateTime @default(now())
 }
