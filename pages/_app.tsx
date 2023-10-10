@@ -5,10 +5,8 @@ import PrivateLayout from '@/layouts/PrivateLayout'
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
-    //<SessionProvider session={session}>
-      // <PrivateLayout>
+    <SessionProvider session={session}>
         <Component {...pageProps} />
-      // </PrivateLayout>
-    // </SessionProvider>
+    </SessionProvider>
   )
 }
