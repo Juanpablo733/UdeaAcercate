@@ -10,11 +10,9 @@ interface MiniCardPropos{
     fecha: string
 }
 
-
-
-
 const MiniCard = ({nombre, titulo, asistentes,tipo,fecha}: MiniCardPropos) => {
   return (
+    
     <div className='w-[500px] h-[350px] debug rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl'>
         <div className='flex justify-between debug items-center'>
             <div className='debug flex gap-1 h-max'>
