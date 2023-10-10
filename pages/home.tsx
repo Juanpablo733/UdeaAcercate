@@ -39,9 +39,19 @@ const Home = () => {
                 <MdOutlineSearch className="h-8 w-8"/>
             </div>
         </div>
-        <div className=' debug flex flex-col justify-center items-center gap-4'>
-            <Card/>
+        <div className=' debug grid grid-cols-3 gap-4 justify-items-center'>
             <MiniCard nombre='Juan Pablo Bedoya Sánchez' tipo='Deportivo' titulo='Estudio Parcial Teoría de Lenguajes' asistentes={10} fecha='29-01-24'/>
+            <MiniCard nombre='Santiago Bedoya Díaz' tipo='Cultural' titulo='Taller de danza' asistentes={20} fecha='30-10-23'/>
+            <MiniCard nombre='Juan Pablo Bedoya Sánchez' tipo='Deportivo' titulo='Estudio Parcial Teoría de Lenguajes' asistentes={10} fecha='29-01-24'/>
+            <MiniCard nombre='Santiago Bedoya Díaz' tipo='Cultural' titulo='Taller de danza' asistentes={20} fecha='30-10-23'/>
+            <MiniCard nombre='Juan Pablo Bedoya Sánchez' tipo='Deportivo' titulo='Estudio Parcial Teoría de Lenguajes' asistentes={10} fecha='29-01-24'/>
+            <MiniCard nombre='Santiago Bedoya Díaz' tipo='Cultural' titulo='Taller de danza' asistentes={20} fecha='30-10-23'/>
+            <MiniCard nombre='Juan Pablo Bedoya Sánchez' tipo='Deportivo' titulo='Estudio Parcial Teoría de Lenguajes' asistentes={10} fecha='29-01-24'/>
+            <MiniCard nombre='Santiago Bedoya Díaz' tipo='Cultural' titulo='Taller de danza' asistentes={20} fecha='30-10-23'/>
+            <MiniCard nombre='Juan Pablo Bedoya Sánchez' tipo='Deportivo' titulo='Estudio Parcial Teoría de Lenguajes' asistentes={10} fecha='29-01-24'/>
+            <MiniCard nombre='Santiago Bedoya Díaz' tipo='Cultural' titulo='Taller de danza' asistentes={20} fecha='30-10-23'/>
+            <MiniCard nombre='Juan Pablo Bedoya Sánchez' tipo='Deportivo' titulo='Estudio Parcial Teoría de Lenguajes' asistentes={10} fecha='29-01-24'/>
+            <MiniCard nombre='Santiago Bedoya Díaz' tipo='Cultural' titulo='Taller de danza' asistentes={20} fecha='30-10-23'/>
         </div>
     </div>
   )
