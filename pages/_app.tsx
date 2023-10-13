@@ -1,12 +1,20 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import PrivateLayout from '@/layouts/PrivateLayout'
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+  const client = new ApolloClient({
+    uri: 'api/graphql',
+    cache: new InMemoryCache(),
+  })
+
   return (
-    <SessionProvider session={session}>
+    <ApolloProvider client={client}>
+      <SessionProvider session={session}>
         <Component {...pageProps} />
-    </SessionProvider>
+      </SessionProvider>
+    </ApolloProvider>
   )
 }

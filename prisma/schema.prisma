@@ -16,6 +16,32 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Tag {
+  deportivo
+  academico
+  cultural
+}
+
+enum UserType {
+  estudiante
+  profesor
+  administrativo
+  egresado
+}
+
+enum Campus {
+  Ciudad_Universitaria
+  Antigua_Escuela_de_Derecho
+  Edificio_Suramericana_del_Centro
+  Sede_Posgrados_Universidad_de_Antioquia
+  Paraninfo
+  Liceo_Francisco_Restrepo_Molina
+  Seccional_Oriente
+  Seccional_Occidente_de_la_Universidad_de_Antioquia
+  Seccional_Bajo_Cauca
+  Sede_Sonson_de_la_Universidad_de_Antioquia
+}
+
 model Account {
   id                String  @id @default(cuid())
   userId            String
@@ -49,12 +75,12 @@ model User {
   email         String?    @unique
   emailVerified DateTime?
   image         String?
-  accounts      Account[]
-  sessions      Session[]
   profile       Profile?
   eventsCreated Event[]
   attendees     Attendee[]
   comments      Comment[]
+  accounts      Account[]
+  sessions      Session[]
 }
 
 model VerificationToken {
@@ -66,55 +92,30 @@ model VerificationToken {
 }
 
 model Profile {
-  userId      String    @unique
-  user        User      @relation(fields: [userId], references: [id])
   faculty     String?
   career      String?
   type        UserType?
   campus      Campus?
+  userId      String    @unique
+  user        User      @relation(fields: [userId], references: [id])
   description String?
   hobbies     String[]
   socialLinks String[]
 }
 
-enum Tag {
-  deportivo
-  academico
-  cultural
-}
-
-enum UserType {
-  estudiante
-  profesor
-  administrativo
-  egresado
-}
-
-enum Campus {
-  Ciudad_Universitaria
-  Antigua_Escuela_de_Derecho
-  Edificio_Suramericana_del_Centro
-  Sede_Posgrados_Universidad_de_Antioquia
-  Paraninfo
-  Liceo_Francisco_Restrepo_Molina
-  Seccional_Oriente
-  Seccional_Occidente_de_la_Universidad_de_Antioquia
-  Seccional_Bajo_Cauca
-  Sede_Sonson_de_la_Universidad_de_Antioquia
-}
 
 model Event {
   id          String     @id @default(cuid())
   title       String
-  author      User       @relation(fields: [authorId], references: [id])
-  authorId    String
   description String
-  tag         Tag
   place       String
-  comments    Comment[]
-  attendees   Attendee[]
   date        DateTime
   image       String?
+  tag         Tag
+  author      User       @relation(fields: [authorId], references: [id])
+  authorId    String
+  comments    Comment[]
+  attendees   Attendee[]
   hashtags    String[]
 }
 
@@ -130,9 +131,9 @@ model Attendee {
 model Comment {
   id       String   @id @default(cuid())
   text     String
-  userId   String
-  user     User     @relation(fields: [userId], references: [id])
-  eventId  String
-  event    Event    @relation(fields: [eventId], references: [id])
   dateTime DateTime @default(now())
+  user     User     @relation(fields: [userId], references: [id])
+  userId   String
+  event    Event    @relation(fields: [eventId], references: [id])
+  eventId  String
 }
