@@ -1,0 +1,17 @@
+import { AttendeeCreateNestedManyWithoutUserInput } from "../inputs/AttendeeCreateNestedManyWithoutUserInput";
+import { CommentCreateNestedManyWithoutUserInput } from "../inputs/CommentCreateNestedManyWithoutUserInput";
+import { EventCreateNestedManyWithoutAuthorInput } from "../inputs/EventCreateNestedManyWithoutAuthorInput";
+import { ProfileCreateNestedOneWithoutUserInput } from "../inputs/ProfileCreateNestedOneWithoutUserInput";
+import { SessionCreateNestedManyWithoutUserInput } from "../inputs/SessionCreateNestedManyWithoutUserInput";
+export declare class UserCreateWithoutAccountsInput {
+    id?: string | undefined;
+    name?: string | undefined;
+    email?: string | undefined;
+    emailVerified?: Date | undefined;
+    image?: string | undefined;
+    profile?: ProfileCreateNestedOneWithoutUserInput | undefined;
+    eventsCreated?: EventCreateNestedManyWithoutAuthorInput | undefined;
+    attendees?: AttendeeCreateNestedManyWithoutUserInput | undefined;
+    comments?: CommentCreateNestedManyWithoutUserInput | undefined;
+    sessions?: SessionCreateNestedManyWithoutUserInput | undefined;
+}
