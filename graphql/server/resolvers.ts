@@ -1,4 +1,6 @@
 import { Resolver, Context } from "@/types";
+import { ApolloError } from "@apollo/client";
+import { GraphQLError } from "graphql";
 
 const resolveUser = async (userId: string, context: Context) => {
     const { db } = context;
@@ -8,6 +10,12 @@ const resolveUser = async (userId: string, context: Context) => {
         }
     })
     return user;
+}
+
+const findHashtags = (text: String) => {
+    const regex: RegExp = /#(\w+)/g;
+    const hashtags = text.match(regex);
+    return hashtags;
 }
 
 const resolvers: Resolver = {
@@ -56,7 +64,17 @@ const resolvers: Resolver = {
         },
         events: async (parent, args, context) => {
             const { db } = context;
-            const events = await db.event.findMany();
+            const findEvents = async () => {
+                if (args != null) {
+                    return await db.event.findMany({
+                        where: {
+                            tag: args.tag
+                        }
+                    });
+                }
+                return await db.event.findMany();
+            };
+            const events = findEvents();
             return events;
         },
     },
@@ -75,6 +93,31 @@ const resolvers: Resolver = {
             });
 
             return newUser;
+        },
+        createEvent: async (parent, args, context) => {
+            const { db } = context;
+            const { title, description, place, date, image, tag, authorId } = args;
+            const hashtags: string[] = findHashtags(description) as string[];
+            const newDate = new Date(date);
+            console.log(newDate.toString())
+            const newEvent = await db.event.create({
+                data: {
+                    title: title,
+                    description: description,
+                    place: place,
+                    date: newDate,
+                    image: image,
+                    tag: tag,
+                    hashtags: hashtags,
+                    author: {
+                        connect: {
+                            id: authorId
+                        }
+                    }
+                },
+            });
+            console.log("Nuevo evento: ", newEvent)
+            return newEvent;
         },
     }
 };

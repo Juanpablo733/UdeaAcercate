@@ -5,12 +5,17 @@ import Auth0Provider from 'next-auth/providers/auth0';
 import prisma from '../../../config/prisma';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 
+const regex: RegExp = /^[a-zA-Z0-9._%+-]+@udea\.edu\.co$/;
 export const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-    // Validar correo @udea.edu.co aquí  
-    return '';
-    },
+      // Validar correo @udea.edu.co aquí  
+      if (!regex.test(email as string)) {
+        console.log('Correo no válido:', email);
+        // return false;
+      }
+      return '/home';
+    }
   },
   adapter: PrismaAdapter(prisma),
   providers: [
