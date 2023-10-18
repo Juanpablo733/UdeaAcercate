@@ -12,8 +12,9 @@ const Components = () => {
     <Layout>
         {/* <MiniCard nombre='hola' titulo='hola' asistentes={0} tipo='Deportivo' fecha='10/20/2000'/> */}
         {/* <Card/> */}
-        {/* <CardList events={ initialData.events }/> */}
-        <Card/>
+        <CardList events={ initialData.events }/>
+        {/* <Card/>
+        <Card/> */}
     </Layout>
   )
 }

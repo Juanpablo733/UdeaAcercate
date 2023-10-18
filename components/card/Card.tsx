@@ -5,7 +5,8 @@ import Image from 'next/image';
 
 const Card = () => {
   return (
-    <div className='w-[700px] h-[500px] debug rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl'>
+    // <div className='w-[700px] h-[500px] debug rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl'>
+    <div className='w-full h-[500px] debug rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl'>
       <div className='flex justify-between debug items-center'>
         <div className='debug flex gap-1 h-max '>
           <MdOutlineLabel className="h-8 w-8"/>
