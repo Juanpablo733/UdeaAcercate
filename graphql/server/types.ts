@@ -52,11 +52,13 @@ const typeDefs = gql`
     type Query {
         users: [User]
         user(email:String!): User
-        events: [Event]
+        events(tag:String): [Event]
     }
     
     type Mutation {
         createUser(name:String!, email:String!, image:String!, emailVerified:String): User
+        createEvent(title: String!, description: String!, place: String!, 
+            date: DateTime!, image: String!, tag: String!, authorId: String!): Event
     }
 `;
 
