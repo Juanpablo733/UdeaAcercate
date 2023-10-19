@@ -2,7 +2,6 @@
 import { IMinEvent } from '@/interfaces'
 import React, { FC } from 'react'
 import { MiniCard } from './MiniCard';
-import { Card } from './Card';
 
 interface Props {
     events: IMinEvent[];
@@ -10,7 +9,7 @@ interface Props {
 
 const CardList: FC<Props> = ({events}) => {
   return (
-    <div className='w-full grid grid-cols-[repeat(auto-fill,minmax(500px,1fr))] debug'>
+    <div className='w-full grid grid-cols-[repeat(auto-fill,minmax(500px,1fr))] debug gap-4 pt-4 pb-4'>
       {
         events.map(event => {
           return(
