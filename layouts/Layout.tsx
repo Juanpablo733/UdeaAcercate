@@ -10,8 +10,10 @@ const Layout: FC<PropsWithChildren> = ({children}) => {
         </nav>
         <main style={{
             margin: '80px auto',
+            minWidth: '430px',
             maxWidth: '1440px',
-            padding: '0px 30px'
+            padding: '0px 30px',
+            border: '1px red solid'
         }}>
             {children}
       </main>
