@@ -5,58 +5,57 @@ import PrivateLayout from '@/layouts/PrivateLayout';
 import Image from 'next/image';
 import React from 'react'
 import { MdAddCircleOutline, MdOutlineSearch, MdExpandMore } from "react-icons/md";
-const Home = () => {
-    const dataEvent = {
-        tipo: "Deportivo",
-        publicador: "Santiago Bedoya",
-        titulo: "Salida Campus Medellín",
-        imagen: "/imagen",
-        descripcion: "evento en medellin blablabla...",
-        fecha: "29-Sept-23",
-        lugar: "Plazoleta Barrientos",
-        asistentes: 5
+import { GET_EVENTS_PREVIEW } from "@/graphql/client/event"
+import { useQuery } from "@apollo/client"
+import { Event } from "@/prisma/generated/type-graphql"
+import { MiniCardConteiner } from '@/components/card/MiniCardContainer';
+import { Interface } from 'readline';
+import {MiniCardConteinerI} from '../components/card/MiniCardContainer';
+
+const EventsPage = () => {
+    const { data, loading, error } = useQuery<{ events: Event[] }>(GET_EVENTS_PREVIEW, {
+        fetchPolicy: 'cache-first'
+        
+    })
+    console.log(data);
+    if (error){
+        console.log(error)
+        return <p>error</p>
     }
+    if (loading) return <p>Loading...</p>
+}
+
+
+const Home = () => {
     return (
-        <PrivateLayout>
-            <div className='flex flex-col gap-10 pb-4 Yellow-little debug'>
+            <div className='flex flex-col gap-10 pb-4 Yellow-little'>
                 <Navbar>
                     <div className='flex gap-4 items-center'>
-                        <span className='debug text-white font-bold'>Juan Pablo Bedoya Sanchez</span>
-                        <Image src={'/juan.png'} alt={'avatar-image'} height={50} width={50} className='debug' />
+                        <span className=' text-white font-bold'>Juan Pablo Bedoya Sanchez</span>
+                        <Image src={'/juan.png'} alt={'avatar-image'} height={50} width={50} className='' />
                     </div>
                 </Navbar>
-                <div className='debug flex gap-32 justify-center'>
-                    <div className='debug flex gap-12 items-center bg-white rounded-2xl'>
+                <div className=' flex gap-32 justify-center'>
+                    <div className=' flex gap-12 items-center bg-white rounded-2xl'>
                         <span>crear evento</span>
                         <MdAddCircleOutline className="h-8 w-8" />
                     </div>
-                    <div className='debug flex gap-12 items-center bg-white rounded-2xl'>
+                    <div className=' flex gap-12 items-center bg-white rounded-2xl'>
                         <span>filtrar por evento</span>
                         <MdExpandMore className="h-8 w-8" />
                     </div>
                 </div>
-                <div className='debug flex justify-center'>
-                    <div className='debug flex items-center justify-center gap-12 bg-white rounded-2xl'>
+                <div className=' flex justify-center'>
+                    <div className=' flex items-center justify-center gap-12 bg-white rounded-2xl'>
                         <span>buscar</span>
                         <MdOutlineSearch className="h-8 w-8" />
                     </div>
                 </div>
-                <div className=' debug grid grid-cols-2 gap-4 justify-items-center'>
-                    <MiniCard nombre='Juan Pablo Bedoya Sánchez' tipo='Deportivo' titulo='Estudio Parcial Teoría de Lenguajes' asistentes={10} fecha='29-01-24' />
-                    <MiniCard nombre='Santiago Bedoya Díaz' tipo='Cultural' titulo='Taller de danza' asistentes={20} fecha='30-10-23' />
-                    <MiniCard nombre='Juan Pablo Bedoya Sánchez' tipo='Deportivo' titulo='Estudio Parcial Teoría de Lenguajes' asistentes={10} fecha='29-01-24' />
-                    <MiniCard nombre='Santiago Bedoya Díaz' tipo='Cultural' titulo='Taller de danza' asistentes={20} fecha='30-10-23' />
-                    <MiniCard nombre='Juan Pablo Bedoya Sánchez' tipo='Deportivo' titulo='Estudio Parcial Teoría de Lenguajes' asistentes={10} fecha='29-01-24' />
-                    <MiniCard nombre='Santiago Bedoya Díaz' tipo='Cultural' titulo='Taller de danza' asistentes={20} fecha='30-10-23' />
-                    <MiniCard nombre='Juan Pablo Bedoya Sánchez' tipo='Deportivo' titulo='Estudio Parcial Teoría de Lenguajes' asistentes={10} fecha='29-01-24' />
-                    <MiniCard nombre='Santiago Bedoya Díaz' tipo='Cultural' titulo='Taller de danza' asistentes={20} fecha='30-10-23' />
-                    <MiniCard nombre='Juan Pablo Bedoya Sánchez' tipo='Deportivo' titulo='Estudio Parcial Teoría de Lenguajes' asistentes={10} fecha='29-01-24' />
-                    <MiniCard nombre='Santiago Bedoya Díaz' tipo='Cultural' titulo='Taller de danza' asistentes={20} fecha='30-10-23' />
-                    <MiniCard nombre='Juan Pablo Bedoya Sánchez' tipo='Deportivo' titulo='Estudio Parcial Teoría de Lenguajes' asistentes={10} fecha='29-01-24' />
-                    <MiniCard nombre='Santiago Bedoya Díaz' tipo='Cultural' titulo='Taller de danza' asistentes={20} fecha='30-10-23' />
+                <div className='  grid grid-cols-2 gap-4 justify-items-center'>
+                    <MiniCardConteiner data={EventsPage()}/>
+
                 </div>
             </div>
-        </PrivateLayout>
     )
 }
 

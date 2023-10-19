@@ -6,27 +6,27 @@ import Image from 'next/image';
 const Card = () => {
   return (
     // <div className='w-[700px] h-[500px] debug rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl'>
-    <div className='w-full h-[500px] debug rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl'>
-      <div className='flex justify-between debug items-center'>
-        <div className='debug flex gap-1 h-max '>
+    <div className='w-full h-[500px]  rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl'>
+      <div className='flex justify-between  items-center'>
+        <div className=' flex gap-1 h-max '>
           <MdOutlineLabel className="h-8 w-8"/>
           <TagType type={'Deportivo'} />
         </div>
-        <div className='debug flex gap-4 items-center'>
+        <div className=' flex gap-4 items-center'>
           <span className='text-lg font-bold'>Juan Pablo Bedoya Sanchez</span>
-          <Image src={'/juan.png'} alt={'avatar-image'} height={30} width={30} className='debug'/>
-          <button className='debug'>
-            <MdClose className="h-8 w-8 debug"/>
+          <Image src={'/juan.png'} alt={'avatar-image'} height={30} width={30} className=''/>
+          <button className=''>
+            <MdClose className="h-8 w-8"/>
           </button> 
         </div>
       </div>
-      <h2 className='text-base debug flex justify-center text-black'>Salida campus Medellín</h2>
-      <div className='debug h-1/2 flex gap-5'>
+      <h2 className='text-base  flex justify-center text-black'>Salida campus Medellín</h2>
+      <div className=' h-1/2 flex gap-5'>
 
-        <div className='debug'>
-          <Image src={'/evento1.png'} alt={'evento1'} width={1500} height={10} className='debug h-full'/>
+        <div className=''>
+          <Image src={'/evento1.png'} alt={'evento1'} width={1500} height={10} className=' h-full'/>
         </div>
-        <div className='debug flex flex-col justify-between'>
+        <div className=' flex flex-col justify-between'>
           <p className="max-h-36 overflow-auto font-medium ">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             Eum accusantium fugit repellendus neque ab dignissimos!
@@ -40,17 +40,17 @@ const Card = () => {
           </div>
         </div>
       </div>
-      <div className='debug flex gap-10'>
+      <div className=' flex gap-10'>
         <span className='font-bold text-lg'>29 - Sept - 23</span>
         <div className='flex items-center'>
           <MdOutlinePermIdentity className={'h-8 w-8'} />
           <span className='font-bold'>5</span>
         </div>
       </div>
-      <div className='debug flex justify-between'>
-        <button className='debug ButtonCard'>Asistir</button>
-        <input type="text" className='border debug w-1/2 rounded-2xl text-center' placeholder='comentar'/>
-        <button className='debug ButtonCard'>Comentarios</button>
+      <div className=' flex justify-between'>
+        <button className=' ButtonCard'>Asistir</button>
+        <input type="text" className=' w-1/2 rounded-2xl text-center' placeholder='comentar'/>
+        <button className=' ButtonCard'>Comentarios</button>
       </div>
     </div>
   )

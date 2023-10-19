@@ -16,5 +16,4 @@ export declare class Event {
     attendees?: Attendee[];
     hashtags: string[];
     _count?: EventCount | null;
-    attendeesCount: ReactNode;
 }
