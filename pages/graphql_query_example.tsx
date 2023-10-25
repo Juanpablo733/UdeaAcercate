@@ -35,7 +35,8 @@ const EventsPage = () => {
         return <p>error</p>
     }
     if (loading) return <p>Loading...</p>
-
+    console.log('data: ', data)
+    console.log('data.events: ', data.events)
     return <tbody>
         {data?.events.map((event) => (
             <tr key={`user_${event.id}`}>
