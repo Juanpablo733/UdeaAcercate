@@ -1,6 +1,6 @@
 import { MiniCard } from './MiniCard';
 
-export interface MiniCardConteinerI {
+interface MiniCardConteinerI {
   data: {
     id: string,
     nombre: string,
@@ -15,7 +15,7 @@ export interface MiniCardConteinerI {
 
 const MiniCardConteiner = ({data}: MiniCardConteinerI) => {
   return (
-        <div>
+        <div className='  grid grid-cols-2 gap-4 justify-items-center" style="grid-auto-rows: 1fr;' >
             {data.map((item) => {
               return (
                 <MiniCard

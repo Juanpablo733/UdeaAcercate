@@ -12,21 +12,61 @@ import { MiniCardConteiner } from '@/components/card/MiniCardContainer';
 import { Interface } from 'readline';
 import {MiniCardConteinerI} from '../components/card/MiniCardContainer';
 
-const EventsPage = () => {
-    const { data, loading, error } = useQuery<{ events: Event[] }>(GET_EVENTS_PREVIEW, {
-        fetchPolicy: 'cache-first'
-        
-    })
-    console.log(data);
-    if (error){
-        console.log(error)
-        return <p>error</p>
-    }
-    if (loading) return <p>Loading...</p>
-}
-
 
 const Home = () => {
+        const { data, loading, error } = useQuery<{ events: Event[] }>(GET_EVENTS_PREVIEW, {
+            fetchPolicy: 'cache-first'            
+        })
+        console.log(data);
+        if (error){
+            console.log(error)
+            return <p>error</p>
+        }
+
+        const data2 = [
+            {
+              id: '1',
+              nombre: 'Juan Pablo Bedoya',
+              titulo: 'Partido de Futbol',
+              asistentes: 12,
+              tipo: 'Deportivo',
+              fecha: '10-11-2023',
+            },
+            {
+              id: '2',
+              nombre: 'Santiago Bedoya Díaz',
+              titulo: 'Estudio parcial Cálculo',
+              asistentes: 7,
+              tipo: 'Academico',
+              fecha: '28-10-2023',
+            },{
+
+                id: '3',
+                nombre: 'Jose Manuel Gonzalez',
+                titulo: 'Clases de Guitarra',
+                asistentes: 30,
+                tipo: 'Cultural',
+                fecha: '2023-10-19',
+            },
+            {
+                id: '4',
+                nombre: 'Camilo Mejia',
+                titulo: 'Juego de Basket',
+                asistentes: 5,
+                tipo: 'Deportivo',
+                fecha: '15-11-2023',
+              },
+              {
+                id: '4',
+                nombre: 'Carlos Cano',
+                titulo: 'Grupo de Estudio Desarrollo Web',
+                asistentes: 15,
+                tipo: 'Academico',
+                fecha: '01-11-2023',
+              }
+            // ... más objetos
+          ];
+
     return (
             <div className='flex flex-col gap-10 pb-4 Yellow-little'>
                 <Navbar>
@@ -51,9 +91,8 @@ const Home = () => {
                         <MdOutlineSearch className="h-8 w-8" />
                     </div>
                 </div>
-                <div className='  grid grid-cols-2 gap-4 justify-items-center'>
-                    <MiniCardConteiner data={EventsPage()}/>
-
+                <div>
+                    <MiniCardConteiner data={data2}/>
                 </div>
             </div>
     )
