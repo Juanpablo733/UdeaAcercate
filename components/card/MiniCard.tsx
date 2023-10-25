@@ -4,6 +4,7 @@ import { TagType } from '../tag-type/TagType'
 import Image from 'next/image';
 import CardModal from "../modals/CardModal";
 import { Card } from "./Card";
+import CompleteCard from "./CompleteCard";
 interface MiniCardProps{
     nombre: string,
     titulo: string,
@@ -42,10 +43,13 @@ const MiniCard = ({nombre, titulo, asistentes,tipo,fecha}: MiniCardProps) => {
                         <button
                             className='ButtonCard  flex items-center h-full w-full justify-center'
                             onClick={()=>setOpen(true)}
-                        >Ver Más</button>
-                        <CardModal open={open} setOpen={setOpen} modalTitle="">
+                        >
+                            Ver Más
+                        </button>
+                        <CardModal open={open} setOpen={setOpen} modalTitle="Salida Campus Medellín" tagType="Academico">
                             {/* <div>hola</div> */}
-                            <Card/>
+                            {/* <Card/> */}
+                            <CompleteCard/>
                         </CardModal>
                     </div>
                     <div className="w-1/4 flex justify-center items-center">

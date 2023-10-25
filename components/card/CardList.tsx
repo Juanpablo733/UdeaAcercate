@@ -6,8 +6,9 @@ import { MiniCard } from './MiniCard';
 interface Props {
     events: IMinEvent[];
 }
-
+// TODO: arreglar que props coge, y de que tipo son, creería que debo cambiar el IMinEvent
 const CardList: FC<Props> = ({events}) => {
+  
   return (
     <div className='w-full grid grid-cols-[repeat(auto-fill,minmax(500px,1fr))] debug gap-4 pt-4 pb-4'>
       {
@@ -17,7 +18,6 @@ const CardList: FC<Props> = ({events}) => {
           )
         })
       }
-      
     </div>
   )
 }
