@@ -10,26 +10,27 @@ import { useQuery } from "@apollo/client"
 import { Event } from "@/prisma/generated/type-graphql"
 import { MiniCardConteiner } from '@/components/card/MiniCardContainer';
 import { Interface } from 'readline';
-import {MiniCardConteinerI} from '../components/card/MiniCardContainer';
 
 
 const Home = () => {
         const { data, loading, error } = useQuery<{ events: Event[] }>(GET_EVENTS_PREVIEW, {
             fetchPolicy: 'cache-first'            
         })
-        console.log(data);
+        console.log('antes de loading: ', data);
         if (error){
             console.log(error)
             return <p>error</p>
         }
-
+        if (loading) return <p>Loading...</p>
+        console.log('despues de loading: ', data?.events);
+        /*
         const data2 = [
             {
               id: '1',
               nombre: 'Juan Pablo Bedoya',
               titulo: 'Partido de Futbol',
               asistentes: 12,
-              tipo: 'Deportivo',
+              tipo: 'deportivo',
               fecha: '10-11-2023',
             },
             {
@@ -37,7 +38,7 @@ const Home = () => {
               nombre: 'Santiago Bedoya Díaz',
               titulo: 'Estudio parcial Cálculo',
               asistentes: 7,
-              tipo: 'Academico',
+              tipo: 'academico',
               fecha: '28-10-2023',
             },{
 
@@ -45,7 +46,7 @@ const Home = () => {
                 nombre: 'Jose Manuel Gonzalez',
                 titulo: 'Clases de Guitarra',
                 asistentes: 30,
-                tipo: 'Cultural',
+                tipo: 'cultural',
                 fecha: '2023-10-19',
             },
             {
@@ -53,7 +54,7 @@ const Home = () => {
                 nombre: 'Camilo Mejia',
                 titulo: 'Juego de Basket',
                 asistentes: 5,
-                tipo: 'Deportivo',
+                tipo: 'deportivo',
                 fecha: '15-11-2023',
               },
               {
@@ -61,11 +62,12 @@ const Home = () => {
                 nombre: 'Carlos Cano',
                 titulo: 'Grupo de Estudio Desarrollo Web',
                 asistentes: 15,
-                tipo: 'Academico',
+                tipo: 'academico',
                 fecha: '01-11-2023',
               }
             // ... más objetos
           ];
+        */
 
     return (
             <div className='flex flex-col gap-10 pb-4 Yellow-little'>
@@ -92,7 +94,8 @@ const Home = () => {
                     </div>
                 </div>
                 <div>
-                    <MiniCardConteiner data={data2}/>
+                    <MiniCardConteiner data={data?.events}/>
+                    {/* <MiniCardConteiner data={data2}/> */}
                 </div>
             </div>
     )

@@ -1,4 +1,5 @@
 
+//TODO: creo que esta info debe ser igual a la que trae el query 
 export interface IMinEvent {
     nombre: string;
     titulo: string;
