@@ -1,5 +1,8 @@
+import { Event } from "@/prisma/generated/type-graphql";
 import { Resolver, Context } from "@/types";
 import { ApolloError } from "@apollo/client";
+import { argumentsObjectFromField } from "@apollo/client/utilities";
+import { Prisma, PrismaPromise } from "@prisma/client";
 import { GraphQLError } from "graphql";
 
 const resolveUser = async (userId: string, context: Context) => {
@@ -64,16 +67,27 @@ const resolvers: Resolver = {
         },
         events: async (parent, args, context) => {
             const { db } = context;
-            const findEvents = async () => {
-                if (args != null) {
-                    return await db.event.findMany({
-                        where: {
-                            tag: args.tag
-                        }
-                    });
+            if(args == undefined)
+            return await db.event.findMany();
+
+            const filter = args.hashtags
+            const options = {
+                where: {
+                    tag: args.tag,
+                    hashtags: filter
                 }
-                return await db.event.findMany();
-            };
+            }
+            if (args.tag === undefined){
+                delete options["where"]["tag"]
+            }
+            if(filter === undefined){
+                delete options["where"]["hashtags"]
+            }else{
+                options["where"]["hashtags"] = {
+                    hasEvery: filter,
+                }
+            }
+            const findEvents = async () => {return await db.event.findMany(options);}
             const events = findEvents();
             return events;
         },

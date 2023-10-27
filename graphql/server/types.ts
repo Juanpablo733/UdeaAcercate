@@ -52,7 +52,7 @@ const typeDefs = gql`
     type Query {
         users: [User]
         user(email:String!): User
-        events(tag:String): [Event]
+        events(tag:String, hashtags:[String]): [Event]
     }
     
     type Mutation {
