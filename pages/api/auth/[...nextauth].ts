@@ -1,29 +1,25 @@
 import { NextApiRequest, NextApiResponse } from 'next/types';
 import NextAuth, { NextAuthOptions } from 'next-auth';
-import Auth0Provider from 'next-auth/providers/auth0';
+import GoogleProvider from "next-auth/providers/google";
 
 import prisma from '../../../config/prisma';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 
-const regex: RegExp = /^[a-zA-Z0-9._%+-]+@udea\.edu\.co$/;
 export const authOptions: NextAuthOptions = {
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      // Validar correo @udea.edu.co aquí  
-      if (!regex.test(email as string)) {
-        console.log('Correo no válido:', email);
-        // return false;
+    async signIn({ account, profile }) {
+      if (account?.provider === "google") {
+        return profile?.email_verified && profile?.email?.endsWith("@udea.edu.co")
       }
-      return '/home';
-    }
+      return true
+    },
   },
   adapter: PrismaAdapter(prisma),
   providers: [
-    Auth0Provider({
-      clientId: process.env.AUTH0_CLIENT_ID ?? '',
-      clientSecret: process.env.AUTH0_CLIENT_SECRET ?? '',
-      issuer: process.env.AUTH0_ISSUER,
-    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!
+    })
   ],
 };
 

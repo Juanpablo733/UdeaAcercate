@@ -3,27 +3,39 @@ import { GET_USERS } from "@/graphql/client/users"
 import { useQuery } from "@apollo/client"
 import { User } from "@prisma/client"
 import { Event } from "@/prisma/generated/type-graphql"
+import { getServerSession } from "next-auth"
+import { authOptions } from "./api/auth/[...nextauth]"
+import { Session } from 'next-auth/core/types';
+import { useSession } from "next-auth/react"
 
-const UsersPage = () => {
-    const { data, loading, error } = useQuery<{ users: User[] }>(GET_USERS, {
-        fetchPolicy: 'cache-first'
-    })
-    if (error) return <p>error</p>
+export default function UsersPage() {
+    // const { data, loading, error } = useQuery<{ users: User[] }>(GET_USERS, {
+    //     fetchPolicy: 'cache-first'
+    // })
+    // if (error) return <p>error</p>
 
-    if (loading) return <p>Loading...</p>
+    // if (loading) return <p>Loading...</p>
+    // console.log("Antes de getSession")
+    // const session = await getServerSession(authOptions);
+    const {data: Session, status} = useSession();
+    console.log("Session: ", Session)
 
-    return <tbody>
-        {data?.users.map((user) => (
-            <tr key={`user_${user.id}`}>
-                <tr>{user.id}</tr>
-                <tr>{user.name}</tr>
-                <tr>{user.email}</tr>
-                <tr>{String(user.emailVerified)}</tr>
-                <tr>{user.image}</tr>
-                <tr>========</tr>
-            </tr>
-        ))}
-    </tbody>
+    return (<h2 className='text-2xl'>
+        Bienvenido a UdeAcercate 
+        {Session?.user?.name}
+        </h2>)
+    // return <tbody>
+    //     {data?.users.map((user) => (
+    //         <tr key={`user_${user.id}`}>
+    //             <tr>{user.id}</tr>
+    //             <tr>{user.name}</tr>
+    //             <tr>{user.email}</tr>
+    //             <tr>{String(user.emailVerified)}</tr>
+    //             <tr>{user.image}</tr>
+    //             <tr>========</tr>
+    //         </tr>
+    //     ))}
+    // </tbody>
 }
 
 const EventsPage = () => {
@@ -36,7 +48,7 @@ const EventsPage = () => {
     }
     if (loading) return <p>Loading...</p>
     console.log('data: ', data)
-    console.log('data.events: ', data.events)
+    console.log('data.events: ', data?.events)
     return <tbody>
         {data?.events.map((event) => (
             <tr key={`user_${event.id}`}>
@@ -53,5 +65,3 @@ const EventsPage = () => {
         ))}
     </tbody>
 }
-
-export default EventsPage

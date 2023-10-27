@@ -1,4 +1,3 @@
-import { Event } from "@/prisma/generated/type-graphql";
 import { Resolver, Context } from "@/types";
 import { ApolloError } from "@apollo/client";
 import { argumentsObjectFromField } from "@apollo/client/utilities";
