@@ -11,7 +11,7 @@ const index = () => {
         e.preventDefault();
         console.log('Los datos del usuario son: ', formData);
     }
-    const LoginWithGoogle = () => {signIn('google', {callbackUrl: 'http://localhost:3000/home'})}
+    const LoginWithGoogle = () => {signIn('google', {callbackUrl: '/home'})}
     // const [user, setUser] = useState<string>('');
     // const [password, setPassword] = useState<string>('');
     const [formData, setFormData] = useState<FormDataInterface>({user: '', password: ''});

@@ -13,15 +13,17 @@ import { Interface } from 'readline';
 import { getServerSession } from 'next-auth';
 import { authOptions } from './api/auth/[...nextauth]';
 import { useSession } from 'next-auth/react';
-
+import { signOut } from 'next-auth/react';
+import { Button } from '@mui/material';
 
 const Home = () => {
-    const {data: Session, status} = useSession();
+    const { data: Session, status } = useSession();
     const { data, loading, error } = useQuery<{ events: Event[] }>(GET_EVENTS_PREVIEW, {
         fetchPolicy: 'cache-first'
     })
+    const CloseSession = () => { signOut({ callbackUrl: '/' }) }
     console.log("Session: ", Session)
-    if(status === 'loading') return <p>Loading...</p>
+    if (status === 'loading') return <p>Loading...</p>
 
     console.log('antes de loading: ', data);
     if (error) {
@@ -30,9 +32,12 @@ const Home = () => {
     }
     if (loading) return <p>Loading...</p>
     console.log('despues de loading: ', data?.events);
-    
+
     return (
         <div className='flex flex-col gap-10 pb-4 Yellow-little'>
+            <Button onClick={CloseSession}>
+                Cerrar sesión
+            </Button>
             <Navbar>
                 <div className='flex gap-4 items-center'>
                     <span className=' text-white font-bold'>{Session?.user?.name}</span>
