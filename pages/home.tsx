@@ -16,9 +16,13 @@ import { useSession } from 'next-auth/react';
 
 
 const Home = () => {
+    const {data: Session, status} = useSession();
     const { data, loading, error } = useQuery<{ events: Event[] }>(GET_EVENTS_PREVIEW, {
         fetchPolicy: 'cache-first'
     })
+    console.log("Session: ", Session)
+    if(status === 'loading') return <p>Loading...</p>
+
     console.log('antes de loading: ', data);
     if (error) {
         console.log(error)
@@ -26,62 +30,13 @@ const Home = () => {
     }
     if (loading) return <p>Loading...</p>
     console.log('despues de loading: ', data?.events);
-
-    // const {data: Session, status} = useSession();
-    // console.log("Session: ", Session)
-    // if(status === 'loading') return <p>Loading...</p>
-    /*
-    const data2 = [
-        {
-          id: '1',
-          nombre: 'Juan Pablo Bedoya',
-          titulo: 'Partido de Futbol',
-          asistentes: 12,
-          tipo: 'deportivo',
-          fecha: '10-11-2023',
-        },
-        {
-          id: '2',
-          nombre: 'Santiago Bedoya Díaz',
-          titulo: 'Estudio parcial Cálculo',
-          asistentes: 7,
-          tipo: 'academico',
-          fecha: '28-10-2023',
-        },{
-
-            id: '3',
-            nombre: 'Jose Manuel Gonzalez',
-            titulo: 'Clases de Guitarra',
-            asistentes: 30,
-            tipo: 'cultural',
-            fecha: '2023-10-19',
-        },
-        {
-            id: '4',
-            nombre: 'Camilo Mejia',
-            titulo: 'Juego de Basket',
-            asistentes: 5,
-            tipo: 'deportivo',
-            fecha: '15-11-2023',
-          },
-          {
-            id: '4',
-            nombre: 'Carlos Cano',
-            titulo: 'Grupo de Estudio Desarrollo Web',
-            asistentes: 15,
-            tipo: 'academico',
-            fecha: '01-11-2023',
-          }
-        // ... más objetos
-      ];
-    */
-
+    
     return (
         <div className='flex flex-col gap-10 pb-4 Yellow-little'>
             <Navbar>
                 <div className='flex gap-4 items-center'>
-                    <span className=' text-white font-bold'>Juan Pablo Bedoya</span>
-                    <Image src={'/juan.png'} alt={'avatar-image'} height={50} width={50} className='' />
+                    <span className=' text-white font-bold'>{Session?.user?.name}</span>
+                    <Image src={Session?.user?.image} alt={'avatar-image'} height={50} width={50} className='' />
                 </div>
             </Navbar>
             <div className=' flex gap-32 justify-center'>
