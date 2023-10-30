@@ -9,7 +9,7 @@ export declare class Event {
     place: string;
     date: Date;
     image?: string | null;
-    tag: "deportivo" | "academico" | "cultural";
+    tag: "Deportivo" | "Academico" | "Cultural";
     author?: User;
     authorId: string;
     comments?: Comment[];

@@ -1,4 +1,6 @@
-import React, { FormEvent, useState } from 'react'
+import { Button } from '@mui/material';
+import { signIn } from 'next-auth/react';
+import React, { FormEvent, useCallback, useState } from 'react'
 
 interface FormDataInterface {
     [key: string] : string;
@@ -9,11 +11,15 @@ const index = () => {
         e.preventDefault();
         console.log('Los datos del usuario son: ', formData);
     }
+    const LoginWithGoogle = () => {signIn('google', {callbackUrl: '/home'})}
     // const [user, setUser] = useState<string>('');
     // const [password, setPassword] = useState<string>('');
     const [formData, setFormData] = useState<FormDataInterface>({user: '', password: ''});
   return (
     <>
+    <Button onClick={LoginWithGoogle}>
+        Iniciar sesion con Google
+    </Button>
         <div className='flex'>
             <div className='w-2/5 h-screen flex flex-col py-12 pl-12 justify-between'>
                 <div className='flex flex-col'>

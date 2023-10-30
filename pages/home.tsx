@@ -10,94 +10,61 @@ import { useQuery } from "@apollo/client"
 import { Event } from "@/prisma/generated/type-graphql"
 import { MiniCardConteiner } from '@/components/card/MiniCardContainer';
 import { Interface } from 'readline';
-
+import { getServerSession } from 'next-auth';
+import { authOptions } from './api/auth/[...nextauth]';
+import { useSession } from 'next-auth/react';
+import { signOut } from 'next-auth/react';
+import { Button } from '@mui/material';
 
 const Home = () => {
-        const { data, loading, error } = useQuery<{ events: Event[] }>(GET_EVENTS_PREVIEW, {
-            fetchPolicy: 'cache-first'            
-        })
-        console.log('antes de loading: ', data);
-        if (error){
-            console.log(error)
-            return <p>error</p>
-        }
-        if (loading) return <p>Loading...</p>
-        console.log('despues de loading: ', data?.events);
-        /*
-        const data2 = [
-            {
-              id: '1',
-              nombre: 'Juan Pablo Bedoya',
-              titulo: 'Partido de Futbol',
-              asistentes: 12,
-              tipo: 'deportivo',
-              fecha: '10-11-2023',
-            },
-            {
-              id: '2',
-              nombre: 'Santiago Bedoya Díaz',
-              titulo: 'Estudio parcial Cálculo',
-              asistentes: 7,
-              tipo: 'academico',
-              fecha: '28-10-2023',
-            },{
+    const { data: Session, status } = useSession();
+    const { data, loading, error } = useQuery<{ events: Event[] }>(GET_EVENTS_PREVIEW, {
+        fetchPolicy: 'cache-first'
+    })
+    const CloseSession = () => { signOut({ callbackUrl: '/' }) }
+    console.log("Session: ", Session)
+    if (status === 'loading') return <p>Loading...</p>
 
-                id: '3',
-                nombre: 'Jose Manuel Gonzalez',
-                titulo: 'Clases de Guitarra',
-                asistentes: 30,
-                tipo: 'cultural',
-                fecha: '2023-10-19',
-            },
-            {
-                id: '4',
-                nombre: 'Camilo Mejia',
-                titulo: 'Juego de Basket',
-                asistentes: 5,
-                tipo: 'deportivo',
-                fecha: '15-11-2023',
-              },
-              {
-                id: '4',
-                nombre: 'Carlos Cano',
-                titulo: 'Grupo de Estudio Desarrollo Web',
-                asistentes: 15,
-                tipo: 'academico',
-                fecha: '01-11-2023',
-              }
-            // ... más objetos
-          ];
-        */
+    console.log('antes de loading: ', data);
+    if (error) {
+        console.log(error)
+        return <p>error</p>
+    }
+    if (loading) return <p>Loading...</p>
+    console.log('despues de loading: ', data?.events);
 
     return (
-            <div className='flex flex-col gap-10 pb-4 Yellow-little'>
-                <Navbar>
-                    <div className='flex gap-4 items-center'>
-                        <span className=' text-white font-bold'>Juan Pablo Bedoya Sanchez</span>
-                        <Image src={'/juan.png'} alt={'avatar-image'} height={50} width={50} className='' />
-                    </div>
-                </Navbar>
-                <div className=' flex gap-32 justify-center'>
-                    <div className=' flex gap-12 items-center bg-white rounded-2xl'>
-                        <span>crear evento</span>
-                        <MdAddCircleOutline className="h-8 w-8" />
-                    </div>
-                    <div className=' flex gap-12 items-center bg-white rounded-2xl'>
-                        <span>filtrar por evento</span>
-                        <MdExpandMore className="h-8 w-8" />
-                    </div>
+        <div className='flex flex-col gap-10 pb-4 Yellow-little'>
+            <Button onClick={CloseSession}>
+                Cerrar sesión
+            </Button>
+            <Navbar>
+                <div className='flex gap-4 items-center'>
+                    <span className=' text-white font-bold'>{Session?.user?.name}</span>
+                    <Image src={Session?.user?.image} alt={'avatar-image'} height={50} width={50} className='' />
                 </div>
-                <div className=' flex justify-center'>
-                    <div className=' flex items-center justify-center gap-12 bg-white rounded-2xl'>
-                        <span>buscar</span>
-                        <MdOutlineSearch className="h-8 w-8" />
-                    </div>
+            </Navbar>
+            <div className=' flex gap-32 justify-center'>
+                <div className=' flex gap-12 items-center bg-white rounded-2xl'>
+                    <span>crear evento</span>
+                    <MdAddCircleOutline className="h-8 w-8" />
                 </div>
-                <div>
-                    <MiniCardConteiner data={data?.events}/>
-                    {/* <MiniCardConteiner data={data2}/> */}
+                <div className=' flex gap-12 items-center bg-white rounded-2xl'>
+                    <span>filtrar por evento</span>
+                    <MdExpandMore className="h-8 w-8" />
                 </div>
             </div>
+            <div className=' flex justify-center'>
+                <div className=' flex items-center justify-center gap-12 bg-white rounded-2xl'>
+                    <span>buscar</span>
+                    <MdOutlineSearch className="h-8 w-8" />
+                </div>
+            </div>
+            <div>
+                <MiniCardConteiner data={data?.events} />
+                {/* <MiniCardConteiner data={data2}/> */}
+            </div>
+        </div>
     )
 }
 
