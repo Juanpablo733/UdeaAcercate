@@ -7,6 +7,6 @@ export declare class Profile {
     userId: string;
     user?: User;
     description?: string | null;
-    hobbies: string[];
+    hobbies?: string | null;
     socialLinks: string[];
 }

@@ -1,11 +1,11 @@
 import React from 'react'
 
-// interface TypesProps {
-//     type: "Deportivo" | "Cultural" | "Academico";
-// }
 interface TypesProps {
-    type: any;
+    type: "Deportivo" | "Cultural" | "Academico";
 }
+// interface TypesProps {
+//     type: any;
+// }
 
 const TYPES = {
     Deportivo: {
@@ -24,16 +24,16 @@ const TYPES = {
 
 const TagType = ({type} : TypesProps) => {
     // const {label, color} = TYPES[type];
-    let tipo = type.charAt(0).toUpperCase();
-    let aux = '';
-    if (tipo==='Deportivo'){
-        aux = 'Deportivo'
-    } else if(tipo === 'Academico'){
-        aux = 'Academico'
-    } else {
-        aux = 'Cultural'
-    }
-    const {label, color} = TYPES[aux];
+    // let tipo = type.charAt(0).toUpperCase();
+    // let aux = '';
+    // if (tipo==='Deportivo'){
+    //     aux = 'Deportivo'
+    // } else if(tipo === 'Academico'){
+    //     aux = 'Academico'
+    // } else {
+    //     aux = 'Cultural'
+    // }
+    const {label, color} = TYPES[type];
     const style = {
         color: "white",
         border: '1px solid black',

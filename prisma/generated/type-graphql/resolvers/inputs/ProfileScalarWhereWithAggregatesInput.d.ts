@@ -13,6 +13,6 @@ export declare class ProfileScalarWhereWithAggregatesInput {
     campus?: EnumCampusNullableWithAggregatesFilter | undefined;
     userId?: StringWithAggregatesFilter | undefined;
     description?: StringNullableWithAggregatesFilter | undefined;
-    hobbies?: StringNullableListFilter | undefined;
+    hobbies?: StringNullableWithAggregatesFilter | undefined;
     socialLinks?: StringNullableListFilter | undefined;
 }

@@ -43,6 +43,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", String)
 ], ProfileMaxAggregate.prototype, "description", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
+], ProfileMaxAggregate.prototype, "hobbies", void 0);
 exports.ProfileMaxAggregate = ProfileMaxAggregate = tslib_1.__decorate([
     TypeGraphQL.ObjectType("ProfileMaxAggregate", {})
 ], ProfileMaxAggregate);

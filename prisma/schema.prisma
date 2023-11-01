@@ -101,7 +101,7 @@ model Profile {
   userId      String    @unique
   user        User      @relation(fields: [userId], references: [id])
   description String?
-  hobbies     String[]
+  hobbies     String?
   socialLinks String[]
 }
 

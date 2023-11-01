@@ -47,10 +47,10 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], ProfileGroupBy.prototype, "description", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [String], {
+    TypeGraphQL.Field(_type => String, {
         nullable: true
     }),
-    tslib_1.__metadata("design:type", Array)
+    tslib_1.__metadata("design:type", String)
 ], ProfileGroupBy.prototype, "hobbies", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => [String], {
