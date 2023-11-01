@@ -44,10 +44,10 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], Profile.prototype, "description", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [String], {
-        nullable: false
+    TypeGraphQL.Field(_type => String, {
+        nullable: true
     }),
-    tslib_1.__metadata("design:type", Array)
+    tslib_1.__metadata("design:type", String)
 ], Profile.prototype, "hobbies", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => [String], {

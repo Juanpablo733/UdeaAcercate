@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProfileCreateInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-const ProfileCreatehobbiesInput_1 = require("../inputs/ProfileCreatehobbiesInput");
 const ProfileCreatesocialLinksInput_1 = require("../inputs/ProfileCreatesocialLinksInput");
 const UserCreateNestedOneWithoutProfileInput_1 = require("../inputs/UserCreateNestedOneWithoutProfileInput");
 const Campus_1 = require("../../enums/Campus");
@@ -41,10 +40,10 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], ProfileCreateInput.prototype, "description", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => ProfileCreatehobbiesInput_1.ProfileCreatehobbiesInput, {
+    TypeGraphQL.Field(_type => String, {
         nullable: true
     }),
-    tslib_1.__metadata("design:type", ProfileCreatehobbiesInput_1.ProfileCreatehobbiesInput)
+    tslib_1.__metadata("design:type", String)
 ], ProfileCreateInput.prototype, "hobbies", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ProfileCreatesocialLinksInput_1.ProfileCreatesocialLinksInput, {

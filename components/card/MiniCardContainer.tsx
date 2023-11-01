@@ -1,21 +1,10 @@
 import { MiniCard } from './MiniCard';
 
-// interface MiniCardConteinerI {
-//   data: {
-//     id: string,
-//     nombre: string,
-//     titulo: string,
-//     asistentes: number,
-//     tipo: "Deportivo" | "Cultural" | "Academico",
-//     fecha: string,
-//   }[];
-// }
-
 interface MiniCardContainerI2 {
   data: {
     id: string,
-    tag: string,
-    // tag: "Deportivo" | "Cultural" | "Academico",
+    // tag: string,
+    tag: "Deportivo" | "Cultural" | "Academico",
     author: {
       name: string,
       image: string,

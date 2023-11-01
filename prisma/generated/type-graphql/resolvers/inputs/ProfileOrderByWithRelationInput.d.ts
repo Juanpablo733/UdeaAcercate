@@ -7,7 +7,7 @@ export declare class ProfileOrderByWithRelationInput {
     campus?: SortOrderInput | undefined;
     userId?: "asc" | "desc" | undefined;
     description?: SortOrderInput | undefined;
-    hobbies?: "asc" | "desc" | undefined;
+    hobbies?: SortOrderInput | undefined;
     socialLinks?: "asc" | "desc" | undefined;
     user?: UserOrderByWithRelationInput | undefined;
 }

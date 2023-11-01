@@ -43,6 +43,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", String)
 ], ProfileMinAggregate.prototype, "description", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
+], ProfileMinAggregate.prototype, "hobbies", void 0);
 exports.ProfileMinAggregate = ProfileMinAggregate = tslib_1.__decorate([
     TypeGraphQL.ObjectType("ProfileMinAggregate", {})
 ], ProfileMinAggregate);

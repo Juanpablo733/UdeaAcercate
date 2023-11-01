@@ -14,7 +14,7 @@ export declare class ProfileWhereInput {
     campus?: EnumCampusNullableFilter | undefined;
     userId?: StringFilter | undefined;
     description?: StringNullableFilter | undefined;
-    hobbies?: StringNullableListFilter | undefined;
+    hobbies?: StringNullableFilter | undefined;
     socialLinks?: StringNullableListFilter | undefined;
     user?: UserRelationFilter | undefined;
 }

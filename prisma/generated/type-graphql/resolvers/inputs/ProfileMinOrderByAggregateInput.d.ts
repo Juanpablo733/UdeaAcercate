@@ -5,4 +5,5 @@ export declare class ProfileMinOrderByAggregateInput {
     campus?: "asc" | "desc" | undefined;
     userId?: "asc" | "desc" | undefined;
     description?: "asc" | "desc" | undefined;
+    hobbies?: "asc" | "desc" | undefined;
 }

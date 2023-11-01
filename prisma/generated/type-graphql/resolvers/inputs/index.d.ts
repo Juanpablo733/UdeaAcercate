@@ -182,7 +182,6 @@ export { ProfileCreateManyInput } from "./ProfileCreateManyInput";
 export { ProfileCreateNestedOneWithoutUserInput } from "./ProfileCreateNestedOneWithoutUserInput";
 export { ProfileCreateOrConnectWithoutUserInput } from "./ProfileCreateOrConnectWithoutUserInput";
 export { ProfileCreateWithoutUserInput } from "./ProfileCreateWithoutUserInput";
-export { ProfileCreatehobbiesInput } from "./ProfileCreatehobbiesInput";
 export { ProfileCreatesocialLinksInput } from "./ProfileCreatesocialLinksInput";
 export { ProfileMaxOrderByAggregateInput } from "./ProfileMaxOrderByAggregateInput";
 export { ProfileMinOrderByAggregateInput } from "./ProfileMinOrderByAggregateInput";
@@ -195,7 +194,6 @@ export { ProfileUpdateManyMutationInput } from "./ProfileUpdateManyMutationInput
 export { ProfileUpdateOneWithoutUserNestedInput } from "./ProfileUpdateOneWithoutUserNestedInput";
 export { ProfileUpdateToOneWithWhereWithoutUserInput } from "./ProfileUpdateToOneWithWhereWithoutUserInput";
 export { ProfileUpdateWithoutUserInput } from "./ProfileUpdateWithoutUserInput";
-export { ProfileUpdatehobbiesInput } from "./ProfileUpdatehobbiesInput";
 export { ProfileUpdatesocialLinksInput } from "./ProfileUpdatesocialLinksInput";
 export { ProfileUpsertWithoutUserInput } from "./ProfileUpsertWithoutUserInput";
 export { ProfileWhereInput } from "./ProfileWhereInput";

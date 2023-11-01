@@ -9,7 +9,7 @@ export declare class ProfileOrderByWithAggregationInput {
     campus?: SortOrderInput | undefined;
     userId?: "asc" | "desc" | undefined;
     description?: SortOrderInput | undefined;
-    hobbies?: "asc" | "desc" | undefined;
+    hobbies?: SortOrderInput | undefined;
     socialLinks?: "asc" | "desc" | undefined;
     _count?: ProfileCountOrderByAggregateInput | undefined;
     _max?: ProfileMaxOrderByAggregateInput | undefined;

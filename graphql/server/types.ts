@@ -17,7 +17,7 @@ const typeDefs = gql`
         campus: String
         user: User
         description: String
-        hobbies: [String]
+        hobbies: String
         socialLinks: [String]
     }
 
@@ -62,7 +62,7 @@ const typeDefs = gql`
             date: DateTime!, image: String!, tag: String!, authorId: String!): Event
         createProfile(userId:String!): Profile
         updateProfile(userId:String!, faculty: String, career: String, type:   String
-            campus: String, description: String, hobbies: [String], socialLinks: [String]): Profile
+            campus: String, description: String, hobbies: String, socialLinks: [String]): Profile
     }
 `;
 
