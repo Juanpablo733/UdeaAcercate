@@ -1,6 +1,6 @@
 import { Resolver, Context } from "@/types";
 import { ApolloError } from "@apollo/client";
-import { argumentsObjectFromField } from "@apollo/client/utilities";
+import { argumentsObjectFromField, cloneDeep } from "@apollo/client/utilities";
 import { Prisma, PrismaPromise } from "@prisma/client";
 import { GraphQLError } from "graphql";
 
@@ -49,6 +49,16 @@ const resolvers: Resolver = {
             return resolveUser(parent.userId, context);
         }
     },
+    Profile: {
+        user: async (parent, args, context) => {
+            const { db } = context;
+            return await db.user.findUnique({
+                where: {
+                    id: parent.userId
+                }
+            })
+        },
+    },
     Query: {
         users: async (parent, args, context) => {
             const { db } = context;
@@ -66,8 +76,8 @@ const resolvers: Resolver = {
         },
         events: async (parent, args, context) => {
             const { db } = context;
-            if(args == undefined)
-            return await db.event.findMany();
+            if (args == undefined)
+                return await db.event.findMany();
 
             const filter = args.hashtags
             const options = {
@@ -76,19 +86,27 @@ const resolvers: Resolver = {
                     hashtags: filter
                 }
             }
-            if (args.tag === undefined){
+            if (args.tag === undefined) {
                 delete options["where"]["tag"]
             }
-            if(filter === undefined){
+            if (filter === undefined) {
                 delete options["where"]["hashtags"]
-            }else{
+            } else {
                 options["where"]["hashtags"] = {
                     hasEvery: filter,
                 }
             }
-            const findEvents = async () => {return await db.event.findMany(options);}
+            const findEvents = async () => { return await db.event.findMany(options); }
             const events = findEvents();
             return events;
+        },
+        profile: async (parent, args, context) => {
+            const { db } = context;
+            return await db.profile.findUnique({
+                where: {
+                    userId: args.userId
+                }
+            })
         },
     },
     Mutation: {
@@ -131,6 +149,35 @@ const resolvers: Resolver = {
             });
             console.log("Nuevo evento: ", newEvent)
             return newEvent;
+        },
+        createProfile: async (parent, args, context) => {
+            const { db } = context;
+            const findProfile = await db.profile.findUnique({
+                where: {
+                    userId: args.userId
+                }
+            });
+            if (findProfile != null) return findProfile;
+            const newProfile = await db.profile.create({
+                data: {
+                    userId: args.userId
+                }
+            }).catch((error) => { return null });
+            return newProfile;
+        },
+        updateProfile:async (parent, args, context) => {
+            const { db } = context;
+            const newData = cloneDeep(args);
+            delete newData.userId;
+            return await db.profile.update({
+                where:{
+                    userId: args.userId
+                },
+                data: newData,
+            }).catch((e)=>{
+                console.log(e)
+                return null
+            });
         },
     }
 };

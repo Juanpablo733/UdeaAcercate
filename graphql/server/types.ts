@@ -10,7 +10,7 @@ const typeDefs = gql`
         image:         String
     }  
 
-    type Proile {
+    type Profile {
         faculty: String
         career: String
         type:   String
@@ -53,12 +53,16 @@ const typeDefs = gql`
         users: [User]
         user(email:String!): User
         events(tag:String, hashtags:[String]): [Event]
+        profile(userId:String!): Profile
     }
     
     type Mutation {
         createUser(name:String!, email:String!, image:String!, emailVerified:String): User
         createEvent(title: String!, description: String!, place: String!, 
             date: DateTime!, image: String!, tag: String!, authorId: String!): Event
+        createProfile(userId:String!): Profile
+        updateProfile(userId:String!, faculty: String, career: String, type:   String
+            campus: String, description: String, hobbies: [String], socialLinks: [String]): Profile
     }
 `;
 
