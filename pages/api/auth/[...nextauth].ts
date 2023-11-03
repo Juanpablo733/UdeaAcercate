@@ -17,6 +17,9 @@ export const authOptions: NextAuthOptions = {
       return true
     },
   },
+  pages:{
+    error: '/signInError'
+  },
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({

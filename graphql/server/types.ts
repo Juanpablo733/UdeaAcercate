@@ -63,6 +63,10 @@ const typeDefs = gql`
         createProfile(userId:String!): Profile
         updateProfile(userId:String!, faculty: String, career: String, type:   String
             campus: String, description: String, hobbies: String, socialLinks: [String]): Profile
+        createComment(userId:String!, eventId:String!, text:String!): Comment
+        deleteComment(id:String!): Boolean
+        addAttendee(userId:String!, eventId:String!): Attendee
+        quitAttendee(userId:String!, eventId:String!): Boolean
     }
 `;
 
