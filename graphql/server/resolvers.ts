@@ -136,6 +136,14 @@ const resolvers: Resolver = {
             const events = findEvents();
             return events;
         },
+        event: async (parent, args, context) => {
+            const { db } = context;
+            return await db.event.findUnique({
+                where: {
+                    id: args.id
+                }
+            });
+        },
         profile: async (parent, args, context) => {
             const { db } = context;
             return await db.profile.findUnique({

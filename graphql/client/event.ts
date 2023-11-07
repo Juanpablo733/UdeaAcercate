@@ -17,4 +17,23 @@ const GET_EVENTS_PREVIEW = gql`
     }
 `
 
-export {GET_EVENTS_PREVIEW}
+const GET_EVENT_BY_ID = gql`
+    query Event($id: String!) {
+    event(id: $id) {
+        comments {
+            text
+            dateTime
+            user {
+                name
+                image
+            }
+            id
+        }
+        place
+        description
+        hashtags
+    }
+    }
+`
+
+export { GET_EVENTS_PREVIEW, GET_EVENT_BY_ID }

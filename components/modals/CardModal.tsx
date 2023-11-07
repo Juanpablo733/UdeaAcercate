@@ -8,9 +8,10 @@ interface CardModalProps{
   setOpen: Dispatch<SetStateAction<boolean>>;
   modalTitle: string;
   tagType: string;
+  date: string
   children: JSX.Element;
 }
-const CardModal = ({open, setOpen, modalTitle, tagType, children}: CardModalProps) => {
+const CardModal = ({open, setOpen, modalTitle, tagType, date, children}: CardModalProps) => {
   // const [fullWidth, setFullWidth] = useState(true);
   const [maxWidth, setMaxWidth] = useState<DialogProps['maxWidth']>('lg');
   return (
@@ -20,7 +21,7 @@ const CardModal = ({open, setOpen, modalTitle, tagType, children}: CardModalProp
       </div>
       <div className='flex flex-col items-center justify-center'>
         <DialogTitle>{modalTitle}</DialogTitle>
-        <span className='text-black font-bold'>29-10-2023</span>
+        <span className='text-black font-bold'>{date}</span>
       </div>
       <DialogContent>{children}</DialogContent>
     </Dialog>

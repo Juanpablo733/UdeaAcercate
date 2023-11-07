@@ -18,23 +18,25 @@ interface MiniCardContainerI2 {
 
 
 
-const MiniCardConteiner = ({data}: MiniCardContainerI2) => {
+const MiniCardConteiner = ({ data }: MiniCardContainerI2) => {
   return (
-        <div className='  grid grid-cols-2 gap-4 justify-items-center" style="grid-auto-rows: 1fr;' >
-            {data.map((item) => {
-              // let etiqueta = item.tag.toUpperCase();
-              return (
-                <MiniCard
-                  key={item.id}
-                  nombre={item.author.name}
-                  titulo={item.title}
-                  asistentes={item.attendeesCount}
-                  tipo={item.tag}
-                  fecha={item.date}
-                />
-              );
-            })}
-        </div>
+    <div className='  grid grid-cols-2 gap-4 justify-items-center" style="grid-auto-rows: 1fr;' >
+      {data.map((item) => {
+        // let etiqueta = item.tag.toUpperCase();
+        return (
+          <MiniCard
+            key={item.id}
+            id={item.id}
+            nombre={item.author.name}
+            titulo={item.title}
+            asistentes={item.attendeesCount}
+            tipo={item.tag}
+            fecha={item.date}
+            imagenAutor={item.author.image}
+          />
+        );
+      })}
+    </div>
   );
 };
 // const MiniCardConteiner = ({data}: MiniCardConteinerI) => {
