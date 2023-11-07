@@ -27,7 +27,7 @@ const Home = () => {
 
     console.log('antes de loading: ', data);
     if (error) {
-        console.log(error)
+        console.log("Error en carga de eventos",error)
         return <p>error</p>
     }
     if (loading) return <p>Loading...</p>

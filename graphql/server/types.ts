@@ -53,6 +53,7 @@ const typeDefs = gql`
         users: [User]
         user(email:String!): User
         events(tag:String, hashtags:[String]): [Event]
+        event(id:String!): Event
         profile(userId:String!): Profile
     }
     
