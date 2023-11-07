@@ -14,6 +14,16 @@ const resolveUser = async (userId: string, context: Context) => {
     return user;
 }
 
+const resolveEvent = async (eventId: string, context: Context) => {
+    const { db } = context;
+    const event = db.event.findUnique({
+        where: {
+            id: eventId
+        }
+    })
+    return event;
+}
+
 const findHashtags = (text: String) => {
     const regex: RegExp = /#(\w+)/g;
     const hashtags = text.match(regex);
@@ -28,6 +38,9 @@ const resolvers: Resolver = {
                 where: {
                     eventId: parent.id
                 }
+            }).catch((e) => {
+                console.log(e)
+                return null
             });
             return comments;
         },
@@ -42,21 +55,38 @@ const resolvers: Resolver = {
                 }
             })
             return count;
+        },
+        attendees: async (parent, args, context) => {
+            const { db } = context;
+            return await db.attendee.findMany({
+                where: {
+                    eventId: parent.id
+                },
+            }).catch((e) => {
+                console.log(e)
+                return null
+            });
         }
     },
     Comment: {
         user: async (parent, args, context) => {
             return resolveUser(parent.userId, context);
-        }
+        },
+        event: async (parent, args, context) => {
+            return resolveEvent(parent.eventId, context);
+        },
     },
     Profile: {
         user: async (parent, args, context) => {
-            const { db } = context;
-            return await db.user.findUnique({
-                where: {
-                    id: parent.userId
-                }
-            })
+            return resolveUser(parent.userId, context);
+        },
+    },
+    Attendee: {
+        user: async (parent, args, context) => {
+            return resolveUser(parent.userId, context);
+        },
+        event: async (parent, args, context) => {
+            return resolveEvent(parent.eventId, context);
         },
     },
     Query: {
@@ -96,7 +126,13 @@ const resolvers: Resolver = {
                     hasEvery: filter,
                 }
             }
-            const findEvents = async () => { return await db.event.findMany(options); }
+            const findEvents = async () => {
+                return await db.event.findMany(options)
+                    .catch((e) => {
+                        console.log(e)
+                        return null
+                    });;
+            }
             const events = findEvents();
             return events;
         },
@@ -165,19 +201,72 @@ const resolvers: Resolver = {
             }).catch((error) => { return null });
             return newProfile;
         },
-        updateProfile:async (parent, args, context) => {
+        updateProfile: async (parent, args, context) => {
             const { db } = context;
             const newData = cloneDeep(args);
             delete newData.userId;
             return await db.profile.update({
-                where:{
+                where: {
                     userId: args.userId
                 },
                 data: newData,
-            }).catch((e)=>{
+            }).catch((e) => {
                 console.log(e)
                 return null
             });
+        },
+        createComment: async (parent, args, context) => {
+            const { db } = context;
+            return await db.comment.create({
+                data: {
+                    userId: args.userId,
+                    eventId: args.eventId,
+                    text: args.text,
+                }
+            }).catch((e) => {
+                console.log(e)
+                return null
+            });
+        },
+        deleteComment: async (parent, args, context) => {
+            const { db } = context;
+            var deleted: Boolean = true;
+            await db.comment.delete({
+                where: {
+                    id: args.id,
+                }
+            }).catch((e) => {
+                console.log(e)
+                deleted = false;
+            });
+            return deleted;
+        },
+        addAttendee: async (parent, args, context) => {
+            const { db } = context;
+            return await db.attendee.create({
+                data: {
+                    userId: args.userId,
+                    eventId: args.eventId
+                }
+            }).catch((e) => {
+                console.log(e)
+                return null
+            });
+        },
+        quitAttendee: async (parent, args, context) => {
+            const { db } = context;
+            var deleted: Boolean = true;
+            const userId = args.userId
+            const eventId = args.eventId
+            await db.attendee.delete({
+                where: {
+                    userId_eventId: { userId, eventId }
+                }
+            }).catch((e) => {
+                console.log(e)
+                deleted = false;
+            });
+            return deleted;
         },
     }
 };
