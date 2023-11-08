@@ -2,11 +2,17 @@
 import Navbar from '@/components/ui/Navbar'
 import React, { FC, PropsWithChildren } from 'react'
 
-const Layout: FC<PropsWithChildren> = ({children}) => {
+interface LayoutProps{
+    image: string, 
+    name: string,
+  children: JSX.Element;
+}
+
+const Layout = ({children, image, name }: LayoutProps) => {
   return (
     <>
         <nav>
-            <Navbar/>
+            <Navbar image={image} name= {name}/>
         </nav>
         <main style={{
             margin: '80px auto',
