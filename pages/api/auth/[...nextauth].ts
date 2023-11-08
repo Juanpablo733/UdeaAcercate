@@ -8,14 +8,16 @@ import async from '../login';
 
 export const authOptions: NextAuthOptions = {
   callbacks: {
-    async signIn({ account, profile }) {
+    async signIn({ user, account, profile }) {
       if (account?.provider === "google") {
-        return profile?.email_verified && profile?.email?.endsWith("@udea.edu.co")
+        if(!user?.emailVerified)
+          return '/verifyEmail'
+        return profile?.email?.endsWith("@udea.edu.co")
       }else{
         console.log("Pagina de error")
       }
-      return true
     },
+    async sendVerificationRequest(){},
   },
   pages:{
     error: '/signInError'
@@ -25,7 +27,8 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!
-    })
+    }),
+    
   ],
 };
 
