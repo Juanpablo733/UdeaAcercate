@@ -35,7 +35,7 @@ const Home = () => {
 
     return (
         <div className='flex flex-col gap-10 pb-4 Yellow-little'>
-            <Button onClick={CloseSession}>
+            <Button onClick={CloseSession} >
                 Cerrar sesión
             </Button>
             <Navbar>
