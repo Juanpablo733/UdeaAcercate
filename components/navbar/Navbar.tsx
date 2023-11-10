@@ -2,6 +2,7 @@ import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import React from 'react'
 import { signOut } from 'next-auth/react';
+import Link from 'next/link';
 
 
 interface NavbarProps {
@@ -15,11 +16,12 @@ const Navbar = ({children}: NavbarProps) => {
       <button className='text-white font-bold' onClick={CloseSession} >
                 Cerrar sesión
       </button>
-
-        <div className=' flex items-center'>
-            <Image src={'/udea-texto.png'} alt={'udea-texto'} width={100} height={64} className=''/>
-            <Image src={'/cercate-texto.png'} alt={'cercate-texto'} width={100} height={64} className=''/>
-        </div>
+        <Link href={'/perfil'} >
+          <div className=' flex items-center'>
+              <Image src={'/udea-texto.png'} alt={'udea-texto'} width={100} height={64} className=''/>
+              <Image src={'/cercate-texto.png'} alt={'cercate-texto'} width={100} height={64} className=''/>
+          </div>
+        </Link>
         <div className=''>
             {children}
         </div>

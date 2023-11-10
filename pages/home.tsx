@@ -13,7 +13,8 @@ import { Interface } from 'readline';
 import { getServerSession } from 'next-auth';
 import { authOptions } from './api/auth/[...nextauth]';
 import { useSession } from 'next-auth/react';
-import { Loading } from '@/components/ui/loading';
+import { Loading } from '@/components/ui/Loading';
+import Link from 'next/link';
 
 
 
@@ -37,10 +38,12 @@ const Home = () => {
     return (
         <div className='flex flex-col gap-10 pb-4 Yellow-little'>
             <Navbar>
-                <div className='flex gap-4 items-center justify-center'>
-                    <span className=' text-white font-bold'>{Session?.user?.name}</span>
-                    <Image src={Session?.user?.image} alt={'avatar-image'} height={50} width={50} className='rounded-full' />
-                </div>
+                <Link href={'/perfil'}>
+                    <div className='flex gap-4 items-center justify-center'>
+                        <span className=' text-white font-bold'>{Session?.user?.name}</span>
+                        <Image src={Session?.user?.image!} alt={'avatar-image'} height={50} width={50} className='rounded-full' />
+                    </div>
+                </Link>
             </Navbar>
             <div className=' flex gap-32 justify-center'>
                 <div className=' flex gap-12 items-center bg-white rounded-2xl'>
