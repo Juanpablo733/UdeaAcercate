@@ -13,9 +13,8 @@ import { Interface } from 'readline';
 import { getServerSession } from 'next-auth';
 import { authOptions } from './api/auth/[...nextauth]';
 import { useSession } from 'next-auth/react';
-import { signOut } from 'next-auth/react';
-import { Button } from '@mui/material';
-import { Loading } from '@/components/ui/Loading';
+import { Loading } from '@/components/ui/loading';
+
 
 
 const Home = () => {
@@ -23,7 +22,6 @@ const Home = () => {
     const { data, loading, error } = useQuery<{ events: Event[] }>(GET_EVENTS_PREVIEW, {
         fetchPolicy: 'cache-first'
     })
-    const CloseSession = () => { signOut({ callbackUrl: '/' }) }
     console.log("Session: ", Session)
     if (status === 'loading') return (<Loading/>)
 
@@ -38,13 +36,10 @@ const Home = () => {
 
     return (
         <div className='flex flex-col gap-10 pb-4 Yellow-little'>
-            <Button onClick={CloseSession} >
-                Cerrar sesión
-            </Button>
             <Navbar>
-                <div className='flex gap-4 items-center'>
+                <div className='flex gap-4 items-center justify-center'>
                     <span className=' text-white font-bold'>{Session?.user?.name}</span>
-                    <Image src={Session?.user?.image} alt={'avatar-image'} height={50} width={50} className='' />
+                    <Image src={Session?.user?.image} alt={'avatar-image'} height={50} width={50} className='rounded-full' />
                 </div>
             </Navbar>
             <div className=' flex gap-32 justify-center'>
