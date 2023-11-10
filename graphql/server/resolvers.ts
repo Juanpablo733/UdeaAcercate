@@ -1,4 +1,5 @@
 import { Resolver, Context } from "@/types";
+import { sendVerificationEmail } from "@/util/nodemailerConfig";
 import { ApolloError } from "@apollo/client";
 import { argumentsObjectFromField, cloneDeep } from "@apollo/client/utilities";
 import { Prisma, PrismaClient, PrismaPromise } from "@prisma/client";
@@ -280,6 +281,18 @@ const resolvers: Resolver = {
             const { db } = context;
             const token = Math.trunc(Math.random() * Math.pow(10, 6))
             const expireDate = new Date(Date.now() + 600000)
+
+            const user = await db.user.findUnique({
+                where: {
+                    id: args.userId
+                },
+                select: {
+                    email: true
+                }
+            })
+
+            console.log(user)
+            await sendVerificationEmail(user?.email ?? '', token.toString())
 
             const savedToken = await db.verificationToken.findUnique({
                 where: {
