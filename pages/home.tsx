@@ -15,6 +15,7 @@ import { authOptions } from './api/auth/[...nextauth]';
 import { useSession } from 'next-auth/react';
 import { signOut } from 'next-auth/react';
 import { Button } from '@mui/material';
+import ReactLoading from 'react-loading';
 
 const Home = () => {
     const { data: Session, status } = useSession();
@@ -30,7 +31,10 @@ const Home = () => {
         console.log("Error en carga de eventos",error)
         return <p>error</p>
     }
-    if (loading) return <p>Loading...</p>
+    if (loading) return <div className='flex flex-col justify-center items-center p-10'>
+        <ReactLoading type='spokes' color='#026937' height={667} width={375} />
+        <p className='text-5xl'>CARGANDO</p>
+        </div>
     console.log('despues de loading: ', data?.events);
 
     return (
