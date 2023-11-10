@@ -10,16 +10,19 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ user, account, profile }) {
       if (account?.provider === "google") {
-        if(!user?.emailVerified)
-          return '/verifyEmail'
-        return profile?.email?.endsWith("@udea.edu.co")
-      }else{
+        if (profile?.email?.endsWith("@udea.edu.co")) {
+          if (!user?.emailVerified) {
+            return '/verifyEmail'
+          }
+          return true
+        }
+        return false
+      } else {
         console.log("Pagina de error")
       }
     },
-    async sendVerificationRequest(){},
   },
-  pages:{
+  pages: {
     error: '/signInError'
   },
   adapter: PrismaAdapter(prisma),
@@ -28,7 +31,7 @@ export const authOptions: NextAuthOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!
     }),
-    
+
   ],
 };
 

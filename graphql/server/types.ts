@@ -49,6 +49,12 @@ const typeDefs = gql`
         event: Event
     }
 
+    type VerificationToken {
+        identifier: ID
+        token: String
+        expires: DateTime
+    }
+
     type Query {
         users: [User]
         user(email:String!): User
@@ -68,6 +74,8 @@ const typeDefs = gql`
         deleteComment(id:String!): Boolean
         addAttendee(userId:String!, eventId:String!): Attendee
         quitAttendee(userId:String!, eventId:String!): Boolean
+        generateVerificationToken(userId:String!): VerificationToken
+        verifyToken(identifier:String!, token:String!): Boolean
     }
 `;
 

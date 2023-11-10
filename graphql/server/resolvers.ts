@@ -1,7 +1,7 @@
 import { Resolver, Context } from "@/types";
 import { ApolloError } from "@apollo/client";
 import { argumentsObjectFromField, cloneDeep } from "@apollo/client/utilities";
-import { Prisma, PrismaPromise } from "@prisma/client";
+import { Prisma, PrismaClient, PrismaPromise } from "@prisma/client";
 import { GraphQLError } from "graphql";
 
 const resolveUser = async (userId: string, context: Context) => {
@@ -275,6 +275,63 @@ const resolvers: Resolver = {
                 deleted = false;
             });
             return deleted;
+        },
+        generateVerificationToken: async (parent, args, context) => {
+            const { db } = context;
+            const token = Math.trunc(Math.random() * Math.pow(10, 6))
+            const expireDate = new Date(Date.now() + 600000)
+
+            const savedToken = await db.verificationToken.findUnique({
+                where: {
+                    identifier: args.userId
+                }
+            })
+            
+            if (savedToken) {
+                return await db.verificationToken.update({
+                    where: {
+                        identifier: args.userId
+                    },
+                    data: {
+                        token: token.toString(),
+                        expires: expireDate
+                    }
+                })
+            }
+            return await db.verificationToken.create({
+                data: {
+                    identifier: args.userId,
+                    token: token.toString(),
+                    expires: expireDate
+                }
+            }
+            )
+        },
+        verifyToken: async (parent, args, context) => {
+            const { db } = context;
+            const savedToken = await db.verificationToken.findUnique({
+                where: {
+                    identifier: args.identifier
+                }
+            })
+            if (args.token === savedToken?.token && Date.now() <= Number(savedToken?.expires)) {
+                await db.verificationToken.delete({
+                    where: {
+                        identifier: args.identifier
+                    }
+                })
+                await db.user.update({
+                    where: {
+                        id: args.identifier
+                    },
+                    data: {
+                        emailVerified: new Date(Date.now())
+                    }
+                }
+                )
+                return true
+            }
+            return false
         },
     }
 };

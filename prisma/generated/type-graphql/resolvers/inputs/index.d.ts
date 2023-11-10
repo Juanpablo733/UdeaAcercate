@@ -288,7 +288,6 @@ export { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 export { VerificationTokenCountOrderByAggregateInput } from "./VerificationTokenCountOrderByAggregateInput";
 export { VerificationTokenCreateInput } from "./VerificationTokenCreateInput";
 export { VerificationTokenCreateManyInput } from "./VerificationTokenCreateManyInput";
-export { VerificationTokenIdentifierTokenCompoundUniqueInput } from "./VerificationTokenIdentifierTokenCompoundUniqueInput";
 export { VerificationTokenMaxOrderByAggregateInput } from "./VerificationTokenMaxOrderByAggregateInput";
 export { VerificationTokenMinOrderByAggregateInput } from "./VerificationTokenMinOrderByAggregateInput";
 export { VerificationTokenOrderByWithAggregationInput } from "./VerificationTokenOrderByWithAggregationInput";
