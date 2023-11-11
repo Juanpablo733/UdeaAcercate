@@ -18,6 +18,10 @@ import { Button } from '@mui/material';
 import { GET_USER_BY_EMAIL } from '@/graphql/client/users';
 import { redirect } from 'next/dist/server/api-utils';
 import { useRouter } from 'next/router';
+import { Loading } from '@/components/ui/Loading';
+import Link from 'next/link';
+
+
 
 const Home = () => {
     const router = useRouter();
@@ -41,26 +45,26 @@ const Home = () => {
 
     const CloseSession = () => { signOut({ callbackUrl: '/' }) }
     console.log("Session: ", Session)
-    if (status === 'loading') return <p>Loading...</p>
+    if (status === 'loading') return (<Loading/>)
 
     console.log('antes de loading: ', data);
     if (error) {
         console.log("Error en carga de eventos", error)
         return <p>error</p>
     }
-    if (loading) return <p>Loading...</p>
+    if (loading) return (<Loading/>)
+
     console.log('despues de loading: ', data?.events);
 
     return (
         <div className='flex flex-col gap-10 pb-4 Yellow-little'>
-            <Button onClick={CloseSession}>
-                Cerrar sesión
-            </Button>
             <Navbar>
-                <div className='flex gap-4 items-center'>
-                    <span className=' text-white font-bold'>{Session?.user?.name}</span>
-                    <Image src={Session?.user?.image} alt={'avatar-image'} height={50} width={50} className='' />
-                </div>
+                <Link href={'/perfil'}>
+                    <div className='flex gap-4 items-center justify-center'>
+                        <span className=' text-white font-bold'>{Session?.user?.name}</span>
+                        <Image src={Session?.user?.image!} alt={'avatar-image'} height={50} width={50} className='rounded-full' />
+                    </div>
+                </Link>
             </Navbar>
             <div className=' flex gap-32 justify-center'>
                 <div className=' flex gap-12 items-center bg-white rounded-2xl'>
