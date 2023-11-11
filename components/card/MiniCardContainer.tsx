@@ -12,6 +12,11 @@ interface MiniCardContainerI2 {
     title: string,
     image: string,
     date: string,
+    minutes: string,
+    hours: string,
+    day: string,
+    month: string,
+    year: string,
     attendeesCount: number,
   }[];
 }
@@ -32,6 +37,11 @@ const MiniCardConteiner = ({ data }: MiniCardContainerI2) => {
             asistentes={item.attendeesCount}
             tipo={item.tag}
             fecha={item.date}
+            minutes={item.minutes}
+            hours={item.hours}
+            day={item.day}
+            month={item.month}
+            year={item.year}
             imagenAutor={item.author.image}
           />
         );

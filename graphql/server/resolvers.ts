@@ -70,7 +70,7 @@ const resolvers: Resolver = {
         },
         minutes: async (parent) => {
             const date = new Date(parent.date)
-            return date.getMinutes()
+            return date.getUTCMinutes()
         },
         hours: async (parent) => {
             const date = new Date(parent.date)
@@ -78,15 +78,15 @@ const resolvers: Resolver = {
         },
         day: async (parent) => {
             const date = new Date(parent.date)
-            return date.getDay()
+            return date.getUTCDay()
         },
         month: async (parent) => {
             const date = new Date(parent.date)
-            return date.getMonth()
+            return date.getUTCMonth()
         },
         year: async (parent) => {
             const date = new Date(parent.date)
-            return date.getFullYear()
+            return date.getUTCFullYear()
         },
     },
     Comment: {

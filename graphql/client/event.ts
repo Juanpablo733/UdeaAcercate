@@ -13,6 +13,11 @@ const GET_EVENTS_PREVIEW = gql`
         image
         date
         attendeesCount
+        minutes
+        hours
+        day
+        month
+        year
         }
     }
 `
