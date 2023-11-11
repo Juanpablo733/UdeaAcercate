@@ -1,7 +1,4 @@
-import { Card } from '@/components/card/Card';
-import { MiniCard } from '@/components/card/MiniCard';
 import { Navbar } from '@/components/navbar/Navbar';
-import PrivateLayout from '@/layouts/PrivateLayout';
 import Image from 'next/image';
 import React, { useEffect } from 'react'
 import { MdAddCircleOutline, MdOutlineSearch, MdExpandMore } from "react-icons/md";
@@ -9,19 +6,11 @@ import { GET_EVENTS_PREVIEW } from "@/graphql/client/event"
 import { useQuery } from "@apollo/client"
 import { Event, User } from "@/prisma/generated/type-graphql"
 import { MiniCardConteiner } from '@/components/card/MiniCardContainer';
-import { Interface } from 'readline';
-import { getServerSession } from 'next-auth';
-import { authOptions } from './api/auth/[...nextauth]';
 import { useSession } from 'next-auth/react';
-import { signOut } from 'next-auth/react';
-import { Button } from '@mui/material';
 import { GET_USER_BY_EMAIL } from '@/graphql/client/users';
-import { redirect } from 'next/dist/server/api-utils';
 import { useRouter } from 'next/router';
 import { Loading } from '@/components/ui/Loading';
 import Link from 'next/link';
-
-
 
 const Home = () => {
     const router = useRouter();
@@ -43,7 +32,6 @@ const Home = () => {
         }
     }, [])
 
-    const CloseSession = () => { signOut({ callbackUrl: '/' }) }
     console.log("Session: ", Session)
     if (status === 'loading') return (<Loading/>)
 
