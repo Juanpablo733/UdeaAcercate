@@ -1,4 +1,4 @@
-import { GENERATE_VERIFICATION_TOKEN } from '@/graphql/client/verificationToken'
+import { GENERATE_VERIFICATION_TOKEN } from '@/graphql/client/emailToken'
 import { VerificationToken } from '@/prisma/generated/type-graphql'
 import { useQuery } from '@apollo/client'
 import nodemailer from 'nodemailer'

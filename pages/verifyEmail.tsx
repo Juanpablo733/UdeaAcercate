@@ -2,8 +2,8 @@ import React, { FormEvent, useState } from "react"
 import { useSession } from 'next-auth/react';
 import { sendVerificationEmail } from "@/util/nodemailerConfig";
 import { useMutation, useQuery } from "@apollo/client";
-import { GENERATE_VERIFICATION_TOKEN, VERIFY_TOKEN } from "@/graphql/client/verificationToken";
-import { VerificationToken } from "@/prisma/generated/type-graphql";
+import { GENERATE_VERIFICATION_TOKEN, VERIFY_TOKEN } from "@/graphql/client/emailToken";
+import { EmailToken, VerificationToken } from "@/prisma/generated/type-graphql";
 import { User } from "@prisma/client";
 import { GET_USERS, GET_USER_BY_EMAIL } from "@/graphql/client/users";
 
@@ -18,18 +18,21 @@ const verifyEmail = () => {
 
     const { data: Session, status } = useSession();
     const email = Session?.user?.email
+    console.log(Session)
+    console.log(status)
     const { data: userData } = useQuery<{ user: User }>(GET_USER_BY_EMAIL,
         { variables: { email }, skip: !email })
 
     const userId = userData?.user?.id
-    const [generateToken] = useMutation<{ verificationToken: VerificationToken }>(GENERATE_VERIFICATION_TOKEN,
+    console.log("UserId:", userId)
+    const [generateToken] = useMutation<{ emailToken: EmailToken }>(GENERATE_VERIFICATION_TOKEN,
         { variables: { userId } });
     var token = '';
     const executeGenerateToken = async () => {
         try {
             const resultado = await generateToken();
             // La data resultante estará disponible en resultado.data
-            token = resultado.data?.verificationToken?.token ?? ''
+            token = resultado.data?.emailToken?.token ?? ''
             console.log('Data resultante de la mutación:', resultado.data);
         } catch (error) {
             console.error('Error al ejecutar la mutación:', error);
@@ -37,7 +40,7 @@ const verifyEmail = () => {
     }
 
     var tokenInput = formData.tokenInput
-    const [verifyToken, { data }] = useMutation<{ verificationToken: VerificationToken }>(VERIFY_TOKEN,
+    const [verifyToken, { data }] = useMutation<{ emailToken: EmailToken }>(VERIFY_TOKEN,
         { variables: { identifier: userId, token: tokenInput } });
 
     if (status === 'loading') return <p>Loading...</p>

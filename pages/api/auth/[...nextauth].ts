@@ -10,9 +10,10 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ user, account, profile }) {
       if (account?.provider === "google") {
+        console.log(user)
         if (profile?.email?.endsWith("@udea.edu.co")) {
           if (!user?.emailVerified) {
-            return '/verifyEmail'
+            return true
           }
           return true
         }

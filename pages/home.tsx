@@ -3,11 +3,11 @@ import { MiniCard } from '@/components/card/MiniCard';
 import { Navbar } from '@/components/navbar/Navbar';
 import PrivateLayout from '@/layouts/PrivateLayout';
 import Image from 'next/image';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { MdAddCircleOutline, MdOutlineSearch, MdExpandMore } from "react-icons/md";
 import { GET_EVENTS_PREVIEW } from "@/graphql/client/event"
 import { useQuery } from "@apollo/client"
-import { Event } from "@/prisma/generated/type-graphql"
+import { Event, User } from "@/prisma/generated/type-graphql"
 import { MiniCardConteiner } from '@/components/card/MiniCardContainer';
 import { Interface } from 'readline';
 import { getServerSession } from 'next-auth';
@@ -15,19 +15,37 @@ import { authOptions } from './api/auth/[...nextauth]';
 import { useSession } from 'next-auth/react';
 import { signOut } from 'next-auth/react';
 import { Button } from '@mui/material';
+import { GET_USER_BY_EMAIL } from '@/graphql/client/users';
+import { redirect } from 'next/dist/server/api-utils';
+import { useRouter } from 'next/router';
 
 const Home = () => {
+    const router = useRouter();
     const { data: Session, status } = useSession();
     const { data, loading, error } = useQuery<{ events: Event[] }>(GET_EVENTS_PREVIEW, {
         fetchPolicy: 'cache-first'
     })
+    const email = Session?.user?.email
+    const { data: userData } = useQuery<{ user: User }>(GET_USER_BY_EMAIL,
+        { variables: { email }, skip: !email })
+    const notVerified = !userData?.user?.emailVerified
+    console.log("Email no verificado: ", notVerified)
+    console.log("Status:", status)
+    useEffect(() => {
+        if (status === "authenticated") {
+            if (notVerified) {
+                router.push('/verifyEmail')
+            }
+        }
+    }, [])
+
     const CloseSession = () => { signOut({ callbackUrl: '/' }) }
     console.log("Session: ", Session)
     if (status === 'loading') return <p>Loading...</p>
 
     console.log('antes de loading: ', data);
     if (error) {
-        console.log("Error en carga de eventos",error)
+        console.log("Error en carga de eventos", error)
         return <p>error</p>
     }
     if (loading) return <p>Loading...</p>

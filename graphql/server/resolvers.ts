@@ -67,7 +67,27 @@ const resolvers: Resolver = {
                 console.log(e)
                 return null
             });
-        }
+        },
+        minutes: async (parent) => {
+            const date = new Date(parent.date)
+            return date.getMinutes()
+        },
+        hours: async (parent) => {
+            const date = new Date(parent.date)
+            return date.getUTCHours()
+        },
+        day: async (parent) => {
+            const date = new Date(parent.date)
+            return date.getDay()
+        },
+        month: async (parent) => {
+            const date = new Date(parent.date)
+            return date.getMonth()
+        },
+        year: async (parent) => {
+            const date = new Date(parent.date)
+            return date.getFullYear()
+        },
     },
     Comment: {
         user: async (parent, args, context) => {
@@ -277,7 +297,7 @@ const resolvers: Resolver = {
             });
             return deleted;
         },
-        generateVerificationToken: async (parent, args, context) => {
+        generateEmailToken: async (parent, args, context) => {
             const { db } = context;
             const token = Math.trunc(Math.random() * Math.pow(10, 6))
             const expireDate = new Date(Date.now() + 600000)
@@ -294,14 +314,14 @@ const resolvers: Resolver = {
             console.log(user)
             await sendVerificationEmail(user?.email ?? '', token.toString())
 
-            const savedToken = await db.verificationToken.findUnique({
+            const savedToken = await db.emailToken.findUnique({
                 where: {
                     identifier: args.userId
                 }
             })
             
             if (savedToken) {
-                return await db.verificationToken.update({
+                return await db.emailToken.update({
                     where: {
                         identifier: args.userId
                     },
@@ -311,7 +331,7 @@ const resolvers: Resolver = {
                     }
                 })
             }
-            return await db.verificationToken.create({
+            return await db.emailToken.create({
                 data: {
                     identifier: args.userId,
                     token: token.toString(),
@@ -320,15 +340,15 @@ const resolvers: Resolver = {
             }
             )
         },
-        verifyToken: async (parent, args, context) => {
+        verifyEmailToken: async (parent, args, context) => {
             const { db } = context;
-            const savedToken = await db.verificationToken.findUnique({
+            const savedToken = await db.emailToken.findUnique({
                 where: {
                     identifier: args.identifier
                 }
             })
             if (args.token === savedToken?.token && Date.now() <= Number(savedToken?.expires)) {
-                await db.verificationToken.delete({
+                await db.emailToken.delete({
                     where: {
                         identifier: args.identifier
                     }

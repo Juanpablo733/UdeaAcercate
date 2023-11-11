@@ -1,6 +1,7 @@
 export { Account } from "./Account";
 export { Attendee } from "./Attendee";
 export { Comment } from "./Comment";
+export { EmailToken } from "./EmailToken";
 export { Event } from "./Event";
 export { Profile } from "./Profile";
 export { Session } from "./Session";
