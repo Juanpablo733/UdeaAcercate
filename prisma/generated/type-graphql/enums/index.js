@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VerificationTokenScalarFieldEnum = exports.UserType = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.Tag = exports.SortOrder = exports.SessionScalarFieldEnum = exports.QueryMode = exports.ProfileScalarFieldEnum = exports.NullsOrder = exports.EventScalarFieldEnum = exports.CommentScalarFieldEnum = exports.Campus = exports.AttendeeScalarFieldEnum = exports.AccountScalarFieldEnum = void 0;
+exports.VerificationTokenScalarFieldEnum = exports.UserType = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.Tag = exports.SortOrder = exports.SessionScalarFieldEnum = exports.QueryMode = exports.ProfileScalarFieldEnum = exports.NullsOrder = exports.EventScalarFieldEnum = exports.EmailTokenScalarFieldEnum = exports.CommentScalarFieldEnum = exports.Campus = exports.AttendeeScalarFieldEnum = exports.AccountScalarFieldEnum = void 0;
 var AccountScalarFieldEnum_1 = require("./AccountScalarFieldEnum");
 Object.defineProperty(exports, "AccountScalarFieldEnum", { enumerable: true, get: function () { return AccountScalarFieldEnum_1.AccountScalarFieldEnum; } });
 var AttendeeScalarFieldEnum_1 = require("./AttendeeScalarFieldEnum");
@@ -9,6 +9,8 @@ var Campus_1 = require("./Campus");
 Object.defineProperty(exports, "Campus", { enumerable: true, get: function () { return Campus_1.Campus; } });
 var CommentScalarFieldEnum_1 = require("./CommentScalarFieldEnum");
 Object.defineProperty(exports, "CommentScalarFieldEnum", { enumerable: true, get: function () { return CommentScalarFieldEnum_1.CommentScalarFieldEnum; } });
+var EmailTokenScalarFieldEnum_1 = require("./EmailTokenScalarFieldEnum");
+Object.defineProperty(exports, "EmailTokenScalarFieldEnum", { enumerable: true, get: function () { return EmailTokenScalarFieldEnum_1.EmailTokenScalarFieldEnum; } });
 var EventScalarFieldEnum_1 = require("./EventScalarFieldEnum");
 Object.defineProperty(exports, "EventScalarFieldEnum", { enumerable: true, get: function () { return EventScalarFieldEnum_1.EventScalarFieldEnum; } });
 var NullsOrder_1 = require("./NullsOrder");

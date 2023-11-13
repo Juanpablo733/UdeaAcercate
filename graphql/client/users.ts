@@ -9,7 +9,19 @@ const GET_USERS = gql`
             emailVerified
             image
         }
-}
+    }
 `;
 
-export { GET_USERS }
+const GET_USER_BY_EMAIL = gql`
+    query Query($email: String!) {
+        user(email: $email) {
+            id
+            name
+            email
+            emailVerified
+            image
+        } 
+    }
+`
+
+export { GET_USERS, GET_USER_BY_EMAIL }

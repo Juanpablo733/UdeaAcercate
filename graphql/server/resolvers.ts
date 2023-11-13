@@ -1,7 +1,8 @@
 import { Resolver, Context } from "@/types";
+import { sendVerificationEmail } from "@/util/nodemailerConfig";
 import { ApolloError } from "@apollo/client";
 import { argumentsObjectFromField, cloneDeep } from "@apollo/client/utilities";
-import { Prisma, PrismaPromise } from "@prisma/client";
+import { Prisma, PrismaClient, PrismaPromise } from "@prisma/client";
 import { GraphQLError } from "graphql";
 
 const resolveUser = async (userId: string, context: Context) => {
@@ -66,7 +67,27 @@ const resolvers: Resolver = {
                 console.log(e)
                 return null
             });
-        }
+        },
+        minutes: async (parent) => {
+            const date = new Date(parent.date)
+            return date.getUTCMinutes()
+        },
+        hours: async (parent) => {
+            const date = new Date(parent.date)
+            return date.getUTCHours()
+        },
+        day: async (parent) => {
+            const date = new Date(parent.date)
+            return date.getUTCDay()
+        },
+        month: async (parent) => {
+            const date = new Date(parent.date)
+            return date.getUTCMonth()
+        },
+        year: async (parent) => {
+            const date = new Date(parent.date)
+            return date.getUTCFullYear()
+        },
     },
     Comment: {
         user: async (parent, args, context) => {
@@ -275,6 +296,75 @@ const resolvers: Resolver = {
                 deleted = false;
             });
             return deleted;
+        },
+        generateEmailToken: async (parent, args, context) => {
+            const { db } = context;
+            const token = Math.trunc(Math.random() * Math.pow(10, 6))
+            const expireDate = new Date(Date.now() + 600000)
+
+            const user = await db.user.findUnique({
+                where: {
+                    id: args.userId
+                },
+                select: {
+                    email: true
+                }
+            })
+
+            console.log(user)
+            await sendVerificationEmail(user?.email ?? '', token.toString())
+
+            const savedToken = await db.emailToken.findUnique({
+                where: {
+                    identifier: args.userId
+                }
+            })
+            
+            if (savedToken) {
+                return await db.emailToken.update({
+                    where: {
+                        identifier: args.userId
+                    },
+                    data: {
+                        token: token.toString(),
+                        expires: expireDate
+                    }
+                })
+            }
+            return await db.emailToken.create({
+                data: {
+                    identifier: args.userId,
+                    token: token.toString(),
+                    expires: expireDate
+                }
+            }
+            )
+        },
+        verifyEmailToken: async (parent, args, context) => {
+            const { db } = context;
+            const savedToken = await db.emailToken.findUnique({
+                where: {
+                    identifier: args.identifier
+                }
+            })
+            if (args.token === savedToken?.token && Date.now() <= Number(savedToken?.expires)) {
+                await db.emailToken.delete({
+                    where: {
+                        identifier: args.identifier
+                    }
+                })
+                await db.user.update({
+                    where: {
+                        id: args.identifier
+                    },
+                    data: {
+                        emailVerified: new Date(Date.now())
+                    }
+                }
+                )
+                return true
+            }
+            return false
         },
     }
 };

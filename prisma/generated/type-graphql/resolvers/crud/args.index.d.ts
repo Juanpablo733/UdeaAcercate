@@ -1,6 +1,7 @@
 export * from "./Account/args";
 export * from "./Attendee/args";
 export * from "./Comment/args";
+export * from "./EmailToken/args";
 export * from "./Event/args";
 export * from "./Profile/args";
 export * from "./Session/args";

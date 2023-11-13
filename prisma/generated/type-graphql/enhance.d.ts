@@ -10,6 +10,7 @@ declare const crudResolversMap: {
     Session: typeof crudResolvers.SessionCrudResolver;
     User: typeof crudResolvers.UserCrudResolver;
     VerificationToken: typeof crudResolvers.VerificationTokenCrudResolver;
+    EmailToken: typeof crudResolvers.EmailTokenCrudResolver;
     Profile: typeof crudResolvers.ProfileCrudResolver;
     Event: typeof crudResolvers.EventCrudResolver;
     Attendee: typeof crudResolvers.AttendeeCrudResolver;

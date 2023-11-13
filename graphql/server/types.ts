@@ -27,6 +27,11 @@ const typeDefs = gql`
         description: String
         place:       String
         date:        DateTime
+        minutes:     String
+        hours:       String
+        day:        String
+        month:      String
+        year:       String
         image:       String
         tag:         String
         author:      User
@@ -49,6 +54,12 @@ const typeDefs = gql`
         event: Event
     }
 
+    type EmailToken {
+        identifier: ID
+        token: String
+        expires: DateTime
+    }
+
     type Query {
         users: [User]
         user(email:String!): User
@@ -68,6 +79,8 @@ const typeDefs = gql`
         deleteComment(id:String!): Boolean
         addAttendee(userId:String!, eventId:String!): Attendee
         quitAttendee(userId:String!, eventId:String!): Boolean
+        generateEmailToken(userId:String!): EmailToken
+        verifyEmailToken(identifier:String!, token:String!): Boolean
     }
 `;
 

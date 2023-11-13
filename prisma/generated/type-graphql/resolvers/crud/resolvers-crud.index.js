@@ -1,12 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VerificationTokenCrudResolver = exports.UserCrudResolver = exports.SessionCrudResolver = exports.ProfileCrudResolver = exports.EventCrudResolver = exports.CommentCrudResolver = exports.AttendeeCrudResolver = exports.AccountCrudResolver = void 0;
+exports.VerificationTokenCrudResolver = exports.UserCrudResolver = exports.SessionCrudResolver = exports.ProfileCrudResolver = exports.EventCrudResolver = exports.EmailTokenCrudResolver = exports.CommentCrudResolver = exports.AttendeeCrudResolver = exports.AccountCrudResolver = void 0;
 var AccountCrudResolver_1 = require("./Account/AccountCrudResolver");
 Object.defineProperty(exports, "AccountCrudResolver", { enumerable: true, get: function () { return AccountCrudResolver_1.AccountCrudResolver; } });
 var AttendeeCrudResolver_1 = require("./Attendee/AttendeeCrudResolver");
 Object.defineProperty(exports, "AttendeeCrudResolver", { enumerable: true, get: function () { return AttendeeCrudResolver_1.AttendeeCrudResolver; } });
 var CommentCrudResolver_1 = require("./Comment/CommentCrudResolver");
 Object.defineProperty(exports, "CommentCrudResolver", { enumerable: true, get: function () { return CommentCrudResolver_1.CommentCrudResolver; } });
+var EmailTokenCrudResolver_1 = require("./EmailToken/EmailTokenCrudResolver");
+Object.defineProperty(exports, "EmailTokenCrudResolver", { enumerable: true, get: function () { return EmailTokenCrudResolver_1.EmailTokenCrudResolver; } });
 var EventCrudResolver_1 = require("./Event/EventCrudResolver");
 Object.defineProperty(exports, "EventCrudResolver", { enumerable: true, get: function () { return EventCrudResolver_1.EventCrudResolver; } });
 var ProfileCrudResolver_1 = require("./Profile/ProfileCrudResolver");

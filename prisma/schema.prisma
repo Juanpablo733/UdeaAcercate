@@ -74,8 +74,8 @@ model User {
   name          String?
   email         String?    @unique
   emailVerified DateTime?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
   image         String?
   profile       Profile?
   eventsCreated Event[]
@@ -93,6 +93,12 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
+model EmailToken {
+  identifier String @unique
+  token      String   
+  expires    DateTime
+}
+
 model Profile {
   faculty     String?
   career      String?
@@ -104,7 +110,6 @@ model Profile {
   hobbies     String?
   socialLinks String[]
 }
-
 
 model Event {
   id          String     @id @default(cuid())

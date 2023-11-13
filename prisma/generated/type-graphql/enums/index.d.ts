@@ -2,6 +2,7 @@ export { AccountScalarFieldEnum } from "./AccountScalarFieldEnum";
 export { AttendeeScalarFieldEnum } from "./AttendeeScalarFieldEnum";
 export { Campus } from "./Campus";
 export { CommentScalarFieldEnum } from "./CommentScalarFieldEnum";
+export { EmailTokenScalarFieldEnum } from "./EmailTokenScalarFieldEnum";
 export { EventScalarFieldEnum } from "./EventScalarFieldEnum";
 export { NullsOrder } from "./NullsOrder";
 export { ProfileScalarFieldEnum } from "./ProfileScalarFieldEnum";

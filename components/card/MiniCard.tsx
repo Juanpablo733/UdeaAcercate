@@ -13,10 +13,16 @@ interface MiniCardProps {
     // tipo:"Deportivo" | "Cultural" | "Academico",
     tipo: string,
     fecha: string
+    minutes: string,
+    hours: string,
+    day: string,
+    month: string,
+    year: string,
     imagenAutor: string
 }
 
-const MiniCard = ({ id, nombre, titulo, asistentes, tipo, fecha, imagenAutor }: MiniCardProps) => {
+const MiniCard = ({ id, nombre, titulo, asistentes, tipo, fecha,
+    imagenAutor, day, hours, minutes, month, year }: MiniCardProps) => {
     const [open, setOpen] = useState<boolean>(false);
     return (
         <div className='w-full max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl'>
@@ -38,7 +44,10 @@ const MiniCard = ({ id, nombre, titulo, asistentes, tipo, fecha, imagenAutor }: 
                 <div className="flex gap-4 justify-between h-12">
                     <div className="w-1/4 flex flex-col items-center justify-center">
                         <span className="font-bold text-sm">
-                            {fecha}
+                            {`${year}-${month}-${day}`}
+                        </span>
+                        <span className="font-bold text-sm">
+                            {`${hours}:${minutes}`}
                         </span>
                     </div>
                     <div className="w-1/3">
@@ -48,7 +57,17 @@ const MiniCard = ({ id, nombre, titulo, asistentes, tipo, fecha, imagenAutor }: 
                         >
                             Ver Más
                         </button>
-                        <CardModal open={open} setOpen={setOpen} modalTitle={titulo} tagType={tipo} date={fecha}>
+                        <CardModal
+                            open={open}
+                            setOpen={setOpen}
+                            modalTitle={titulo}
+                            tagType={tipo}
+                            date={fecha}
+                            minutes={minutes}
+                            day={day}
+                            hours={hours}
+                            month={month}
+                            year={year} >
                             {/* <div>hola</div> */}
                             {/* <Card/> */}
                             <CompleteCard
