@@ -9,13 +9,14 @@ import { Event } from "@/prisma/generated/type-graphql"
 import { CommentContainer } from './CommentContainer'
 interface completeCardProps {
     id: string,
-    nombre: string,
     asistentes: number,
+    idAutor: string,
+    nombre: string,
     imagenAutor: string
 }
 
 
-const CompleteCard = ({ id, nombre, asistentes, imagenAutor }: completeCardProps) => {
+const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor }: completeCardProps) => {
     const [comentario, setComentario] = useState('');
     const { data, loading, error } = useQuery<{ event: Event }>(GET_EVENT_BY_ID, {
         variables: { id },
@@ -49,7 +50,11 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor }: completeCardProps
             </div>
             {/* lado derecho */}
             <div className='debug flex flex-col h-full w-full p-2 gap-2'>
-                <Avatar name={nombre} imageUrl={imagenAutor} />
+                <Avatar 
+                name={nombre} 
+                imageUrl={imagenAutor} 
+                userId={idAutor}
+                />
                 <div>
                     {data?.event.description}
                 </div>

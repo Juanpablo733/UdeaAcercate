@@ -6,6 +6,7 @@ interface MiniCardContainerI2 {
     // tag: string,
     tag: "Deportivo" | "Cultural" | "Academico",
     author: {
+      id: string,
       name: string,
       image: string,
     }
@@ -32,7 +33,6 @@ const MiniCardConteiner = ({ data }: MiniCardContainerI2) => {
           <MiniCard
             key={item.id}
             id={item.id}
-            nombre={item.author.name}
             titulo={item.title}
             asistentes={item.attendeesCount}
             tipo={item.tag}
@@ -42,6 +42,8 @@ const MiniCardConteiner = ({ data }: MiniCardContainerI2) => {
             day={item.day}
             month={item.month}
             year={item.year}
+            idAutor={item.author.id}
+            nombreAutor={item.author.name}
             imagenAutor={item.author.image}
           />
         );

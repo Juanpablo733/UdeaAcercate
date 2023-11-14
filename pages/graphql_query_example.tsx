@@ -1,12 +1,18 @@
 import { GET_EVENTS_PREVIEW } from "@/graphql/client/event"
-import { GET_USERS } from "@/graphql/client/users"
+import { GET_USERS } from "@/graphql/client/user"
 import { useQuery } from "@apollo/client"
 import { User } from "@prisma/client"
-import { Event } from "@/prisma/generated/type-graphql"
+import { Event, Profile } from "@/prisma/generated/type-graphql"
 import { getServerSession } from "next-auth"
 import { authOptions } from "./api/auth/[...nextauth]"
 import { Session } from 'next-auth/core/types';
 import { useSession } from "next-auth/react"
+import { GET_PROFILE } from "@/graphql/client/profile"
+import Loading from "react-loading"
+
+const id = "clof54gmw0000ubqsqu273wel"
+
+
 
 export default function UsersPage() {
     // const { data, loading, error } = useQuery<{ users: User[] }>(GET_USERS, {
@@ -19,6 +25,19 @@ export default function UsersPage() {
     // const session = await getServerSession(authOptions);
     const {data: Session, status} = useSession();
     console.log("Session: ", Session)
+
+    const { data: profileData, loading, error } = useQuery<{ profile: Profile }>(
+        GET_PROFILE,
+        {
+            variables: {
+                userId: id,
+            },
+            fetchPolicy: 'cache-first',
+        }
+    );
+    console.log("Profile:", profileData)
+    if (loading) return (<Loading />)
+    console.log("error:", error)
 
     return (<h2 className='text-2xl'>
         Bienvenido a UdeAcercate 

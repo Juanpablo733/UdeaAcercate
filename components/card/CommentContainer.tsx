@@ -6,6 +6,7 @@ interface CommentContainerI {
         text: string
         dateTime: string,
         user: {
+            id: string
             name: string,
             image: string,
         }
@@ -23,6 +24,7 @@ const CommentContainer = ({ data }: CommentContainerI) => {
                         userImage={item.user.image}
                         text={item.text}
                         date={item.dateTime}
+                        userId={item.user.id}
                     />
                 )
             })}

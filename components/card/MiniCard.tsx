@@ -5,9 +5,9 @@ import Image from 'next/image';
 import CardModal from "../modals/CardModal";
 import { Card } from "./Card";
 import CompleteCard from "./CompleteCard";
+import Link from "next/link";
 interface MiniCardProps {
     id: string,
-    nombre: string,
     titulo: string,
     asistentes: number,
     // tipo:"Deportivo" | "Cultural" | "Academico",
@@ -18,11 +18,13 @@ interface MiniCardProps {
     day: string,
     month: string,
     year: string,
+    idAutor: string,
+    nombreAutor: string,
     imagenAutor: string
 }
 
-const MiniCard = ({ id, nombre, titulo, asistentes, tipo, fecha,
-    imagenAutor, day, hours, minutes, month, year }: MiniCardProps) => {
+const MiniCard = ({ id, nombreAutor, titulo, asistentes, tipo, fecha,
+    imagenAutor, idAutor, day, hours, minutes, month, year }: MiniCardProps) => {
     const [open, setOpen] = useState<boolean>(false);
     return (
         <div className='w-full max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl'>
@@ -31,10 +33,12 @@ const MiniCard = ({ id, nombre, titulo, asistentes, tipo, fecha,
                     <MdOutlineLabel className="h-8 w-8" />
                     <TagType type={tipo} />
                 </div>
-                <div className='flex gap-4 items-center'>
-                    <span className='text-sm font-bold'>{nombre}</span>
-                    <Image src={imagenAutor} alt={'avatar-image'} height={30} width={30} />
-                </div>
+                <Link href={`/perfil/${idAutor}`}>
+                    <div className='flex gap-4 items-center'>
+                        <span className='text-sm font-bold'>{nombreAutor}</span>
+                        <Image src={imagenAutor} alt={'avatar-image'} height={30} width={30} />
+                    </div>
+                </Link>
             </div>
             <div className="gap-1 flex flex-col justify-between h-full">
                 <div className="flex flex-col h-auto items-center">
@@ -72,9 +76,10 @@ const MiniCard = ({ id, nombre, titulo, asistentes, tipo, fecha,
                             {/* <Card/> */}
                             <CompleteCard
                                 id={id}
-                                nombre={nombre}
+                                nombre={nombreAutor}
                                 asistentes={asistentes}
                                 imagenAutor={imagenAutor}
+                                idAutor={idAutor}
                             />
                         </CardModal>
                     </div>
