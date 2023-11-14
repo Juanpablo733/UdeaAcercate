@@ -61,6 +61,7 @@ const typeDefs = gql`
     }
 
     type Query {
+        test(bool:Boolean!): Boolean
         users: [User]
         user(email:String!): User
         events(tag:String, hashtags:[String]): [Event]

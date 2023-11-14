@@ -6,6 +6,7 @@ const GET_EVENTS_PREVIEW = gql`
         id
         tag
         author {
+            id
             name
             image
         }
@@ -29,6 +30,7 @@ const GET_EVENT_BY_ID = gql`
             text
             dateTime
             user {
+                id
                 name
                 image
             }

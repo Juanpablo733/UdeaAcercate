@@ -1,5 +1,5 @@
 import { Resolver, Context } from "@/types";
-import { sendVerificationEmail } from "@/util/nodemailerConfig";
+import { sendVerificationEmail } from "../../util/nodemailerConfig";
 import { ApolloError } from "@apollo/client";
 import { argumentsObjectFromField, cloneDeep } from "@apollo/client/utilities";
 import { Prisma, PrismaClient, PrismaPromise } from "@prisma/client";
@@ -111,6 +111,9 @@ const resolvers: Resolver = {
         },
     },
     Query: {
+        test: async (parent, args, context) => {
+            return args.bool;
+        },
         users: async (parent, args, context) => {
             const { db } = context;
             const users = await db.user.findMany();
@@ -319,7 +322,7 @@ const resolvers: Resolver = {
                     identifier: args.userId
                 }
             })
-            
+
             if (savedToken) {
                 return await db.emailToken.update({
                     where: {

@@ -5,7 +5,9 @@ import { useMutation, useQuery } from "@apollo/client";
 import { GENERATE_VERIFICATION_TOKEN, VERIFY_TOKEN } from "@/graphql/client/emailToken";
 import { EmailToken, VerificationToken } from "@/prisma/generated/type-graphql";
 import { User } from "@prisma/client";
-import { GET_USERS, GET_USER_BY_EMAIL } from "@/graphql/client/users";
+import { GET_USERS, GET_USER_BY_EMAIL } from "@/graphql/client/user";
+import { useUserData } from "@/hooks/useUserData";
+import { Loading } from "@/components/ui/Loading";
 
 const emailAuth = process.env.EMAIL
 
@@ -16,12 +18,14 @@ interface FormDataInterface {
 const verifyEmail = () => {
     const [formData, setFormData] = useState<FormDataInterface>({ tokenInput: '' })
 
-    const { data: Session, status } = useSession();
-    const email = Session?.user?.email
-    console.log(Session)
-    console.log(status)
-    const { data: userData } = useQuery<{ user: User }>(GET_USER_BY_EMAIL,
-        { variables: { email }, skip: !email })
+    const {userData, status} = useUserData()
+
+    // const { data: Session, status } = useSession();
+    // const email = Session?.user?.email
+    // console.log(Session)
+    // console.log(status)
+    // const { data: userData } = useQuery<{ user: User }>(GET_USER_BY_EMAIL,
+    //     { variables: { email }, skip: !email })
 
     const userId = userData?.user?.id
     console.log("UserId:", userId)
@@ -43,7 +47,7 @@ const verifyEmail = () => {
     const [verifyToken, { data }] = useMutation<{ emailToken: EmailToken }>(VERIFY_TOKEN,
         { variables: { identifier: userId, token: tokenInput } });
 
-    if (status === 'loading') return <p>Loading...</p>
+    if (status === 'loading') return (<Loading/>)
 
     const sendMailFunct = async () => {
         await executeGenerateToken()

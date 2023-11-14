@@ -27,7 +27,7 @@ const CardList: FC<MiniCardContainerI> = ({data}: MiniCardContainerI) => {
           <MiniCard
             key={item.id}
             id={item.id}
-            nombre={item.author.name}
+            nombreAutor={item.author.name}
             titulo={item.title}
             asistentes={item.attendeesCount}
             tipo={item.tag}
