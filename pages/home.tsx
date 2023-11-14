@@ -20,6 +20,7 @@ const Home = () => {
         fetchPolicy: 'cache-first'
     })
     const notVerified = !userData?.user?.emailVerified
+    const userId = userData?.user.id
     console.log("Email no verificado: ", notVerified)
     console.log("Status:", status)
     console.log("Session: ", session)
@@ -43,7 +44,7 @@ const Home = () => {
     return (
         <div className='flex flex-col gap-10 pb-4 Yellow-little'>
             <Navbar>
-                <Link href={'/perfil'}>
+                <Link href={`/perfil/${userId}`}>
                     <div className='flex gap-4 items-center justify-center'>
                         <span className=' text-white font-bold'>{session?.user?.name}</span>
                         <Image src={session?.user?.image!} alt={'avatar-image'} height={50} width={50} className='rounded-full' />
