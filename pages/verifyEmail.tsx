@@ -15,7 +15,7 @@ interface FormDataInterface {
     [key: string]: string;
 }
 
-const verifyEmail = () => {
+const VerifyEmail = () => {
     const [formData, setFormData] = useState<FormDataInterface>({ tokenInput: '' })
 
     const {userData, status} = useUserData()
@@ -91,4 +91,4 @@ const verifyEmail = () => {
     )
 }
 
-export default verifyEmail
+export default VerifyEmail

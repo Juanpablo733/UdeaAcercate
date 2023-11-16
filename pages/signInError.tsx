@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 import { signIn } from 'next-auth/react';
 import React from 'react';
 
-const signInError = () => {
+const SignInError = () => {
     const LoginWithGoogle = () => {signIn('google', {callbackUrl: '/home'})}
     return (
         <div>
@@ -15,4 +15,4 @@ const signInError = () => {
     )
 }
 
-export default signInError;
+export default SignInError;
