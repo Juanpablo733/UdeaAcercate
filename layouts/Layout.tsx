@@ -1,5 +1,6 @@
 
-import Navbar from '@/components/ui/Navbar'
+// import Navbar from '@/components/ui/Navbar'
+import { Navbar } from '@/components/navbar/Navbar';
 import React, { FC, PropsWithChildren } from 'react'
 
 interface LayoutProps{
@@ -12,7 +13,8 @@ const Layout = ({children, image, name }: LayoutProps) => {
   return (
     <>
         <nav>
-            <Navbar image={image} name= {name}/>
+            {/* <Navbar image={image} name= {name}/> */}
+            <Navbar/>
         </nav>
         <main style={{
             margin: '80px auto',
