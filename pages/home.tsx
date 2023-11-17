@@ -1,6 +1,6 @@
 import { Navbar } from '@/components/navbar/Navbar';
 import Image from 'next/image';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { MdAddCircleOutline, MdOutlineSearch, MdExpandMore } from "react-icons/md";
 import { GET_EVENTS_PREVIEW } from "@/graphql/client/event"
 import { useQuery } from "@apollo/client"
@@ -12,8 +12,11 @@ import { useRouter } from 'next/router';
 import { Loading } from '@/components/ui/Loading';
 import Link from 'next/link';
 import { useUserData } from '@/hooks/useUserData';
+import CreateEventModal from '@/components/modals/CreateEventModal';
+import FormEvent from '@/components/forms/FormEvent';
 
 const Home = () => {
+    const [openCreateEvent, setOpenCreateEvent] = useState<boolean>(false);
     const router = useRouter();
     const {loading: loadingUser, session, status, userData} = useUserData();
     const { data: eventsData, loading, error } = useQuery<{ events: Event[] }>(GET_EVENTS_PREVIEW, {
@@ -40,7 +43,7 @@ const Home = () => {
     }
 
     console.log('despues de loading: ', eventsData?.events);
-
+    
     return (
         <div className='flex flex-col gap-10 pb-4 Yellow-little'>
             <Navbar>
@@ -52,10 +55,16 @@ const Home = () => {
                 </Link>
             </Navbar>
             <div className=' flex gap-32 justify-center'>
-                <div className=' flex gap-12 items-center bg-white rounded-2xl'>
+                <button
+                    className=' flex gap-12 items-center bg-white rounded-2xl'
+                    onClick={()=>setOpenCreateEvent(true)}
+                >
                     <span>crear evento</span>
                     <MdAddCircleOutline className="h-8 w-8" />
-                </div>
+                </button>
+                <CreateEventModal open={openCreateEvent} setOpen={setOpenCreateEvent}>
+                    <FormEvent userData={userId}/>
+                </CreateEventModal>
                 <div className=' flex gap-12 items-center bg-white rounded-2xl'>
                     <span>filtrar por evento</span>
                     <MdExpandMore className="h-8 w-8" />
