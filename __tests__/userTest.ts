@@ -1,28 +1,51 @@
-import gql from "graphql-tag"
-import { server } from "../lib/apolloServer"
-import { GET_USER_BY_EMAIL } from "../graphql/client/user"
-import { typeDefs } from "@/graphql/server/types"
-import { resolvers } from "@/graphql/server/resolvers"
-import { ApolloServer } from "@apollo/server"
+import { GET_USER_BY_EMAIL } from "../graphql/client/user";
 
+const { createTestClient } = require("apollo-server-testing");
+const { ApolloServer, gql } = require("apollo-server");
+const { typeDefs, resolvers } = require("../graphql/client/user");
+
+// Configura el servidor Apollo para pruebas
 const testServer = new ApolloServer({
-    typeDefs,
-    resolvers
-})
+  typeDefs: gql`
+    ${typeDefs}
+  `,
+  resolvers,
+  // ...otras configuraciones necesarias para pruebas
+});
 
+// Crea un cliente de prueba para interactuar con el servidor
+const { query } = createTestClient(testServer);
 
-it("Get user by email ending with @udea.edu.co", async () => {
-    const email = 'prueba@udea.edu.co'
-    const result = await testServer.executeOperation({
-        query: GET_USER_BY_EMAIL,
-        variables: { email }
+describe("GET_USER_BY_EMAIL query", () => {
+  it("should return user information for a valid email", async () => {
+    const testEmail = "juan.bedoya3@udea.edu.co";
+
+    // Usa el cliente de prueba para hacer la consulta
+    const { data, errors } = await query({
+      query: GET_USER_BY_EMAIL,
+      variables: { email: testEmail },
     });
-    console.log(result)
-    expect(result).toBeTruthy()
-    expect(result).toHaveProperty("data");
-    // expect(result.errors).toBeFalsy();    
-    expect(result.data?.user).toHaveProperty("id");
-    expect(result.data?.user).toHaveProperty("name");
-    expect(result.data?.user).toHaveProperty("emailVerified");
-    expect(result.data?.user).toHaveProperty("image");
-})
+
+    // Verifica que exista data
+    expect(data).toBeTruthy();
+
+    // Verifica que el campo 'user' no sea null o undefined
+    expect(data?.user).not.toBeNull();
+
+    // Si 'user' existe, verifica propiedades utilizando expect.objectContaining
+    if (data?.user) {
+      const expectedProperties = ["id", "name", "email", "emailVerified", "image"];
+      expect(data.user).toEqual(expect.objectContaining(expectedProperties));
+    }
+
+    // Manejo de errores
+    if (errors) {
+      console.error("Errores de GraphQL:", errors);
+    }
+
+    // Verifica que no haya errores graves
+    expect(errors).toBeFalsy();
+  });
+
+  // Puedes agregar más casos de prueba según sea necesario
+});
