@@ -1,30 +1,32 @@
-"use client"
 import React, { FormEvent, useState } from 'react'
+import { CldUploadButton, CldUploadWidget } from 'next-cloudinary';
+// import { useUserData } from '@/hooks/useUserData';
 
 interface FormDataInterface {
     [key: string] : string;
 }
-const FormEvent = () => {
+const FormEvent = (userData: string) => {
+    // const {userData} = useUserData();
     const submitForm = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setFormData({...formData, image: usrImage});
+        setFormData({...formData, authorId: userData});
         console.log('formaData: ',formData);
-        const imageData = new FormData();
-        if (file) {
-            imageData.append("image", file);
-            const response = await fetch("/api/upload", {
-              method: "POST",
-              body: imageData,
-            });
-            const data = await response.json();
-            console.log(data);
-            setImageUrl(data.url);
-          } else {
-            console.error("No se ha seleccionado ningún archivo.");
-          }
+        console.log("url imagen", usrImage);
     }
-    const [formData, setFormData] = useState<FormDataInterface>({title: '', description: '', place: '', date: ''});
-    const [file, setFile] = useState(null);
-    const [imageUrl, setImageUrl] = useState(null);
+
+    const [formData, setFormData] = useState<FormDataInterface>({title: '', description: '', place: '', date: '', tag: 'Academico', image: '', authorId: ''});
+    const [usrImage, setUsrImage] = useState('');
+
+    function handleOnUpload(result: any, operations: any) {
+        // if (!result.event === "success") {
+        // //   updateError(result?.info);
+        //   return;
+        // }
+        setUsrImage(result?.info.secure_url);
+        // setValue("userImage", result?.info.secure_url);
+        // console.log("url imagen", usrImage);
+      }
   return (
     <form onSubmit={submitForm} className='debug'>
             <label htmlFor="title">
@@ -79,17 +81,33 @@ const FormEvent = () => {
                     required
                 />
             </label>
-
-            <input type="file" onChange={(e) => {
-                setFile(e.target.files[0])
-            }}/>
-
+            <label htmlFor="tag">
+                <span>Tipo de evento:</span>
+                <select
+                    id="tag"
+                    name="tag"
+                    onChange={(e)=>{
+                            setFormData({...formData, [e.target.name]: e.target.value});
+                    }}
+                    required
+                >
+                    <option value="Academico">Academico</option>
+                    <option value="Cultural">Cultural</option>
+                    <option value="Deportivo">Deportivo</option>
+                </select>
+            </label>
+            <figure>
+                {usrImage ? <img src={usrImage} /> : <i className="bi bi-person-circle fs-1"></i>}
+                <CldUploadButton
+                    uploadPreset="udeacercate2023"
+                    onUpload={handleOnUpload}
+                    className='debug'
+                    // id="cloudinary"
+                >
+                    <i className="bi bi-camera fs-5" id='CameraIcon' />
+                </CldUploadButton>
+            </figure>
             <button className='debug' type='submit'>Crear</button>
-            {
-                imageUrl && (
-                    <img src={imageUrl} alt="imagen" />
-                )
-            }
 
     </form>
   )
