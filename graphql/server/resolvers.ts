@@ -176,6 +176,19 @@ const resolvers: Resolver = {
                 }
             })
         },
+        attendee: async (parent, args, context) => {
+            const { db } = context;
+            const userId = args.userId;
+            const eventId = args.eventId;
+
+            const attendee = await db.attendee.findUnique({
+                where: {
+                    userId_eventId: { userId, eventId }
+                }
+            }).catch((e) => { console.log(e) })
+            if (attendee) return true
+            return false
+        }
     },
     Mutation: {
         createUser: async (parent, args, context) => {

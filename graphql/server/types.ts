@@ -67,6 +67,7 @@ const typeDefs = gql`
         events(tag:String, hashtags:[String]): [Event]
         event(id:String!): Event
         profile(userId:String!): Profile
+        attendee(userId:String!, eventId:String!): Boolean
     }
     
     type Mutation {

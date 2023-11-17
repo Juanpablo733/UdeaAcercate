@@ -6,7 +6,7 @@ import PrivateLayout from '@/layouts/PrivateLayout'
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const client = new ApolloClient({
-    uri: 'api/graphql',
+    uri: '/api/graphql',
     cache: new InMemoryCache(),
   })
 
