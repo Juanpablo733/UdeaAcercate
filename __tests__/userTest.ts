@@ -1,12 +1,21 @@
 import gql from "graphql-tag"
 import { server } from "../lib/apolloServer"
 import { GET_USER_BY_EMAIL } from "../graphql/client/user"
+import { typeDefs } from "@/graphql/server/types"
+import { resolvers } from "@/graphql/server/resolvers"
+import { ApolloServer } from "@apollo/server"
+
+const testServer = new ApolloServer({
+    typeDefs,
+    resolvers
+})
+
 
 it("Get user by email ending with @udea.edu.co", async () => {
-    var testEmail = "prueba@udea.edu.co"
-    var result = await server.executeOperation({
+    const email = 'prueba@udea.edu.co'
+    const result = await testServer.executeOperation({
         query: GET_USER_BY_EMAIL,
-        variables: { email: testEmail }
+        variables: { email }
     });
     console.log(result)
     expect(result).toBeTruthy()
