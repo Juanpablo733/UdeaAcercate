@@ -15,28 +15,17 @@ interface FormDataInterface {
     [key: string]: string;
 }
 
-const verifyEmail = () => {
+const VerifyEmail = () => {
     const [formData, setFormData] = useState<FormDataInterface>({ tokenInput: '' })
-
     const {userData, status} = useUserData()
-
-    // const { data: Session, status } = useSession();
-    // const email = Session?.user?.email
-    // console.log(Session)
-    // console.log(status)
-    // const { data: userData } = useQuery<{ user: User }>(GET_USER_BY_EMAIL,
-    //     { variables: { email }, skip: !email })
 
     const userId = userData?.user?.id
     console.log("UserId:", userId)
     const [generateToken] = useMutation<{ emailToken: EmailToken }>(GENERATE_VERIFICATION_TOKEN,
         { variables: { userId } });
-    var token = '';
     const executeGenerateToken = async () => {
         try {
             const resultado = await generateToken();
-            // La data resultante estará disponible en resultado.data
-            token = resultado.data?.emailToken?.token ?? ''
             console.log('Data resultante de la mutación:', resultado.data);
         } catch (error) {
             console.error('Error al ejecutar la mutación:', error);
@@ -91,4 +80,4 @@ const verifyEmail = () => {
     )
 }
 
-export default verifyEmail
+export default VerifyEmail
