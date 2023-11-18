@@ -1,3 +1,4 @@
+import { ExtendedEvent } from '@/graphql/client/event';
 import { MiniCard } from './MiniCard';
 
 interface MiniCardContainerI2 {

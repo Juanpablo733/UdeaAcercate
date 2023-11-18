@@ -1,4 +1,14 @@
 import { gql } from 'graphql-tag';
+import { Event } from "@/prisma/generated/type-graphql"
+
+export interface ExtendedEvent extends Event{
+    minutes: string,
+    hours: string,
+    day: string,
+    month: string,
+    year: string,
+    attendeesCount: number,
+}
 
 const GET_EVENTS_PREVIEW = gql`
     query Events {
