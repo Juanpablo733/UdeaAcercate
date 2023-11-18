@@ -27,13 +27,13 @@ const Home = () => {
     console.log("Email no verificado: ", notVerified)
     console.log("Status:", status)
     console.log("Session: ", session)
-    useEffect(() => {
+    /*useEffect(() => {
         if (status === "authenticated") {
             if (!loadingUser && notVerified) {
                 router.push('/verifyEmail')
             }
         }
-    }, [])
+    }, [])*/
     if (loading || loadingUser) return (<Loading/>)
 
     console.log('antes de loading: ', eventsData);
@@ -54,26 +54,23 @@ const Home = () => {
                     </div>
                 </Link>
             </Navbar>
-            <div className=' flex gap-32 justify-center'>
+            <div className=' flex gap-32  justify-center'>
                 <button
-                    className=' flex gap-12 items-center bg-white rounded-2xl'
-                    onClick={()=>setOpenCreateEvent(true)}
-                >
-                    <span>crear evento</span>
+                    className=' flex gap-12 items-center text-xl text-center bg-white rounded-2xl'
+                    onClick={()=>setOpenCreateEvent(true)}>
+                    <span>Crear Evento</span>
                     <MdAddCircleOutline className="h-8 w-8" />
                 </button>
                 <CreateEventModal open={openCreateEvent} setOpen={setOpenCreateEvent}>
                     <FormEvent userData={userId}/>
                 </CreateEventModal>
-                <div className=' flex gap-12 items-center bg-white rounded-2xl'>
-                    <span>filtrar por evento</span>
+                <div className=' flex gap-10 p-2 items-center justify-center  text-xl text-center bg-white rounded-2xl'>
+                    <span>Filtrar Por Evento</span>
                     <MdExpandMore className="h-8 w-8" />
                 </div>
-            </div>
-            <div className=' flex justify-center'>
-                <div className=' flex items-center justify-center gap-12 bg-white rounded-2xl'>
-                    <span>buscar</span>
-                    <MdOutlineSearch className="h-8 w-8" />
+                <div className='flex p-2 items-center w-96 justify-between  text-xl text-center bg-white rounded-2xl'>
+                    <span>Buscar</span>
+                    <MdOutlineSearch className="h-10 w-16" />
                 </div>
             </div>
             <div>
