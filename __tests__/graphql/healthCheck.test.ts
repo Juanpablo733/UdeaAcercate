@@ -1,5 +1,5 @@
 import gql from "graphql-tag"
-import { server } from "../lib/apolloServer"
+import { server } from "../../lib/apolloServer"
 
 it("Runs a health against graphql schema", async () => {
     var result = await server.executeOperation({

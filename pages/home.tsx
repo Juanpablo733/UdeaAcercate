@@ -2,7 +2,7 @@ import { Navbar } from '@/components/navbar/Navbar';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 import { MdAddCircleOutline, MdOutlineSearch, MdExpandMore } from "react-icons/md";
-import { GET_EVENTS_PREVIEW } from "@/graphql/client/event"
+import { ExtendedEvent, GET_EVENTS_PREVIEW } from "@/graphql/client/event"
 import { useQuery } from "@apollo/client"
 import { Event, User } from "@/prisma/generated/type-graphql"
 import { MiniCardConteiner } from '@/components/card/MiniCardContainer';
