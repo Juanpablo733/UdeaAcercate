@@ -84,15 +84,15 @@ const Home = () => {
                         titulo={item.title}
                         asistentes={item.attendeesCount}
                         tipo={item.tag}
-                        fecha={item.date}
+                        fecha={item.date.toString()}
                         minutes={item.minutes}
                         hours={item.hours}
                         day={item.day}
                         month={item.month}
                         year={item.year}
-                        idAutor={item.author?.id}
-                        nombreAutor={item.author?.name}
-                        imagenAutor={item.author?.image}
+                        idAutor={item.author?.id??""}
+                        nombreAutor={item.author?.name??""}
+                        imagenAutor={item.author?.image??""}
                     />
                     );
                 })}
