@@ -8,7 +8,7 @@ import { ExtendedEvent, GET_EVENT_BY_ID } from '@/graphql/client/event'
 import { Attendee, Comment, Event } from "@/prisma/generated/type-graphql"
 import { CommentContainer } from './CommentContainer'
 import { useUserData } from '@/hooks/useUserData'
-import { ADD_ATTENDEE, FIND_ATTENDEE } from '@/graphql/client/attendee'
+import { ADD_ATTENDEE, FIND_ATTENDEE, QUIT_ATTENDEE } from '@/graphql/client/attendee'
 import { CREATE_COMMENT } from '@/graphql/client/comment'
 
 interface completeCardProps {
@@ -32,8 +32,13 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor }: complete
         useQuery<{ attendee: Attendee }>(FIND_ATTENDEE, {
             variables: { userId: idUsuarioActual, eventId: id },
             fetchPolicy: 'cache-first'
+
         })
     const [addAttendee] = useMutation<{ attendee: Attendee }>(ADD_ATTENDEE,
+        { variables: { userId: idUsuarioActual, eventId: id },
+    });
+
+    const [quitAttendee] = useMutation<{ attendee: Attendee }>(QUIT_ATTENDEE,
         { variables: { userId: idUsuarioActual, eventId: id },
     });
 
@@ -50,7 +55,7 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor }: complete
     const executeAddAttendee = async () => {
         try {
             await addAttendee({
-                refetchQueries: [GET_EVENT_BY_ID]
+                refetchQueries: [GET_EVENT_BY_ID,FIND_ATTENDEE]
                 
             });
             console.log("después de la mutación",data);
@@ -58,6 +63,18 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor }: complete
         } catch (error) {
             console.error('Error al ejecutar la mutación:', error);
         }
+    }
+
+    const executeQuitAttendee =async () => {
+        try{
+            await quitAttendee(
+                {refetchQueries: [GET_EVENT_BY_ID,FIND_ATTENDEE]}
+            )
+        }
+        catch (error) {
+            console.error('Error al ejecutar la mutación:', error);
+        }
+        
     }
 
     const executeCreateComment = async () => {
@@ -83,7 +100,9 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor }: complete
                         <span className='font-bold'>{data?.event.place}</span>
                     </div>
                     <div className='flex'>
-                        <button className=' ButtonCard' onClick={executeAddAttendee}>{attendeeData?.attendee?"No Asistir":"Asistir"}</button>
+                        <button className=' ButtonCard' 
+                        onClick={attendeeData?.attendee?executeQuitAttendee:executeAddAttendee}>{attendeeData?.attendee?"No Asistir":"Asistir"}
+                        </button>
                         <div className='flex items-center'>
                             <MdOutlinePermIdentity className={'h-8 w-8'} />
                             <span className='font-bold'>{data?.event.attendeesCount}</span>
