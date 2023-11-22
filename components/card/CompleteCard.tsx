@@ -4,12 +4,13 @@ import React, { useState } from 'react'
 import { Avatar } from '../ui/Avatar'
 import { MdOutlinePermIdentity, MdOutlinePlace, MdOutlineSubdirectoryArrowLeft } from 'react-icons/md'
 import { useMutation, useQuery } from '@apollo/client'
-import { GET_EVENT_BY_ID } from '@/graphql/client/event'
+import { ExtendedEvent, GET_EVENT_BY_ID } from '@/graphql/client/event'
 import { Attendee, Comment, Event } from "@/prisma/generated/type-graphql"
 import { CommentContainer } from './CommentContainer'
 import { useUserData } from '@/hooks/useUserData'
 import { ADD_ATTENDEE, FIND_ATTENDEE } from '@/graphql/client/attendee'
 import { CREATE_COMMENT } from '@/graphql/client/comment'
+
 interface completeCardProps {
     id: string,
     asistentes: number,
@@ -23,7 +24,7 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor }: complete
     const [comentario, setComentario] = useState('');
     const { userData } = useUserData()
     const idUsuarioActual = userData?.user.id
-    const { data, loading, error } = useQuery<{ event: Event }>(GET_EVENT_BY_ID, {
+    const { data, loading, error } = useQuery<{ event: ExtendedEvent }>(GET_EVENT_BY_ID, {
         variables: { id },
         fetchPolicy: 'cache-first'
     })
@@ -33,7 +34,8 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor }: complete
             fetchPolicy: 'cache-first'
         })
     const [addAttendee] = useMutation<{ attendee: Attendee }>(ADD_ATTENDEE,
-        { variables: { userId: idUsuarioActual, eventId: id } });
+        { variables: { userId: idUsuarioActual, eventId: id },
+    });
 
     const [createComment] = useMutation<{ comment: Comment }>(CREATE_COMMENT,
         { variables: { userId: idUsuarioActual, eventId: id, text: comentario } });
@@ -47,8 +49,12 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor }: complete
 
     const executeAddAttendee = async () => {
         try {
-            const resultado = await addAttendee();
-            console.log('Data resultante de la mutación:', resultado.data);
+            await addAttendee({
+                refetchQueries: [GET_EVENT_BY_ID]
+                
+            });
+            console.log("después de la mutación",data);
+            
         } catch (error) {
             console.error('Error al ejecutar la mutación:', error);
         }
@@ -56,7 +62,9 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor }: complete
 
     const executeCreateComment = async () => {
         try {
-            const resultado = await createComment();
+            const resultado = await createComment(
+                {refetchQueries: [GET_EVENT_BY_ID]}
+            );
             console.log('Data resultante de la mutación:', resultado.data);
         } catch (error) {
             console.error('Error al ejecutar la mutación:', error);
@@ -78,7 +86,7 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor }: complete
                         <button className=' ButtonCard' onClick={executeAddAttendee}>{attendeeData?.attendee?"No Asistir":"Asistir"}</button>
                         <div className='flex items-center'>
                             <MdOutlinePermIdentity className={'h-8 w-8'} />
-                            <span className='font-bold'>{asistentes}</span>
+                            <span className='font-bold'>{data?.event.attendeesCount}</span>
                         </div>
                     </div>
                 </div>

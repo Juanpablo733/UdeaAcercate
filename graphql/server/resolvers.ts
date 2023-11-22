@@ -316,7 +316,7 @@ const resolvers: Resolver = {
         generateEmailToken: async (parent, args, context) => {
             const { db } = context;
             const token = Math.trunc(Math.random() * Math.pow(10, 6))
-            const expireDate = new Date(Date.now() + 600000)
+            const expireDate = new Date(Date.now() + 120000)
 
             const user = await db.user.findUnique({
                 where: {

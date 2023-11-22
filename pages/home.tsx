@@ -14,12 +14,13 @@ import Link from 'next/link';
 import { useUserData } from '@/hooks/useUserData';
 import CreateEventModal from '@/components/modals/CreateEventModal';
 import FormEvent from '@/components/forms/FormEvent';
+import { MiniCard } from '@/components/card/MiniCard';
 
 const Home = () => {
     const [openCreateEvent, setOpenCreateEvent] = useState<boolean>(false);
     const router = useRouter();
     const {loading: loadingUser, session, status, userData} = useUserData();
-    const { data: eventsData, loading, error } = useQuery<{ events: Event[] }>(GET_EVENTS_PREVIEW, {
+    const { data: eventsData, loading, error } = useQuery<{ events: ExtendedEvent[] }>(GET_EVENTS_PREVIEW, {
         fetchPolicy: 'cache-first'
     })
     const notVerified = !userData?.user?.emailVerified
@@ -73,9 +74,28 @@ const Home = () => {
                     <MdOutlineSearch className="h-10 w-16" />
                 </div>
             </div>
-            <div>
-                <MiniCardConteiner data={eventsData?.events} />
-                {/* <MiniCardConteiner data={data2}/> */}
+            <div className='  grid grid-cols-2 gap-4 justify-items-center" style="grid-auto-rows: 1fr;' >
+                {eventsData?.events.map((item) => {
+                    // let etiqueta = item.tag.toUpperCase();
+                    return (
+                    <MiniCard
+                        key={item.id}
+                        id={item.id}
+                        titulo={item.title}
+                        asistentes={item.attendeesCount}
+                        tipo={item.tag}
+                        fecha={item.date}
+                        minutes={item.minutes}
+                        hours={item.hours}
+                        day={item.day}
+                        month={item.month}
+                        year={item.year}
+                        idAutor={item.author?.id}
+                        nombreAutor={item.author?.name}
+                        imagenAutor={item.author?.image}
+                    />
+                    );
+                })}
             </div>
         </div>
     )

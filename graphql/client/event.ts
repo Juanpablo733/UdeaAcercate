@@ -49,6 +49,7 @@ const GET_EVENT_BY_ID = gql`
         place
         description
         hashtags
+        attendeesCount
     }
     }
 `
