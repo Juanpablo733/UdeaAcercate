@@ -74,7 +74,8 @@ const typeDefs = gql`
         createUser(name:String!, email:String!, image:String!, emailVerified:String): User
         createEvent(title: String!, description: String!, place: String!, 
             date: DateTime!, image: String!, tag: String!, authorId: String!): Event
-        createProfile(userId:String!): Profile
+        createProfile(userId:String!, faculty: String, career: String, type:   String
+            campus: String, description: String, hobbies: String, socialLinks: [String]): Profile
         updateProfile(userId:String!, faculty: String, career: String, type:   String
             campus: String, description: String, hobbies: String, socialLinks: [String]): Profile
         createComment(userId:String!, eventId:String!, text:String!): Comment

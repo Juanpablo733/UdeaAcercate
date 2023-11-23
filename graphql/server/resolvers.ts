@@ -240,9 +240,8 @@ const resolvers: Resolver = {
             });
             if (findProfile != null) return findProfile;
             const newProfile = await db.profile.create({
-                data: {
-                    userId: args.userId
-                }
+                data: args
+                
             }).catch((error) => { return null });
             return newProfile;
         },

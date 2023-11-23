@@ -1,26 +1,56 @@
 import { useSession, signIn } from "next-auth/react";
 import React, { PropsWithChildren, useEffect } from "react";
+import { useUserData } from '@/hooks/useUserData';
+import { Loading } from "@/components/ui/Loading";
+import router, { useRouter } from 'next/router';
+import {GET_PROFILE} from '@/graphql/client/profile'
+import { useQuery } from "@apollo/client";
+import { Profile } from "@/prisma/generated/type-graphql";
 
 
 const PrivateLayout = ({ children }: PropsWithChildren) => {
-    const { data: session, status } = useSession();
-    useEffect(() => {
-        console.log("session: ", session)
-        console.log("status: ", status)
-    }, [session, status]);
 
-    if (status === "loading") return <div>loading...</div>
+    const {loading: loadingUser, session, status, userData} = useUserData();
+    const notVerified = !userData?.user?.emailVerified
+    const userId = userData?.user.id
+    console.log("Email no verificado: ", notVerified)
+    console.log("Status:", status)
+    console.log("Session: ", session)
+    const { data: profileData, loading: loadingPerfil, error } = useQuery<{ getProfile: Profile }>(GET_PROFILE, {
+        fetchPolicy: 'cache-first'
+    })
+    useEffect(() => {
+        if (status === "authenticated") {
+            if (!loadingUser && notVerified) {
+                router.push('/verifyEmail')
+            }
+        }
+        if(profileData?.getProfile === null){
+            router.push('/crearPerfil');
+            
+        }
+    }, [])
+
+    console.log(profileData?.getProfile)
+
+    if (loadingUser) return (<Loading/>)
+
+    if (status === "loading") return (<Loading/>)
+
+    if(loadingPerfil) return (<Loading/>)
 
     if (!session) {
-        signIn('auth0');
+        signIn('google', {callbackUrl: '/home'});
     } else {
         return (
             <div>
-                Esta es una ruta privada
                 {children}
             </div>
         )
     }
+
+
+    
 }
 
 export default PrivateLayout
