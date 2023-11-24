@@ -11,7 +11,7 @@ import { Profile } from "@/prisma/generated/type-graphql";
 const PrivateLayout = ({ children }: PropsWithChildren) => {
 
     const {loading: loadingUser, session, status, userData} = useUserData();
-    const notVerified = !userData?.user?.emailVerified
+    const notVerified = userData?.user?.emailVerified === null || userData?.user?.emailVerified === undefined
     const userId = userData?.user.id
     console.log("Email no verificado: ", notVerified)
     console.log("Status:", status)
@@ -25,13 +25,14 @@ const PrivateLayout = ({ children }: PropsWithChildren) => {
                 router.push('/verifyEmail')
             }
         }
-        if(profileData?.getProfile === null){
-            router.push('/crearPerfil');
-            
+        if(!loadingPerfil){
+            if(profileData?.getProfile === null || profileData?.getProfile === undefined){
+                router.push('/crearPerfil');
+            }
         }
     }, [])
 
-    console.log(profileData?.getProfile)
+    console.log("Perfil:",profileData?.getProfile)
 
     if (loadingUser) return (<Loading/>)
 
