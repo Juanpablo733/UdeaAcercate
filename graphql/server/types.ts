@@ -65,6 +65,8 @@ const typeDefs = gql`
         users: [User]
         user(email:String!): User
         events(tag:String, hashtags:[String]): [Event]
+        eventsCreated(userId:String!): [Event]
+        eventsAttending(userId:String!): [Event]
         event(id:String!): Event
         profile(userId:String!): Profile
         attendee(userId:String!, eventId:String!): Boolean
