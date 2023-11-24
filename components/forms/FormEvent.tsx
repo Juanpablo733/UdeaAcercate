@@ -28,7 +28,7 @@ const FormEvent = (userData: string) => {
         // console.log("url imagen", usrImage);
       }
   return (
-    <form onSubmit={submitForm} className='debug'>
+    <form onSubmit={submitForm} className='debug w-[400px]'>
             <label htmlFor="title">
                 <span>Titulo:</span>
                 <input 
