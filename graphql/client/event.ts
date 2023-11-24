@@ -54,4 +54,50 @@ const GET_EVENT_BY_ID = gql`
     }
 `
 
-export { GET_EVENTS_PREVIEW, GET_EVENT_BY_ID }
+const GET_EVENTS_ATTENDING = gql`
+    query Query($userId: String!) {
+        eventsAttending(userId: $userId) {
+            id
+            tag
+            author {
+                id
+                image
+                name
+            }
+            title
+            image
+            date
+            attendeesCount
+            minutes
+            hours
+            day
+            month
+            year
+        }
+    }
+`
+
+const GET_EVENTS_CREATED = gql`
+    query Query($userId: String!) {
+        eventsCreated(userId: $userId) {
+            id
+            tag
+            author {
+                id
+                image
+                name
+            }
+            title
+            image
+            date
+            attendeesCount
+            minutes
+            hours
+            day
+            month
+            year
+        }
+    }
+`
+
+export { GET_EVENTS_PREVIEW, GET_EVENT_BY_ID, GET_EVENTS_ATTENDING, GET_EVENTS_CREATED }

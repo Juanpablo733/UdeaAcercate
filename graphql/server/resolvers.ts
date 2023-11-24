@@ -160,6 +160,28 @@ const resolvers: Resolver = {
             const events = findEvents();
             return events;
         },
+        eventsCreated: async (parent, args, context) => {
+            const { db } = context;
+            return await db.event.findMany({
+                where: {
+                    authorId: args.userId
+                }
+            })
+        },
+        eventsAttending: async (parent, args, context) => {
+            const { db } = context;
+            return await db.event.findMany({
+                where: {
+                    attendees: {
+                        some: {
+                            user:{
+                                id: args.userId
+                            } 
+                        }
+                    }
+                }
+            })
+        },
         event: async (parent, args, context) => {
             const { db } = context;
             return await db.event.findUnique({
@@ -241,7 +263,7 @@ const resolvers: Resolver = {
             if (findProfile != null) return findProfile;
             const newProfile = await db.profile.create({
                 data: args
-                
+
             }).catch((error) => { return null });
             return newProfile;
         },
@@ -316,7 +338,6 @@ const resolvers: Resolver = {
             const { db } = context;
             const token = Math.trunc(Math.random() * Math.pow(10, 6))
             const expireDate = new Date(Date.now() + 120000)
-
             const user = await db.user.findUnique({
                 where: {
                     id: args.userId
