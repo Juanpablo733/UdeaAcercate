@@ -65,7 +65,7 @@ const Home = () => {
                         <MdOutlineSearch className="h-10 w-16" />
                     </div>
                 </div>
-                <div className='  grid grid-cols-2 gap-4 justify-items-center" style="grid-auto-rows: 1fr;' >
+                <div>
                     <MiniCardContainer data={eventsData?.events} />
                 </div>
             </div>

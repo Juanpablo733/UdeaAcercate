@@ -30,7 +30,7 @@ const crearPerfil = () => {
 
   const [crearPerfil] = useMutation(CREATE_PROFILE);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
     try {
@@ -58,81 +58,89 @@ const crearPerfil = () => {
 
 
   return (
-    <div>
-      <h1>Crear Perfil</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Hobbies:
-          <input
-            type="text"
-            value={hobbies}
-            onChange={(e) => setHobbies(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Tipo de Usuario:
-          <select
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-          >
-            <option value="Seleccionar">Seleccionar</option>
-            <option value="Estudiante">Estudiante</option>
-            <option value="Profesor">Profesor</option>
-            <option value="Egresado">Egresado</option>
-            <option value="Administrativo">Administrativo</option>
-          </select>
-        </label>
-        <br />
-        <label>
-          Campus:
-          <select
-            value={campus}
-            onChange={(e) => setCampus(e.target.value)}
-          >
-            <option value="Seleccionar2">Seleccionar</option>
-            <option value="Ciudad_Universitaria">Udea</option>
-          </select>
-        </label>
-        <br />
-        <label>
-          Facultad:
-          <input
-            type="text"
-            value={faculty}
-            onChange={(e) => setFaculty(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Carrera:
-          <input
-            type="text"
-            value={career}
-            onChange={(e) => setCareer(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Descripción:
-          <input
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Social Links:
-          <input
-            type="text"
-            value={socialLinks}
-            onChange={(e) => setSocialLinks(e.target.value)}
-          />
-        </label>
-        <br />
-        <button type="submit">Guardar Perfil</button>
-      </form>
+    <div className='Yellow-little flex justify-center items-center h-screen '>
+      <div className='flex flex-col justify-center items-center gap-4 w-3/4 h-3/4 rounded-2xl Yellow-little'>
+        <h1>CREAR PERFIL</h1>
+        <form onSubmit={handleSubmit}  className='w-1/2 h-4/5 flex flex-col justify-center items-center gap-4'>
+          <label className='w-full text-center'>
+            Hobbies:
+            <input className='rounded-md'
+              type="text"
+              value={hobbies}
+              onChange={(e) => setHobbies(e.target.value)}
+            />
+          </label>
+          <label className='text-center w-1/4'>
+            Tipo de Usuario:
+            <select className='rounded-md text-center'
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+            >
+              <option disabled value={''}>Seleccionar</option>
+              <option value="Estudiante">Estudiante</option>
+              <option value="Profesor">Profesor</option>
+              <option value="Egresado">Egresado</option>
+              <option value="Administrativo">Administrativo</option>
+            </select>
+          </label>
+          <label className='text-center'>
+            Campus:
+            <select className='rounded-md text-center'
+              value={campus}
+              onChange={(e) => setCampus(e.target.value)}
+            >
+              <option disabled value={''}>Seleccionar</option>
+              <option value="Ciudad_Universitaria">Ciudad Universitaria</option>
+              <option value="Antigua_Escuela_de_Derecho">Antigua Escuela de Derecho</option>
+              <option value="Edificio_Suramericana_del_Centro">Edificio Suramericana</option>
+              <option value="Sede_Posgrados_Universidad_de_Antioquia">Sede Posgrados</option>
+              <option value="Paraninfo">Paraninfo</option>
+              <option value="Liceo_Francisco_Restrepo_Molina">Liceo Francisco Restrepo Molina</option>
+              <option value="Seccional_Oriente">Seccional Oriente</option>
+              <option value="Seccional_Occidente_de_la_Universidad_de_Antioquia">Seccional Occidente</option>
+              <option value="Seccional_Bajo_Cauca">Seccional Bajo Cauca</option>
+              <option value="Sede_Sonson_de_la_Universidad_de_Antioquia">Sede Sonsón</option>    
+
+            </select>
+          </label>
+          <label className='text-center'>
+            Facultad:
+            <input className='rounded-md'
+              type="text"
+              value={faculty}
+              onChange={(e) => setFaculty(e.target.value)}
+            />
+          </label>
+          <label className='text-center'>
+            Carrera:
+            <input className='rounded-md'
+              type="text"
+              value={career}
+              onChange={(e) => setCareer(e.target.value)}
+            />
+          </label>
+          <label className='text-center w-full'>
+            Descripción:
+            <input className='rounded-md'
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </label>
+          <label className='text-center'>
+            Social Links:
+            <input className='rounded-md'
+              type="text"
+              value={socialLinks}
+              onChange={(e) => setSocialLinks(e.target.value)}
+            />
+          </label>
+            <button
+              className='ButtonCard flex items-center justify-center' type='submit'>
+              Guardar Perfil
+            </button>
+        </form>
+      </div>
     </div>
   );
 };
