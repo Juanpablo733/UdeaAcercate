@@ -56,7 +56,7 @@ const VerifyEmail = () => {
     }
     return (
         <>
-            <div>
+            <div className=" Yellow-little h-screen w-full flex flex-col justify-center items-center gap-12">
                 <h1>Verifique su correo electrónico</h1>
                 <button onClick={sendMailFunct} className="button-form shadow-lg text-white font-bold text-base">
                     Enviar correo de verificación
