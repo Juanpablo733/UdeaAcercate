@@ -37,7 +37,7 @@ const PrivateLayout = ({ children }: PropsWithChildren) => {
         }
     }, [])
 
-    console.log("Perfil:", profileData?.getProfile)
+    console.log("Perfil:", profileData?.profile)
 
     if (loadingUser) return (<Loading />)
 

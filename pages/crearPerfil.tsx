@@ -13,6 +13,7 @@ const crearPerfil = () => {
   const router = useRouter();
   const userId = userData?.user.id
   const userEmail = userData?.user.email
+  const name = userData?.user.name;
 
   /*const { loading, error, data } = useQuery(GET_USER_BY_EMAIL, { 
     variables:{email: userEmail} 
@@ -46,7 +47,6 @@ const crearPerfil = () => {
           socialLinks,
         },
       });
-
       router.push('/home');
     } catch (error) {
       console.error('Error al crear o actualizar el perfil', error);
@@ -60,11 +60,12 @@ const crearPerfil = () => {
   return (
     <div className='Yellow-little flex justify-center items-center h-screen '>
       <div className='flex flex-col justify-center items-center gap-4 w-3/4 h-3/4 rounded-2xl Yellow-little'>
-        <h1>CREAR PERFIL</h1>
+        <h1>HOLA {name}</h1>
+        <h2>VAMOS A CREAR TU PERFIL</h2>
         <form onSubmit={handleSubmit}  className='w-1/2 h-4/5 flex flex-col justify-center items-center gap-4'>
           <label className='w-full text-center'>
             Hobbies:
-            <input className='rounded-md'
+            <input className='rounded-md h-8 p-2'
               type="text"
               value={hobbies}
               onChange={(e) => setHobbies(e.target.value)}
@@ -72,7 +73,7 @@ const crearPerfil = () => {
           </label>
           <label className='text-center w-1/4'>
             Tipo de Usuario:
-            <select className='rounded-md text-center'
+            <select className='rounded-md text-center h-8'
               value={type}
               onChange={(e) => setType(e.target.value)}
             >
@@ -85,7 +86,7 @@ const crearPerfil = () => {
           </label>
           <label className='text-center'>
             Campus:
-            <select className='rounded-md text-center'
+            <select className='rounded-md text-center h-8'
               value={campus}
               onChange={(e) => setCampus(e.target.value)}
             >
@@ -105,7 +106,7 @@ const crearPerfil = () => {
           </label>
           <label className='text-center'>
             Facultad:
-            <input className='rounded-md'
+            <input className='rounded-md h-8 p-2'
               type="text"
               value={faculty}
               onChange={(e) => setFaculty(e.target.value)}
@@ -113,7 +114,7 @@ const crearPerfil = () => {
           </label>
           <label className='text-center'>
             Carrera:
-            <input className='rounded-md'
+            <input className='rounded-md h-8 p-2'
               type="text"
               value={career}
               onChange={(e) => setCareer(e.target.value)}
@@ -121,7 +122,7 @@ const crearPerfil = () => {
           </label>
           <label className='text-center w-full'>
             Descripción:
-            <input className='rounded-md'
+            <input className='rounded-md h-8 p-2'
               type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -129,7 +130,7 @@ const crearPerfil = () => {
           </label>
           <label className='text-center'>
             Social Links:
-            <input className='rounded-md'
+            <input className='rounded-md h-8 p-2'
               type="text"
               value={socialLinks}
               onChange={(e) => setSocialLinks(e.target.value)}
