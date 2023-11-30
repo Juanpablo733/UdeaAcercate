@@ -31,11 +31,11 @@ const PrivateLayout = ({ children }: PropsWithChildren) => {
             }
         }
         if (!loadingPerfil) {
-            if (profileData?.profile === null || profileData?.profile === undefined) {
+            if (profileData?.profile === null) {
                 router.push('/crearPerfil');
             }
         }
-    }, [])
+    }, [loadingPerfil, profileData])
 
     console.log("Perfil:", profileData?.profile)
 
