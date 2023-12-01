@@ -54,7 +54,7 @@ const Home = () => {
                         <MdAddCircleOutline className="h-8 w-8" />
                     </button>
                     <CreateEventModal open={openCreateEvent} setOpen={setOpenCreateEvent}>
-                        <FormEvent userData={userId} />
+                        <FormEvent/>
                     </CreateEventModal>
                     <div className=' flex gap-10 p-2 items-center justify-center  text-xl text-center bg-white rounded-2xl'>
                         <span>Filtrar Por Evento</span>

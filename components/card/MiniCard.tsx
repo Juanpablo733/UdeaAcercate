@@ -20,11 +20,12 @@ interface MiniCardProps {
     year: string,
     idAutor: string,
     nombreAutor: string,
-    imagenAutor: string
+    imagenAutor: string,
+    imagenEvento: string
 }
 
 const MiniCard = ({ id, nombreAutor, titulo, asistentes, tipo, fecha,
-    imagenAutor, idAutor, day, hours, minutes, month, year }: MiniCardProps) => {
+    imagenAutor, idAutor, day, hours, minutes, month, year, imagenEvento }: MiniCardProps) => {
     const [open, setOpen] = useState<boolean>(false);
     return (
         <div className='w-full max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl'>
@@ -43,7 +44,7 @@ const MiniCard = ({ id, nombreAutor, titulo, asistentes, tipo, fecha,
             <div className="gap-1 flex flex-col justify-between h-full">
                 <div className="flex flex-col h-auto items-center">
                     <span className="text-sm font-semibold">{titulo}</span>
-                    <Image src={'/evento1.png'} alt={'evento1'} width={300} height={10} />
+                    <Image src={imagenEvento} alt={'evento1'} width={300} height={10} />
                 </div>
                 <div className="flex gap-4 justify-between h-12">
                     <div className="w-1/4 flex flex-col items-center justify-center">
