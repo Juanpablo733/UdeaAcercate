@@ -10,6 +10,15 @@ export interface ExtendedEvent extends Event{
     attendeesCount: number,
 }
 
+const CREATE_EVENT =gql`
+mutation Mutation($title: String!, $description: String!, $place: String!, $date: DateTime!, $image: String!, $tag: String!, $authorId: String!) {
+    createEvent(title: $title, description: $description, place: $place, date: $date, image: $image, tag: $tag, authorId: $authorId) {
+      id
+    }
+  }
+`
+
+
 const GET_EVENTS_PREVIEW = gql`
     query Events {
         events {
@@ -100,4 +109,4 @@ const GET_EVENTS_CREATED = gql`
     }
 `
 
-export { GET_EVENTS_PREVIEW, GET_EVENT_BY_ID, GET_EVENTS_ATTENDING, GET_EVENTS_CREATED }
+export { GET_EVENTS_PREVIEW, GET_EVENT_BY_ID, GET_EVENTS_ATTENDING, GET_EVENTS_CREATED, CREATE_EVENT }

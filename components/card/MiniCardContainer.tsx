@@ -29,6 +29,7 @@ const MiniCardContainer = ({ data }: MiniCardContainerI2) => {
                                 idAutor={item.author?.id??""}
                                 nombreAutor={item.author?.name??""}
                                 imagenAutor={item.author?.image??""}
+                                imagenEvento={item?.image??""}
                             />
                         );
                     })
