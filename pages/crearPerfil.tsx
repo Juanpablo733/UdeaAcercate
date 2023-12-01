@@ -58,11 +58,12 @@ const crearPerfil = () => {
 
 
   return (
-    <div className='Yellow-little flex justify-center items-center h-screen '>
+    <div className='Yellow-little flex justify-center items-center h-screen flex-col gap-4'>
         <form className='Form' onSubmit={handleSubmit}>
           <h2 className='FormHeader'>
             Crea tu perfil
           </h2>
+          <h3 className='text-[var(--green-hard)] font-bold'>{name}</h3>
           <label className='Label'>
             <span className='LabelText'>
               Hobbies:

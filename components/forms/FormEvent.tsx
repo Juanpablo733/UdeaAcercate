@@ -151,7 +151,7 @@ const FormEvent = () => {
                 </select>
             </label>
             <figure className=' flex flex-col items-center'>
-                {usrImage ? <Image src={usrImage} alt={'imagen'} /> : <span>Sube la imagen del evento</span>}
+                {usrImage ? <Image src={usrImage} alt={'imagen'}/> : <span>Sube la imagen del evento</span>}
                 <CldUploadButton
                     uploadPreset="udeacercate2023"
                     onUpload={handleOnUpload}

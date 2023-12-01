@@ -43,7 +43,7 @@ const index = () => {
             </div>
         </div>
         <div className='logo-container'>
-            <Image src="/logo-udea.png" alt="logo udea"/>
+            <Image src="/logo-udea.png" alt="logo udea" width={150} height={100}/>
         </div>
     </>
     )
