@@ -15,7 +15,7 @@ interface CommentContainerI {
 
 const CommentContainer = ({ data }: CommentContainerI) => {
     return (
-        <ul className='debug rounded-lg bg-gray-200 max-h-80 overflow-y-auto'>
+        <ul className='rounded-lg bg-gray-200 max-h-80 overflow-y-auto'>
             {data.map((item) => {
                 return (
                     <Comment
