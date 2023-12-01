@@ -10,6 +10,12 @@ const FormEvent = (userData: string) => {
     // const {userData} = useUserData();
     const submitForm = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        console.log("url imagen", usrImage);
+        // setFormData({
+        //     ...formData,
+        //     image: usrImage,
+        //     authorId: userData,
+        //   });
         setFormData({...formData, image: usrImage});
         setFormData({...formData, authorId: userData});
         console.log('formaData: ',formData);
