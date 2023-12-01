@@ -1,5 +1,6 @@
 import React, { FormEvent, useState } from 'react'
 import { CldUploadButton, CldUploadWidget } from 'next-cloudinary';
+import { spawn } from 'child_process';
 // import { useUserData } from '@/hooks/useUserData';
 
 interface FormDataInterface {
@@ -28,7 +29,7 @@ const FormEvent = (userData: string) => {
         // console.log("url imagen", usrImage);
       }
   return (
-    <form onSubmit={submitForm} className='debug'>
+    <form onSubmit={submitForm} className='w-[400px] flex flex-col gap-2'>
             <label htmlFor="title">
                 <span>Titulo:</span>
                 <input 
@@ -40,6 +41,10 @@ const FormEvent = (userData: string) => {
                         setFormData({...formData, [e.target.name]: e.target.value});
                     }}
                     required
+                    style={{
+                        border: '1px solid black',
+                        padding: '2px'
+                    }}
                 />
             </label>
             <label htmlFor="description">
@@ -53,6 +58,10 @@ const FormEvent = (userData: string) => {
                         setFormData({...formData, [e.target.name]: e.target.value});
                     }}
                     required
+                    style={{
+                        border: '1px solid black',
+                        padding: '2px'
+                    }}
                 />
             </label>
             <label htmlFor="place">
@@ -66,6 +75,10 @@ const FormEvent = (userData: string) => {
                         setFormData({...formData, [e.target.name]: e.target.value});
                     }}
                     required
+                    style={{
+                        border: '1px solid black',
+                        padding: '2px'
+                    }}
                 />   
             </label>
             <label htmlFor="date">
@@ -79,6 +92,10 @@ const FormEvent = (userData: string) => {
                         setFormData({...formData, [e.target.name]: e.target.value});
                     }}
                     required
+                    style={{
+                        border: '1px solid black',
+                        padding: '2px'
+                    }}
                 />
             </label>
             <label htmlFor="tag">
@@ -90,24 +107,29 @@ const FormEvent = (userData: string) => {
                             setFormData({...formData, [e.target.name]: e.target.value});
                     }}
                     required
+                    style={{
+                        border: '1px solid black',
+                        padding: '2px',
+                        
+                    }}
                 >
                     <option value="Academico">Academico</option>
                     <option value="Cultural">Cultural</option>
                     <option value="Deportivo">Deportivo</option>
                 </select>
             </label>
-            <figure>
-                {usrImage ? <img src={usrImage} /> : <i className="bi bi-person-circle fs-1"></i>}
+            <figure className='debug flex flex-col items-center'>
+                {usrImage ? <img src={usrImage} /> : <span>Sube la imagen del evento</span>}
                 <CldUploadButton
                     uploadPreset="udeacercate2023"
                     onUpload={handleOnUpload}
-                    className='debug'
+                    className='ButtonCard'
                     // id="cloudinary"
                 >
-                    <i className="bi bi-camera fs-5" id='CameraIcon' />
+                    {/* <i className="bi bi-camera fs-5" id='CameraIcon' /> */}
                 </CldUploadButton>
             </figure>
-            <button className='debug' type='submit'>Crear</button>
+            <button className='debug ButtonCard' type='submit'>Crear</button>
 
     </form>
   )

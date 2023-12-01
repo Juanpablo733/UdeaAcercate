@@ -8,6 +8,7 @@ import { User } from "@prisma/client";
 import { GET_USERS, GET_USER_BY_EMAIL } from "@/graphql/client/user";
 import { useUserData } from "@/hooks/useUserData";
 import { Loading } from "@/components/ui/Loading";
+import router, { useRouter } from 'next/router';
 
 const emailAuth = process.env.EMAIL
 
@@ -49,6 +50,7 @@ const VerifyEmail = () => {
             const resultado = await verifyToken()
             // La data resultante estará disponible en resultado.data
             console.log('Verificado: ', resultado.data);
+            router.push('/home');
         } catch (error) {
             console.error('Error al ejecutar la mutación:', error);
         }

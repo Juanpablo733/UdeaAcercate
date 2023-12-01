@@ -124,7 +124,7 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor }: complete
                 <CommentContainer data={data?.event.comments} />
                 <div className='flex'>
                     <input
-                        className=' w-full rounded-2xl text-center bg-green-100'
+                        className=' w-full rounded-2xl text-center bg-gray-100 border border-black  '
                         type="text"
                         value={comentario}
                         placeholder='comentar'
