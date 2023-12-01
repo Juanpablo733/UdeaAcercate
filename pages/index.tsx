@@ -1,5 +1,6 @@
 import { Button } from '@mui/material';
 import { signIn } from 'next-auth/react';
+import Image from 'next/image';
 import React, { FormEvent, useCallback, useState } from 'react'
 
 interface FormDataInterface {
@@ -42,7 +43,7 @@ const index = () => {
             </div>
         </div>
         <div className='logo-container'>
-            <img src="/logo-udea.png" alt="logo udea"/>
+            <Image src="/logo-udea.png" alt="logo udea"/>
         </div>
     </>
     )

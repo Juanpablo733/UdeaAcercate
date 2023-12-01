@@ -1,13 +1,22 @@
 
-import CardList from '@/components/card/CardList'
 import Layout from '@/layouts/Layout'
-import React from 'react'
+import React, { useState } from 'react'
 import { useQuery } from "@apollo/client"
 import { GET_EVENTS_PREVIEW } from "@/graphql/client/event"
 import { signOut, useSession } from 'next-auth/react'
 
+
 const Components = () => {
   
+  const [hobbies, setHobbies] = useState('');
+  const [type, setType] = useState('');
+  const [faculty, setFaculty] = useState('');
+  const [career, setCareer] = useState('');
+  const [campus, setCampus] = useState('');
+  const [description, setDescription] = useState('');
+  const [socialLinks, setSocialLinks] = useState('');
+
+
   const { data: Session, status } = useSession();
     const { data, loading, error } = useQuery<{ events: Event[] }>(GET_EVENTS_PREVIEW, {
         fetchPolicy: 'cache-first'
@@ -24,10 +33,14 @@ const Components = () => {
     if (loading) return <p>Loading...</p>
     console.log('despues de loading: ', data?.events);
 
+
+    
   return (
-    <Layout image={Session?.user?.image} name={Session?.user?.name}>
-      <CardList data={ data?.events }/>
-    </Layout>
+    // <Layout image={Session?.user?.image} name={Session?.user?.name}>
+    //   <CardList data={ data?.events }/>
+    // </Layout>
+    
+    <div>hola</div>
   )
 }
 

@@ -5,7 +5,7 @@ import { MdAddCircleOutline, MdOutlineSearch, MdExpandMore } from "react-icons/m
 import { ExtendedEvent, GET_EVENTS_PREVIEW } from "@/graphql/client/event"
 import { useQuery } from "@apollo/client"
 import { Event, User } from "@/prisma/generated/type-graphql"
-import { MiniCardContainer, MiniCardConteiner } from '@/components/card/MiniCardContainer';
+import { MiniCardContainer } from '@/components/card/MiniCardContainer';
 import { useSession } from 'next-auth/react';
 import { GET_USER_BY_EMAIL } from '@/graphql/client/user';
 import { useRouter } from 'next/router';

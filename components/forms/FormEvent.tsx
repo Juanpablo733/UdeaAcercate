@@ -4,6 +4,7 @@ import { spawn } from 'child_process';
 import { CREATE_EVENT } from '@/graphql/client/event';
 import { useMutation, useQuery } from '@apollo/client';
 import { useUserData } from '@/hooks/useUserData';
+import Image from 'next/image';
 
 // import { useUserData } from '@/hooks/useUserData';
 
@@ -12,7 +13,6 @@ interface FormDataInterface {
 }
 
 const FormEvent = () => {
-
     // const {userData} = useUserData();
     /*const submitForm = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -26,13 +26,9 @@ const FormEvent = () => {
         console.log('formaData: ',formData);
         console.log("url imagen", usrImage);
     }*/
-
     const [crearEvento] = useMutation(CREATE_EVENT);
     const {loading: loadingUser, session, status, userData} = useUserData();
     const userId = userData?.user.id
-    
-
-    
 
     /*const [formData, setFormData] = useState<FormDataInterface>({
         title: '', description: '', place: '', date: '', tag: 'Academico', image: '', authorId: ''});*/
@@ -155,7 +151,7 @@ const FormEvent = () => {
                 </select>
             </label>
             <figure className=' flex flex-col items-center'>
-                {usrImage ? <img src={usrImage} /> : <span>Sube la imagen del evento</span>}
+                {usrImage ? <Image src={usrImage} alt={'imagen'} /> : <span>Sube la imagen del evento</span>}
                 <CldUploadButton
                     uploadPreset="udeacercate2023"
                     onUpload={handleOnUpload}

@@ -59,23 +59,29 @@ const crearPerfil = () => {
 
   return (
     <div className='Yellow-little flex justify-center items-center h-screen '>
-      <div className='flex flex-col justify-center items-center gap-4 w-3/4 h-3/4 rounded-2xl Yellow-little'>
-        <h1>HOLA {name}</h1>
-        <h2>VAMOS A CREAR TU PERFIL</h2>
-        <form onSubmit={handleSubmit}  className='w-1/2 h-4/5 flex flex-col justify-center items-center gap-4'>
-          <label className='w-full text-center'>
-            Hobbies:
-            <input className='rounded-md h-8 p-2'
+        <form className='Form' onSubmit={handleSubmit}>
+          <h2 className='FormHeader'>
+            Crea tu perfil
+          </h2>
+          <label className='Label'>
+            <span className='LabelText'>
+              Hobbies:
+            </span>
+            <input className='Input'
               type="text"
               value={hobbies}
               onChange={(e) => setHobbies(e.target.value)}
+              required
             />
           </label>
-          <label className='text-center w-1/4'>
-            Tipo de Usuario:
+          <label className='Label'>
+            <span className='LabelText'>
+              Tipo de Usuario:
+            </span>
             <select className='rounded-md text-center h-8'
               value={type}
               onChange={(e) => setType(e.target.value)}
+              required
             >
               <option disabled value={''}>Seleccionar</option>
               <option value="Estudiante">Estudiante</option>
@@ -84,11 +90,14 @@ const crearPerfil = () => {
               <option value="Administrativo">Administrativo</option>
             </select>
           </label>
-          <label className='text-center'>
-            Campus:
+          <label className='Label'>
+            <span className='LabelText'>
+              Campus:
+            </span>
             <select className='rounded-md text-center h-8'
               value={campus}
               onChange={(e) => setCampus(e.target.value)}
+              required
             >
               <option disabled value={''}>Seleccionar</option>
               <option value="Ciudad_Universitaria">Ciudad Universitaria</option>
@@ -104,44 +113,55 @@ const crearPerfil = () => {
 
             </select>
           </label>
-          <label className='text-center'>
-            Facultad:
-            <input className='rounded-md h-8 p-2'
+          <label className='Label'>
+            <span className='LabelText'>
+              Facultad:
+            </span>
+            <input className='Input'
               type="text"
               value={faculty}
               onChange={(e) => setFaculty(e.target.value)}
+              required
             />
           </label>
-          <label className='text-center'>
-            Carrera:
-            <input className='rounded-md h-8 p-2'
+          <label className='Label'>
+            <span className='LabelText'>
+              Carrera:
+            </span>
+            <input className='Input'
               type="text"
               value={career}
               onChange={(e) => setCareer(e.target.value)}
+              required
             />
           </label>
-          <label className='text-center w-full'>
-            Descripción:
-            <input className='rounded-md h-8 p-2'
+          <label className='Label'>
+            <span className='LabelText'>
+              Descripción:
+            </span>
+            <input className='Input'
               type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
+              required
             />
           </label>
-          <label className='text-center'>
-            Social Links:
-            <input className='rounded-md h-8 p-2'
+          <label className='Label'>
+            <span className='LabelText'>
+              Social Links:
+            </span>
+            <input className='Input'
               type="text"
               value={socialLinks}
               onChange={(e) => setSocialLinks(e.target.value)}
+              required
             />
           </label>
-            <button
-              className='ButtonCard flex items-center justify-center' type='submit'>
-              Guardar Perfil
-            </button>
+          <button
+            className='ButtonCard flex items-center justify-center' type='submit'>
+            Guardar Perfil
+          </button>
         </form>
-      </div>
     </div>
   );
 };

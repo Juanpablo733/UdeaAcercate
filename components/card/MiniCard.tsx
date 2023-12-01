@@ -1,9 +1,8 @@
-import { MdOutlineLabel, MdOutlinePlace, MdOutlinePermIdentity, MdClose } from "react-icons/md";
+import { MdOutlineLabel, MdOutlinePermIdentity } from "react-icons/md";
 import React, { useState } from 'react'
 import { TagType } from '../tag-type/TagType'
 import Image from 'next/image';
 import CardModal from "../modals/CardModal";
-import { Card } from "./Card";
 import CompleteCard from "./CompleteCard";
 import Link from "next/link";
 interface MiniCardProps {
@@ -73,8 +72,6 @@ const MiniCard = ({ id, nombreAutor, titulo, asistentes, tipo, fecha,
                             hours={hours}
                             month={month}
                             year={year} >
-                            {/* <div>hola</div> */}
-                            {/* <Card/> */}
                             <CompleteCard
                                 id={id}
                                 nombre={nombreAutor}
