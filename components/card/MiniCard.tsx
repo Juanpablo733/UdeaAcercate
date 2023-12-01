@@ -81,6 +81,7 @@ const MiniCard = ({ id, nombreAutor, titulo, asistentes, tipo, fecha,
                                 asistentes={asistentes}
                                 imagenAutor={imagenAutor}
                                 idAutor={idAutor}
+                                imagenEvento={imagenEvento}
                             />
                         </CardModal>
                     </div>

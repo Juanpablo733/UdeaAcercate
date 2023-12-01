@@ -68,7 +68,7 @@ const FormEvent = () => {
                 authorId: userId,                               
             },
           });
-          console.log("formulario", FormData)
+          console.log("fecha", date)
         } catch (error) {
           console.error('Error al crear o actualizar el perfil', error);
         }
@@ -123,7 +123,7 @@ const FormEvent = () => {
             <label htmlFor="date">
                 <span>Fecha:</span>
                 <input 
-                    type="date" 
+                    type="datetime-local" 
                     name='date'
                     placeholder='fecha del evento'
                     value={date}
@@ -154,7 +154,7 @@ const FormEvent = () => {
                     <option value="Deportivo">Deportivo</option>
                 </select>
             </label>
-            <figure className='debug flex flex-col items-center'>
+            <figure className=' flex flex-col items-center'>
                 {usrImage ? <img src={usrImage} /> : <span>Sube la imagen del evento</span>}
                 <CldUploadButton
                     uploadPreset="udeacercate2023"
@@ -165,7 +165,7 @@ const FormEvent = () => {
                     {/* <i className="bi bi-camera fs-5" id='CameraIcon' /> */}
                 </CldUploadButton>
             </figure>
-            <button className='debug ButtonCard' type='submit'>Crear</button>
+            <button className='ButtonCard' type='submit'>Crear</button>
 
     </form>
   )

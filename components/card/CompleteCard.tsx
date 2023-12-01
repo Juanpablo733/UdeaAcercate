@@ -16,11 +16,12 @@ interface completeCardProps {
     asistentes: number,
     idAutor: string,
     nombre: string,
-    imagenAutor: string
+    imagenAutor: string,
+    imagenEvento: string
 }
 
 
-const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor }: completeCardProps) => {
+const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEvento }: completeCardProps) => {
     const [comentario, setComentario] = useState('');
     const { userData } = useUserData()
     const idUsuarioActual = userData?.user.id
@@ -89,10 +90,10 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor }: complete
     }
 
     return (
-        <div className='debug flex'>
+        <div className='flex'>
             {/* lado izquierdo */}
-            <div className='debug flex flex-col h-full w-full'>
-                <Image src={'/evento1.png'} width={1000} height={0} alt={''} />
+            <div className='flex flex-col h-full w-full'>
+                <Image src={imagenEvento} width={1000} height={0} alt={''} />
                 <div className='flex justify-between p-2'>
                     <div className='flex gap-2 items-center'>
                         <MdOutlinePlace className="h-8 w-8" />
@@ -111,7 +112,7 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor }: complete
                 </div>
             </div>
             {/* lado derecho */}
-            <div className='debug flex flex-col h-full w-full p-2 gap-2'>
+            <div className='flex flex-col h-full w-full p-2 gap-2'>
                 <Avatar
                     name={nombre}
                     imageUrl={imagenAutor}

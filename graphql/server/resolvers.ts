@@ -25,9 +25,12 @@ const resolveEvent = async (eventId: string, context: Context) => {
     return event;
 }
 
-const findHashtags = (text: String) => {
+const findHashtags = (text: String ) => {
     const regex: RegExp = /#(\w+)/g;
     const hashtags = text.match(regex);
+    if(hashtags === null){
+        return new Array();
+    }
     return hashtags;
 }
 
@@ -70,11 +73,11 @@ const resolvers: Resolver = {
         },
         minutes: async (parent) => {
             const date = new Date(parent.date)
-            return date.getUTCMinutes()
+            return date.getMinutes()
         },
         hours: async (parent) => {
             const date = new Date(parent.date)
-            return date.getUTCHours()
+            return date.getHours()
         },
         day: async (parent) => {
             const date = new Date(parent.date)
@@ -82,7 +85,7 @@ const resolvers: Resolver = {
         },
         month: async (parent) => {
             const date = new Date(parent.date)
-            return date.getUTCMonth()
+            return date.getUTCMonth() + 1
         },
         year: async (parent) => {
             const date = new Date(parent.date)
