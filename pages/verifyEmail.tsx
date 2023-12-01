@@ -56,15 +56,15 @@ const VerifyEmail = () => {
     }
     return (
         <>
-            <div>
+            <div className=" Yellow-little h-screen w-full flex flex-col justify-center items-center gap-12">
                 <h1>Verifique su correo electrónico</h1>
                 <button onClick={sendMailFunct} className="button-form shadow-lg text-white font-bold text-base">
                     Enviar correo de verificación
                 </button>
-                <form method="post" onSubmit={handleSubmit}>
-                    <label htmlFor="tokenLabel">
+                <form method="post" onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-4">
+                    <label htmlFor="tokenLabel" className="flex flex-col justify-center items-center gap-4">
                         <span className='Light-Grey font-medium text-base'>Ingrese su token</span>
-                        <input name="tokenInput"
+                        <input name="tokenInput" className="rounded-md h-8 p-2"
                             onChange={(e) => {
                                 setFormData({ ...formData, [e.target.name]: e.target.value });
                                 console.log(formData)
