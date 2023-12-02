@@ -5,10 +5,10 @@ import { MdAddCircleOutline, MdOutlineSearch, MdExpandMore } from "react-icons/m
 import { ExtendedEvent, GET_EVENTS_PREVIEW } from "@/graphql/client/event"
 import { useQuery } from "@apollo/client"
 import { Event, User } from "@/prisma/generated/type-graphql"
-import { MiniCardContainer, MiniCardConteiner } from '@/components/card/MiniCardContainer';
+import { MiniCardContainer } from '@/components/card/MiniCardContainer';
 import { useSession } from 'next-auth/react';
 import { GET_USER_BY_EMAIL } from '@/graphql/client/user';
-import { useRouter } from 'next/router';
+import router, { useRouter } from 'next/router';
 import { Loading } from '@/components/ui/Loading';
 import Link from 'next/link';
 import { useUserData } from '@/hooks/useUserData';
@@ -18,18 +18,33 @@ import { MiniCard } from '@/components/card/MiniCard';
 import PrivateLayout from '@/layouts/PrivateLayout';
 
 const Home = () => {
+    const [ dataFiltrada, setDataFiltrada] = useState('');
     const [openCreateEvent, setOpenCreateEvent] = useState<boolean>(false);
     const { loading: loadingUser, session, status, userData } = useUserData();
     const userId = userData?.user.id
-    const { data: eventsData, loading, error } = useQuery<{ events: ExtendedEvent[] }>(GET_EVENTS_PREVIEW, {
+
+    const type = router.query.type;
+
+    const { data: eventsData, loading: loadingAll, error: errorAll } = useQuery<{ events: ExtendedEvent[] }>(GET_EVENTS_PREVIEW, {
         fetchPolicy: 'cache-first'
     })
+    const { data: filterData, loading: loadingFiltered, error: errorFiltered } = useQuery<{ events: ExtendedEvent[] }>(GET_EVENTS_PREVIEW, {
+        fetchPolicy: 'cache-first',
+        variables: {type: type}
+    })
 
-    if (loading || loadingUser) return (<Loading />)
+    // if(filterData){
+    //     eventsData = filterData;
+    // }
 
+    if (loadingAll || loadingUser) return (<Loading />)
+    // if (loading || loadingUser) return (<Loading />)
+    // setDataFiltrada(eventsData);
     console.log('antes de loading: ', eventsData);
-    if (error) {
-        console.log("Error en carga de eventos", error)
+    // if (error) {
+    if (errorAll) {
+        // console.log("Error en carga de eventos", error)
+        console.log("Error en carga de eventos", errorAll)
         return <p>error</p>
     }
 
@@ -56,14 +71,26 @@ const Home = () => {
                     <CreateEventModal open={openCreateEvent} setOpen={setOpenCreateEvent}>
                         <FormEvent/>
                     </CreateEventModal>
-                    <div className=' flex gap-10 p-2 items-center justify-center  text-xl text-center bg-white rounded-2xl'>
+                    <select className='rounded-2xl'>
+                        <option value="" disabled selected>Filtrar por evento</option>
+                        <option value="Academico">Academico</option>
+                        <option value="Cultural">Cultural</option>
+                        <option value="Deportivo">Deportivo</option>
+                        <option value="Todos">Todos</option>
+                    </select>
+
+
+                    {/* <div className=' flex gap-10 p-2 items-center justify-center  text-xl text-center bg-white rounded-2xl'>
                         <span>Filtrar Por Evento</span>
                         <MdExpandMore className="h-8 w-8" />
-                    </div>
-                    <div className='flex p-2 items-center w-96 justify-between  text-xl text-center bg-white rounded-2xl'>
+                    </div> */}
+                    <input placeholder='Buscar' className='p-2 items-center w-96 text-xl text-center bg-white rounded-2xl'>
+
+                    </input>
+                    {/* <div className='flex p-2 items-center w-96 justify-between  text-xl text-center bg-white rounded-2xl'>
                         <span>Buscar</span>
                         <MdOutlineSearch className="h-10 w-16" />
-                    </div>
+                    </div> */}
                 </div>
                 <div>
                     <MiniCardContainer data={eventsData?.events} />

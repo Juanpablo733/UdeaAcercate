@@ -76,7 +76,7 @@ const Registro = () => {
             </form>
         </div>
         <div className='logo-container'>
-            <img src="/logo-udea.png" alt="logo udea"/>
+            <Image src="/logo-udea.png" alt="logo udea"/>
             {/* <Image src="/logo-udea.png" alt="logo udea" width={} height={}/> */}
         </div>
     </>
