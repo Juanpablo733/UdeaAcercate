@@ -25,10 +25,10 @@ const resolveEvent = async (eventId: string, context: Context) => {
     return event;
 }
 
-const findHashtags = (text: String ) => {
+const findHashtags = (text: String) => {
     const regex: RegExp = /#(\w+)/g;
     const hashtags = text.match(regex);
-    if(hashtags === null){
+    if (hashtags === null) {
         return new Array();
     }
     return hashtags;
@@ -143,25 +143,22 @@ const resolvers: Resolver = {
                     hashtags: filter
                 }
             }
-            if (args.tag === undefined) {
+            if (args.tag === undefined || args.tag === "") {
                 delete options["where"]["tag"]
             }
-            if (filter === undefined) {
+            if (filter === undefined || filter === "") {
                 delete options["where"]["hashtags"]
             } else {
                 options["where"]["hashtags"] = {
                     hasEvery: filter,
                 }
             }
-            const findEvents = async () => {
-                return await db.event.findMany(options)
-                    .catch((e) => {
-                        console.log(e)
-                        return null
-                    });;
-            }
-            const events = findEvents();
-            return events;
+            return await db.event.findMany(options)
+                .catch((e) => {
+                    console.log(e)
+                    return null
+                });;
+
         },
         eventsCreated: async (parent, args, context) => {
             const { db } = context;
@@ -177,9 +174,9 @@ const resolvers: Resolver = {
                 where: {
                     attendees: {
                         some: {
-                            user:{
+                            user: {
                                 id: args.userId
-                            } 
+                            }
                         }
                     }
                 }
