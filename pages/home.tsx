@@ -1,20 +1,15 @@
 import { Navbar } from '@/components/navbar/Navbar';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react'
-import { MdAddCircleOutline, MdOutlineSearch, MdExpandMore } from "react-icons/md";
+import React, { useState } from 'react'
+import { MdAddCircleOutline } from "react-icons/md";
 import { ExtendedEvent, GET_EVENTS_PREVIEW } from "@/graphql/client/event"
 import { useQuery } from "@apollo/client"
-import { Event, User } from "@/prisma/generated/type-graphql"
 import { MiniCardContainer } from '@/components/card/MiniCardContainer';
-import { useSession } from 'next-auth/react';
-import { GET_USER_BY_EMAIL } from '@/graphql/client/user';
-import router, { useRouter } from 'next/router';
 import { Loading } from '@/components/ui/Loading';
 import Link from 'next/link';
 import { useUserData } from '@/hooks/useUserData';
 import CreateEventModal from '@/components/modals/CreateEventModal';
 import FormEvent from '@/components/forms/FormEvent';
-import { MiniCard } from '@/components/card/MiniCard';
 import PrivateLayout from '@/layouts/PrivateLayout';
 
 const Home = () => {
@@ -22,30 +17,18 @@ const Home = () => {
     const [openCreateEvent, setOpenCreateEvent] = useState<boolean>(false);
     const { loading: loadingUser, session, status, userData } = useUserData();
     const userId = userData?.user.id
-
-    const type = router.query.type;
-
+    const [tag, setTag] = useState('');
+    const [hashtags, setHashtags] = useState([]);
     const { data: eventsData, loading: loadingAll, error: errorAll } = useQuery<{ events: ExtendedEvent[] }>(GET_EVENTS_PREVIEW, {
-        fetchPolicy: 'cache-first'
-    })
-    const { data: filterData, loading: loadingFiltered, error: errorFiltered } = useQuery<{ events: ExtendedEvent[] }>(GET_EVENTS_PREVIEW, {
         fetchPolicy: 'cache-first',
-        variables: {type: type}
+        variables: {tag, hashtags }
     })
-
-    // if(filterData){
-    //     eventsData = filterData;
-    // }
 
     if (loadingAll || loadingUser) return (<Loading />)
-    // if (loading || loadingUser) return (<Loading />)
-    // setDataFiltrada(eventsData);
     console.log('antes de loading: ', eventsData);
-    // if (error) {
     if (errorAll) {
-        // console.log("Error en carga de eventos", error)
         console.log("Error en carga de eventos", errorAll)
-        return <p>error</p>
+        return <p>error {errorAll.message}</p>
     }
 
     console.log('despues de loading: ', eventsData?.events);
@@ -71,15 +54,13 @@ const Home = () => {
                     <CreateEventModal open={openCreateEvent} setOpen={setOpenCreateEvent}>
                         <FormEvent/>
                     </CreateEventModal>
-                    <select className='rounded-2xl'>
-                        <option value="" disabled selected>Filtrar por evento</option>
+                    <select className='rounded-2xl' onChange={(e) => setTag(e.target.value)}>
+                        <option value="" disabled selected>Filtrar por Tag</option>
                         <option value="Academico">Academico</option>
                         <option value="Cultural">Cultural</option>
                         <option value="Deportivo">Deportivo</option>
-                        <option value="Todos">Todos</option>
+                        <option value="">Todos</option>
                     </select>
-
-
                     {/* <div className=' flex gap-10 p-2 items-center justify-center  text-xl text-center bg-white rounded-2xl'>
                         <span>Filtrar Por Evento</span>
                         <MdExpandMore className="h-8 w-8" />

@@ -20,24 +20,24 @@ mutation Mutation($title: String!, $description: String!, $place: String!, $date
 
 
 const GET_EVENTS_PREVIEW = gql`
-    query Events {
-        events {
-        id
-        tag
-        author {
+    query Events($tag: String, $hashtags: [String]) {
+        events(tag: $tag, hashtags: $hashtags){
             id
-            name
+            tag
+            author {
+                id
+                name
+                image
+            }
+            title
             image
-        }
-        title
-        image
-        date
-        attendeesCount
-        minutes
-        hours
-        day
-        month
-        year
+            date
+            attendeesCount
+            minutes
+            hours
+            day
+            month
+            year
         }
     }
 `
