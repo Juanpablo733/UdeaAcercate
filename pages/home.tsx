@@ -13,7 +13,7 @@ import FormEvent from '@/components/forms/FormEvent';
 import PrivateLayout from '@/layouts/PrivateLayout';
 
 const Home = () => {
-    const [ dataFiltrada, setDataFiltrada] = useState('');
+    const [dataFiltrada, setDataFiltrada] = useState('');
     const [openCreateEvent, setOpenCreateEvent] = useState<boolean>(false);
     const { loading: loadingUser, session, status, userData } = useUserData();
     const userId = userData?.user.id
@@ -21,7 +21,7 @@ const Home = () => {
     const [hashtags, setHashtags] = useState([]);
     const { data: eventsData, loading: loadingAll, error: errorAll } = useQuery<{ events: ExtendedEvent[] }>(GET_EVENTS_PREVIEW, {
         fetchPolicy: 'cache-first',
-        variables: {tag, hashtags }
+        variables: { tag, hashtags }
     })
 
     if (loadingAll || loadingUser) return (<Loading />)
@@ -35,6 +35,9 @@ const Home = () => {
 
     return (
         <PrivateLayout>
+            <title>
+                Home | UdeAcercate
+            </title>
             <div className='flex flex-col gap-10 pb-4 Yellow-little h-full'>
                 <Navbar>
                     <Link href={`/perfil/${userId}`}>
@@ -52,7 +55,7 @@ const Home = () => {
                         <MdAddCircleOutline className="h-8 w-8" />
                     </button>
                     <CreateEventModal open={openCreateEvent} setOpen={setOpenCreateEvent}>
-                        <FormEvent/>
+                        <FormEvent />
                     </CreateEventModal>
                     <select className='rounded-2xl' onChange={(e) => setTag(e.target.value)}>
                         <option value="" disabled selected>Filtrar por Tag</option>
@@ -65,9 +68,9 @@ const Home = () => {
                         <span>Filtrar Por Evento</span>
                         <MdExpandMore className="h-8 w-8" />
                     </div> */}
-                    <input placeholder='Buscar' className='p-2 items-center w-96 text-xl text-center bg-white rounded-2xl'>
+                    {/* <input placeholder='Buscar' className='p-2 items-center w-96 text-xl text-center bg-white rounded-2xl'>
 
-                    </input>
+                    </input> */}
                     {/* <div className='flex p-2 items-center w-96 justify-between  text-xl text-center bg-white rounded-2xl'>
                         <span>Buscar</span>
                         <MdOutlineSearch className="h-10 w-16" />

@@ -18,7 +18,7 @@ interface FormDataInterface {
 
 const VerifyEmail = () => {
     const [formData, setFormData] = useState<FormDataInterface>({ tokenInput: '' })
-    const {userData, status} = useUserData()
+    const { userData, status } = useUserData()
 
     const userId = userData?.user?.id
     console.log("UserId:", userId)
@@ -37,7 +37,7 @@ const VerifyEmail = () => {
     const [verifyToken, { data }] = useMutation<{ emailToken: EmailToken }>(VERIFY_TOKEN,
         { variables: { identifier: userId, token: tokenInput } });
 
-    if (status === 'loading') return (<Loading/>)
+    if (status === 'loading') return (<Loading />)
 
     const sendMailFunct = async () => {
         await executeGenerateToken()
@@ -58,6 +58,9 @@ const VerifyEmail = () => {
     }
     return (
         <>
+            <title>
+                Verifica tu correo | UdeAcercate
+            </title>
             <div className=" Yellow-little h-screen w-full flex flex-col justify-center items-center gap-12">
                 <h1>Verifique su correo electrónico</h1>
                 <button onClick={sendMailFunct} className="button-form shadow-lg text-white font-bold text-base">

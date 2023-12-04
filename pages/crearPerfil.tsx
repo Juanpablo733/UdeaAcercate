@@ -9,7 +9,7 @@ import { Loading } from '@/components/ui/Loading';
 
 // Componente CrearPerfil
 const crearPerfil = () => {
-  const {loading: loadingUser, session, status, userData} = useUserData();
+  const { loading: loadingUser, session, status, userData } = useUserData();
   const router = useRouter();
   const userId = userData?.user.id
   const userEmail = userData?.user.email
@@ -54,11 +54,15 @@ const crearPerfil = () => {
   };
 
 
-  if(loadingUser) return (<Loading/>)
+  if (loadingUser) return (<Loading />)
 
 
   return (
-    <div className='Yellow-little flex justify-center items-center h-screen flex-col gap-4'>
+    <>
+      <title>
+        Crear perfil | UdeAcercate
+      </title>
+      <div className='Yellow-little flex justify-center items-center h-screen flex-col gap-4'>
         <form className='Form' onSubmit={handleSubmit}>
           <h2 className='FormHeader'>
             Crea tu perfil
@@ -110,7 +114,7 @@ const crearPerfil = () => {
               <option value="Seccional_Oriente">Seccional Oriente</option>
               <option value="Seccional_Occidente_de_la_Universidad_de_Antioquia">Seccional Occidente</option>
               <option value="Seccional_Bajo_Cauca">Seccional Bajo Cauca</option>
-              <option value="Sede_Sonson_de_la_Universidad_de_Antioquia">Sede Sonsón</option>    
+              <option value="Sede_Sonson_de_la_Universidad_de_Antioquia">Sede Sonsón</option>
 
             </select>
           </label>
@@ -163,7 +167,8 @@ const crearPerfil = () => {
             Guardar Perfil
           </button>
         </form>
-    </div>
+      </div>
+    </>
   );
 };
 
