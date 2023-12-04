@@ -43,7 +43,9 @@ const MiniCard = ({ id, nombreAutor, titulo, asistentes, tipo, fecha,
             <div className="gap-1 flex flex-col justify-between h-full">
                 <div className="flex flex-col h-auto items-center">
                     <span className="text-sm font-semibold">{titulo}</span>
-                    <Image src={imagenEvento} alt={'evento1'} width={300} height={10} />
+                    <div className="relative h-48 w-96">
+                        <Image className="rounded-lg" src={imagenEvento} alt={'evento1'} layout="fill" objectFit="cover"/>
+                    </div>
                 </div>
                 <div className="flex gap-4 justify-between h-12">
                     <div className="w-1/4 flex flex-col items-center justify-center">

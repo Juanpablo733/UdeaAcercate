@@ -6,6 +6,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import { useUserData } from '@/hooks/useUserData';
 import Image from 'next/image';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 // import { useUserData } from '@/hooks/useUserData';
 
@@ -38,6 +39,7 @@ const FormEvent = () => {
     const [crearEvento] = useMutation(CREATE_EVENT);
     const {loading: loadingUser, session, status, userData} = useUserData();
     const userId = userData?.user.id
+    const router = useRouter();
 
     /*const [formData, setFormData] = useState<FormDataInterface>({
         title: '', description: '', place: '', date: '', tag: 'Academico', image: '', authorId: ''});*/
@@ -75,6 +77,7 @@ const FormEvent = () => {
           });
           console.log("fecha", date)
           toast.success('Se creó el evento');
+          router.push('/home');
         } catch (error) {
             console.error('Error al crear o actualizar el perfil', error);
             toast.error('No se creó el evento');
@@ -155,14 +158,14 @@ const FormEvent = () => {
                         
                     }}
                 >
-                    <option disabled value={''}>Seleccionar</option>
+                    <option disabled selected value={''}>Seleccionar</option>
                     <option value="Academico">Academico</option>
                     <option value="Cultural">Cultural</option>
                     <option value="Deportivo">Deportivo</option>
                 </select>
             </label>
             <figure className=' flex flex-col items-center'>
-                {usrImage ? <Image src={usrImage} alt={'imagen'} width={300} height={300}/> : <span>Sube la imagen del evento</span>}
+                {usrImage ? <Image src={usrImage} alt={'imagen'} width={300} height={10}/> : <span>Sube la imagen del evento</span>}
                 <CldUploadButton
                     uploadPreset="udeacercate2023"
                     onUpload={handleOnUpload}
