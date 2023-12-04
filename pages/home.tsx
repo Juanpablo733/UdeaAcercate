@@ -35,7 +35,7 @@ const Home = () => {
 
     return (
         <PrivateLayout>
-            <div className='flex flex-col gap-10 pb-4 Yellow-little'>
+            <div className='flex flex-col gap-10 pb-4 Yellow-little h-full'>
                 <Navbar>
                     <Link href={`/perfil/${userId}`}>
                         <div className='flex gap-4 items-center justify-center'>

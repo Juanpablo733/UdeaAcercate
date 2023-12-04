@@ -5,6 +5,7 @@ import { CREATE_EVENT } from '@/graphql/client/event';
 import { useMutation, useQuery } from '@apollo/client';
 import { useUserData } from '@/hooks/useUserData';
 import Image from 'next/image';
+import { toast } from 'react-toastify';
 
 // import { useUserData } from '@/hooks/useUserData';
 
@@ -13,6 +14,14 @@ interface FormDataInterface {
 }
 
 const FormEvent = () => {
+
+    // const succesAlert = () => {
+    //     toast.success('Se creó el evento');
+    //     // toast.error('Error al crear evento');
+    //     // toast.warning('Warning al evento');
+    // } 
+
+
     // const {userData} = useUserData();
     /*const submitForm = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -65,8 +74,10 @@ const FormEvent = () => {
             },
           });
           console.log("fecha", date)
+          toast.success('Se creó el evento');
         } catch (error) {
-          console.error('Error al crear o actualizar el perfil', error);
+            console.error('Error al crear o actualizar el perfil', error);
+            toast.error('No se creó el evento');
         }
       };
   return (
@@ -151,7 +162,7 @@ const FormEvent = () => {
                 </select>
             </label>
             <figure className=' flex flex-col items-center'>
-                {usrImage ? <Image src={usrImage} alt={'imagen'}/> : <span>Sube la imagen del evento</span>}
+                {usrImage ? <Image src={usrImage} alt={'imagen'} width={300} height={300}/> : <span>Sube la imagen del evento</span>}
                 <CldUploadButton
                     uploadPreset="udeacercate2023"
                     onUpload={handleOnUpload}
@@ -161,7 +172,11 @@ const FormEvent = () => {
                     {/* <i className="bi bi-camera fs-5" id='CameraIcon' /> */}
                 </CldUploadButton>
             </figure>
-            <button className='ButtonCard' type='submit'>Crear</button>
+            <button
+                className='ButtonCard'
+                type='submit'
+                // onClick={succesAlert}
+            >Crear</button>
 
     </form>
   )
