@@ -12,9 +12,6 @@ export const authOptions: NextAuthOptions = {
       if (account?.provider === "google") {
         console.log(user)
         if (profile?.email?.endsWith("@udea.edu.co")) {
-          if (!user?.emailVerified) {
-            return true
-          }
           return true
         }
         return false

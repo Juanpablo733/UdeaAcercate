@@ -9,8 +9,8 @@ interface MiniCardProps {
     id: string,
     titulo: string,
     asistentes: number,
-    // tipo:"Deportivo" | "Cultural" | "Academico",
-    tipo: string,
+    tipo:"Deportivo" | "Cultural" | "Academico",
+    // tipo: string,
     fecha: string
     minutes: string,
     hours: string,
