@@ -7,7 +7,7 @@ interface FormDataInterface {
     [key: string] : string;
 }
 
-const index = () => {
+const Index = () => {
     const submitForm = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log('Los datos del usuario son: ', formData);
@@ -49,4 +49,4 @@ const index = () => {
     )
 }
 
-export default index;
+export default Index;

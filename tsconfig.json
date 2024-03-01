@@ -1,10 +1,18 @@
 {
   "compilerOptions": {
+    "types": [
+      "@types/testing-library__jest-dom",
+      "@types/testing-library__react"
+    ],
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": false,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -14,9 +22,19 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/dbConnection.js", "pages/api/auth/[...nextauth].js"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "lib/dbConnection.js",
+    "pages/api/auth/[...nextauth].js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

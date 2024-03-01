@@ -7,7 +7,8 @@ interface CardModalProps {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
   modalTitle: string;
-  tagType: string;
+  tagType:"Deportivo" | "Cultural" | "Academico",
+    // tagType: string;
   date: string
   minutes: string,
   hours: string,

@@ -8,7 +8,7 @@ import { useUserData } from '@/hooks/useUserData';
 import { Loading } from '@/components/ui/Loading';
 
 // Componente CrearPerfil
-const crearPerfil = () => {
+const CrearPerfil = () => {
   const { loading: loadingUser, session, status, userData } = useUserData();
   const router = useRouter();
   const userId = userData?.user.id
@@ -172,4 +172,4 @@ const crearPerfil = () => {
   );
 };
 
-export default crearPerfil;
+export default CrearPerfil;
