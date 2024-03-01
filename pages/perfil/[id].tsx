@@ -2,14 +2,12 @@ import { Navbar } from '@/components/navbar/Navbar'
 import { MdHomeFilled } from "react-icons/md";
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import { ApolloClient, InMemoryCache, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { GET_PROFILE } from '@/graphql/client/profile';
 import { Profile } from '@/prisma/generated/type-graphql';
 import { Loading } from '@/components/ui/Loading';
 import { ExtendedEvent, GET_EVENTS_ATTENDING, GET_EVENTS_CREATED } from '@/graphql/client/event';
-import { MiniCard } from '@/components/card/MiniCard';
 import { MiniCardContainer } from '@/components/card/MiniCardContainer';
 import { useState } from 'react';
 
