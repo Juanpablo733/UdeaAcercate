@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.UserRelationsResolver = exports.SessionRelationsResolver = exports.ProfileRelationsResolver = exports.EventRelationsResolver = exports.CommentRelationsResolver = exports.AttendeeRelationsResolver = exports.AccountRelationsResolver = void 0;
+var AccountRelationsResolver_1 = require("./Account/AccountRelationsResolver");
+Object.defineProperty(exports, "AccountRelationsResolver", { enumerable: true, get: function () { return AccountRelationsResolver_1.AccountRelationsResolver; } });
+var AttendeeRelationsResolver_1 = require("./Attendee/AttendeeRelationsResolver");
+Object.defineProperty(exports, "AttendeeRelationsResolver", { enumerable: true, get: function () { return AttendeeRelationsResolver_1.AttendeeRelationsResolver; } });
+var CommentRelationsResolver_1 = require("./Comment/CommentRelationsResolver");
+Object.defineProperty(exports, "CommentRelationsResolver", { enumerable: true, get: function () { return CommentRelationsResolver_1.CommentRelationsResolver; } });
+var EventRelationsResolver_1 = require("./Event/EventRelationsResolver");
+Object.defineProperty(exports, "EventRelationsResolver", { enumerable: true, get: function () { return EventRelationsResolver_1.EventRelationsResolver; } });
+var ProfileRelationsResolver_1 = require("./Profile/ProfileRelationsResolver");
+Object.defineProperty(exports, "ProfileRelationsResolver", { enumerable: true, get: function () { return ProfileRelationsResolver_1.ProfileRelationsResolver; } });
+var SessionRelationsResolver_1 = require("./Session/SessionRelationsResolver");
+Object.defineProperty(exports, "SessionRelationsResolver", { enumerable: true, get: function () { return SessionRelationsResolver_1.SessionRelationsResolver; } });
+var UserRelationsResolver_1 = require("./User/UserRelationsResolver");
+Object.defineProperty(exports, "UserRelationsResolver", { enumerable: true, get: function () { return UserRelationsResolver_1.UserRelationsResolver; } });
