@@ -1,9 +1,6 @@
 import { Resolver, Context } from "@/types";
 import { sendVerificationEmail } from "../../util/nodemailerConfig";
-import { ApolloError } from "@apollo/client";
-import { argumentsObjectFromField, cloneDeep } from "@apollo/client/utilities";
-import { Prisma, PrismaClient, PrismaPromise } from "@prisma/client";
-import { GraphQLError } from "graphql";
+import { cloneDeep } from "@apollo/client/utilities";
 
 const resolveUser = async (userId: string, context: Context) => {
     const { db } = context;
