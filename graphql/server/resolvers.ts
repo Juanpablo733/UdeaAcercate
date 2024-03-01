@@ -28,6 +28,9 @@ const resolveEvent = async (eventId: string, context: Context) => {
 const findHashtags = (text: String) => {
     const regex: RegExp = /#(\w+)/g;
     const hashtags = text.match(regex);
+    if (hashtags === null) {
+        return new Array();
+    }
     return hashtags;
 }
 
@@ -70,11 +73,11 @@ const resolvers: Resolver = {
         },
         minutes: async (parent) => {
             const date = new Date(parent.date)
-            return date.getUTCMinutes()
+            return date.getMinutes()
         },
         hours: async (parent) => {
             const date = new Date(parent.date)
-            return date.getUTCHours()
+            return date.getHours()
         },
         day: async (parent) => {
             const date = new Date(parent.date)
@@ -82,7 +85,7 @@ const resolvers: Resolver = {
         },
         month: async (parent) => {
             const date = new Date(parent.date)
-            return date.getUTCMonth()
+            return date.getUTCMonth() + 1
         },
         year: async (parent) => {
             const date = new Date(parent.date)
@@ -140,25 +143,44 @@ const resolvers: Resolver = {
                     hashtags: filter
                 }
             }
-            if (args.tag === undefined) {
+            if (args.tag === undefined || args.tag === "") {
                 delete options["where"]["tag"]
             }
-            if (filter === undefined) {
+            if (filter === undefined || filter === "") {
                 delete options["where"]["hashtags"]
             } else {
                 options["where"]["hashtags"] = {
                     hasEvery: filter,
                 }
             }
-            const findEvents = async () => {
-                return await db.event.findMany(options)
-                    .catch((e) => {
-                        console.log(e)
-                        return null
-                    });;
-            }
-            const events = findEvents();
-            return events;
+            return await db.event.findMany(options)
+                .catch((e) => {
+                    console.log(e)
+                    return null
+                });;
+
+        },
+        eventsCreated: async (parent, args, context) => {
+            const { db } = context;
+            return await db.event.findMany({
+                where: {
+                    authorId: args.userId
+                }
+            })
+        },
+        eventsAttending: async (parent, args, context) => {
+            const { db } = context;
+            return await db.event.findMany({
+                where: {
+                    attendees: {
+                        some: {
+                            user: {
+                                id: args.userId
+                            }
+                        }
+                    }
+                }
+            })
         },
         event: async (parent, args, context) => {
             const { db } = context;
@@ -240,9 +262,8 @@ const resolvers: Resolver = {
             });
             if (findProfile != null) return findProfile;
             const newProfile = await db.profile.create({
-                data: {
-                    userId: args.userId
-                }
+                data: args
+
             }).catch((error) => { return null });
             return newProfile;
         },
@@ -316,8 +337,7 @@ const resolvers: Resolver = {
         generateEmailToken: async (parent, args, context) => {
             const { db } = context;
             const token = Math.trunc(Math.random() * Math.pow(10, 6))
-            const expireDate = new Date(Date.now() + 600000)
-
+            const expireDate = new Date(Date.now() + 120000)
             const user = await db.user.findUnique({
                 where: {
                     id: args.userId

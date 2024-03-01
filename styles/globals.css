@@ -10,9 +10,11 @@
   --blue-mid: #0E7774;
   --light-grey: #5F5F5F;
   --dark-grey: #393636;
+  --white: #fff;
   --bg-main: linear-gradient(120deg, #026937 0%, #35944b 100%);
   --bg-secondary: linear-gradient(306deg, #026937 0%, #35944b 100%);
   --bg-third: linear-gradient(90deg, #43b649 0%, #12803f 100%);
+  --shadow: 4px 4px 23px 0px rgba(0, 0, 0, 0.3);
 }
 
 h1{
@@ -109,4 +111,46 @@ label{
 .button-secondary:hover {
   @apply text-white;
   background-image: linear-gradient(120deg, #35944B 0%, #026937 100%); /* Nuevo degradado en hover */
+}
+
+.Form {
+  /* width: 50%; */
+  min-width: 280px;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 3rem 1.5rem;
+  border-radius: 0.625rem;
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+}
+.Input {
+  width: 100%;
+  padding: 0.3rem;
+  font-size: 0.9rem;
+  border: 2px solid var(--light-grey);
+  border-radius: 0;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: var(--dark-grey);
+  outline: none;
+}
+.FormHeader {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  color: var(--green-hard);
+  line-height: normal;
+}
+.Label {
+  display: block;
+  width: 100%;
+}
+.LabelText {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--light-grey);
 }

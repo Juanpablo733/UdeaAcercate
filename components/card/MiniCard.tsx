@@ -1,17 +1,16 @@
-import { MdOutlineLabel, MdOutlinePlace, MdOutlinePermIdentity, MdClose } from "react-icons/md";
+import { MdOutlineLabel, MdOutlinePermIdentity } from "react-icons/md";
 import React, { useState } from 'react'
 import { TagType } from '../tag-type/TagType'
 import Image from 'next/image';
 import CardModal from "../modals/CardModal";
-import { Card } from "./Card";
 import CompleteCard from "./CompleteCard";
 import Link from "next/link";
 interface MiniCardProps {
     id: string,
     titulo: string,
     asistentes: number,
-    // tipo:"Deportivo" | "Cultural" | "Academico",
-    tipo: string,
+    tipo:"Deportivo" | "Cultural" | "Academico",
+    // tipo: string,
     fecha: string
     minutes: string,
     hours: string,
@@ -20,11 +19,12 @@ interface MiniCardProps {
     year: string,
     idAutor: string,
     nombreAutor: string,
-    imagenAutor: string
+    imagenAutor: string,
+    imagenEvento: string
 }
 
 const MiniCard = ({ id, nombreAutor, titulo, asistentes, tipo, fecha,
-    imagenAutor, idAutor, day, hours, minutes, month, year }: MiniCardProps) => {
+    imagenAutor, idAutor, day, hours, minutes, month, year, imagenEvento }: MiniCardProps) => {
     const [open, setOpen] = useState<boolean>(false);
     return (
         <div className='w-full max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl'>
@@ -43,7 +43,9 @@ const MiniCard = ({ id, nombreAutor, titulo, asistentes, tipo, fecha,
             <div className="gap-1 flex flex-col justify-between h-full">
                 <div className="flex flex-col h-auto items-center">
                     <span className="text-sm font-semibold">{titulo}</span>
-                    <Image src={'/evento1.png'} alt={'evento1'} width={300} height={10} />
+                    <div className="relative h-48 w-96">
+                        <Image className="rounded-lg" src={imagenEvento} alt={'evento1'} layout="fill" objectFit="cover"/>
+                    </div>
                 </div>
                 <div className="flex gap-4 justify-between h-12">
                     <div className="w-1/4 flex flex-col items-center justify-center">
@@ -72,14 +74,13 @@ const MiniCard = ({ id, nombreAutor, titulo, asistentes, tipo, fecha,
                             hours={hours}
                             month={month}
                             year={year} >
-                            {/* <div>hola</div> */}
-                            {/* <Card/> */}
                             <CompleteCard
                                 id={id}
                                 nombre={nombreAutor}
                                 asistentes={asistentes}
                                 imagenAutor={imagenAutor}
                                 idAutor={idAutor}
+                                imagenEvento={imagenEvento}
                             />
                         </CardModal>
                     </div>

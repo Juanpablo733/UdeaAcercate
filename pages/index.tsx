@@ -1,12 +1,13 @@
 import { Button } from '@mui/material';
 import { signIn } from 'next-auth/react';
+import Image from 'next/image';
 import React, { FormEvent, useCallback, useState } from 'react'
 
 interface FormDataInterface {
     [key: string] : string;
 }
 
-const index = () => {
+const Index = () => {
     const submitForm = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log('Los datos del usuario son: ', formData);
@@ -42,10 +43,10 @@ const index = () => {
             </div>
         </div>
         <div className='logo-container'>
-            <img src="/logo-udea.png" alt="logo udea"/>
+            <Image src="/logo-udea.png" alt="logo udea" width={150} height={100}/>
         </div>
     </>
     )
 }
 
-export default index;
+export default Index;

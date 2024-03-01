@@ -20,4 +20,16 @@ const GET_PROFILE = gql`
   }
 `;
 
-export { GET_PROFILE }
+const CREATE_PROFILE = gql`
+mutation Mutation($userId: String!, $faculty: String, $career: String, $type: String, $campus: String, $description: String, $hobbies: String, $socialLinks: [String]) {
+  createProfile(userId: $userId, faculty: $faculty, career: $career, type: $type, campus: $campus, description: $description, hobbies: $hobbies, socialLinks: $socialLinks) {
+    user {
+      id
+      email
+    }
+  }
+}
+`;
+
+
+export { GET_PROFILE, CREATE_PROFILE }

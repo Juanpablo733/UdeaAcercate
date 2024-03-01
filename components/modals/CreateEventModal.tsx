@@ -10,7 +10,7 @@ interface CreateEventModalProps {
 const CreateEventModal = ({open, setOpen, children}: CreateEventModalProps) => {
     const [maxWidth, setMaxWidth] = useState<DialogProps['maxWidth']>('lg');
   return (
-    <Dialog open={open} onClose={() => setOpen(false)} maxWidth={maxWidth}>
+    <Dialog open={open} onClose={() => setOpen(false)} maxWidth="md"> 
       <div className='flex flex-col items-center justify-center'>
         <DialogTitle>Crear evento</DialogTitle>
       </div>

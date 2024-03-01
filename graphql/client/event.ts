@@ -10,25 +10,34 @@ export interface ExtendedEvent extends Event{
     attendeesCount: number,
 }
 
+const CREATE_EVENT =gql`
+mutation Mutation($title: String!, $description: String!, $place: String!, $date: DateTime!, $image: String!, $tag: String!, $authorId: String!) {
+    createEvent(title: $title, description: $description, place: $place, date: $date, image: $image, tag: $tag, authorId: $authorId) {
+      id
+    }
+  }
+`
+
+
 const GET_EVENTS_PREVIEW = gql`
-    query Events {
-        events {
-        id
-        tag
-        author {
+    query Events($tag: String, $hashtags: [String]) {
+        events(tag: $tag, hashtags: $hashtags){
             id
-            name
+            tag
+            author {
+                id
+                name
+                image
+            }
+            title
             image
-        }
-        title
-        image
-        date
-        attendeesCount
-        minutes
-        hours
-        day
-        month
-        year
+            date
+            attendeesCount
+            minutes
+            hours
+            day
+            month
+            year
         }
     }
 `
@@ -49,8 +58,55 @@ const GET_EVENT_BY_ID = gql`
         place
         description
         hashtags
+        attendeesCount
     }
     }
 `
 
-export { GET_EVENTS_PREVIEW, GET_EVENT_BY_ID }
+const GET_EVENTS_ATTENDING = gql`
+    query Query($userId: String!) {
+        eventsAttending(userId: $userId) {
+            id
+            tag
+            author {
+                id
+                image
+                name
+            }
+            title
+            image
+            date
+            attendeesCount
+            minutes
+            hours
+            day
+            month
+            year
+        }
+    }
+`
+
+const GET_EVENTS_CREATED = gql`
+    query Query($userId: String!) {
+        eventsCreated(userId: $userId) {
+            id
+            tag
+            author {
+                id
+                image
+                name
+            }
+            title
+            image
+            date
+            attendeesCount
+            minutes
+            hours
+            day
+            month
+            year
+        }
+    }
+`
+
+export { GET_EVENTS_PREVIEW, GET_EVENT_BY_ID, GET_EVENTS_ATTENDING, GET_EVENTS_CREATED, CREATE_EVENT }

@@ -21,5 +21,11 @@ const FIND_ATTENDEE = gql`
     }
 `
 
+const QUIT_ATTENDEE = gql`
+    mutation Mutation($userId: String!, $eventId: String!) {
+    quitAttendee(userId: $userId, eventId: $eventId)
+  }
+`
 
-export {ADD_ATTENDEE, FIND_ATTENDEE}
+
+export {ADD_ATTENDEE, FIND_ATTENDEE,QUIT_ATTENDEE}

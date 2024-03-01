@@ -8,6 +8,7 @@ const nextConfig = {
         hostname: 'lh3.googleusercontent.com',
       },
     ],
+    domains: ['res.cloudinary.com', 'lh3.googleusercontent.com']
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {
@@ -25,5 +26,3 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
-
-const { withAuth0 } = require('next-auth/providers/auth0');
