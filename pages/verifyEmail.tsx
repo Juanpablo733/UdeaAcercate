@@ -1,14 +1,10 @@
 import React, { FormEvent, useState } from "react"
-import { useSession } from 'next-auth/react';
-import { sendVerificationEmail } from "@/util/nodemailerConfig";
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { GENERATE_VERIFICATION_TOKEN, VERIFY_TOKEN } from "@/graphql/client/emailToken";
-import { EmailToken, VerificationToken } from "@/prisma/generated/type-graphql";
-import { User } from "@prisma/client";
-import { GET_USERS, GET_USER_BY_EMAIL } from "@/graphql/client/user";
+import { EmailToken } from "@/prisma/generated/type-graphql";
 import { useUserData } from "@/hooks/useUserData";
 import { Loading } from "@/components/ui/Loading";
-import router, { useRouter } from 'next/router';
+import router from 'next/router';
 
 const emailAuth = process.env.EMAIL
 
