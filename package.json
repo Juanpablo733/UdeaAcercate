@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watch",
     "test:ci": "jest --ci --coverage",
-    "vercel-build": "prisma generate",
-    "build": "npx prisma db push && npx prisma generate && next build"
+    "vercel-build": "prisma generate && prisma migrate deploy && next build"
   },
   "dependencies": {
     "@apollo/client": "^3.8.5",
