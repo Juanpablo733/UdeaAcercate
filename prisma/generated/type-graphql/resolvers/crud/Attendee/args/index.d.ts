@@ -1,0 +1,14 @@
+export { AggregateAttendeeArgs } from "./AggregateAttendeeArgs";
+export { CreateManyAttendeeArgs } from "./CreateManyAttendeeArgs";
+export { CreateOneAttendeeArgs } from "./CreateOneAttendeeArgs";
+export { DeleteManyAttendeeArgs } from "./DeleteManyAttendeeArgs";
+export { DeleteOneAttendeeArgs } from "./DeleteOneAttendeeArgs";
+export { FindFirstAttendeeArgs } from "./FindFirstAttendeeArgs";
+export { FindFirstAttendeeOrThrowArgs } from "./FindFirstAttendeeOrThrowArgs";
+export { FindManyAttendeeArgs } from "./FindManyAttendeeArgs";
+export { FindUniqueAttendeeArgs } from "./FindUniqueAttendeeArgs";
+export { FindUniqueAttendeeOrThrowArgs } from "./FindUniqueAttendeeOrThrowArgs";
+export { GroupByAttendeeArgs } from "./GroupByAttendeeArgs";
+export { UpdateManyAttendeeArgs } from "./UpdateManyAttendeeArgs";
+export { UpdateOneAttendeeArgs } from "./UpdateOneAttendeeArgs";
+export { UpsertOneAttendeeArgs } from "./UpsertOneAttendeeArgs";
