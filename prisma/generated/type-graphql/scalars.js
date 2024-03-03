@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DecimalJSScalar = void 0;
-const client_1 = require("@prisma/client");
+const client_1 = require("./../client");
 const graphql_1 = require("graphql");
 exports.DecimalJSScalar = new graphql_1.GraphQLScalarType({
     name: "Decimal",
