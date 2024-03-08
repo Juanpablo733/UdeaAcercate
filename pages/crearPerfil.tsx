@@ -1,8 +1,7 @@
 // Importa las dependencias necesarias
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { useMutation, useQuery } from '@apollo/client';
-import { GET_USER_BY_EMAIL } from '@/graphql/client/user';
+import { useMutation } from '@apollo/client';
 import { CREATE_PROFILE } from '@/graphql/client/profile';
 import { useUserData } from '@/hooks/useUserData';
 import { Loading } from '@/components/ui/Loading';
