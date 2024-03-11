@@ -141,8 +141,14 @@ label{
 .FormHeader {
   text-align: center;
   font-weight: bold;
-  font-size: 2rem;
   color: var(--green-hard);
+  line-height: normal;
+}
+.form-header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: var(--green-little);
   line-height: normal;
 }
 .Label {
