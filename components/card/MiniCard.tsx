@@ -37,7 +37,7 @@ const MiniCard = ({ id, nombreAutor, titulo, asistentes, tipo, fecha,
                 <Link href={`/perfil/${idAutor}`}>
                     <div className='flex gap-4 items-center'>
                         <span className='text-sm font-bold'>{nombreAutor}</span>
-                        <Image src={imagenAutor} alt={'avatar-image'} height={30} width={30} />
+                        <Image src={imagenAutor} alt={'avatar-image'} height={30} width={30} className='rounded-full' />
                     </div>
                 </Link>
             </div>

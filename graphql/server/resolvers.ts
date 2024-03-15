@@ -130,12 +130,13 @@ const resolvers: Resolver = {
         },
         events: async (parent, args, context) => {
             const { db } = context;
-            if (args == undefined)
-                return await db.event.findMany();
 
             const filter = args.hashtags
             const options = {
                 where: {
+                    NOT: {
+                        authorId: args.sessionUserId
+                    },
                     tag: args.tag,
                     hashtags: filter
                 }
@@ -154,8 +155,7 @@ const resolvers: Resolver = {
                 .catch((e) => {
                     console.log(e)
                     return null
-                });;
-
+                });
         },
         eventsCreated: async (parent, args, context) => {
             const { db } = context;
