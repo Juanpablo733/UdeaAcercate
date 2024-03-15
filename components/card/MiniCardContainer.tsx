@@ -3,11 +3,12 @@ import { MiniCard } from './MiniCard';
 
 interface MiniCardContainerI2 {
     data?: ExtendedEvent[];
+    sessionUserId: string
 }
 
 
 
-const MiniCardContainer = ({ data }: MiniCardContainerI2) => {
+const MiniCardContainer = ({ data, sessionUserId }: MiniCardContainerI2) => {
     if (data)
         return (
             <div className='  grid grid-cols-2 gap-4 justify-items-center" style="grid-auto-rows: 1fr;' >
@@ -30,6 +31,7 @@ const MiniCardContainer = ({ data }: MiniCardContainerI2) => {
                                 nombreAutor={item.author?.name??""}
                                 imagenAutor={item.author?.image??""}
                                 imagenEvento={item?.image??""}
+                                sessionUserId={sessionUserId}
                             />
                         );
                     })

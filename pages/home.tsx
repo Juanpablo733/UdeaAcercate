@@ -77,7 +77,8 @@ const Home = () => {
                     </div> */}
                 </div>
                 <div>
-                    <MiniCardContainer data={eventsData?.events} />
+                    <MiniCardContainer data={eventsData?.events}
+                    sessionUserId={userId} />
                 </div>
             </div>
 
