@@ -64,7 +64,7 @@ const typeDefs = gql`
         test(bool:Boolean!): Boolean
         users: [User]
         user(email:String!): User
-        events(tag:String, hashtags:[String]): [Event]
+        events(sessionUserId: String!, tag:String, hashtags:[String]): [Event]
         eventsCreated(userId:String!): [Event]
         eventsAttending(userId:String!): [Event]
         event(id:String!): Event
@@ -81,7 +81,7 @@ const typeDefs = gql`
         updateProfile(userId:String!, faculty: String, career: String, type:   String
             campus: String, description: String, hobbies: String, socialLinks: [String]): Profile
         createComment(userId:String!, eventId:String!, text:String!): Comment
-        deleteComment(id:String!): Boolean
+        deleteCommentByOwner(userId: String!, commentId:String!): Boolean
         addAttendee(userId:String!, eventId:String!): Attendee
         quitAttendee(userId:String!, eventId:String!): Boolean
         generateEmailToken(userId:String!): EmailToken

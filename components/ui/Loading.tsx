@@ -3,11 +3,11 @@ import ReactLoading from 'react-loading';
 
 const Loading = () => {
   return (
-    <div className='flex flex-col justify-center items-center p-10'>
-        <ReactLoading type='spokes' color='#026937' height={467} width={175} />
-        <p className='text-5xl'>CARGANDO</p>
+    <div className='flex flex-col justify-center items-center p-20 h-screen'>
+      <ReactLoading type='spokes' color='#026937' height='20vh' width='20vh' />
+      <p className='text-2xl m-10'>Cargando</p>
     </div>
   )
 }
 
-export  {Loading}
+export { Loading }

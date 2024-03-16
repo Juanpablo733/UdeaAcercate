@@ -21,7 +21,7 @@ const Home = () => {
     const [hashtags, setHashtags] = useState([]);
     const { data: eventsData, loading: loadingAll, error: errorAll } = useQuery<{ events: ExtendedEvent[] }>(GET_EVENTS_PREVIEW, {
         fetchPolicy: 'cache-first',
-        variables: { tag, hashtags }
+        variables: { sessionUserId: userId, tag, hashtags }
     })
 
     if (loadingAll || loadingUser) return (<Loading />)
@@ -77,7 +77,8 @@ const Home = () => {
                     </div> */}
                 </div>
                 <div>
-                    <MiniCardContainer data={eventsData?.events} />
+                    <MiniCardContainer data={eventsData?.events}
+                        sessionUserId={userId} />
                 </div>
             </div>
 

@@ -5,7 +5,7 @@ import { Avatar } from '../ui/Avatar'
 import { MdOutlinePermIdentity, MdOutlinePlace, MdOutlineSubdirectoryArrowLeft } from 'react-icons/md'
 import { useMutation, useQuery } from '@apollo/client'
 import { ExtendedEvent, GET_EVENT_BY_ID } from '@/graphql/client/event'
-import { Attendee, Comment, Event } from "@/prisma/generated/type-graphql"
+import { Attendee, Comment } from "@/prisma/generated/type-graphql"
 import { CommentContainer } from './CommentContainer'
 import { useUserData } from '@/hooks/useUserData'
 import { ADD_ATTENDEE, FIND_ATTENDEE, QUIT_ATTENDEE } from '@/graphql/client/attendee'
@@ -17,11 +17,12 @@ interface completeCardProps {
     idAutor: string,
     nombre: string,
     imagenAutor: string,
-    imagenEvento: string
+    imagenEvento: string,
+    sessionUserId: string
 }
 
 
-const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEvento }: completeCardProps) => {
+const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEvento, sessionUserId }: completeCardProps) => {
     const [comentario, setComentario] = useState('');
     const { userData } = useUserData()
     const idUsuarioActual = userData?.user.id
@@ -36,12 +37,14 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
 
         })
     const [addAttendee] = useMutation<{ attendee: Attendee }>(ADD_ATTENDEE,
-        { variables: { userId: idUsuarioActual, eventId: id },
-    });
+        {
+            variables: { userId: idUsuarioActual, eventId: id },
+        });
 
     const [quitAttendee] = useMutation<{ attendee: Attendee }>(QUIT_ATTENDEE,
-        { variables: { userId: idUsuarioActual, eventId: id },
-    });
+        {
+            variables: { userId: idUsuarioActual, eventId: id },
+        });
 
     const [createComment] = useMutation<{ comment: Comment }>(CREATE_COMMENT,
         { variables: { userId: idUsuarioActual, eventId: id, text: comentario } });
@@ -56,32 +59,32 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
     const executeAddAttendee = async () => {
         try {
             await addAttendee({
-                refetchQueries: [GET_EVENT_BY_ID,FIND_ATTENDEE]
-                
+                refetchQueries: [GET_EVENT_BY_ID, FIND_ATTENDEE]
+
             });
-            console.log("después de la mutación",data);
-            
+            console.log("después de la mutación", data);
+
         } catch (error) {
             console.error('Error al ejecutar la mutación:', error);
         }
     }
 
-    const executeQuitAttendee =async () => {
-        try{
+    const executeQuitAttendee = async () => {
+        try {
             await quitAttendee(
-                {refetchQueries: [GET_EVENT_BY_ID,FIND_ATTENDEE]}
+                { refetchQueries: [GET_EVENT_BY_ID, FIND_ATTENDEE] }
             )
         }
         catch (error) {
             console.error('Error al ejecutar la mutación:', error);
         }
-        
+
     }
 
     const executeCreateComment = async () => {
         try {
             const resultado = await createComment(
-                {refetchQueries: [GET_EVENT_BY_ID]}
+                { refetchQueries: [GET_EVENT_BY_ID] }
             );
             console.log('Data resultante de la mutación:', resultado.data);
         } catch (error) {
@@ -101,8 +104,8 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
                         <span className='font-bold'>{data?.event.place}</span>
                     </div>
                     <div className='flex'>
-                        <button className=' ButtonCard' 
-                        onClick={attendeeData?.attendee?executeQuitAttendee:executeAddAttendee}>{attendeeData?.attendee?"No Asistir":"Asistir"}
+                        <button className=' ButtonCard'
+                            onClick={attendeeData?.attendee ? executeQuitAttendee : executeAddAttendee}>{attendeeData?.attendee ? "No Asistir" : "Asistir"}
                         </button>
                         <div className='flex items-center'>
                             <MdOutlinePermIdentity className={'h-8 w-8'} />
@@ -122,7 +125,11 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
                     {data?.event.description}
                 </div>
 
-                <CommentContainer data={data?.event.comments} />
+                <div className='pl-4'>
+                    <CommentContainer
+                        data={data?.event.comments}
+                        sessionUserId={sessionUserId} />
+                </div>
                 <div className='flex'>
                     <input
                         className=' w-full rounded-2xl text-center bg-gray-100 border border-black  '

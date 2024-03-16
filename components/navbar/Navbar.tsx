@@ -16,7 +16,7 @@ const Navbar = ({children}: NavbarProps) => {
       <button className='text-white font-bold' onClick={CloseSession} >
                 Cerrar sesión
       </button>
-        <Link href={'/perfil'} >
+        <Link href={'/home'} >
           <div className=' flex items-center'>
               <Image src={'/udea-texto.png'} alt={'udea-texto'} width={100} height={64} className=''/>
               <Image src={'/cercate-texto.png'} alt={'cercate-texto'} width={100} height={64} className=''/>

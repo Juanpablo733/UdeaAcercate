@@ -20,8 +20,8 @@ mutation Mutation($title: String!, $description: String!, $place: String!, $date
 
 
 const GET_EVENTS_PREVIEW = gql`
-    query Events($tag: String, $hashtags: [String]) {
-        events(tag: $tag, hashtags: $hashtags){
+    query Events($sessionUserId: String!, $tag: String, $hashtags: [String]) {
+        events(sessionUserId: $sessionUserId, tag: $tag, hashtags: $hashtags) {
             id
             tag
             author {

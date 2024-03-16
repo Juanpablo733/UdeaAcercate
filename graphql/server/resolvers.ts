@@ -130,12 +130,13 @@ const resolvers: Resolver = {
         },
         events: async (parent, args, context) => {
             const { db } = context;
-            if (args == undefined)
-                return await db.event.findMany();
 
             const filter = args.hashtags
             const options = {
                 where: {
+                    NOT: {
+                        authorId: args.sessionUserId
+                    },
                     tag: args.tag,
                     hashtags: filter
                 }
@@ -154,8 +155,7 @@ const resolvers: Resolver = {
                 .catch((e) => {
                     console.log(e)
                     return null
-                });;
-
+                });
         },
         eventsCreated: async (parent, args, context) => {
             const { db } = context;
@@ -291,17 +291,23 @@ const resolvers: Resolver = {
                 return null
             });
         },
-        deleteComment: async (parent, args, context) => {
+        deleteCommentByOwner: async (parent, args, context) => {
             const { db } = context;
-            var deleted: Boolean = true;
-            await db.comment.delete({
+            var deleted: Boolean = false;
+            const commentToDelete = await db.comment.findUnique({
                 where: {
-                    id: args.id,
+                    id: args.commentId
                 }
-            }).catch((e) => {
-                console.log(e)
-                deleted = false;
-            });
+            })
+            if (commentToDelete) {
+                if (commentToDelete.userId == args.userId) {
+                    await db.comment.delete({
+                        where: {
+                            id: args.commentId,
+                        }
+                    }).then(() => deleted = true)
+                }
+            }
             return deleted;
         },
         addAttendee: async (parent, args, context) => {
