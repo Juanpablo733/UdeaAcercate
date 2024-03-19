@@ -17,7 +17,7 @@ interface CommentProps {
 
 const Comment = ({ id, userImage, userName, text, date, userId, sessionUserId }: CommentProps) => {
     const [deleteSelfComment] = useMutation<{ comment: Comment }>(DELETE_SELF_COMMENT,
-        { variables: { userId: sessionUserId, commentId: id } });
+        { variables: { ownerId: sessionUserId, commentId: id } });
 
     const executeDeleteSelfComment = async () => {
         try {
@@ -26,7 +26,8 @@ const Comment = ({ id, userImage, userName, text, date, userId, sessionUserId }:
             );
             toast.success("¡Comentario eliminado satisfactoriamente!")
         } catch (error) {
-            toast.success("No se ha logrado eliminar el comentario")
+            console.log(error)
+            toast.error("No se ha logrado eliminar el comentario")
         }
     }
 

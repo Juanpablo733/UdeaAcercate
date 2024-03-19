@@ -6,6 +6,7 @@ const useUserData = () => {
   const { data: session, status } = useSession();
 
   const userEmail = session?.user?.email;
+  console.log("[UserData] Session: ", session)
 
   const { data: userData, loading } = useQuery<{ user: User }>(
     GET_USER_BY_EMAIL,
