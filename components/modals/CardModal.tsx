@@ -20,7 +20,7 @@ interface CardModalProps {
 const CardModal = ({ open, setOpen, modalTitle, tagType, date, children,
   day, hours, minutes, month, year }: CardModalProps) => {
   // const [fullWidth, setFullWidth] = useState(true);
-  const [maxWidth, setMaxWidth] = useState<DialogProps['maxWidth']>('lg');
+  const [maxWidth, setMaxWidth] = useState<DialogProps['maxWidth']>('md');
   return (
     <Dialog open={open} onClose={() => setOpen(false)} maxWidth={maxWidth}>
       <div className='flex justify-end mt-2 mr-5'>

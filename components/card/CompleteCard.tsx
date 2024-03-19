@@ -2,14 +2,15 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { Avatar } from '../ui/Avatar'
-import { MdOutlinePermIdentity, MdOutlinePlace, MdOutlineSubdirectoryArrowLeft } from 'react-icons/md'
+import { MdOutlineDelete, MdOutlinePermIdentity, MdOutlinePlace, MdOutlineSubdirectoryArrowLeft } from 'react-icons/md'
 import { useMutation, useQuery } from '@apollo/client'
-import { ExtendedEvent, GET_EVENT_BY_ID } from '@/graphql/client/event'
+import { DELETE_EVENT_BY_OWNER, ExtendedEvent, GET_EVENTS_ATTENDING, GET_EVENTS_CREATED, GET_EVENTS_PREVIEW, GET_EVENT_BY_ID } from '@/graphql/client/event'
 import { Attendee, Comment } from "@/prisma/generated/type-graphql"
 import { CommentContainer } from './CommentContainer'
 import { useUserData } from '@/hooks/useUserData'
 import { ADD_ATTENDEE, FIND_ATTENDEE, QUIT_ATTENDEE } from '@/graphql/client/attendee'
 import { CREATE_COMMENT } from '@/graphql/client/comment'
+import { toast } from 'react-toastify'
 
 interface completeCardProps {
     id: string,
@@ -24,6 +25,7 @@ interface completeCardProps {
 
 const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEvento, sessionUserId }: completeCardProps) => {
     const [comentario, setComentario] = useState('');
+    const [wantDelete, setWantDelete] = useState<boolean>(false);
     const { userData } = useUserData()
     const idUsuarioActual = userData?.user.id
     const { data, loading, error } = useQuery<{ event: ExtendedEvent }>(GET_EVENT_BY_ID, {
@@ -48,6 +50,9 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
 
     const [createComment] = useMutation<{ comment: Comment }>(CREATE_COMMENT,
         { variables: { userId: idUsuarioActual, eventId: id, text: comentario } });
+
+    const [deleteEvent] = useMutation(DELETE_EVENT_BY_OWNER,
+        { variables: { ownerId: idUsuarioActual, eventId: id } });
 
     if (loading) return <p>Loading...</p>
     console.log("Evento:", data)
@@ -92,11 +97,30 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
         }
     }
 
+    const executeDeleteEvent = async () => {
+        try {
+            const resultado = await deleteEvent(
+                { refetchQueries: [GET_EVENTS_PREVIEW, GET_EVENTS_CREATED, GET_EVENTS_ATTENDING] }
+            );
+            toast.success("¡Evento eliminado con éxito!")
+            console.log('Data resultante de la mutación:', resultado.data);
+        } catch (error) {
+            toast.error("No se ha eliminado el evento")
+            console.error('Error al ejecutar la mutación:', error);
+        }
+    }
+
     return (
-        <div className='flex'>
+        <div className='flex justify-evenly'>
             {/* lado izquierdo */}
-            <div className='flex flex-col h-full w-full'>
-                <Image src={imagenEvento} width={1000} height={0} alt={''} />
+            <div className='flex flex-col h-full w-[50%] pr-2'>
+                <div className='w-[100%] h-[50%] rounded-lg'>
+                    <Image className='rounded-lg'
+                        width={1000}
+                        height={0}
+                        src={imagenEvento}
+                        alt={'Imagen de evento'} />
+                </div>
                 <div className='flex justify-between p-2'>
                     <div className='flex gap-2 items-center'>
                         <MdOutlinePlace className="h-8 w-8" />
@@ -112,10 +136,48 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
                             <span className='font-bold'>{data?.event.attendeesCount}</span>
                         </div>
                     </div>
+
                 </div>
+                <div className='p-2 flex justify-start'>
+                    {idAutor === idUsuarioActual
+                        ?
+                        <>
+                            {wantDelete
+                                ?
+                                <div>
+                                    <p className='italic text-justify pb-2'>Al eliminar este evento se eliminarán también sus comentarios y lista de asistentes.
+                                        ¿Desea continuar?
+                                    </p>
+                                    <div className='flex justify-evenly'>
+                                    <button onClick={executeDeleteEvent} className='ButtonCard w-16'>Sí</button>
+                                    <button onClick={() => setWantDelete(false)} className='ButtonCard w-16'>No</button>
+                                    </div>
+                                </div>
+                                :
+                                < button
+                                    className='flex justify-center items-center hover:bg-gray-200 rounded-full'
+                                    onClick={() => setWantDelete(true)}
+                                >
+                                    <MdOutlineDelete
+                                        className='h-[20px] w-[20px]'
+                                    />
+                                </button>
+                            }
+                        </>
+                        : <></>
+                    }
+                </div>
+                {/* <div>
+                    {idAutor === idUsuarioActual
+                        ?
+                        <button onClick={executeDeleteEvent}>eliminar</button>
+                        :
+                        <></>
+                    }
+                </div> */}
             </div>
             {/* lado derecho */}
-            <div className='flex flex-col h-full w-full p-2 gap-2'>
+            <div className='flex flex-col h-full w-[50%] pl-2 gap-2'>
                 <Avatar
                     name={nombre}
                     imageUrl={imagenAutor}
@@ -150,7 +212,7 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
                 </div>
 
             </div>
-        </div>
+        </div >
     )
 }
 

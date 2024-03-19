@@ -1,16 +1,12 @@
 import { Resolver, Context } from "@/types";
 import { sendVerificationEmail } from "../../util/nodemailerConfig";
 import { cloneDeep } from "@apollo/client/utilities";
+import { deleteEvent, findEvent } from "./utils/eventUtil";
+import { deleteAllAttendeesFromEvent } from "./utils/attendeeUtil";
+import { deleteAllCommentsFromEvent } from "./utils/commentUtil";
+import { findUser } from "./utils/userUtil";
 
-const resolveUser = async (userId: string, context: Context) => {
-    const { db } = context;
-    const user = db.user.findUnique({
-        where: {
-            id: userId
-        }
-    })
-    return user;
-}
+
 
 const resolveEvent = async (eventId: string, context: Context) => {
     const { db } = context;
@@ -46,7 +42,7 @@ const resolvers: Resolver = {
             return comments;
         },
         author: async (parent, args, context) => {
-            return resolveUser(parent.authorId, context);
+            return findUser(context.db, parent.authorId);
         },
         attendeesCount: async (parent, args, context) => {
             const { db } = context;
@@ -91,7 +87,7 @@ const resolvers: Resolver = {
     },
     Comment: {
         user: async (parent, args, context) => {
-            return resolveUser(parent.userId, context);
+            return findUser(context.db, parent.authorId);
         },
         event: async (parent, args, context) => {
             return resolveEvent(parent.eventId, context);
@@ -99,12 +95,12 @@ const resolvers: Resolver = {
     },
     Profile: {
         user: async (parent, args, context) => {
-            return resolveUser(parent.userId, context);
+            return findUser(context.db, parent.userId);
         },
     },
     Attendee: {
         user: async (parent, args, context) => {
-            return resolveUser(parent.userId, context);
+            return findUser(context.db, parent.authorId);
         },
         event: async (parent, args, context) => {
             return resolveEvent(parent.eventId, context);
@@ -181,6 +177,7 @@ const resolvers: Resolver = {
         },
         event: async (parent, args, context) => {
             const { db } = context;
+            console.log("Resolver event id: ", args.id)
             return await db.event.findUnique({
                 where: {
                     id: args.id
@@ -250,6 +247,21 @@ const resolvers: Resolver = {
             console.log("Nuevo evento: ", newEvent)
             return newEvent;
         },
+        deleteEventByOwner: async (parent, args, context) => {
+            const { db } = context;
+            var deleted: Boolean = false;
+
+            const eventToDelete = await findEvent(db, args.eventId)
+            if (eventToDelete.authorId === args.ownerId) {
+                await deleteAllAttendeesFromEvent(db, args.eventId);
+                await deleteAllCommentsFromEvent(db, args.eventId);
+                if (eventToDelete !== null) {
+                    await deleteEvent(db, args.eventId);
+                    deleted = true
+                }
+            }
+            return deleted
+        },
         createProfile: async (parent, args, context) => {
             const { db } = context;
             const findProfile = await db.profile.findUnique({
@@ -300,7 +312,7 @@ const resolvers: Resolver = {
                 }
             })
             if (commentToDelete) {
-                if (commentToDelete.userId == args.userId) {
+                if (commentToDelete.userId == args.ownerId) {
                     await db.comment.delete({
                         where: {
                             id: args.commentId,

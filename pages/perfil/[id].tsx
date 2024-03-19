@@ -99,7 +99,7 @@ const Perfil = () => {
                                 {eventType === 'created'
                                     ? eventsCreatedData?.eventsCreated
                                     : eventsAttendingData?.eventsAttending}
-                                    sessionUserId={userData?.user.id}
+                                sessionUserId={userData?.user.id}
                             />
                         </div>
                     </div>

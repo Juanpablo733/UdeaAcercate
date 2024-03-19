@@ -16,8 +16,8 @@ const CREATE_COMMENT = gql`
 `
 
 const DELETE_SELF_COMMENT = gql`
-    mutation Mutation($userId: String!, $commentId: String!) {
-        deleteCommentByOwner(userId: $userId, commentId: $commentId)
+    mutation Mutation($ownerId: String!, $commentId: String!) {
+        deleteCommentByOwner(ownerId: $ownerId, commentId: $commentId)
     }
 `
 

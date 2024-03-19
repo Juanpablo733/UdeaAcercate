@@ -9,7 +9,7 @@ interface MiniCardProps {
     id: string,
     titulo: string,
     asistentes: number,
-    tipo:"Deportivo" | "Cultural" | "Academico",
+    tipo: "Deportivo" | "Cultural" | "Academico",
     // tipo: string,
     fecha: string
     minutes: string,
@@ -45,7 +45,7 @@ const MiniCard = ({ id, nombreAutor, titulo, asistentes, tipo, fecha,
                 <div className="flex flex-col h-auto items-center">
                     <span className="text-sm font-semibold">{titulo}</span>
                     <div className="relative h-48 w-96">
-                        <Image className="rounded-lg" src={imagenEvento} alt={'evento1'} layout="fill" objectFit="cover"/>
+                        <Image className="rounded-lg" src={imagenEvento} alt={'evento1'} layout="fill" objectFit="cover" />
                     </div>
                 </div>
                 <div className="flex gap-4 justify-between h-12">
@@ -60,7 +60,13 @@ const MiniCard = ({ id, nombreAutor, titulo, asistentes, tipo, fecha,
                     <div className="w-1/3">
                         <button
                             className='ButtonCard  flex items-center h-full w-full justify-center'
-                            onClick={() => setOpen(true)}
+                            onClick={() => {
+                                console.log(`Event Id: ${id}
+                                Author ID ${idAutor}
+                                Session User ${sessionUserId}`)
+                                setOpen(true)
+                            }
+                            }
                         >
                             Ver Más
                         </button>
