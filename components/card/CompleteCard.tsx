@@ -149,8 +149,8 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
                                         ¿Desea continuar?
                                     </p>
                                     <div className='flex justify-evenly'>
-                                    <button onClick={executeDeleteEvent} className='ButtonCard w-16'>Sí</button>
-                                    <button onClick={() => setWantDelete(false)} className='ButtonCard w-16'>No</button>
+                                        <p onClick={executeDeleteEvent} className='hover:text-[#35944B] hover:font-bold'>Sí</p>
+                                        <p onClick={() => setWantDelete(false)} className='hover:text-[#35944B] hover:font-bold'>No</p>
                                     </div>
                                 </div>
                                 :
