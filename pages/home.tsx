@@ -40,16 +40,17 @@ const Home = () => {
             <title>
                 Home | UdeAcercate
             </title>
-            <div className='flex flex-col gap-10 pb-4 Yellow-little h-full'>
-                <Navbar>
+            <div className='flex flex-col gap-10 pb-4 Yellow-little h-full debug'>
+                {/* <Navbar>
                     <Link href={`/perfil/${userId}`}>
                         <div className='flex gap-4 items-center justify-center'>
                             <span className=' text-white font-bold'>{session?.user?.name}</span>
                             <Image src={session?.user?.image!} alt={'avatar-image'} height={50} width={50} className='rounded-full' />
                         </div>
                     </Link>
-                </Navbar>
-                <div className=' flex gap-32  justify-center'>
+                </Navbar> */}
+                <Navbar/>
+                <div className=' flex gap-32  justify-center debug'>
                     <button
                         className=' flex gap-12 items-center text-xl text-center bg-white rounded-2xl'
                         onClick={() => setOpenCreateEvent(true)}>
@@ -78,7 +79,7 @@ const Home = () => {
                         <MdOutlineSearch className="h-10 w-16" />
                     </div> */}
                 </div>
-                <div>
+                <div className='debug'>
                     <MiniCardContainer data={eventsData?.events}
                         sessionUserId={userId} />
                 </div>
