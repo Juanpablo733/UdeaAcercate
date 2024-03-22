@@ -28,8 +28,9 @@ const MiniCard = ({ id, nombreAutor, titulo, asistentes, tipo, fecha,
     imagenAutor, idAutor, day, hours, minutes, month, year, imagenEvento, sessionUserId }: MiniCardProps) => {
     const [open, setOpen] = useState<boolean>(false);
     return (
-        <div className='w-full max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl'>
-            <div className='flex justify-between items-center'>
+        // <div className='w-full max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl '>
+        <div className='w-full min-w-[360px] max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl '>
+            <div className='flex justify-between items-center '>
                 <div className='flex gap-1 h-max'>
                     <MdOutlineLabel className="h-8 w-8" />
                     <TagType type={tipo} />
@@ -41,14 +42,17 @@ const MiniCard = ({ id, nombreAutor, titulo, asistentes, tipo, fecha,
                     </div>
                 </Link>
             </div>
-            <div className="gap-1 flex flex-col justify-between h-full">
-                <div className="flex flex-col h-auto items-center">
+            <div className="gap-1 flex flex-col justify-between h-full ">
+
+                <div className="flex flex-col h-auto items-center ">
                     <span className="text-sm font-semibold">{titulo}</span>
-                    <div className="relative h-48 w-96">
+                    {/* <div className="relative h-48 w-96"> */}
+                    <div className="relative h-48 w-80">
                         <Image className="rounded-lg" src={imagenEvento} alt={'evento1'} layout="fill" objectFit="cover" />
                     </div>
                 </div>
-                <div className="flex gap-4 justify-between h-12">
+
+                <div className="flex gap-4 justify-between h-12 ">
                     <div className="w-1/4 flex flex-col items-center justify-center">
                         <span className="font-bold text-sm">
                             {`${year}-${month}-${day}`}
