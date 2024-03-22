@@ -6,12 +6,10 @@ interface MiniCardContainerI2 {
     sessionUserId: string
 }
 
-
-
 const MiniCardContainer = ({ data, sessionUserId }: MiniCardContainerI2) => {
     if (data)
         return (
-            <div className='  grid grid-cols-2 gap-4 justify-items-center" style="grid-auto-rows: 1fr;' >
+            <div className='grid md:grid-cols-2 gap-4 justify-items-center px-4'>
                 {
                     data.map((item) => {
                         return (
@@ -46,6 +44,5 @@ const MiniCardContainer = ({ data, sessionUserId }: MiniCardContainerI2) => {
         )
     }
 };
-
 
 export { MiniCardContainer };
