@@ -15,20 +15,7 @@ const MiniCardContainer = ({ data, sessionUserId }: MiniCardContainerI2) => {
                         return (
                             <MiniCard
                                 key={item.id}
-                                id={item.id}
-                                titulo={item.title}
-                                asistentes={item.attendeesCount}
-                                tipo={item.tag}
-                                fecha={item.date.toString()}
-                                minutes={item.minutes}
-                                hours={item.hours}
-                                day={item.day}
-                                month={item.month}
-                                year={item.year}
-                                idAutor={item.author?.id??""}
-                                nombreAutor={item.author?.name??""}
-                                imagenAutor={item.author?.image??""}
-                                imagenEvento={item?.image??""}
+                                data={item}
                                 sessionUserId={sessionUserId}
                             />
                         );

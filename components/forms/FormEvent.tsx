@@ -60,7 +60,7 @@ const FormEvent = () => {
         }
     };
     return (
-        <form onSubmit={handleSubmit} className='w-[300px] flex flex-col items-center gap-2 p-2 sm:w-[500px]'>
+        <form onSubmit={handleSubmit} className='w-[260px] flex flex-col items-center gap-2 p-2 sm:w-[500px]'>
             <input
                 className='w-full text-center text-[#1F1F3B] text-lg font-medium border-b-2 border-b-[#5F5F5F] focus:outline-none focus:border-b-[#1F1F3B]'
                 type="text"
