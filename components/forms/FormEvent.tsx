@@ -1,25 +1,20 @@
-import React, { FormEvent as ReactFormEvent, useState } from 'react'
-import { CldUploadButton, CldUploadWidget } from 'next-cloudinary';
-import { spawn } from 'child_process';
-import { CREATE_EVENT } from '@/graphql/client/event';
-import { useMutation, useQuery } from '@apollo/client';
+import React, { Dispatch, SetStateAction, useState } from 'react'
+import { CldUploadButton } from 'next-cloudinary';
+import { CREATE_EVENT, GET_EVENTS_PREVIEW } from '@/graphql/client/event';
+import { useMutation } from '@apollo/client';
 import { useUserData } from '@/hooks/useUserData';
 import Image from 'next/image';
 import { toast } from 'react-toastify';
-import { useRouter } from 'next/router';
 import { MdImage } from 'react-icons/md';
 
-// import { useUserData } from '@/hooks/useUserData';
-
-interface FormDataInterface {
-    [key: string]: string;
+interface FormInterface {
+    setModalOpen: Dispatch<SetStateAction<boolean>>
 }
 
-const FormEvent = () => {
+const FormEvent = ({ setModalOpen }: FormInterface) => {
     const [crearEvento] = useMutation(CREATE_EVENT);
-    const { loading: loadingUser, session, status, userData } = useUserData();
+    const { userData } = useUserData();
     const userId = userData?.user.id
-    const router = useRouter();
 
     const [usrImage, setUsrImage] = useState('');
     const [title, setTitle] = useState('');
@@ -29,13 +24,7 @@ const FormEvent = () => {
     const [description, setDescription] = useState('');
 
     function handleOnUpload(result: any, operations: any) {
-        // if (!result.event === "success") {
-        // //   updateError(result?.info);
-        //   return;
-        // }
         setUsrImage(result?.info.secure_url);
-        // setValue("userImage", result?.info.secure_url);
-        // console.log("url imagen", usrImage);
     }
 
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
@@ -52,9 +41,10 @@ const FormEvent = () => {
                     tag,
                     authorId: userId,
                 },
+                refetchQueries: [GET_EVENTS_PREVIEW]
             });
             toast.success('¡Evento creado satisfactoriamente!');
-            router.push('/home');
+            setModalOpen(false)
         } catch (error) {
             toast.error('No se ha creado el evento');
         }

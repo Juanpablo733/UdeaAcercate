@@ -46,7 +46,7 @@ const Home = () => {
                         <MdAddCircleOutline className="h-8 w-8" />
                     </button>
                     <CreateEventModal open={openCreateEvent} setOpen={setOpenCreateEvent}>
-                        <FormEvent />
+                        <FormEvent setModalOpen={setOpenCreateEvent}/>
                     </CreateEventModal>
                     <select className='rounded-2xl' onChange={(e) => setTag(e.target.value)}>
                         <option value="" disabled selected>Filtrar por Tag</option>
