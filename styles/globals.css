@@ -92,8 +92,9 @@ label{
   position: fixed;
   bottom: 0;
   right: 0;
-  padding: 38px; /* Agrega un poco de espacio para que no esté demasiado pegado al borde */
+  padding: 32px;
 }
+
 
 .button-form{
   border-radius: 28px;
