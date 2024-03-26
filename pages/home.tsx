@@ -19,7 +19,6 @@ const Home = () => {
     const userId = userData?.user.id
     const [tag, setTag] = useState('');
     const [hashtags, setHashtags] = useState([]);
-    console.log("[Home] userId: ", userId)
     const { data: eventsData, loading: loadingAll, error: errorAll } = useQuery<{ events: ExtendedEvent[] }>(GET_EVENTS_PREVIEW, {
         fetchPolicy: 'no-cache',
         variables: { sessionUserId: userId, tag, hashtags }
@@ -27,13 +26,10 @@ const Home = () => {
 
     if (loadingUser) return (<Loading />)
     if (loadingAll) return (<Loading />)
-    console.log('antes de loading: ', eventsData);
     if (errorAll) {
         console.log("Error en carga de eventos", errorAll)
         return <p>error {errorAll.message}</p>
     }
-
-    console.log('despues de loading: ', eventsData?.events);
 
     return (
         <PrivateLayout>
@@ -50,7 +46,7 @@ const Home = () => {
                         <MdAddCircleOutline className="h-8 w-8" />
                     </button>
                     <CreateEventModal open={openCreateEvent} setOpen={setOpenCreateEvent}>
-                        <FormEvent />
+                        <FormEvent setModalOpen={setOpenCreateEvent}/>
                     </CreateEventModal>
                     <select className='rounded-2xl' onChange={(e) => setTag(e.target.value)}>
                         <option value="" disabled selected>Filtrar por Tag</option>

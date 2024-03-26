@@ -13,9 +13,6 @@ const PrivateLayout = ({ children }: PropsWithChildren) => {
     const { loading: loadingUser, session, status, userData } = useUserData();
     const notVerified = userData?.user?.emailVerified === null || userData?.user?.emailVerified === undefined
     const userId = userData?.user.id
-    console.log("Email no verificado: ", notVerified)
-    console.log("Status:", status)
-    console.log("Session: ", session)
     const { data: profileData, loading: loadingPerfil, error } = useQuery<{ profile: Profile }>(
         GET_PROFILE,
         {
@@ -23,7 +20,6 @@ const PrivateLayout = ({ children }: PropsWithChildren) => {
             fetchPolicy: 'no-cache',
         }
     )
-    console.log("loadingProfile:", loadingPerfil)
     useEffect(() => {
         if (status === "authenticated") {
             if (!loadingUser && notVerified) {
@@ -36,8 +32,6 @@ const PrivateLayout = ({ children }: PropsWithChildren) => {
             }
         }
     }, [loadingPerfil, profileData])
-
-    console.log("Perfil:", profileData?.profile)
 
     if (loadingUser) return (<Loading />)
 

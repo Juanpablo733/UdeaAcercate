@@ -87,7 +87,7 @@ const resolvers: Resolver = {
     },
     Comment: {
         user: async (parent, args, context) => {
-            return findUser(context.db, parent.authorId);
+            return findUser(context.db, parent.userId);
         },
         event: async (parent, args, context) => {
             return resolveEvent(parent.eventId, context);
@@ -100,7 +100,7 @@ const resolvers: Resolver = {
     },
     Attendee: {
         user: async (parent, args, context) => {
-            return findUser(context.db, parent.authorId);
+            return findUser(context.db, parent.userId);
         },
         event: async (parent, args, context) => {
             return resolveEvent(parent.eventId, context);

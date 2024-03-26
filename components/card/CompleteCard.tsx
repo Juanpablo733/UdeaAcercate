@@ -11,6 +11,8 @@ import { useUserData } from '@/hooks/useUserData'
 import { ADD_ATTENDEE, FIND_ATTENDEE, QUIT_ATTENDEE } from '@/graphql/client/attendee'
 import { CREATE_COMMENT } from '@/graphql/client/comment'
 import { toast } from 'react-toastify'
+import DeleteEventWarningModal from '../modals/DeleteEventWarningModal'
+import DeleteEventButton from '../buttons/DeleteEventButton';
 
 interface completeCardProps {
     id: string,
@@ -25,34 +27,28 @@ interface completeCardProps {
 
 const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEvento, sessionUserId }: completeCardProps) => {
     const [comentario, setComentario] = useState('');
-    const [wantDelete, setWantDelete] = useState<boolean>(false);
-    const { userData } = useUserData()
-    const idUsuarioActual = userData?.user.id
     const { data, loading, error } = useQuery<{ event: ExtendedEvent }>(GET_EVENT_BY_ID, {
         variables: { id },
         fetchPolicy: 'cache-first'
     })
     const { data: attendeeData, loading: loadingAttendee, error: errorAttendee } =
         useQuery<{ attendee: Attendee }>(FIND_ATTENDEE, {
-            variables: { userId: idUsuarioActual, eventId: id },
+            variables: { userId: sessionUserId, eventId: id },
             fetchPolicy: 'cache-first'
 
         })
     const [addAttendee] = useMutation<{ attendee: Attendee }>(ADD_ATTENDEE,
         {
-            variables: { userId: idUsuarioActual, eventId: id },
+            variables: { userId: sessionUserId, eventId: id },
         });
 
     const [quitAttendee] = useMutation<{ attendee: Attendee }>(QUIT_ATTENDEE,
         {
-            variables: { userId: idUsuarioActual, eventId: id },
+            variables: { userId: sessionUserId, eventId: id },
         });
 
     const [createComment] = useMutation<{ comment: Comment }>(CREATE_COMMENT,
-        { variables: { userId: idUsuarioActual, eventId: id, text: comentario } });
-
-    const [deleteEvent] = useMutation(DELETE_EVENT_BY_OWNER,
-        { variables: { ownerId: idUsuarioActual, eventId: id } });
+        { variables: { userId: sessionUserId, eventId: id, text: comentario } });
 
     if (loading) return <p>Loading...</p>
     console.log("Evento:", data)
@@ -97,19 +93,6 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
         }
     }
 
-    const executeDeleteEvent = async () => {
-        try {
-            const resultado = await deleteEvent(
-                { refetchQueries: [GET_EVENTS_PREVIEW, GET_EVENTS_CREATED, GET_EVENTS_ATTENDING] }
-            );
-            toast.success("¡Evento eliminado con éxito!")
-            console.log('Data resultante de la mutación:', resultado.data);
-        } catch (error) {
-            toast.error("No se ha eliminado el evento")
-            console.error('Error al ejecutar la mutación:', error);
-        }
-    }
-
     return (
         <div className='flex justify-evenly'>
             {/* lado izquierdo */}
@@ -139,42 +122,11 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
 
                 </div>
                 <div className='p-2 flex justify-start'>
-                    {idAutor === idUsuarioActual
-                        ?
-                        <>
-                            {wantDelete
-                                ?
-                                <div>
-                                    <p className='italic text-justify pb-2'>Al eliminar este evento se eliminarán también sus comentarios y lista de asistentes.
-                                        ¿Desea continuar?
-                                    </p>
-                                    <div className='flex justify-evenly'>
-                                        <p onClick={executeDeleteEvent} className='hover:text-[#35944B] hover:font-bold'>Sí</p>
-                                        <p onClick={() => setWantDelete(false)} className='hover:text-[#35944B] hover:font-bold'>No</p>
-                                    </div>
-                                </div>
-                                :
-                                < button
-                                    className='flex justify-center items-center hover:bg-gray-200 rounded-full'
-                                    onClick={() => setWantDelete(true)}
-                                >
-                                    <MdOutlineDelete
-                                        className='h-[20px] w-[20px]'
-                                    />
-                                </button>
-                            }
-                        </>
-                        : <></>
-                    }
+                    <DeleteEventButton
+                        idAutor={idAutor}
+                        sessionUserId={sessionUserId}
+                        eventId={id} />
                 </div>
-                {/* <div>
-                    {idAutor === idUsuarioActual
-                        ?
-                        <button onClick={executeDeleteEvent}>eliminar</button>
-                        :
-                        <></>
-                    }
-                </div> */}
             </div>
             {/* lado derecho */}
             <div className='flex flex-col h-full w-[50%] pl-2 gap-2'>
