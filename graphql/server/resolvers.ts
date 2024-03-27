@@ -5,7 +5,7 @@ import { deleteEvent, findEvent } from "./utils/eventUtil";
 import { deleteAllAttendeesFromEvent } from "./utils/attendeeUtil";
 import { deleteAllCommentsFromEvent } from "./utils/commentUtil";
 import { findUser } from "./utils/userUtil";
-import { Information } from '../../prisma/generated/client/index';
+import { getInteractionsByEventTags } from "./utils/interactionsUtil";
 
 
 
@@ -62,7 +62,7 @@ const resolvers: Resolver = {
             const date = new Date(parent.date)
             return date.getUTCFullYear()
         },
-    },    
+    },
     Event: {
         author: async (parent, args, context) => {
             return findUser(context.db, parent.authorId);
@@ -150,7 +150,7 @@ const resolvers: Resolver = {
                     }
                 }
             }
-            if (!args.tag){
+            if (!args.tag) {
                 delete options["where"]["info"]["tag"]
             } else {
                 options["where"]["info"]["hashtags"] = {
@@ -214,6 +214,10 @@ const resolvers: Resolver = {
             }).catch((e) => { console.log(e) })
             if (attendee) return true
             return false
+        },
+        interactionsPerEventType: async (parent, args, context) => {
+            const { db } = context;
+            return await getInteractionsByEventTags(db)
         }
     },
     Mutation: {

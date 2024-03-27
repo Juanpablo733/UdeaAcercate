@@ -64,6 +64,17 @@ const typeDefs = gql`
         expires: DateTime
     }
 
+    type InteractionsPerEventType {
+        academico: Interaction
+        cultural: Interaction
+        deportivo: Interaction
+    }
+
+    type Interaction {
+        attendees: Int
+        comments: Int
+    }
+
     type Query {
         test(bool:Boolean!): Boolean
         users: [User]
@@ -74,6 +85,7 @@ const typeDefs = gql`
         event(id:String!): Event
         profile(userId:String!): Profile
         attendee(userId:String!, eventId:String!): Boolean
+        interactionsPerEventType: InteractionsPerEventType
     }
     
     type Mutation {
