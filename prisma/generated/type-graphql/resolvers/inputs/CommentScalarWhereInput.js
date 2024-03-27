@@ -55,7 +55,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", StringFilter_1.StringFilter)
-], CommentScalarWhereInput.prototype, "eventId", void 0);
+], CommentScalarWhereInput.prototype, "infoId", void 0);
 exports.CommentScalarWhereInput = CommentScalarWhereInput = CommentScalarWhereInput_1 = tslib_1.__decorate([
     TypeGraphQL.InputType("CommentScalarWhereInput", {})
 ], CommentScalarWhereInput);

@@ -4,8 +4,7 @@ exports.EventOrderByWithRelationInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AttendeeOrderByRelationAggregateInput_1 = require("../inputs/AttendeeOrderByRelationAggregateInput");
-const CommentOrderByRelationAggregateInput_1 = require("../inputs/CommentOrderByRelationAggregateInput");
-const SortOrderInput_1 = require("../inputs/SortOrderInput");
+const InformationOrderByWithRelationInput_1 = require("../inputs/InformationOrderByWithRelationInput");
 const UserOrderByWithRelationInput_1 = require("../inputs/UserOrderByWithRelationInput");
 const SortOrder_1 = require("../../enums/SortOrder");
 let EventOrderByWithRelationInput = exports.EventOrderByWithRelationInput = class EventOrderByWithRelationInput {
@@ -21,13 +20,13 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", String)
-], EventOrderByWithRelationInput.prototype, "title", void 0);
+], EventOrderByWithRelationInput.prototype, "authorId", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", String)
-], EventOrderByWithRelationInput.prototype, "description", void 0);
+], EventOrderByWithRelationInput.prototype, "infoId", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
         nullable: true
@@ -35,47 +34,17 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], EventOrderByWithRelationInput.prototype, "place", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", String)
-], EventOrderByWithRelationInput.prototype, "date", void 0);
-tslib_1.__decorate([
-    TypeGraphQL.Field(_type => SortOrderInput_1.SortOrderInput, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", SortOrderInput_1.SortOrderInput)
-], EventOrderByWithRelationInput.prototype, "image", void 0);
-tslib_1.__decorate([
-    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", String)
-], EventOrderByWithRelationInput.prototype, "tag", void 0);
-tslib_1.__decorate([
-    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", String)
-], EventOrderByWithRelationInput.prototype, "authorId", void 0);
-tslib_1.__decorate([
-    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", String)
-], EventOrderByWithRelationInput.prototype, "hashtags", void 0);
-tslib_1.__decorate([
     TypeGraphQL.Field(_type => UserOrderByWithRelationInput_1.UserOrderByWithRelationInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", UserOrderByWithRelationInput_1.UserOrderByWithRelationInput)
 ], EventOrderByWithRelationInput.prototype, "author", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => CommentOrderByRelationAggregateInput_1.CommentOrderByRelationAggregateInput, {
+    TypeGraphQL.Field(_type => InformationOrderByWithRelationInput_1.InformationOrderByWithRelationInput, {
         nullable: true
     }),
-    tslib_1.__metadata("design:type", CommentOrderByRelationAggregateInput_1.CommentOrderByRelationAggregateInput)
-], EventOrderByWithRelationInput.prototype, "comments", void 0);
+    tslib_1.__metadata("design:type", InformationOrderByWithRelationInput_1.InformationOrderByWithRelationInput)
+], EventOrderByWithRelationInput.prototype, "info", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AttendeeOrderByRelationAggregateInput_1.AttendeeOrderByRelationAggregateInput, {
         nullable: true

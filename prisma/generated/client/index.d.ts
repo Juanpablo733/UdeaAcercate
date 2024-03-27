@@ -49,6 +49,11 @@ export type Profile = $Result.DefaultSelection<Prisma.$ProfilePayload>
  */
 export type Event = $Result.DefaultSelection<Prisma.$EventPayload>
 /**
+ * Model Information
+ * 
+ */
+export type Information = $Result.DefaultSelection<Prisma.$InformationPayload>
+/**
  * Model Attendee
  * 
  */
@@ -58,6 +63,11 @@ export type Attendee = $Result.DefaultSelection<Prisma.$AttendeePayload>
  * 
  */
 export type Comment = $Result.DefaultSelection<Prisma.$CommentPayload>
+/**
+ * Model Role
+ * 
+ */
+export type Role = $Result.DefaultSelection<Prisma.$RolePayload>
 
 /**
  * Enums
@@ -97,6 +107,14 @@ export const Tag: {
 
 export type Tag = (typeof Tag)[keyof typeof Tag]
 
+
+export const RoleTag: {
+  User: 'User',
+  Admin: 'Admin'
+};
+
+export type RoleTag = (typeof RoleTag)[keyof typeof RoleTag]
+
 }
 
 export type UserType = $Enums.UserType
@@ -110,6 +128,10 @@ export const Campus: typeof $Enums.Campus
 export type Tag = $Enums.Tag
 
 export const Tag: typeof $Enums.Tag
+
+export type RoleTag = $Enums.RoleTag
+
+export const RoleTag: typeof $Enums.RoleTag
 
 /**
  * ##  Prisma Client ʲˢ
@@ -304,6 +326,16 @@ export class PrismaClient<
   get event(): Prisma.EventDelegate<ExtArgs>;
 
   /**
+   * `prisma.information`: Exposes CRUD operations for the **Information** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Information
+    * const information = await prisma.information.findMany()
+    * ```
+    */
+  get information(): Prisma.InformationDelegate<ExtArgs>;
+
+  /**
    * `prisma.attendee`: Exposes CRUD operations for the **Attendee** model.
     * Example usage:
     * ```ts
@@ -322,6 +354,16 @@ export class PrismaClient<
     * ```
     */
   get comment(): Prisma.CommentDelegate<ExtArgs>;
+
+  /**
+   * `prisma.role`: Exposes CRUD operations for the **Role** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Roles
+    * const roles = await prisma.role.findMany()
+    * ```
+    */
+  get role(): Prisma.RoleDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -799,8 +841,10 @@ export namespace Prisma {
     EmailToken: 'EmailToken',
     Profile: 'Profile',
     Event: 'Event',
+    Information: 'Information',
     Attendee: 'Attendee',
-    Comment: 'Comment'
+    Comment: 'Comment',
+    Role: 'Role'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -817,7 +861,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'account' | 'session' | 'user' | 'verificationToken' | 'emailToken' | 'profile' | 'event' | 'attendee' | 'comment'
+      modelProps: 'account' | 'session' | 'user' | 'verificationToken' | 'emailToken' | 'profile' | 'event' | 'information' | 'attendee' | 'comment' | 'role'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -1283,6 +1327,72 @@ export namespace Prisma {
           }
         }
       }
+      Information: {
+        payload: Prisma.$InformationPayload<ExtArgs>
+        fields: Prisma.InformationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.InformationFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InformationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.InformationFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InformationPayload>
+          }
+          findFirst: {
+            args: Prisma.InformationFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InformationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.InformationFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InformationPayload>
+          }
+          findMany: {
+            args: Prisma.InformationFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InformationPayload>[]
+          }
+          create: {
+            args: Prisma.InformationCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InformationPayload>
+          }
+          createMany: {
+            args: Prisma.InformationCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.InformationDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InformationPayload>
+          }
+          update: {
+            args: Prisma.InformationUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InformationPayload>
+          }
+          deleteMany: {
+            args: Prisma.InformationDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.InformationUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.InformationUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InformationPayload>
+          }
+          aggregate: {
+            args: Prisma.InformationAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateInformation>
+          }
+          groupBy: {
+            args: Prisma.InformationGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<InformationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.InformationCountArgs<ExtArgs>,
+            result: $Utils.Optional<InformationCountAggregateOutputType> | number
+          }
+        }
+      }
       Attendee: {
         payload: Prisma.$AttendeePayload<ExtArgs>
         fields: Prisma.AttendeeFieldRefs
@@ -1412,6 +1522,72 @@ export namespace Prisma {
           count: {
             args: Prisma.CommentCountArgs<ExtArgs>,
             result: $Utils.Optional<CommentCountAggregateOutputType> | number
+          }
+        }
+      }
+      Role: {
+        payload: Prisma.$RolePayload<ExtArgs>
+        fields: Prisma.RoleFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RoleFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$RolePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RoleFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$RolePayload>
+          }
+          findFirst: {
+            args: Prisma.RoleFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$RolePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RoleFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$RolePayload>
+          }
+          findMany: {
+            args: Prisma.RoleFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$RolePayload>[]
+          }
+          create: {
+            args: Prisma.RoleCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$RolePayload>
+          }
+          createMany: {
+            args: Prisma.RoleCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.RoleDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$RolePayload>
+          }
+          update: {
+            args: Prisma.RoleUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$RolePayload>
+          }
+          deleteMany: {
+            args: Prisma.RoleDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RoleUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.RoleUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$RolePayload>
+          }
+          aggregate: {
+            args: Prisma.RoleAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateRole>
+          }
+          groupBy: {
+            args: Prisma.RoleGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<RoleGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RoleCountArgs<ExtArgs>,
+            result: $Utils.Optional<RoleCountAggregateOutputType> | number
           }
         }
       }
@@ -1648,12 +1824,10 @@ export namespace Prisma {
    */
 
   export type EventCountOutputType = {
-    comments: number
     attendees: number
   }
 
   export type EventCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    comments?: boolean | EventCountOutputTypeCountCommentsArgs
     attendees?: boolean | EventCountOutputTypeCountAttendeesArgs
   }
 
@@ -1673,16 +1847,42 @@ export namespace Prisma {
   /**
    * EventCountOutputType without action
    */
-  export type EventCountOutputTypeCountCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CommentWhereInput
+  export type EventCountOutputTypeCountAttendeesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AttendeeWhereInput
+  }
+
+
+
+  /**
+   * Count Type InformationCountOutputType
+   */
+
+  export type InformationCountOutputType = {
+    comments: number
+  }
+
+  export type InformationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    comments?: boolean | InformationCountOutputTypeCountCommentsArgs
+  }
+
+  // Custom InputTypes
+
+  /**
+   * InformationCountOutputType without action
+   */
+  export type InformationCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InformationCountOutputType
+     */
+    select?: InformationCountOutputTypeSelect<ExtArgs> | null
   }
 
 
   /**
-   * EventCountOutputType without action
+   * InformationCountOutputType without action
    */
-  export type EventCountOutputTypeCountAttendeesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AttendeeWhereInput
+  export type InformationCountOutputTypeCountCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommentWhereInput
   }
 
 
@@ -7370,72 +7570,46 @@ export namespace Prisma {
 
   export type EventMinAggregateOutputType = {
     id: string | null
-    title: string | null
-    description: string | null
-    place: string | null
-    date: Date | null
-    image: string | null
-    tag: $Enums.Tag | null
     authorId: string | null
+    infoId: string | null
+    place: string | null
   }
 
   export type EventMaxAggregateOutputType = {
     id: string | null
-    title: string | null
-    description: string | null
-    place: string | null
-    date: Date | null
-    image: string | null
-    tag: $Enums.Tag | null
     authorId: string | null
+    infoId: string | null
+    place: string | null
   }
 
   export type EventCountAggregateOutputType = {
     id: number
-    title: number
-    description: number
-    place: number
-    date: number
-    image: number
-    tag: number
     authorId: number
-    hashtags: number
+    infoId: number
+    place: number
     _all: number
   }
 
 
   export type EventMinAggregateInputType = {
     id?: true
-    title?: true
-    description?: true
-    place?: true
-    date?: true
-    image?: true
-    tag?: true
     authorId?: true
+    infoId?: true
+    place?: true
   }
 
   export type EventMaxAggregateInputType = {
     id?: true
-    title?: true
-    description?: true
-    place?: true
-    date?: true
-    image?: true
-    tag?: true
     authorId?: true
+    infoId?: true
+    place?: true
   }
 
   export type EventCountAggregateInputType = {
     id?: true
-    title?: true
-    description?: true
-    place?: true
-    date?: true
-    image?: true
-    tag?: true
     authorId?: true
-    hashtags?: true
+    infoId?: true
+    place?: true
     _all?: true
   }
 
@@ -7513,14 +7687,9 @@ export namespace Prisma {
 
   export type EventGroupByOutputType = {
     id: string
-    title: string
-    description: string
-    place: string
-    date: Date
-    image: string | null
-    tag: $Enums.Tag
     authorId: string
-    hashtags: string[]
+    infoId: string
+    place: string
     _count: EventCountAggregateOutputType | null
     _min: EventMinAggregateOutputType | null
     _max: EventMaxAggregateOutputType | null
@@ -7542,35 +7711,25 @@ export namespace Prisma {
 
   export type EventSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    description?: boolean
-    place?: boolean
-    date?: boolean
-    image?: boolean
-    tag?: boolean
     authorId?: boolean
-    hashtags?: boolean
+    infoId?: boolean
+    place?: boolean
     author?: boolean | UserDefaultArgs<ExtArgs>
-    comments?: boolean | Event$commentsArgs<ExtArgs>
+    info?: boolean | InformationDefaultArgs<ExtArgs>
     attendees?: boolean | Event$attendeesArgs<ExtArgs>
     _count?: boolean | EventCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["event"]>
 
   export type EventSelectScalar = {
     id?: boolean
-    title?: boolean
-    description?: boolean
-    place?: boolean
-    date?: boolean
-    image?: boolean
-    tag?: boolean
     authorId?: boolean
-    hashtags?: boolean
+    infoId?: boolean
+    place?: boolean
   }
 
   export type EventInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     author?: boolean | UserDefaultArgs<ExtArgs>
-    comments?: boolean | Event$commentsArgs<ExtArgs>
+    info?: boolean | InformationDefaultArgs<ExtArgs>
     attendees?: boolean | Event$attendeesArgs<ExtArgs>
     _count?: boolean | EventCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -7580,19 +7739,14 @@ export namespace Prisma {
     name: "Event"
     objects: {
       author: Prisma.$UserPayload<ExtArgs>
-      comments: Prisma.$CommentPayload<ExtArgs>[]
+      info: Prisma.$InformationPayload<ExtArgs>
       attendees: Prisma.$AttendeePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      title: string
-      description: string
-      place: string
-      date: Date
-      image: string | null
-      tag: $Enums.Tag
       authorId: string
-      hashtags: string[]
+      infoId: string
+      place: string
     }, ExtArgs["result"]["event"]>
     composites: {}
   }
@@ -7960,7 +8114,7 @@ export namespace Prisma {
 
     author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    comments<T extends Event$commentsArgs<ExtArgs> = {}>(args?: Subset<T, Event$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, 'findMany'> | Null>;
+    info<T extends InformationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InformationDefaultArgs<ExtArgs>>): Prisma__InformationClient<$Result.GetResult<Prisma.$InformationPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     attendees<T extends Event$attendeesArgs<ExtArgs> = {}>(args?: Subset<T, Event$attendeesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendeePayload<ExtArgs>, T, 'findMany'> | Null>;
 
@@ -7993,14 +8147,9 @@ export namespace Prisma {
    */ 
   interface EventFieldRefs {
     readonly id: FieldRef<"Event", 'String'>
-    readonly title: FieldRef<"Event", 'String'>
-    readonly description: FieldRef<"Event", 'String'>
-    readonly place: FieldRef<"Event", 'String'>
-    readonly date: FieldRef<"Event", 'DateTime'>
-    readonly image: FieldRef<"Event", 'String'>
-    readonly tag: FieldRef<"Event", 'Tag'>
     readonly authorId: FieldRef<"Event", 'String'>
-    readonly hashtags: FieldRef<"Event", 'String[]'>
+    readonly infoId: FieldRef<"Event", 'String'>
+    readonly place: FieldRef<"Event", 'String'>
   }
     
 
@@ -8313,27 +8462,6 @@ export namespace Prisma {
 
 
   /**
-   * Event.comments
-   */
-  export type Event$commentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Comment
-     */
-    select?: CommentSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: CommentInclude<ExtArgs> | null
-    where?: CommentWhereInput
-    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
-    cursor?: CommentWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
-  }
-
-
-  /**
    * Event.attendees
    */
   export type Event$attendeesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8366,6 +8494,986 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well.
      */
     include?: EventInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model Information
+   */
+
+  export type AggregateInformation = {
+    _count: InformationCountAggregateOutputType | null
+    _min: InformationMinAggregateOutputType | null
+    _max: InformationMaxAggregateOutputType | null
+  }
+
+  export type InformationMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    description: string | null
+    date: Date | null
+    image: string | null
+    tag: $Enums.Tag | null
+  }
+
+  export type InformationMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    description: string | null
+    date: Date | null
+    image: string | null
+    tag: $Enums.Tag | null
+  }
+
+  export type InformationCountAggregateOutputType = {
+    id: number
+    title: number
+    description: number
+    date: number
+    image: number
+    tag: number
+    hashtags: number
+    _all: number
+  }
+
+
+  export type InformationMinAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    date?: true
+    image?: true
+    tag?: true
+  }
+
+  export type InformationMaxAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    date?: true
+    image?: true
+    tag?: true
+  }
+
+  export type InformationCountAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    date?: true
+    image?: true
+    tag?: true
+    hashtags?: true
+    _all?: true
+  }
+
+  export type InformationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Information to aggregate.
+     */
+    where?: InformationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Information to fetch.
+     */
+    orderBy?: InformationOrderByWithRelationInput | InformationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: InformationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Information from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Information.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Information
+    **/
+    _count?: true | InformationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: InformationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: InformationMaxAggregateInputType
+  }
+
+  export type GetInformationAggregateType<T extends InformationAggregateArgs> = {
+        [P in keyof T & keyof AggregateInformation]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateInformation[P]>
+      : GetScalarType<T[P], AggregateInformation[P]>
+  }
+
+
+
+
+  export type InformationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InformationWhereInput
+    orderBy?: InformationOrderByWithAggregationInput | InformationOrderByWithAggregationInput[]
+    by: InformationScalarFieldEnum[] | InformationScalarFieldEnum
+    having?: InformationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: InformationCountAggregateInputType | true
+    _min?: InformationMinAggregateInputType
+    _max?: InformationMaxAggregateInputType
+  }
+
+  export type InformationGroupByOutputType = {
+    id: string
+    title: string
+    description: string
+    date: Date
+    image: string | null
+    tag: $Enums.Tag
+    hashtags: string[]
+    _count: InformationCountAggregateOutputType | null
+    _min: InformationMinAggregateOutputType | null
+    _max: InformationMaxAggregateOutputType | null
+  }
+
+  type GetInformationGroupByPayload<T extends InformationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<InformationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof InformationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], InformationGroupByOutputType[P]>
+            : GetScalarType<T[P], InformationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type InformationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    date?: boolean
+    image?: boolean
+    tag?: boolean
+    hashtags?: boolean
+    comments?: boolean | Information$commentsArgs<ExtArgs>
+    event?: boolean | Information$eventArgs<ExtArgs>
+    _count?: boolean | InformationCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["information"]>
+
+  export type InformationSelectScalar = {
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    date?: boolean
+    image?: boolean
+    tag?: boolean
+    hashtags?: boolean
+  }
+
+  export type InformationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    comments?: boolean | Information$commentsArgs<ExtArgs>
+    event?: boolean | Information$eventArgs<ExtArgs>
+    _count?: boolean | InformationCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+
+  export type $InformationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Information"
+    objects: {
+      comments: Prisma.$CommentPayload<ExtArgs>[]
+      event: Prisma.$EventPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string
+      description: string
+      date: Date
+      image: string | null
+      tag: $Enums.Tag
+      hashtags: string[]
+    }, ExtArgs["result"]["information"]>
+    composites: {}
+  }
+
+
+  type InformationGetPayload<S extends boolean | null | undefined | InformationDefaultArgs> = $Result.GetResult<Prisma.$InformationPayload, S>
+
+  type InformationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<InformationFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: InformationCountAggregateInputType | true
+    }
+
+  export interface InformationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Information'], meta: { name: 'Information' } }
+    /**
+     * Find zero or one Information that matches the filter.
+     * @param {InformationFindUniqueArgs} args - Arguments to find a Information
+     * @example
+     * // Get one Information
+     * const information = await prisma.information.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends InformationFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, InformationFindUniqueArgs<ExtArgs>>
+    ): Prisma__InformationClient<$Result.GetResult<Prisma.$InformationPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Information that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {InformationFindUniqueOrThrowArgs} args - Arguments to find a Information
+     * @example
+     * // Get one Information
+     * const information = await prisma.information.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends InformationFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, InformationFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__InformationClient<$Result.GetResult<Prisma.$InformationPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Information that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InformationFindFirstArgs} args - Arguments to find a Information
+     * @example
+     * // Get one Information
+     * const information = await prisma.information.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends InformationFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, InformationFindFirstArgs<ExtArgs>>
+    ): Prisma__InformationClient<$Result.GetResult<Prisma.$InformationPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Information that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InformationFindFirstOrThrowArgs} args - Arguments to find a Information
+     * @example
+     * // Get one Information
+     * const information = await prisma.information.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends InformationFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, InformationFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__InformationClient<$Result.GetResult<Prisma.$InformationPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Information that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InformationFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Information
+     * const information = await prisma.information.findMany()
+     * 
+     * // Get first 10 Information
+     * const information = await prisma.information.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const informationWithIdOnly = await prisma.information.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends InformationFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, InformationFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InformationPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Information.
+     * @param {InformationCreateArgs} args - Arguments to create a Information.
+     * @example
+     * // Create one Information
+     * const Information = await prisma.information.create({
+     *   data: {
+     *     // ... data to create a Information
+     *   }
+     * })
+     * 
+    **/
+    create<T extends InformationCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, InformationCreateArgs<ExtArgs>>
+    ): Prisma__InformationClient<$Result.GetResult<Prisma.$InformationPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Information.
+     *     @param {InformationCreateManyArgs} args - Arguments to create many Information.
+     *     @example
+     *     // Create many Information
+     *     const information = await prisma.information.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends InformationCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, InformationCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Information.
+     * @param {InformationDeleteArgs} args - Arguments to delete one Information.
+     * @example
+     * // Delete one Information
+     * const Information = await prisma.information.delete({
+     *   where: {
+     *     // ... filter to delete one Information
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends InformationDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, InformationDeleteArgs<ExtArgs>>
+    ): Prisma__InformationClient<$Result.GetResult<Prisma.$InformationPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Information.
+     * @param {InformationUpdateArgs} args - Arguments to update one Information.
+     * @example
+     * // Update one Information
+     * const information = await prisma.information.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends InformationUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, InformationUpdateArgs<ExtArgs>>
+    ): Prisma__InformationClient<$Result.GetResult<Prisma.$InformationPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Information.
+     * @param {InformationDeleteManyArgs} args - Arguments to filter Information to delete.
+     * @example
+     * // Delete a few Information
+     * const { count } = await prisma.information.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends InformationDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, InformationDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Information.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InformationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Information
+     * const information = await prisma.information.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends InformationUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, InformationUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Information.
+     * @param {InformationUpsertArgs} args - Arguments to update or create a Information.
+     * @example
+     * // Update or create a Information
+     * const information = await prisma.information.upsert({
+     *   create: {
+     *     // ... data to create a Information
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Information we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends InformationUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, InformationUpsertArgs<ExtArgs>>
+    ): Prisma__InformationClient<$Result.GetResult<Prisma.$InformationPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Information.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InformationCountArgs} args - Arguments to filter Information to count.
+     * @example
+     * // Count the number of Information
+     * const count = await prisma.information.count({
+     *   where: {
+     *     // ... the filter for the Information we want to count
+     *   }
+     * })
+    **/
+    count<T extends InformationCountArgs>(
+      args?: Subset<T, InformationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], InformationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Information.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InformationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends InformationAggregateArgs>(args: Subset<T, InformationAggregateArgs>): Prisma.PrismaPromise<GetInformationAggregateType<T>>
+
+    /**
+     * Group by Information.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InformationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends InformationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: InformationGroupByArgs['orderBy'] }
+        : { orderBy?: InformationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, InformationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetInformationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Information model
+   */
+  readonly fields: InformationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Information.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__InformationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    comments<T extends Information$commentsArgs<ExtArgs> = {}>(args?: Subset<T, Information$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    event<T extends Information$eventArgs<ExtArgs> = {}>(args?: Subset<T, Information$eventArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Information model
+   */ 
+  interface InformationFieldRefs {
+    readonly id: FieldRef<"Information", 'String'>
+    readonly title: FieldRef<"Information", 'String'>
+    readonly description: FieldRef<"Information", 'String'>
+    readonly date: FieldRef<"Information", 'DateTime'>
+    readonly image: FieldRef<"Information", 'String'>
+    readonly tag: FieldRef<"Information", 'Tag'>
+    readonly hashtags: FieldRef<"Information", 'String[]'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * Information findUnique
+   */
+  export type InformationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Information
+     */
+    select?: InformationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: InformationInclude<ExtArgs> | null
+    /**
+     * Filter, which Information to fetch.
+     */
+    where: InformationWhereUniqueInput
+  }
+
+
+  /**
+   * Information findUniqueOrThrow
+   */
+  export type InformationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Information
+     */
+    select?: InformationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: InformationInclude<ExtArgs> | null
+    /**
+     * Filter, which Information to fetch.
+     */
+    where: InformationWhereUniqueInput
+  }
+
+
+  /**
+   * Information findFirst
+   */
+  export type InformationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Information
+     */
+    select?: InformationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: InformationInclude<ExtArgs> | null
+    /**
+     * Filter, which Information to fetch.
+     */
+    where?: InformationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Information to fetch.
+     */
+    orderBy?: InformationOrderByWithRelationInput | InformationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Information.
+     */
+    cursor?: InformationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Information from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Information.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Information.
+     */
+    distinct?: InformationScalarFieldEnum | InformationScalarFieldEnum[]
+  }
+
+
+  /**
+   * Information findFirstOrThrow
+   */
+  export type InformationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Information
+     */
+    select?: InformationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: InformationInclude<ExtArgs> | null
+    /**
+     * Filter, which Information to fetch.
+     */
+    where?: InformationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Information to fetch.
+     */
+    orderBy?: InformationOrderByWithRelationInput | InformationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Information.
+     */
+    cursor?: InformationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Information from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Information.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Information.
+     */
+    distinct?: InformationScalarFieldEnum | InformationScalarFieldEnum[]
+  }
+
+
+  /**
+   * Information findMany
+   */
+  export type InformationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Information
+     */
+    select?: InformationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: InformationInclude<ExtArgs> | null
+    /**
+     * Filter, which Information to fetch.
+     */
+    where?: InformationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Information to fetch.
+     */
+    orderBy?: InformationOrderByWithRelationInput | InformationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Information.
+     */
+    cursor?: InformationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Information from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Information.
+     */
+    skip?: number
+    distinct?: InformationScalarFieldEnum | InformationScalarFieldEnum[]
+  }
+
+
+  /**
+   * Information create
+   */
+  export type InformationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Information
+     */
+    select?: InformationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: InformationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Information.
+     */
+    data: XOR<InformationCreateInput, InformationUncheckedCreateInput>
+  }
+
+
+  /**
+   * Information createMany
+   */
+  export type InformationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Information.
+     */
+    data: InformationCreateManyInput | InformationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * Information update
+   */
+  export type InformationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Information
+     */
+    select?: InformationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: InformationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Information.
+     */
+    data: XOR<InformationUpdateInput, InformationUncheckedUpdateInput>
+    /**
+     * Choose, which Information to update.
+     */
+    where: InformationWhereUniqueInput
+  }
+
+
+  /**
+   * Information updateMany
+   */
+  export type InformationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Information.
+     */
+    data: XOR<InformationUpdateManyMutationInput, InformationUncheckedUpdateManyInput>
+    /**
+     * Filter which Information to update
+     */
+    where?: InformationWhereInput
+  }
+
+
+  /**
+   * Information upsert
+   */
+  export type InformationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Information
+     */
+    select?: InformationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: InformationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Information to update in case it exists.
+     */
+    where: InformationWhereUniqueInput
+    /**
+     * In case the Information found by the `where` argument doesn't exist, create a new Information with this data.
+     */
+    create: XOR<InformationCreateInput, InformationUncheckedCreateInput>
+    /**
+     * In case the Information was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<InformationUpdateInput, InformationUncheckedUpdateInput>
+  }
+
+
+  /**
+   * Information delete
+   */
+  export type InformationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Information
+     */
+    select?: InformationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: InformationInclude<ExtArgs> | null
+    /**
+     * Filter which Information to delete.
+     */
+    where: InformationWhereUniqueInput
+  }
+
+
+  /**
+   * Information deleteMany
+   */
+  export type InformationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Information to delete
+     */
+    where?: InformationWhereInput
+  }
+
+
+  /**
+   * Information.comments
+   */
+  export type Information$commentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: CommentInclude<ExtArgs> | null
+    where?: CommentWhereInput
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    cursor?: CommentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
+  }
+
+
+  /**
+   * Information.event
+   */
+  export type Information$eventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event
+     */
+    select?: EventSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: EventInclude<ExtArgs> | null
+    where?: EventWhereInput
+  }
+
+
+  /**
+   * Information without action
+   */
+  export type InformationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Information
+     */
+    select?: InformationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: InformationInclude<ExtArgs> | null
   }
 
 
@@ -9275,7 +10383,7 @@ export namespace Prisma {
     text: string | null
     dateTime: Date | null
     userId: string | null
-    eventId: string | null
+    infoId: string | null
   }
 
   export type CommentMaxAggregateOutputType = {
@@ -9283,7 +10391,7 @@ export namespace Prisma {
     text: string | null
     dateTime: Date | null
     userId: string | null
-    eventId: string | null
+    infoId: string | null
   }
 
   export type CommentCountAggregateOutputType = {
@@ -9291,7 +10399,7 @@ export namespace Prisma {
     text: number
     dateTime: number
     userId: number
-    eventId: number
+    infoId: number
     _all: number
   }
 
@@ -9301,7 +10409,7 @@ export namespace Prisma {
     text?: true
     dateTime?: true
     userId?: true
-    eventId?: true
+    infoId?: true
   }
 
   export type CommentMaxAggregateInputType = {
@@ -9309,7 +10417,7 @@ export namespace Prisma {
     text?: true
     dateTime?: true
     userId?: true
-    eventId?: true
+    infoId?: true
   }
 
   export type CommentCountAggregateInputType = {
@@ -9317,7 +10425,7 @@ export namespace Prisma {
     text?: true
     dateTime?: true
     userId?: true
-    eventId?: true
+    infoId?: true
     _all?: true
   }
 
@@ -9398,7 +10506,7 @@ export namespace Prisma {
     text: string
     dateTime: Date
     userId: string
-    eventId: string
+    infoId: string
     _count: CommentCountAggregateOutputType | null
     _min: CommentMinAggregateOutputType | null
     _max: CommentMaxAggregateOutputType | null
@@ -9423,9 +10531,9 @@ export namespace Prisma {
     text?: boolean
     dateTime?: boolean
     userId?: boolean
-    eventId?: boolean
+    infoId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    event?: boolean | EventDefaultArgs<ExtArgs>
+    info?: boolean | InformationDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["comment"]>
 
   export type CommentSelectScalar = {
@@ -9433,12 +10541,12 @@ export namespace Prisma {
     text?: boolean
     dateTime?: boolean
     userId?: boolean
-    eventId?: boolean
+    infoId?: boolean
   }
 
   export type CommentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    event?: boolean | EventDefaultArgs<ExtArgs>
+    info?: boolean | InformationDefaultArgs<ExtArgs>
   }
 
 
@@ -9446,14 +10554,14 @@ export namespace Prisma {
     name: "Comment"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
-      event: Prisma.$EventPayload<ExtArgs>
+      info: Prisma.$InformationPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       text: string
       dateTime: Date
       userId: string
-      eventId: string
+      infoId: string
     }, ExtArgs["result"]["comment"]>
     composites: {}
   }
@@ -9821,7 +10929,7 @@ export namespace Prisma {
 
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    event<T extends EventDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EventDefaultArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+    info<T extends InformationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InformationDefaultArgs<ExtArgs>>): Prisma__InformationClient<$Result.GetResult<Prisma.$InformationPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -9855,7 +10963,7 @@ export namespace Prisma {
     readonly text: FieldRef<"Comment", 'String'>
     readonly dateTime: FieldRef<"Comment", 'DateTime'>
     readonly userId: FieldRef<"Comment", 'String'>
-    readonly eventId: FieldRef<"Comment", 'String'>
+    readonly infoId: FieldRef<"Comment", 'String'>
   }
     
 
@@ -10184,6 +11292,843 @@ export namespace Prisma {
 
 
   /**
+   * Model Role
+   */
+
+  export type AggregateRole = {
+    _count: RoleCountAggregateOutputType | null
+    _min: RoleMinAggregateOutputType | null
+    _max: RoleMaxAggregateOutputType | null
+  }
+
+  export type RoleMinAggregateOutputType = {
+    userId: string | null
+    role: $Enums.RoleTag | null
+  }
+
+  export type RoleMaxAggregateOutputType = {
+    userId: string | null
+    role: $Enums.RoleTag | null
+  }
+
+  export type RoleCountAggregateOutputType = {
+    userId: number
+    role: number
+    _all: number
+  }
+
+
+  export type RoleMinAggregateInputType = {
+    userId?: true
+    role?: true
+  }
+
+  export type RoleMaxAggregateInputType = {
+    userId?: true
+    role?: true
+  }
+
+  export type RoleCountAggregateInputType = {
+    userId?: true
+    role?: true
+    _all?: true
+  }
+
+  export type RoleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Role to aggregate.
+     */
+    where?: RoleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Roles to fetch.
+     */
+    orderBy?: RoleOrderByWithRelationInput | RoleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RoleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Roles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Roles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Roles
+    **/
+    _count?: true | RoleCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RoleMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RoleMaxAggregateInputType
+  }
+
+  export type GetRoleAggregateType<T extends RoleAggregateArgs> = {
+        [P in keyof T & keyof AggregateRole]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRole[P]>
+      : GetScalarType<T[P], AggregateRole[P]>
+  }
+
+
+
+
+  export type RoleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RoleWhereInput
+    orderBy?: RoleOrderByWithAggregationInput | RoleOrderByWithAggregationInput[]
+    by: RoleScalarFieldEnum[] | RoleScalarFieldEnum
+    having?: RoleScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RoleCountAggregateInputType | true
+    _min?: RoleMinAggregateInputType
+    _max?: RoleMaxAggregateInputType
+  }
+
+  export type RoleGroupByOutputType = {
+    userId: string
+    role: $Enums.RoleTag
+    _count: RoleCountAggregateOutputType | null
+    _min: RoleMinAggregateOutputType | null
+    _max: RoleMaxAggregateOutputType | null
+  }
+
+  type GetRoleGroupByPayload<T extends RoleGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RoleGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RoleGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RoleGroupByOutputType[P]>
+            : GetScalarType<T[P], RoleGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RoleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    userId?: boolean
+    role?: boolean
+  }, ExtArgs["result"]["role"]>
+
+  export type RoleSelectScalar = {
+    userId?: boolean
+    role?: boolean
+  }
+
+
+  export type $RolePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Role"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      userId: string
+      role: $Enums.RoleTag
+    }, ExtArgs["result"]["role"]>
+    composites: {}
+  }
+
+
+  type RoleGetPayload<S extends boolean | null | undefined | RoleDefaultArgs> = $Result.GetResult<Prisma.$RolePayload, S>
+
+  type RoleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<RoleFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: RoleCountAggregateInputType | true
+    }
+
+  export interface RoleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Role'], meta: { name: 'Role' } }
+    /**
+     * Find zero or one Role that matches the filter.
+     * @param {RoleFindUniqueArgs} args - Arguments to find a Role
+     * @example
+     * // Get one Role
+     * const role = await prisma.role.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends RoleFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, RoleFindUniqueArgs<ExtArgs>>
+    ): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Role that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {RoleFindUniqueOrThrowArgs} args - Arguments to find a Role
+     * @example
+     * // Get one Role
+     * const role = await prisma.role.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends RoleFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, RoleFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Role that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoleFindFirstArgs} args - Arguments to find a Role
+     * @example
+     * // Get one Role
+     * const role = await prisma.role.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends RoleFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, RoleFindFirstArgs<ExtArgs>>
+    ): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Role that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoleFindFirstOrThrowArgs} args - Arguments to find a Role
+     * @example
+     * // Get one Role
+     * const role = await prisma.role.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends RoleFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, RoleFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Roles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoleFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Roles
+     * const roles = await prisma.role.findMany()
+     * 
+     * // Get first 10 Roles
+     * const roles = await prisma.role.findMany({ take: 10 })
+     * 
+     * // Only select the `userId`
+     * const roleWithUserIdOnly = await prisma.role.findMany({ select: { userId: true } })
+     * 
+    **/
+    findMany<T extends RoleFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, RoleFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Role.
+     * @param {RoleCreateArgs} args - Arguments to create a Role.
+     * @example
+     * // Create one Role
+     * const Role = await prisma.role.create({
+     *   data: {
+     *     // ... data to create a Role
+     *   }
+     * })
+     * 
+    **/
+    create<T extends RoleCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, RoleCreateArgs<ExtArgs>>
+    ): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Roles.
+     *     @param {RoleCreateManyArgs} args - Arguments to create many Roles.
+     *     @example
+     *     // Create many Roles
+     *     const role = await prisma.role.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends RoleCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, RoleCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Role.
+     * @param {RoleDeleteArgs} args - Arguments to delete one Role.
+     * @example
+     * // Delete one Role
+     * const Role = await prisma.role.delete({
+     *   where: {
+     *     // ... filter to delete one Role
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends RoleDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, RoleDeleteArgs<ExtArgs>>
+    ): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Role.
+     * @param {RoleUpdateArgs} args - Arguments to update one Role.
+     * @example
+     * // Update one Role
+     * const role = await prisma.role.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends RoleUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, RoleUpdateArgs<ExtArgs>>
+    ): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Roles.
+     * @param {RoleDeleteManyArgs} args - Arguments to filter Roles to delete.
+     * @example
+     * // Delete a few Roles
+     * const { count } = await prisma.role.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends RoleDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, RoleDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Roles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Roles
+     * const role = await prisma.role.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends RoleUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, RoleUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Role.
+     * @param {RoleUpsertArgs} args - Arguments to update or create a Role.
+     * @example
+     * // Update or create a Role
+     * const role = await prisma.role.upsert({
+     *   create: {
+     *     // ... data to create a Role
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Role we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends RoleUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, RoleUpsertArgs<ExtArgs>>
+    ): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Roles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoleCountArgs} args - Arguments to filter Roles to count.
+     * @example
+     * // Count the number of Roles
+     * const count = await prisma.role.count({
+     *   where: {
+     *     // ... the filter for the Roles we want to count
+     *   }
+     * })
+    **/
+    count<T extends RoleCountArgs>(
+      args?: Subset<T, RoleCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RoleCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Role.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RoleAggregateArgs>(args: Subset<T, RoleAggregateArgs>): Prisma.PrismaPromise<GetRoleAggregateType<T>>
+
+    /**
+     * Group by Role.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoleGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RoleGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RoleGroupByArgs['orderBy'] }
+        : { orderBy?: RoleGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RoleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRoleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Role model
+   */
+  readonly fields: RoleFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Role.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RoleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Role model
+   */ 
+  interface RoleFieldRefs {
+    readonly userId: FieldRef<"Role", 'String'>
+    readonly role: FieldRef<"Role", 'RoleTag'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * Role findUnique
+   */
+  export type RoleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Role
+     */
+    select?: RoleSelect<ExtArgs> | null
+    /**
+     * Filter, which Role to fetch.
+     */
+    where: RoleWhereUniqueInput
+  }
+
+
+  /**
+   * Role findUniqueOrThrow
+   */
+  export type RoleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Role
+     */
+    select?: RoleSelect<ExtArgs> | null
+    /**
+     * Filter, which Role to fetch.
+     */
+    where: RoleWhereUniqueInput
+  }
+
+
+  /**
+   * Role findFirst
+   */
+  export type RoleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Role
+     */
+    select?: RoleSelect<ExtArgs> | null
+    /**
+     * Filter, which Role to fetch.
+     */
+    where?: RoleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Roles to fetch.
+     */
+    orderBy?: RoleOrderByWithRelationInput | RoleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Roles.
+     */
+    cursor?: RoleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Roles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Roles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Roles.
+     */
+    distinct?: RoleScalarFieldEnum | RoleScalarFieldEnum[]
+  }
+
+
+  /**
+   * Role findFirstOrThrow
+   */
+  export type RoleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Role
+     */
+    select?: RoleSelect<ExtArgs> | null
+    /**
+     * Filter, which Role to fetch.
+     */
+    where?: RoleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Roles to fetch.
+     */
+    orderBy?: RoleOrderByWithRelationInput | RoleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Roles.
+     */
+    cursor?: RoleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Roles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Roles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Roles.
+     */
+    distinct?: RoleScalarFieldEnum | RoleScalarFieldEnum[]
+  }
+
+
+  /**
+   * Role findMany
+   */
+  export type RoleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Role
+     */
+    select?: RoleSelect<ExtArgs> | null
+    /**
+     * Filter, which Roles to fetch.
+     */
+    where?: RoleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Roles to fetch.
+     */
+    orderBy?: RoleOrderByWithRelationInput | RoleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Roles.
+     */
+    cursor?: RoleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Roles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Roles.
+     */
+    skip?: number
+    distinct?: RoleScalarFieldEnum | RoleScalarFieldEnum[]
+  }
+
+
+  /**
+   * Role create
+   */
+  export type RoleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Role
+     */
+    select?: RoleSelect<ExtArgs> | null
+    /**
+     * The data needed to create a Role.
+     */
+    data: XOR<RoleCreateInput, RoleUncheckedCreateInput>
+  }
+
+
+  /**
+   * Role createMany
+   */
+  export type RoleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Roles.
+     */
+    data: RoleCreateManyInput | RoleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * Role update
+   */
+  export type RoleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Role
+     */
+    select?: RoleSelect<ExtArgs> | null
+    /**
+     * The data needed to update a Role.
+     */
+    data: XOR<RoleUpdateInput, RoleUncheckedUpdateInput>
+    /**
+     * Choose, which Role to update.
+     */
+    where: RoleWhereUniqueInput
+  }
+
+
+  /**
+   * Role updateMany
+   */
+  export type RoleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Roles.
+     */
+    data: XOR<RoleUpdateManyMutationInput, RoleUncheckedUpdateManyInput>
+    /**
+     * Filter which Roles to update
+     */
+    where?: RoleWhereInput
+  }
+
+
+  /**
+   * Role upsert
+   */
+  export type RoleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Role
+     */
+    select?: RoleSelect<ExtArgs> | null
+    /**
+     * The filter to search for the Role to update in case it exists.
+     */
+    where: RoleWhereUniqueInput
+    /**
+     * In case the Role found by the `where` argument doesn't exist, create a new Role with this data.
+     */
+    create: XOR<RoleCreateInput, RoleUncheckedCreateInput>
+    /**
+     * In case the Role was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RoleUpdateInput, RoleUncheckedUpdateInput>
+  }
+
+
+  /**
+   * Role delete
+   */
+  export type RoleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Role
+     */
+    select?: RoleSelect<ExtArgs> | null
+    /**
+     * Filter which Role to delete.
+     */
+    where: RoleWhereUniqueInput
+  }
+
+
+  /**
+   * Role deleteMany
+   */
+  export type RoleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Roles to delete
+     */
+    where?: RoleWhereInput
+  }
+
+
+  /**
+   * Role without action
+   */
+  export type RoleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Role
+     */
+    select?: RoleSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -10272,17 +12217,25 @@ export namespace Prisma {
 
   export const EventScalarFieldEnum: {
     id: 'id',
-    title: 'title',
-    description: 'description',
-    place: 'place',
-    date: 'date',
-    image: 'image',
-    tag: 'tag',
     authorId: 'authorId',
-    hashtags: 'hashtags'
+    infoId: 'infoId',
+    place: 'place'
   };
 
   export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
+
+
+  export const InformationScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    description: 'description',
+    date: 'date',
+    image: 'image',
+    tag: 'tag',
+    hashtags: 'hashtags'
+  };
+
+  export type InformationScalarFieldEnum = (typeof InformationScalarFieldEnum)[keyof typeof InformationScalarFieldEnum]
 
 
   export const AttendeeScalarFieldEnum: {
@@ -10298,10 +12251,18 @@ export namespace Prisma {
     text: 'text',
     dateTime: 'dateTime',
     userId: 'userId',
-    eventId: 'eventId'
+    infoId: 'infoId'
   };
 
   export type CommentScalarFieldEnum = (typeof CommentScalarFieldEnum)[keyof typeof CommentScalarFieldEnum]
+
+
+  export const RoleScalarFieldEnum: {
+    userId: 'userId',
+    role: 'role'
+  };
+
+  export type RoleScalarFieldEnum = (typeof RoleScalarFieldEnum)[keyof typeof RoleScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -10414,6 +12375,20 @@ export namespace Prisma {
    * Reference to a field of type 'Tag[]'
    */
   export type ListEnumTagFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Tag[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'RoleTag'
+   */
+  export type EnumRoleTagFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RoleTag'>
+    
+
+
+  /**
+   * Reference to a field of type 'RoleTag[]'
+   */
+  export type ListEnumRoleTagFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RoleTag[]'>
     
 
 
@@ -10817,62 +12792,42 @@ export namespace Prisma {
     OR?: EventWhereInput[]
     NOT?: EventWhereInput | EventWhereInput[]
     id?: StringFilter<"Event"> | string
-    title?: StringFilter<"Event"> | string
-    description?: StringFilter<"Event"> | string
-    place?: StringFilter<"Event"> | string
-    date?: DateTimeFilter<"Event"> | Date | string
-    image?: StringNullableFilter<"Event"> | string | null
-    tag?: EnumTagFilter<"Event"> | $Enums.Tag
     authorId?: StringFilter<"Event"> | string
-    hashtags?: StringNullableListFilter<"Event">
+    infoId?: StringFilter<"Event"> | string
+    place?: StringFilter<"Event"> | string
     author?: XOR<UserRelationFilter, UserWhereInput>
-    comments?: CommentListRelationFilter
+    info?: XOR<InformationRelationFilter, InformationWhereInput>
     attendees?: AttendeeListRelationFilter
   }
 
   export type EventOrderByWithRelationInput = {
     id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    place?: SortOrder
-    date?: SortOrder
-    image?: SortOrderInput | SortOrder
-    tag?: SortOrder
     authorId?: SortOrder
-    hashtags?: SortOrder
+    infoId?: SortOrder
+    place?: SortOrder
     author?: UserOrderByWithRelationInput
-    comments?: CommentOrderByRelationAggregateInput
+    info?: InformationOrderByWithRelationInput
     attendees?: AttendeeOrderByRelationAggregateInput
   }
 
   export type EventWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    infoId?: string
     AND?: EventWhereInput | EventWhereInput[]
     OR?: EventWhereInput[]
     NOT?: EventWhereInput | EventWhereInput[]
-    title?: StringFilter<"Event"> | string
-    description?: StringFilter<"Event"> | string
-    place?: StringFilter<"Event"> | string
-    date?: DateTimeFilter<"Event"> | Date | string
-    image?: StringNullableFilter<"Event"> | string | null
-    tag?: EnumTagFilter<"Event"> | $Enums.Tag
     authorId?: StringFilter<"Event"> | string
-    hashtags?: StringNullableListFilter<"Event">
+    place?: StringFilter<"Event"> | string
     author?: XOR<UserRelationFilter, UserWhereInput>
-    comments?: CommentListRelationFilter
+    info?: XOR<InformationRelationFilter, InformationWhereInput>
     attendees?: AttendeeListRelationFilter
-  }, "id">
+  }, "id" | "infoId">
 
   export type EventOrderByWithAggregationInput = {
     id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    place?: SortOrder
-    date?: SortOrder
-    image?: SortOrderInput | SortOrder
-    tag?: SortOrder
     authorId?: SortOrder
-    hashtags?: SortOrder
+    infoId?: SortOrder
+    place?: SortOrder
     _count?: EventCountOrderByAggregateInput
     _max?: EventMaxOrderByAggregateInput
     _min?: EventMinOrderByAggregateInput
@@ -10883,14 +12838,77 @@ export namespace Prisma {
     OR?: EventScalarWhereWithAggregatesInput[]
     NOT?: EventScalarWhereWithAggregatesInput | EventScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Event"> | string
-    title?: StringWithAggregatesFilter<"Event"> | string
-    description?: StringWithAggregatesFilter<"Event"> | string
-    place?: StringWithAggregatesFilter<"Event"> | string
-    date?: DateTimeWithAggregatesFilter<"Event"> | Date | string
-    image?: StringNullableWithAggregatesFilter<"Event"> | string | null
-    tag?: EnumTagWithAggregatesFilter<"Event"> | $Enums.Tag
     authorId?: StringWithAggregatesFilter<"Event"> | string
-    hashtags?: StringNullableListFilter<"Event">
+    infoId?: StringWithAggregatesFilter<"Event"> | string
+    place?: StringWithAggregatesFilter<"Event"> | string
+  }
+
+  export type InformationWhereInput = {
+    AND?: InformationWhereInput | InformationWhereInput[]
+    OR?: InformationWhereInput[]
+    NOT?: InformationWhereInput | InformationWhereInput[]
+    id?: StringFilter<"Information"> | string
+    title?: StringFilter<"Information"> | string
+    description?: StringFilter<"Information"> | string
+    date?: DateTimeFilter<"Information"> | Date | string
+    image?: StringNullableFilter<"Information"> | string | null
+    tag?: EnumTagFilter<"Information"> | $Enums.Tag
+    hashtags?: StringNullableListFilter<"Information">
+    comments?: CommentListRelationFilter
+    event?: XOR<EventNullableRelationFilter, EventWhereInput> | null
+  }
+
+  export type InformationOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    date?: SortOrder
+    image?: SortOrderInput | SortOrder
+    tag?: SortOrder
+    hashtags?: SortOrder
+    comments?: CommentOrderByRelationAggregateInput
+    event?: EventOrderByWithRelationInput
+  }
+
+  export type InformationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: InformationWhereInput | InformationWhereInput[]
+    OR?: InformationWhereInput[]
+    NOT?: InformationWhereInput | InformationWhereInput[]
+    title?: StringFilter<"Information"> | string
+    description?: StringFilter<"Information"> | string
+    date?: DateTimeFilter<"Information"> | Date | string
+    image?: StringNullableFilter<"Information"> | string | null
+    tag?: EnumTagFilter<"Information"> | $Enums.Tag
+    hashtags?: StringNullableListFilter<"Information">
+    comments?: CommentListRelationFilter
+    event?: XOR<EventNullableRelationFilter, EventWhereInput> | null
+  }, "id">
+
+  export type InformationOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    date?: SortOrder
+    image?: SortOrderInput | SortOrder
+    tag?: SortOrder
+    hashtags?: SortOrder
+    _count?: InformationCountOrderByAggregateInput
+    _max?: InformationMaxOrderByAggregateInput
+    _min?: InformationMinOrderByAggregateInput
+  }
+
+  export type InformationScalarWhereWithAggregatesInput = {
+    AND?: InformationScalarWhereWithAggregatesInput | InformationScalarWhereWithAggregatesInput[]
+    OR?: InformationScalarWhereWithAggregatesInput[]
+    NOT?: InformationScalarWhereWithAggregatesInput | InformationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Information"> | string
+    title?: StringWithAggregatesFilter<"Information"> | string
+    description?: StringWithAggregatesFilter<"Information"> | string
+    date?: DateTimeWithAggregatesFilter<"Information"> | Date | string
+    image?: StringNullableWithAggregatesFilter<"Information"> | string | null
+    tag?: EnumTagWithAggregatesFilter<"Information"> | $Enums.Tag
+    hashtags?: StringNullableListFilter<"Information">
   }
 
   export type AttendeeWhereInput = {
@@ -10945,9 +12963,9 @@ export namespace Prisma {
     text?: StringFilter<"Comment"> | string
     dateTime?: DateTimeFilter<"Comment"> | Date | string
     userId?: StringFilter<"Comment"> | string
-    eventId?: StringFilter<"Comment"> | string
+    infoId?: StringFilter<"Comment"> | string
     user?: XOR<UserRelationFilter, UserWhereInput>
-    event?: XOR<EventRelationFilter, EventWhereInput>
+    info?: XOR<InformationRelationFilter, InformationWhereInput>
   }
 
   export type CommentOrderByWithRelationInput = {
@@ -10955,9 +12973,9 @@ export namespace Prisma {
     text?: SortOrder
     dateTime?: SortOrder
     userId?: SortOrder
-    eventId?: SortOrder
+    infoId?: SortOrder
     user?: UserOrderByWithRelationInput
-    event?: EventOrderByWithRelationInput
+    info?: InformationOrderByWithRelationInput
   }
 
   export type CommentWhereUniqueInput = Prisma.AtLeast<{
@@ -10968,9 +12986,9 @@ export namespace Prisma {
     text?: StringFilter<"Comment"> | string
     dateTime?: DateTimeFilter<"Comment"> | Date | string
     userId?: StringFilter<"Comment"> | string
-    eventId?: StringFilter<"Comment"> | string
+    infoId?: StringFilter<"Comment"> | string
     user?: XOR<UserRelationFilter, UserWhereInput>
-    event?: XOR<EventRelationFilter, EventWhereInput>
+    info?: XOR<InformationRelationFilter, InformationWhereInput>
   }, "id">
 
   export type CommentOrderByWithAggregationInput = {
@@ -10978,7 +12996,7 @@ export namespace Prisma {
     text?: SortOrder
     dateTime?: SortOrder
     userId?: SortOrder
-    eventId?: SortOrder
+    infoId?: SortOrder
     _count?: CommentCountOrderByAggregateInput
     _max?: CommentMaxOrderByAggregateInput
     _min?: CommentMinOrderByAggregateInput
@@ -10992,7 +13010,44 @@ export namespace Prisma {
     text?: StringWithAggregatesFilter<"Comment"> | string
     dateTime?: DateTimeWithAggregatesFilter<"Comment"> | Date | string
     userId?: StringWithAggregatesFilter<"Comment"> | string
-    eventId?: StringWithAggregatesFilter<"Comment"> | string
+    infoId?: StringWithAggregatesFilter<"Comment"> | string
+  }
+
+  export type RoleWhereInput = {
+    AND?: RoleWhereInput | RoleWhereInput[]
+    OR?: RoleWhereInput[]
+    NOT?: RoleWhereInput | RoleWhereInput[]
+    userId?: StringFilter<"Role"> | string
+    role?: EnumRoleTagFilter<"Role"> | $Enums.RoleTag
+  }
+
+  export type RoleOrderByWithRelationInput = {
+    userId?: SortOrder
+    role?: SortOrder
+  }
+
+  export type RoleWhereUniqueInput = Prisma.AtLeast<{
+    userId?: string
+    AND?: RoleWhereInput | RoleWhereInput[]
+    OR?: RoleWhereInput[]
+    NOT?: RoleWhereInput | RoleWhereInput[]
+    role?: EnumRoleTagFilter<"Role"> | $Enums.RoleTag
+  }, "userId">
+
+  export type RoleOrderByWithAggregationInput = {
+    userId?: SortOrder
+    role?: SortOrder
+    _count?: RoleCountOrderByAggregateInput
+    _max?: RoleMaxOrderByAggregateInput
+    _min?: RoleMinOrderByAggregateInput
+  }
+
+  export type RoleScalarWhereWithAggregatesInput = {
+    AND?: RoleScalarWhereWithAggregatesInput | RoleScalarWhereWithAggregatesInput[]
+    OR?: RoleScalarWhereWithAggregatesInput[]
+    NOT?: RoleScalarWhereWithAggregatesInput | RoleScalarWhereWithAggregatesInput[]
+    userId?: StringWithAggregatesFilter<"Role"> | string
+    role?: EnumRoleTagWithAggregatesFilter<"Role"> | $Enums.RoleTag
   }
 
   export type AccountCreateInput = {
@@ -11403,93 +13458,131 @@ export namespace Prisma {
 
   export type EventCreateInput = {
     id?: string
-    title: string
-    description: string
     place: string
-    date: Date | string
-    image?: string | null
-    tag: $Enums.Tag
-    hashtags?: EventCreatehashtagsInput | string[]
     author: UserCreateNestedOneWithoutEventsCreatedInput
-    comments?: CommentCreateNestedManyWithoutEventInput
+    info: InformationCreateNestedOneWithoutEventInput
     attendees?: AttendeeCreateNestedManyWithoutEventInput
   }
 
   export type EventUncheckedCreateInput = {
     id?: string
-    title: string
-    description: string
-    place: string
-    date: Date | string
-    image?: string | null
-    tag: $Enums.Tag
     authorId: string
-    hashtags?: EventCreatehashtagsInput | string[]
-    comments?: CommentUncheckedCreateNestedManyWithoutEventInput
+    infoId: string
+    place: string
     attendees?: AttendeeUncheckedCreateNestedManyWithoutEventInput
   }
 
   export type EventUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
     place?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
-    hashtags?: EventUpdatehashtagsInput | string[]
     author?: UserUpdateOneRequiredWithoutEventsCreatedNestedInput
-    comments?: CommentUpdateManyWithoutEventNestedInput
+    info?: InformationUpdateOneRequiredWithoutEventNestedInput
     attendees?: AttendeeUpdateManyWithoutEventNestedInput
   }
 
   export type EventUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    place?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
     authorId?: StringFieldUpdateOperationsInput | string
-    hashtags?: EventUpdatehashtagsInput | string[]
-    comments?: CommentUncheckedUpdateManyWithoutEventNestedInput
+    infoId?: StringFieldUpdateOperationsInput | string
+    place?: StringFieldUpdateOperationsInput | string
     attendees?: AttendeeUncheckedUpdateManyWithoutEventNestedInput
   }
 
   export type EventCreateManyInput = {
     id?: string
-    title: string
-    description: string
-    place: string
-    date: Date | string
-    image?: string | null
-    tag: $Enums.Tag
     authorId: string
-    hashtags?: EventCreatehashtagsInput | string[]
+    infoId: string
+    place: string
   }
 
   export type EventUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
     place?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
-    hashtags?: EventUpdatehashtagsInput | string[]
   }
 
   export type EventUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    infoId?: StringFieldUpdateOperationsInput | string
+    place?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type InformationCreateInput = {
+    id?: string
+    title: string
+    description: string
+    date: Date | string
+    image?: string | null
+    tag: $Enums.Tag
+    hashtags?: InformationCreatehashtagsInput | string[]
+    comments?: CommentCreateNestedManyWithoutInfoInput
+    event?: EventCreateNestedOneWithoutInfoInput
+  }
+
+  export type InformationUncheckedCreateInput = {
+    id?: string
+    title: string
+    description: string
+    date: Date | string
+    image?: string | null
+    tag: $Enums.Tag
+    hashtags?: InformationCreatehashtagsInput | string[]
+    comments?: CommentUncheckedCreateNestedManyWithoutInfoInput
+    event?: EventUncheckedCreateNestedOneWithoutInfoInput
+  }
+
+  export type InformationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    place?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
-    authorId?: StringFieldUpdateOperationsInput | string
-    hashtags?: EventUpdatehashtagsInput | string[]
+    hashtags?: InformationUpdatehashtagsInput | string[]
+    comments?: CommentUpdateManyWithoutInfoNestedInput
+    event?: EventUpdateOneWithoutInfoNestedInput
+  }
+
+  export type InformationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
+    hashtags?: InformationUpdatehashtagsInput | string[]
+    comments?: CommentUncheckedUpdateManyWithoutInfoNestedInput
+    event?: EventUncheckedUpdateOneWithoutInfoNestedInput
+  }
+
+  export type InformationCreateManyInput = {
+    id?: string
+    title: string
+    description: string
+    date: Date | string
+    image?: string | null
+    tag: $Enums.Tag
+    hashtags?: InformationCreatehashtagsInput | string[]
+  }
+
+  export type InformationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
+    hashtags?: InformationUpdatehashtagsInput | string[]
+  }
+
+  export type InformationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
+    hashtags?: InformationUpdatehashtagsInput | string[]
   }
 
   export type AttendeeCreateInput = {
@@ -11531,7 +13624,7 @@ export namespace Prisma {
     text: string
     dateTime?: Date | string
     user: UserCreateNestedOneWithoutCommentsInput
-    event: EventCreateNestedOneWithoutCommentsInput
+    info: InformationCreateNestedOneWithoutCommentsInput
   }
 
   export type CommentUncheckedCreateInput = {
@@ -11539,7 +13632,7 @@ export namespace Prisma {
     text: string
     dateTime?: Date | string
     userId: string
-    eventId: string
+    infoId: string
   }
 
   export type CommentUpdateInput = {
@@ -11547,7 +13640,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutCommentsNestedInput
-    event?: EventUpdateOneRequiredWithoutCommentsNestedInput
+    info?: InformationUpdateOneRequiredWithoutCommentsNestedInput
   }
 
   export type CommentUncheckedUpdateInput = {
@@ -11555,7 +13648,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
-    eventId?: StringFieldUpdateOperationsInput | string
+    infoId?: StringFieldUpdateOperationsInput | string
   }
 
   export type CommentCreateManyInput = {
@@ -11563,7 +13656,7 @@ export namespace Prisma {
     text: string
     dateTime?: Date | string
     userId: string
-    eventId: string
+    infoId: string
   }
 
   export type CommentUpdateManyMutationInput = {
@@ -11577,7 +13670,42 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
-    eventId?: StringFieldUpdateOperationsInput | string
+    infoId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type RoleCreateInput = {
+    userId: string
+    role: $Enums.RoleTag
+  }
+
+  export type RoleUncheckedCreateInput = {
+    userId: string
+    role: $Enums.RoleTag
+  }
+
+  export type RoleUpdateInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleTagFieldUpdateOperationsInput | $Enums.RoleTag
+  }
+
+  export type RoleUncheckedUpdateInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleTagFieldUpdateOperationsInput | $Enums.RoleTag
+  }
+
+  export type RoleCreateManyInput = {
+    userId: string
+    role: $Enums.RoleTag
+  }
+
+  export type RoleUpdateManyMutationInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleTagFieldUpdateOperationsInput | $Enums.RoleTag
+  }
+
+  export type RoleUncheckedUpdateManyInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleTagFieldUpdateOperationsInput | $Enums.RoleTag
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -12011,6 +14139,32 @@ export namespace Prisma {
     _max?: NestedEnumCampusNullableFilter<$PrismaModel>
   }
 
+  export type InformationRelationFilter = {
+    is?: InformationWhereInput
+    isNot?: InformationWhereInput
+  }
+
+  export type EventCountOrderByAggregateInput = {
+    id?: SortOrder
+    authorId?: SortOrder
+    infoId?: SortOrder
+    place?: SortOrder
+  }
+
+  export type EventMaxOrderByAggregateInput = {
+    id?: SortOrder
+    authorId?: SortOrder
+    infoId?: SortOrder
+    place?: SortOrder
+  }
+
+  export type EventMinOrderByAggregateInput = {
+    id?: SortOrder
+    authorId?: SortOrder
+    infoId?: SortOrder
+    place?: SortOrder
+  }
+
   export type EnumTagFilter<$PrismaModel = never> = {
     equals?: $Enums.Tag | EnumTagFieldRefInput<$PrismaModel>
     in?: $Enums.Tag[] | ListEnumTagFieldRefInput<$PrismaModel>
@@ -12018,38 +14172,37 @@ export namespace Prisma {
     not?: NestedEnumTagFilter<$PrismaModel> | $Enums.Tag
   }
 
-  export type EventCountOrderByAggregateInput = {
+  export type EventNullableRelationFilter = {
+    is?: EventWhereInput | null
+    isNot?: EventWhereInput | null
+  }
+
+  export type InformationCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    place?: SortOrder
     date?: SortOrder
     image?: SortOrder
     tag?: SortOrder
-    authorId?: SortOrder
     hashtags?: SortOrder
   }
 
-  export type EventMaxOrderByAggregateInput = {
+  export type InformationMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    place?: SortOrder
     date?: SortOrder
     image?: SortOrder
     tag?: SortOrder
-    authorId?: SortOrder
   }
 
-  export type EventMinOrderByAggregateInput = {
+  export type InformationMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    place?: SortOrder
     date?: SortOrder
     image?: SortOrder
     tag?: SortOrder
-    authorId?: SortOrder
   }
 
   export type EnumTagWithAggregatesFilter<$PrismaModel = never> = {
@@ -12092,7 +14245,7 @@ export namespace Prisma {
     text?: SortOrder
     dateTime?: SortOrder
     userId?: SortOrder
-    eventId?: SortOrder
+    infoId?: SortOrder
   }
 
   export type CommentMaxOrderByAggregateInput = {
@@ -12100,7 +14253,7 @@ export namespace Prisma {
     text?: SortOrder
     dateTime?: SortOrder
     userId?: SortOrder
-    eventId?: SortOrder
+    infoId?: SortOrder
   }
 
   export type CommentMinOrderByAggregateInput = {
@@ -12108,7 +14261,39 @@ export namespace Prisma {
     text?: SortOrder
     dateTime?: SortOrder
     userId?: SortOrder
-    eventId?: SortOrder
+    infoId?: SortOrder
+  }
+
+  export type EnumRoleTagFilter<$PrismaModel = never> = {
+    equals?: $Enums.RoleTag | EnumRoleTagFieldRefInput<$PrismaModel>
+    in?: $Enums.RoleTag[] | ListEnumRoleTagFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RoleTag[] | ListEnumRoleTagFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleTagFilter<$PrismaModel> | $Enums.RoleTag
+  }
+
+  export type RoleCountOrderByAggregateInput = {
+    userId?: SortOrder
+    role?: SortOrder
+  }
+
+  export type RoleMaxOrderByAggregateInput = {
+    userId?: SortOrder
+    role?: SortOrder
+  }
+
+  export type RoleMinOrderByAggregateInput = {
+    userId?: SortOrder
+    role?: SortOrder
+  }
+
+  export type EnumRoleTagWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.RoleTag | EnumRoleTagFieldRefInput<$PrismaModel>
+    in?: $Enums.RoleTag[] | ListEnumRoleTagFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RoleTag[] | ListEnumRoleTagFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleTagWithAggregatesFilter<$PrismaModel> | $Enums.RoleTag
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRoleTagFilter<$PrismaModel>
+    _max?: NestedEnumRoleTagFilter<$PrismaModel>
   }
 
   export type UserCreateNestedOneWithoutAccountsInput = {
@@ -12436,21 +14621,16 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProfileInput, UserUpdateWithoutProfileInput>, UserUncheckedUpdateWithoutProfileInput>
   }
 
-  export type EventCreatehashtagsInput = {
-    set: string[]
-  }
-
   export type UserCreateNestedOneWithoutEventsCreatedInput = {
     create?: XOR<UserCreateWithoutEventsCreatedInput, UserUncheckedCreateWithoutEventsCreatedInput>
     connectOrCreate?: UserCreateOrConnectWithoutEventsCreatedInput
     connect?: UserWhereUniqueInput
   }
 
-  export type CommentCreateNestedManyWithoutEventInput = {
-    create?: XOR<CommentCreateWithoutEventInput, CommentUncheckedCreateWithoutEventInput> | CommentCreateWithoutEventInput[] | CommentUncheckedCreateWithoutEventInput[]
-    connectOrCreate?: CommentCreateOrConnectWithoutEventInput | CommentCreateOrConnectWithoutEventInput[]
-    createMany?: CommentCreateManyEventInputEnvelope
-    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+  export type InformationCreateNestedOneWithoutEventInput = {
+    create?: XOR<InformationCreateWithoutEventInput, InformationUncheckedCreateWithoutEventInput>
+    connectOrCreate?: InformationCreateOrConnectWithoutEventInput
+    connect?: InformationWhereUniqueInput
   }
 
   export type AttendeeCreateNestedManyWithoutEventInput = {
@@ -12460,27 +14640,11 @@ export namespace Prisma {
     connect?: AttendeeWhereUniqueInput | AttendeeWhereUniqueInput[]
   }
 
-  export type CommentUncheckedCreateNestedManyWithoutEventInput = {
-    create?: XOR<CommentCreateWithoutEventInput, CommentUncheckedCreateWithoutEventInput> | CommentCreateWithoutEventInput[] | CommentUncheckedCreateWithoutEventInput[]
-    connectOrCreate?: CommentCreateOrConnectWithoutEventInput | CommentCreateOrConnectWithoutEventInput[]
-    createMany?: CommentCreateManyEventInputEnvelope
-    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-  }
-
   export type AttendeeUncheckedCreateNestedManyWithoutEventInput = {
     create?: XOR<AttendeeCreateWithoutEventInput, AttendeeUncheckedCreateWithoutEventInput> | AttendeeCreateWithoutEventInput[] | AttendeeUncheckedCreateWithoutEventInput[]
     connectOrCreate?: AttendeeCreateOrConnectWithoutEventInput | AttendeeCreateOrConnectWithoutEventInput[]
     createMany?: AttendeeCreateManyEventInputEnvelope
     connect?: AttendeeWhereUniqueInput | AttendeeWhereUniqueInput[]
-  }
-
-  export type EnumTagFieldUpdateOperationsInput = {
-    set?: $Enums.Tag
-  }
-
-  export type EventUpdatehashtagsInput = {
-    set?: string[]
-    push?: string | string[]
   }
 
   export type UserUpdateOneRequiredWithoutEventsCreatedNestedInput = {
@@ -12491,18 +14655,12 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutEventsCreatedInput, UserUpdateWithoutEventsCreatedInput>, UserUncheckedUpdateWithoutEventsCreatedInput>
   }
 
-  export type CommentUpdateManyWithoutEventNestedInput = {
-    create?: XOR<CommentCreateWithoutEventInput, CommentUncheckedCreateWithoutEventInput> | CommentCreateWithoutEventInput[] | CommentUncheckedCreateWithoutEventInput[]
-    connectOrCreate?: CommentCreateOrConnectWithoutEventInput | CommentCreateOrConnectWithoutEventInput[]
-    upsert?: CommentUpsertWithWhereUniqueWithoutEventInput | CommentUpsertWithWhereUniqueWithoutEventInput[]
-    createMany?: CommentCreateManyEventInputEnvelope
-    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    update?: CommentUpdateWithWhereUniqueWithoutEventInput | CommentUpdateWithWhereUniqueWithoutEventInput[]
-    updateMany?: CommentUpdateManyWithWhereWithoutEventInput | CommentUpdateManyWithWhereWithoutEventInput[]
-    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
+  export type InformationUpdateOneRequiredWithoutEventNestedInput = {
+    create?: XOR<InformationCreateWithoutEventInput, InformationUncheckedCreateWithoutEventInput>
+    connectOrCreate?: InformationCreateOrConnectWithoutEventInput
+    upsert?: InformationUpsertWithoutEventInput
+    connect?: InformationWhereUniqueInput
+    update?: XOR<XOR<InformationUpdateToOneWithWhereWithoutEventInput, InformationUpdateWithoutEventInput>, InformationUncheckedUpdateWithoutEventInput>
   }
 
   export type AttendeeUpdateManyWithoutEventNestedInput = {
@@ -12519,20 +14677,6 @@ export namespace Prisma {
     deleteMany?: AttendeeScalarWhereInput | AttendeeScalarWhereInput[]
   }
 
-  export type CommentUncheckedUpdateManyWithoutEventNestedInput = {
-    create?: XOR<CommentCreateWithoutEventInput, CommentUncheckedCreateWithoutEventInput> | CommentCreateWithoutEventInput[] | CommentUncheckedCreateWithoutEventInput[]
-    connectOrCreate?: CommentCreateOrConnectWithoutEventInput | CommentCreateOrConnectWithoutEventInput[]
-    upsert?: CommentUpsertWithWhereUniqueWithoutEventInput | CommentUpsertWithWhereUniqueWithoutEventInput[]
-    createMany?: CommentCreateManyEventInputEnvelope
-    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    update?: CommentUpdateWithWhereUniqueWithoutEventInput | CommentUpdateWithWhereUniqueWithoutEventInput[]
-    updateMany?: CommentUpdateManyWithWhereWithoutEventInput | CommentUpdateManyWithWhereWithoutEventInput[]
-    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
-  }
-
   export type AttendeeUncheckedUpdateManyWithoutEventNestedInput = {
     create?: XOR<AttendeeCreateWithoutEventInput, AttendeeUncheckedCreateWithoutEventInput> | AttendeeCreateWithoutEventInput[] | AttendeeUncheckedCreateWithoutEventInput[]
     connectOrCreate?: AttendeeCreateOrConnectWithoutEventInput | AttendeeCreateOrConnectWithoutEventInput[]
@@ -12545,6 +14689,93 @@ export namespace Prisma {
     update?: AttendeeUpdateWithWhereUniqueWithoutEventInput | AttendeeUpdateWithWhereUniqueWithoutEventInput[]
     updateMany?: AttendeeUpdateManyWithWhereWithoutEventInput | AttendeeUpdateManyWithWhereWithoutEventInput[]
     deleteMany?: AttendeeScalarWhereInput | AttendeeScalarWhereInput[]
+  }
+
+  export type InformationCreatehashtagsInput = {
+    set: string[]
+  }
+
+  export type CommentCreateNestedManyWithoutInfoInput = {
+    create?: XOR<CommentCreateWithoutInfoInput, CommentUncheckedCreateWithoutInfoInput> | CommentCreateWithoutInfoInput[] | CommentUncheckedCreateWithoutInfoInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutInfoInput | CommentCreateOrConnectWithoutInfoInput[]
+    createMany?: CommentCreateManyInfoInputEnvelope
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+  }
+
+  export type EventCreateNestedOneWithoutInfoInput = {
+    create?: XOR<EventCreateWithoutInfoInput, EventUncheckedCreateWithoutInfoInput>
+    connectOrCreate?: EventCreateOrConnectWithoutInfoInput
+    connect?: EventWhereUniqueInput
+  }
+
+  export type CommentUncheckedCreateNestedManyWithoutInfoInput = {
+    create?: XOR<CommentCreateWithoutInfoInput, CommentUncheckedCreateWithoutInfoInput> | CommentCreateWithoutInfoInput[] | CommentUncheckedCreateWithoutInfoInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutInfoInput | CommentCreateOrConnectWithoutInfoInput[]
+    createMany?: CommentCreateManyInfoInputEnvelope
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+  }
+
+  export type EventUncheckedCreateNestedOneWithoutInfoInput = {
+    create?: XOR<EventCreateWithoutInfoInput, EventUncheckedCreateWithoutInfoInput>
+    connectOrCreate?: EventCreateOrConnectWithoutInfoInput
+    connect?: EventWhereUniqueInput
+  }
+
+  export type EnumTagFieldUpdateOperationsInput = {
+    set?: $Enums.Tag
+  }
+
+  export type InformationUpdatehashtagsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type CommentUpdateManyWithoutInfoNestedInput = {
+    create?: XOR<CommentCreateWithoutInfoInput, CommentUncheckedCreateWithoutInfoInput> | CommentCreateWithoutInfoInput[] | CommentUncheckedCreateWithoutInfoInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutInfoInput | CommentCreateOrConnectWithoutInfoInput[]
+    upsert?: CommentUpsertWithWhereUniqueWithoutInfoInput | CommentUpsertWithWhereUniqueWithoutInfoInput[]
+    createMany?: CommentCreateManyInfoInputEnvelope
+    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    update?: CommentUpdateWithWhereUniqueWithoutInfoInput | CommentUpdateWithWhereUniqueWithoutInfoInput[]
+    updateMany?: CommentUpdateManyWithWhereWithoutInfoInput | CommentUpdateManyWithWhereWithoutInfoInput[]
+    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
+  }
+
+  export type EventUpdateOneWithoutInfoNestedInput = {
+    create?: XOR<EventCreateWithoutInfoInput, EventUncheckedCreateWithoutInfoInput>
+    connectOrCreate?: EventCreateOrConnectWithoutInfoInput
+    upsert?: EventUpsertWithoutInfoInput
+    disconnect?: EventWhereInput | boolean
+    delete?: EventWhereInput | boolean
+    connect?: EventWhereUniqueInput
+    update?: XOR<XOR<EventUpdateToOneWithWhereWithoutInfoInput, EventUpdateWithoutInfoInput>, EventUncheckedUpdateWithoutInfoInput>
+  }
+
+  export type CommentUncheckedUpdateManyWithoutInfoNestedInput = {
+    create?: XOR<CommentCreateWithoutInfoInput, CommentUncheckedCreateWithoutInfoInput> | CommentCreateWithoutInfoInput[] | CommentUncheckedCreateWithoutInfoInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutInfoInput | CommentCreateOrConnectWithoutInfoInput[]
+    upsert?: CommentUpsertWithWhereUniqueWithoutInfoInput | CommentUpsertWithWhereUniqueWithoutInfoInput[]
+    createMany?: CommentCreateManyInfoInputEnvelope
+    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    update?: CommentUpdateWithWhereUniqueWithoutInfoInput | CommentUpdateWithWhereUniqueWithoutInfoInput[]
+    updateMany?: CommentUpdateManyWithWhereWithoutInfoInput | CommentUpdateManyWithWhereWithoutInfoInput[]
+    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
+  }
+
+  export type EventUncheckedUpdateOneWithoutInfoNestedInput = {
+    create?: XOR<EventCreateWithoutInfoInput, EventUncheckedCreateWithoutInfoInput>
+    connectOrCreate?: EventCreateOrConnectWithoutInfoInput
+    upsert?: EventUpsertWithoutInfoInput
+    disconnect?: EventWhereInput | boolean
+    delete?: EventWhereInput | boolean
+    connect?: EventWhereUniqueInput
+    update?: XOR<XOR<EventUpdateToOneWithWhereWithoutInfoInput, EventUpdateWithoutInfoInput>, EventUncheckedUpdateWithoutInfoInput>
   }
 
   export type UserCreateNestedOneWithoutAttendeesInput = {
@@ -12581,10 +14812,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type EventCreateNestedOneWithoutCommentsInput = {
-    create?: XOR<EventCreateWithoutCommentsInput, EventUncheckedCreateWithoutCommentsInput>
-    connectOrCreate?: EventCreateOrConnectWithoutCommentsInput
-    connect?: EventWhereUniqueInput
+  export type InformationCreateNestedOneWithoutCommentsInput = {
+    create?: XOR<InformationCreateWithoutCommentsInput, InformationUncheckedCreateWithoutCommentsInput>
+    connectOrCreate?: InformationCreateOrConnectWithoutCommentsInput
+    connect?: InformationWhereUniqueInput
   }
 
   export type UserUpdateOneRequiredWithoutCommentsNestedInput = {
@@ -12595,12 +14826,16 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCommentsInput, UserUpdateWithoutCommentsInput>, UserUncheckedUpdateWithoutCommentsInput>
   }
 
-  export type EventUpdateOneRequiredWithoutCommentsNestedInput = {
-    create?: XOR<EventCreateWithoutCommentsInput, EventUncheckedCreateWithoutCommentsInput>
-    connectOrCreate?: EventCreateOrConnectWithoutCommentsInput
-    upsert?: EventUpsertWithoutCommentsInput
-    connect?: EventWhereUniqueInput
-    update?: XOR<XOR<EventUpdateToOneWithWhereWithoutCommentsInput, EventUpdateWithoutCommentsInput>, EventUncheckedUpdateWithoutCommentsInput>
+  export type InformationUpdateOneRequiredWithoutCommentsNestedInput = {
+    create?: XOR<InformationCreateWithoutCommentsInput, InformationUncheckedCreateWithoutCommentsInput>
+    connectOrCreate?: InformationCreateOrConnectWithoutCommentsInput
+    upsert?: InformationUpsertWithoutCommentsInput
+    connect?: InformationWhereUniqueInput
+    update?: XOR<XOR<InformationUpdateToOneWithWhereWithoutCommentsInput, InformationUpdateWithoutCommentsInput>, InformationUncheckedUpdateWithoutCommentsInput>
+  }
+
+  export type EnumRoleTagFieldUpdateOperationsInput = {
+    set?: $Enums.RoleTag
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -12815,6 +15050,23 @@ export namespace Prisma {
     _max?: NestedEnumTagFilter<$PrismaModel>
   }
 
+  export type NestedEnumRoleTagFilter<$PrismaModel = never> = {
+    equals?: $Enums.RoleTag | EnumRoleTagFieldRefInput<$PrismaModel>
+    in?: $Enums.RoleTag[] | ListEnumRoleTagFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RoleTag[] | ListEnumRoleTagFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleTagFilter<$PrismaModel> | $Enums.RoleTag
+  }
+
+  export type NestedEnumRoleTagWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.RoleTag | EnumRoleTagFieldRefInput<$PrismaModel>
+    in?: $Enums.RoleTag[] | ListEnumRoleTagFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RoleTag[] | ListEnumRoleTagFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleTagWithAggregatesFilter<$PrismaModel> | $Enums.RoleTag
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRoleTagFilter<$PrismaModel>
+    _max?: NestedEnumRoleTagFilter<$PrismaModel>
+  }
+
   export type UserCreateWithoutAccountsInput = {
     id?: string
     name?: string | null
@@ -12994,27 +15246,15 @@ export namespace Prisma {
 
   export type EventCreateWithoutAuthorInput = {
     id?: string
-    title: string
-    description: string
     place: string
-    date: Date | string
-    image?: string | null
-    tag: $Enums.Tag
-    hashtags?: EventCreatehashtagsInput | string[]
-    comments?: CommentCreateNestedManyWithoutEventInput
+    info: InformationCreateNestedOneWithoutEventInput
     attendees?: AttendeeCreateNestedManyWithoutEventInput
   }
 
   export type EventUncheckedCreateWithoutAuthorInput = {
     id?: string
-    title: string
-    description: string
+    infoId: string
     place: string
-    date: Date | string
-    image?: string | null
-    tag: $Enums.Tag
-    hashtags?: EventCreatehashtagsInput | string[]
-    comments?: CommentUncheckedCreateNestedManyWithoutEventInput
     attendees?: AttendeeUncheckedCreateNestedManyWithoutEventInput
   }
 
@@ -13050,14 +15290,14 @@ export namespace Prisma {
     id?: string
     text: string
     dateTime?: Date | string
-    event: EventCreateNestedOneWithoutCommentsInput
+    info: InformationCreateNestedOneWithoutCommentsInput
   }
 
   export type CommentUncheckedCreateWithoutUserInput = {
     id?: string
     text: string
     dateTime?: Date | string
-    eventId: string
+    infoId: string
   }
 
   export type CommentCreateOrConnectWithoutUserInput = {
@@ -13182,14 +15422,9 @@ export namespace Prisma {
     OR?: EventScalarWhereInput[]
     NOT?: EventScalarWhereInput | EventScalarWhereInput[]
     id?: StringFilter<"Event"> | string
-    title?: StringFilter<"Event"> | string
-    description?: StringFilter<"Event"> | string
-    place?: StringFilter<"Event"> | string
-    date?: DateTimeFilter<"Event"> | Date | string
-    image?: StringNullableFilter<"Event"> | string | null
-    tag?: EnumTagFilter<"Event"> | $Enums.Tag
     authorId?: StringFilter<"Event"> | string
-    hashtags?: StringNullableListFilter<"Event">
+    infoId?: StringFilter<"Event"> | string
+    place?: StringFilter<"Event"> | string
   }
 
   export type AttendeeUpsertWithWhereUniqueWithoutUserInput = {
@@ -13240,7 +15475,7 @@ export namespace Prisma {
     text?: StringFilter<"Comment"> | string
     dateTime?: DateTimeFilter<"Comment"> | Date | string
     userId?: StringFilter<"Comment"> | string
-    eventId?: StringFilter<"Comment"> | string
+    infoId?: StringFilter<"Comment"> | string
   }
 
   export type AccountUpsertWithWhereUniqueWithoutUserInput = {
@@ -13414,28 +15649,31 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutEventsCreatedInput, UserUncheckedCreateWithoutEventsCreatedInput>
   }
 
-  export type CommentCreateWithoutEventInput = {
+  export type InformationCreateWithoutEventInput = {
     id?: string
-    text: string
-    dateTime?: Date | string
-    user: UserCreateNestedOneWithoutCommentsInput
+    title: string
+    description: string
+    date: Date | string
+    image?: string | null
+    tag: $Enums.Tag
+    hashtags?: InformationCreatehashtagsInput | string[]
+    comments?: CommentCreateNestedManyWithoutInfoInput
   }
 
-  export type CommentUncheckedCreateWithoutEventInput = {
+  export type InformationUncheckedCreateWithoutEventInput = {
     id?: string
-    text: string
-    dateTime?: Date | string
-    userId: string
+    title: string
+    description: string
+    date: Date | string
+    image?: string | null
+    tag: $Enums.Tag
+    hashtags?: InformationCreatehashtagsInput | string[]
+    comments?: CommentUncheckedCreateNestedManyWithoutInfoInput
   }
 
-  export type CommentCreateOrConnectWithoutEventInput = {
-    where: CommentWhereUniqueInput
-    create: XOR<CommentCreateWithoutEventInput, CommentUncheckedCreateWithoutEventInput>
-  }
-
-  export type CommentCreateManyEventInputEnvelope = {
-    data: CommentCreateManyEventInput | CommentCreateManyEventInput[]
-    skipDuplicates?: boolean
+  export type InformationCreateOrConnectWithoutEventInput = {
+    where: InformationWhereUniqueInput
+    create: XOR<InformationCreateWithoutEventInput, InformationUncheckedCreateWithoutEventInput>
   }
 
   export type AttendeeCreateWithoutEventInput = {
@@ -13497,20 +15735,37 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type CommentUpsertWithWhereUniqueWithoutEventInput = {
-    where: CommentWhereUniqueInput
-    update: XOR<CommentUpdateWithoutEventInput, CommentUncheckedUpdateWithoutEventInput>
-    create: XOR<CommentCreateWithoutEventInput, CommentUncheckedCreateWithoutEventInput>
+  export type InformationUpsertWithoutEventInput = {
+    update: XOR<InformationUpdateWithoutEventInput, InformationUncheckedUpdateWithoutEventInput>
+    create: XOR<InformationCreateWithoutEventInput, InformationUncheckedCreateWithoutEventInput>
+    where?: InformationWhereInput
   }
 
-  export type CommentUpdateWithWhereUniqueWithoutEventInput = {
-    where: CommentWhereUniqueInput
-    data: XOR<CommentUpdateWithoutEventInput, CommentUncheckedUpdateWithoutEventInput>
+  export type InformationUpdateToOneWithWhereWithoutEventInput = {
+    where?: InformationWhereInput
+    data: XOR<InformationUpdateWithoutEventInput, InformationUncheckedUpdateWithoutEventInput>
   }
 
-  export type CommentUpdateManyWithWhereWithoutEventInput = {
-    where: CommentScalarWhereInput
-    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyWithoutEventInput>
+  export type InformationUpdateWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
+    hashtags?: InformationUpdatehashtagsInput | string[]
+    comments?: CommentUpdateManyWithoutInfoNestedInput
+  }
+
+  export type InformationUncheckedUpdateWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
+    hashtags?: InformationUpdatehashtagsInput | string[]
+    comments?: CommentUncheckedUpdateManyWithoutInfoNestedInput
   }
 
   export type AttendeeUpsertWithWhereUniqueWithoutEventInput = {
@@ -13527,6 +15782,90 @@ export namespace Prisma {
   export type AttendeeUpdateManyWithWhereWithoutEventInput = {
     where: AttendeeScalarWhereInput
     data: XOR<AttendeeUpdateManyMutationInput, AttendeeUncheckedUpdateManyWithoutEventInput>
+  }
+
+  export type CommentCreateWithoutInfoInput = {
+    id?: string
+    text: string
+    dateTime?: Date | string
+    user: UserCreateNestedOneWithoutCommentsInput
+  }
+
+  export type CommentUncheckedCreateWithoutInfoInput = {
+    id?: string
+    text: string
+    dateTime?: Date | string
+    userId: string
+  }
+
+  export type CommentCreateOrConnectWithoutInfoInput = {
+    where: CommentWhereUniqueInput
+    create: XOR<CommentCreateWithoutInfoInput, CommentUncheckedCreateWithoutInfoInput>
+  }
+
+  export type CommentCreateManyInfoInputEnvelope = {
+    data: CommentCreateManyInfoInput | CommentCreateManyInfoInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type EventCreateWithoutInfoInput = {
+    id?: string
+    place: string
+    author: UserCreateNestedOneWithoutEventsCreatedInput
+    attendees?: AttendeeCreateNestedManyWithoutEventInput
+  }
+
+  export type EventUncheckedCreateWithoutInfoInput = {
+    id?: string
+    authorId: string
+    place: string
+    attendees?: AttendeeUncheckedCreateNestedManyWithoutEventInput
+  }
+
+  export type EventCreateOrConnectWithoutInfoInput = {
+    where: EventWhereUniqueInput
+    create: XOR<EventCreateWithoutInfoInput, EventUncheckedCreateWithoutInfoInput>
+  }
+
+  export type CommentUpsertWithWhereUniqueWithoutInfoInput = {
+    where: CommentWhereUniqueInput
+    update: XOR<CommentUpdateWithoutInfoInput, CommentUncheckedUpdateWithoutInfoInput>
+    create: XOR<CommentCreateWithoutInfoInput, CommentUncheckedCreateWithoutInfoInput>
+  }
+
+  export type CommentUpdateWithWhereUniqueWithoutInfoInput = {
+    where: CommentWhereUniqueInput
+    data: XOR<CommentUpdateWithoutInfoInput, CommentUncheckedUpdateWithoutInfoInput>
+  }
+
+  export type CommentUpdateManyWithWhereWithoutInfoInput = {
+    where: CommentScalarWhereInput
+    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyWithoutInfoInput>
+  }
+
+  export type EventUpsertWithoutInfoInput = {
+    update: XOR<EventUpdateWithoutInfoInput, EventUncheckedUpdateWithoutInfoInput>
+    create: XOR<EventCreateWithoutInfoInput, EventUncheckedCreateWithoutInfoInput>
+    where?: EventWhereInput
+  }
+
+  export type EventUpdateToOneWithWhereWithoutInfoInput = {
+    where?: EventWhereInput
+    data: XOR<EventUpdateWithoutInfoInput, EventUncheckedUpdateWithoutInfoInput>
+  }
+
+  export type EventUpdateWithoutInfoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    place?: StringFieldUpdateOperationsInput | string
+    author?: UserUpdateOneRequiredWithoutEventsCreatedNestedInput
+    attendees?: AttendeeUpdateManyWithoutEventNestedInput
+  }
+
+  export type EventUncheckedUpdateWithoutInfoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authorId?: StringFieldUpdateOperationsInput | string
+    place?: StringFieldUpdateOperationsInput | string
+    attendees?: AttendeeUncheckedUpdateManyWithoutEventNestedInput
   }
 
   export type UserCreateWithoutAttendeesInput = {
@@ -13566,28 +15905,16 @@ export namespace Prisma {
 
   export type EventCreateWithoutAttendeesInput = {
     id?: string
-    title: string
-    description: string
     place: string
-    date: Date | string
-    image?: string | null
-    tag: $Enums.Tag
-    hashtags?: EventCreatehashtagsInput | string[]
     author: UserCreateNestedOneWithoutEventsCreatedInput
-    comments?: CommentCreateNestedManyWithoutEventInput
+    info: InformationCreateNestedOneWithoutEventInput
   }
 
   export type EventUncheckedCreateWithoutAttendeesInput = {
     id?: string
-    title: string
-    description: string
-    place: string
-    date: Date | string
-    image?: string | null
-    tag: $Enums.Tag
     authorId: string
-    hashtags?: EventCreatehashtagsInput | string[]
-    comments?: CommentUncheckedCreateNestedManyWithoutEventInput
+    infoId: string
+    place: string
   }
 
   export type EventCreateOrConnectWithoutAttendeesInput = {
@@ -13649,28 +15976,16 @@ export namespace Prisma {
 
   export type EventUpdateWithoutAttendeesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
     place?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
-    hashtags?: EventUpdatehashtagsInput | string[]
     author?: UserUpdateOneRequiredWithoutEventsCreatedNestedInput
-    comments?: CommentUpdateManyWithoutEventNestedInput
+    info?: InformationUpdateOneRequiredWithoutEventNestedInput
   }
 
   export type EventUncheckedUpdateWithoutAttendeesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    place?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
     authorId?: StringFieldUpdateOperationsInput | string
-    hashtags?: EventUpdatehashtagsInput | string[]
-    comments?: CommentUncheckedUpdateManyWithoutEventNestedInput
+    infoId?: StringFieldUpdateOperationsInput | string
+    place?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserCreateWithoutCommentsInput = {
@@ -13708,35 +16023,31 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutCommentsInput, UserUncheckedCreateWithoutCommentsInput>
   }
 
-  export type EventCreateWithoutCommentsInput = {
+  export type InformationCreateWithoutCommentsInput = {
     id?: string
     title: string
     description: string
-    place: string
     date: Date | string
     image?: string | null
     tag: $Enums.Tag
-    hashtags?: EventCreatehashtagsInput | string[]
-    author: UserCreateNestedOneWithoutEventsCreatedInput
-    attendees?: AttendeeCreateNestedManyWithoutEventInput
+    hashtags?: InformationCreatehashtagsInput | string[]
+    event?: EventCreateNestedOneWithoutInfoInput
   }
 
-  export type EventUncheckedCreateWithoutCommentsInput = {
+  export type InformationUncheckedCreateWithoutCommentsInput = {
     id?: string
     title: string
     description: string
-    place: string
     date: Date | string
     image?: string | null
     tag: $Enums.Tag
-    authorId: string
-    hashtags?: EventCreatehashtagsInput | string[]
-    attendees?: AttendeeUncheckedCreateNestedManyWithoutEventInput
+    hashtags?: InformationCreatehashtagsInput | string[]
+    event?: EventUncheckedCreateNestedOneWithoutInfoInput
   }
 
-  export type EventCreateOrConnectWithoutCommentsInput = {
-    where: EventWhereUniqueInput
-    create: XOR<EventCreateWithoutCommentsInput, EventUncheckedCreateWithoutCommentsInput>
+  export type InformationCreateOrConnectWithoutCommentsInput = {
+    where: InformationWhereUniqueInput
+    create: XOR<InformationCreateWithoutCommentsInput, InformationUncheckedCreateWithoutCommentsInput>
   }
 
   export type UserUpsertWithoutCommentsInput = {
@@ -13780,52 +16091,43 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type EventUpsertWithoutCommentsInput = {
-    update: XOR<EventUpdateWithoutCommentsInput, EventUncheckedUpdateWithoutCommentsInput>
-    create: XOR<EventCreateWithoutCommentsInput, EventUncheckedCreateWithoutCommentsInput>
-    where?: EventWhereInput
+  export type InformationUpsertWithoutCommentsInput = {
+    update: XOR<InformationUpdateWithoutCommentsInput, InformationUncheckedUpdateWithoutCommentsInput>
+    create: XOR<InformationCreateWithoutCommentsInput, InformationUncheckedCreateWithoutCommentsInput>
+    where?: InformationWhereInput
   }
 
-  export type EventUpdateToOneWithWhereWithoutCommentsInput = {
-    where?: EventWhereInput
-    data: XOR<EventUpdateWithoutCommentsInput, EventUncheckedUpdateWithoutCommentsInput>
+  export type InformationUpdateToOneWithWhereWithoutCommentsInput = {
+    where?: InformationWhereInput
+    data: XOR<InformationUpdateWithoutCommentsInput, InformationUncheckedUpdateWithoutCommentsInput>
   }
 
-  export type EventUpdateWithoutCommentsInput = {
+  export type InformationUpdateWithoutCommentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    place?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
-    hashtags?: EventUpdatehashtagsInput | string[]
-    author?: UserUpdateOneRequiredWithoutEventsCreatedNestedInput
-    attendees?: AttendeeUpdateManyWithoutEventNestedInput
+    hashtags?: InformationUpdatehashtagsInput | string[]
+    event?: EventUpdateOneWithoutInfoNestedInput
   }
 
-  export type EventUncheckedUpdateWithoutCommentsInput = {
+  export type InformationUncheckedUpdateWithoutCommentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    place?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
-    authorId?: StringFieldUpdateOperationsInput | string
-    hashtags?: EventUpdatehashtagsInput | string[]
-    attendees?: AttendeeUncheckedUpdateManyWithoutEventNestedInput
+    hashtags?: InformationUpdatehashtagsInput | string[]
+    event?: EventUncheckedUpdateOneWithoutInfoNestedInput
   }
 
   export type EventCreateManyAuthorInput = {
     id?: string
-    title: string
-    description: string
+    infoId: string
     place: string
-    date: Date | string
-    image?: string | null
-    tag: $Enums.Tag
-    hashtags?: EventCreatehashtagsInput | string[]
   }
 
   export type AttendeeCreateManyUserInput = {
@@ -13836,7 +16138,7 @@ export namespace Prisma {
     id?: string
     text: string
     dateTime?: Date | string
-    eventId: string
+    infoId: string
   }
 
   export type AccountCreateManyUserInput = {
@@ -13861,39 +16163,22 @@ export namespace Prisma {
 
   export type EventUpdateWithoutAuthorInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
     place?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
-    hashtags?: EventUpdatehashtagsInput | string[]
-    comments?: CommentUpdateManyWithoutEventNestedInput
+    info?: InformationUpdateOneRequiredWithoutEventNestedInput
     attendees?: AttendeeUpdateManyWithoutEventNestedInput
   }
 
   export type EventUncheckedUpdateWithoutAuthorInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    infoId?: StringFieldUpdateOperationsInput | string
     place?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
-    hashtags?: EventUpdatehashtagsInput | string[]
-    comments?: CommentUncheckedUpdateManyWithoutEventNestedInput
     attendees?: AttendeeUncheckedUpdateManyWithoutEventNestedInput
   }
 
   export type EventUncheckedUpdateManyWithoutAuthorInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    infoId?: StringFieldUpdateOperationsInput | string
     place?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
-    hashtags?: EventUpdatehashtagsInput | string[]
   }
 
   export type AttendeeUpdateWithoutUserInput = {
@@ -13912,21 +16197,21 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    event?: EventUpdateOneRequiredWithoutCommentsNestedInput
+    info?: InformationUpdateOneRequiredWithoutCommentsNestedInput
   }
 
   export type CommentUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    eventId?: StringFieldUpdateOperationsInput | string
+    infoId?: StringFieldUpdateOperationsInput | string
   }
 
   export type CommentUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    eventId?: StringFieldUpdateOperationsInput | string
+    infoId?: StringFieldUpdateOperationsInput | string
   }
 
   export type AccountUpdateWithoutUserInput = {
@@ -13989,36 +16274,8 @@ export namespace Prisma {
     expires?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CommentCreateManyEventInput = {
-    id?: string
-    text: string
-    dateTime?: Date | string
-    userId: string
-  }
-
   export type AttendeeCreateManyEventInput = {
     userId: string
-  }
-
-  export type CommentUpdateWithoutEventInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutCommentsNestedInput
-  }
-
-  export type CommentUncheckedUpdateWithoutEventInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type CommentUncheckedUpdateManyWithoutEventInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type AttendeeUpdateWithoutEventInput = {
@@ -14030,6 +16287,34 @@ export namespace Prisma {
   }
 
   export type AttendeeUncheckedUpdateManyWithoutEventInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CommentCreateManyInfoInput = {
+    id?: string
+    text: string
+    dateTime?: Date | string
+    userId: string
+  }
+
+  export type CommentUpdateWithoutInfoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutCommentsNestedInput
+  }
+
+  export type CommentUncheckedUpdateWithoutInfoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CommentUncheckedUpdateManyWithoutInfoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -14046,6 +16331,10 @@ export namespace Prisma {
      * @deprecated Use EventCountOutputTypeDefaultArgs instead
      */
     export type EventCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = EventCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use InformationCountOutputTypeDefaultArgs instead
+     */
+    export type InformationCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = InformationCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use AccountDefaultArgs instead
      */
@@ -14075,6 +16364,10 @@ export namespace Prisma {
      */
     export type EventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = EventDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use InformationDefaultArgs instead
+     */
+    export type InformationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = InformationDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use AttendeeDefaultArgs instead
      */
     export type AttendeeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AttendeeDefaultArgs<ExtArgs>
@@ -14082,6 +16375,10 @@ export namespace Prisma {
      * @deprecated Use CommentDefaultArgs instead
      */
     export type CommentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CommentDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use RoleDefaultArgs instead
+     */
+    export type RoleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = RoleDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

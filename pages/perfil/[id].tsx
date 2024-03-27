@@ -1,7 +1,5 @@
 import { Navbar } from '@/components/navbar/Navbar'
-import { MdHomeFilled } from "react-icons/md";
 import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/client';
 import { GET_PROFILE } from '@/graphql/client/profile';
@@ -26,23 +24,19 @@ const Perfil = () => {
     const { data: eventsAttendingData } = useQuery<{ eventsAttending: ExtendedEvent[] }>(
         GET_EVENTS_ATTENDING, { variables: { userId: id }, fetchPolicy: 'no-cache' }
     )
-    console.log("Id:" + id)
     if (loadingCreated || loadingProfile) return (<Loading />)
     const profile = profileData?.profile
     const user = profile?.user
     const setCreatedType = async () => {
-        await setEventType('created')
-        console.log('Tipo de evento', eventType)
+        setEventType('created')
     }
     const setAttendingType = async () => {
-        await setEventType('attending')
-        console.log('Tipo de evento', eventType)
+        setEventType('attending')
     }
-
-    console.log("Profile:", profileData)
-    console.log("errorProfile:", errorProfile)
-    console.log("errorCreated:", errorCreated)
-    console.log("eventsAttending:", eventsAttendingData)
+    if(errorProfile || errorCreated){
+        console.log("errorCreated:", errorCreated)
+        console.log("errorProfile:", errorProfile)
+    }
     return (
         <>
             <title>
@@ -50,13 +44,7 @@ const Perfil = () => {
             </title>
             <div className='Yellow-little gap-15 flex flex-col h-screen'>
                 <div>
-                    <Navbar>
-                        <Link href={'/home'}>
-                            <div className='h-full flex items-center justify-center'>
-                                <MdHomeFilled className="h-9 w-9 mr-20" />
-                            </div>
-                        </Link>
-                    </Navbar>
+                    <Navbar/>
                 </div>
 
                 <div className=' h-full flex flex-row'>

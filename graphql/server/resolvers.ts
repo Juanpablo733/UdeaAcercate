@@ -5,6 +5,7 @@ import { deleteEvent, findEvent } from "./utils/eventUtil";
 import { deleteAllAttendeesFromEvent } from "./utils/attendeeUtil";
 import { deleteAllCommentsFromEvent } from "./utils/commentUtil";
 import { findUser } from "./utils/userUtil";
+import { Information } from '../../prisma/generated/client/index';
 
 
 
@@ -28,12 +29,12 @@ const findHashtags = (text: String) => {
 }
 
 const resolvers: Resolver = {
-    Event: {
+    Information: {
         comments: async (parent, args, context) => {
             const { db } = context;
             const comments = await db.comment.findMany({
                 where: {
-                    eventId: parent.id
+                    infoId: parent.id
                 }
             }).catch((e) => {
                 console.log(e)
@@ -41,6 +42,28 @@ const resolvers: Resolver = {
             });
             return comments;
         },
+        minutes: async (parent) => {
+            const date = new Date(parent.date)
+            return date.getMinutes()
+        },
+        hours: async (parent) => {
+            const date = new Date(parent.date)
+            return date.getHours()
+        },
+        day: async (parent) => {
+            const date = new Date(parent.date)
+            return date.getUTCDay()
+        },
+        month: async (parent) => {
+            const date = new Date(parent.date)
+            return date.getUTCMonth() + 1
+        },
+        year: async (parent) => {
+            const date = new Date(parent.date)
+            return date.getUTCFullYear()
+        },
+    },    
+    Event: {
         author: async (parent, args, context) => {
             return findUser(context.db, parent.authorId);
         },
@@ -64,26 +87,14 @@ const resolvers: Resolver = {
                 return null
             });
         },
-        minutes: async (parent) => {
-            const date = new Date(parent.date)
-            return date.getMinutes()
-        },
-        hours: async (parent) => {
-            const date = new Date(parent.date)
-            return date.getHours()
-        },
-        day: async (parent) => {
-            const date = new Date(parent.date)
-            return date.getUTCDay()
-        },
-        month: async (parent) => {
-            const date = new Date(parent.date)
-            return date.getUTCMonth() + 1
-        },
-        year: async (parent) => {
-            const date = new Date(parent.date)
-            return date.getUTCFullYear()
-        },
+        info: async (parent, args, context) => {
+            const { db } = context;
+            return await db.information.findUnique({
+                where: {
+                    id: parent.infoId
+                }
+            })
+        }
     },
     Comment: {
         user: async (parent, args, context) => {
@@ -130,20 +141,19 @@ const resolvers: Resolver = {
             const filter = args.hashtags
             const options = {
                 where: {
-                    NOT: {
-                        authorId: args.sessionUserId
-                    },
-                    tag: args.tag,
-                    hashtags: filter
+                    // NOT: {
+                    //     authorId: args.sessionUserId
+                    // },
+                    info: {
+                        tag: args.tag,
+                        hashtags: filter
+                    }
                 }
             }
-            if (args.tag === undefined || args.tag === "") {
-                delete options["where"]["tag"]
-            }
-            if (filter === undefined || filter === "") {
-                delete options["where"]["hashtags"]
+            if (!args.tag){
+                delete options["where"]["info"]["tag"]
             } else {
-                options["where"]["hashtags"] = {
+                options["where"]["info"]["hashtags"] = {
                     hasEvery: filter,
                 }
             }
@@ -228,23 +238,31 @@ const resolvers: Resolver = {
             const hashtags: string[] = findHashtags(description) as string[];
             const newDate = new Date(date);
             console.log(newDate.toString())
-            const newEvent = await db.event.create({
+            const newInfo = await db.information.create({
                 data: {
                     title: title,
                     description: description,
-                    place: place,
                     date: newDate,
-                    image: image,
                     tag: tag,
+                    image: image,
                     hashtags: hashtags,
+                }
+            })
+            const newEvent = await db.event.create({
+                data: {
+                    place: place,
                     author: {
                         connect: {
                             id: authorId
                         }
+                    },
+                    info: {
+                        connect: {
+                            id: (newInfo.id)
+                        }
                     }
                 },
             });
-            console.log("Nuevo evento: ", newEvent)
             return newEvent;
         },
         deleteEventByOwner: async (parent, args, context) => {
@@ -292,10 +310,15 @@ const resolvers: Resolver = {
         },
         createComment: async (parent, args, context) => {
             const { db } = context;
+            const event = await db.event.findUnique({
+                where: {
+                    id: args.eventId
+                }
+            })
             return await db.comment.create({
                 data: {
                     userId: args.userId,
-                    eventId: args.eventId,
+                    infoId: event.infoId,
                     text: args.text,
                 }
             }).catch((e) => {

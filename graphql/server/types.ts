@@ -23,9 +23,16 @@ const typeDefs = gql`
 
     type Event {
         id: ID
+        author:      User
+        info: Information 
+        place:       String
+        attendees:   [Attendee]
+        attendeesCount: Int
+    }
+
+    type Information {
         title: String
         description: String
-        place:       String
         date:        DateTime
         minutes:     String
         hours:       String
@@ -34,10 +41,7 @@ const typeDefs = gql`
         year:       String
         image:       String
         tag:         String
-        author:      User
-        attendeesCount: Int
         comments:    [Comment]
-        attendees:   [Attendee]
         hashtags:    [String]
     }
 

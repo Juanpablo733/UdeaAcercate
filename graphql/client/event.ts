@@ -23,44 +23,49 @@ export const DELETE_EVENT_BY_OWNER = gql`
     }
 `
 export const GET_EVENTS_PREVIEW = gql`  
-    query Events($sessionUserId: String!, $tag: String, $hashtags: [String]) {
-        events(sessionUserId: $sessionUserId, tag: $tag, hashtags: $hashtags) {
+    query Events($sessionUserId: String!) {
+        events(sessionUserId: $sessionUserId) {
             id
-            tag
+            place
+            attendeesCount
             author {
                 id
                 name
                 image
             }
-            title
-            image
-            date
-            attendeesCount
-            minutes
-            hours
-            day
-            month
-            year
+            info {
+                title
+                image
+                date
+                minutes
+                hours
+                day
+                month
+                year
+                tag
+            }
         }
     }
 `
 export const GET_EVENT_BY_ID = gql`
-    query Event($id: String!) {
-        event(id: $id) {
-            comments {
-                text
-                dateTime
-                user {
+    query Event($eventId: String!) {
+        event(id: $eventId) {
+            place
+            attendeesCount
+            info {
+                description
+                hashtags
+                comments {
+                    id
+                    text
+                    dateTime
+                    user {
                     id
                     name
                     image
+                    }
                 }
-                id
             }
-            place
-            description
-            hashtags
-            attendeesCount
         }
     }
 `
@@ -68,21 +73,24 @@ export const GET_EVENTS_ATTENDING = gql`
     query Query($userId: String!) {
         eventsAttending(userId: $userId) {
             id
-            tag
+            place
+            attendeesCount
             author {
                 id
-                image
                 name
+                image
             }
-            title
-            image
-            date
-            attendeesCount
-            minutes
-            hours
-            day
-            month
-            year
+            info {
+                title
+                image
+                date
+                minutes
+                hours
+                day
+                month
+                year
+                tag
+            }
         }
     }
 `
@@ -90,21 +98,24 @@ export const GET_EVENTS_CREATED = gql`
     query EventsCreated($userId: String!) {
         eventsCreated(userId: $userId) {
             id
-            tag
-            author {
-            id
-            image
-            name
-            }
-            title
-            image
-            date
+            place
             attendeesCount
-            minutes
-            hours
-            day
-            month
-            year
+            author {
+                id
+                name
+                image
+            }
+            info {
+                title
+                image
+                date
+                minutes
+                hours
+                day
+                month
+                year
+                tag
+            }
         }
     }
 `

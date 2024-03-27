@@ -8,5 +8,5 @@ export declare class CommentScalarWhereWithAggregatesInput {
     text?: StringWithAggregatesFilter | undefined;
     dateTime?: DateTimeWithAggregatesFilter | undefined;
     userId?: StringWithAggregatesFilter | undefined;
-    eventId?: StringWithAggregatesFilter | undefined;
+    infoId?: StringWithAggregatesFilter | undefined;
 }

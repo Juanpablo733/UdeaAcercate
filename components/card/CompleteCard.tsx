@@ -1,17 +1,13 @@
-
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { Avatar } from '../ui/Avatar'
-import { MdOutlineDelete, MdOutlinePermIdentity, MdOutlinePlace, MdOutlineSubdirectoryArrowLeft } from 'react-icons/md'
+import { MdOutlinePermIdentity, MdOutlinePlace, MdOutlineSubdirectoryArrowLeft } from 'react-icons/md'
 import { useMutation, useQuery } from '@apollo/client'
-import { DELETE_EVENT_BY_OWNER, ExtendedEvent, GET_EVENTS_ATTENDING, GET_EVENTS_CREATED, GET_EVENTS_PREVIEW, GET_EVENT_BY_ID } from '@/graphql/client/event'
+import { ExtendedEvent, GET_EVENT_BY_ID } from '@/graphql/client/event'
 import { Attendee, Comment } from "@/prisma/generated/type-graphql"
 import { CommentContainer } from './CommentContainer'
-import { useUserData } from '@/hooks/useUserData'
 import { ADD_ATTENDEE, FIND_ATTENDEE, QUIT_ATTENDEE } from '@/graphql/client/attendee'
 import { CREATE_COMMENT } from '@/graphql/client/comment'
-import { toast } from 'react-toastify'
-import DeleteEventWarningModal from '../modals/DeleteEventWarningModal'
 import DeleteEventButton from '../buttons/DeleteEventButton';
 
 interface completeCardProps {
@@ -28,7 +24,7 @@ interface completeCardProps {
 const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEvento, sessionUserId }: completeCardProps) => {
     const [comentario, setComentario] = useState('');
     const { data, loading, error } = useQuery<{ event: ExtendedEvent }>(GET_EVENT_BY_ID, {
-        variables: { id },
+        variables: { eventId: id },
         fetchPolicy: 'cache-first'
     })
     const { data: attendeeData, loading: loadingAttendee, error: errorAttendee } =
@@ -51,7 +47,6 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
         { variables: { userId: sessionUserId, eventId: id, text: comentario } });
 
     if (loading) return <p>Loading...</p>
-    console.log("Evento:", data)
     if (error) {
         console.log("Error en carga de evento individual", error)
         return <p>error</p>
@@ -59,11 +54,10 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
 
     const executeAddAttendee = async () => {
         try {
-            await addAttendee({
+            const resultado = await addAttendee({
                 refetchQueries: [GET_EVENT_BY_ID, FIND_ATTENDEE]
-
             });
-            console.log("después de la mutación", data);
+            console.log("AddAttendee: ", resultado);
 
         } catch (error) {
             console.error('Error al ejecutar la mutación:', error);
@@ -136,12 +130,12 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
                     userId={idAutor}
                 />
                 <div>
-                    {data?.event.description}
+                    {data?.event.info.description}
                 </div>
 
                 <div className='pl-4'>
                     <CommentContainer
-                        data={data?.event.comments}
+                        data={data?.event.info.comments}
                         sessionUserId={sessionUserId} />
                 </div>
                 <div className='flex'>

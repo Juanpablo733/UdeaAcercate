@@ -7,5 +7,5 @@ export declare class FindFirstCommentArgs {
     cursor?: CommentWhereUniqueInput | undefined;
     take?: number | undefined;
     skip?: number | undefined;
-    distinct?: Array<"id" | "text" | "dateTime" | "userId" | "eventId"> | undefined;
+    distinct?: Array<"id" | "text" | "dateTime" | "userId" | "infoId"> | undefined;
 }

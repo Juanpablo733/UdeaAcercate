@@ -6,7 +6,6 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const EventCountOrderByAggregateInput_1 = require("../inputs/EventCountOrderByAggregateInput");
 const EventMaxOrderByAggregateInput_1 = require("../inputs/EventMaxOrderByAggregateInput");
 const EventMinOrderByAggregateInput_1 = require("../inputs/EventMinOrderByAggregateInput");
-const SortOrderInput_1 = require("../inputs/SortOrderInput");
 const SortOrder_1 = require("../../enums/SortOrder");
 let EventOrderByWithAggregationInput = exports.EventOrderByWithAggregationInput = class EventOrderByWithAggregationInput {
 };
@@ -21,49 +20,19 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", String)
-], EventOrderByWithAggregationInput.prototype, "title", void 0);
-tslib_1.__decorate([
-    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", String)
-], EventOrderByWithAggregationInput.prototype, "description", void 0);
-tslib_1.__decorate([
-    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", String)
-], EventOrderByWithAggregationInput.prototype, "place", void 0);
-tslib_1.__decorate([
-    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", String)
-], EventOrderByWithAggregationInput.prototype, "date", void 0);
-tslib_1.__decorate([
-    TypeGraphQL.Field(_type => SortOrderInput_1.SortOrderInput, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", SortOrderInput_1.SortOrderInput)
-], EventOrderByWithAggregationInput.prototype, "image", void 0);
-tslib_1.__decorate([
-    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", String)
-], EventOrderByWithAggregationInput.prototype, "tag", void 0);
-tslib_1.__decorate([
-    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", String)
 ], EventOrderByWithAggregationInput.prototype, "authorId", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", String)
-], EventOrderByWithAggregationInput.prototype, "hashtags", void 0);
+], EventOrderByWithAggregationInput.prototype, "infoId", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
+], EventOrderByWithAggregationInput.prototype, "place", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => EventCountOrderByAggregateInput_1.EventCountOrderByAggregateInput, {
         nullable: true
