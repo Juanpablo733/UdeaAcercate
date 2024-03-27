@@ -1,0 +1,35 @@
+import type { GraphQLResolveInfo } from "graphql";
+import { AggregateRoleArgs } from "./args/AggregateRoleArgs";
+import { CreateManyRoleArgs } from "./args/CreateManyRoleArgs";
+import { CreateOneRoleArgs } from "./args/CreateOneRoleArgs";
+import { DeleteManyRoleArgs } from "./args/DeleteManyRoleArgs";
+import { DeleteOneRoleArgs } from "./args/DeleteOneRoleArgs";
+import { FindFirstRoleArgs } from "./args/FindFirstRoleArgs";
+import { FindFirstRoleOrThrowArgs } from "./args/FindFirstRoleOrThrowArgs";
+import { FindManyRoleArgs } from "./args/FindManyRoleArgs";
+import { FindUniqueRoleArgs } from "./args/FindUniqueRoleArgs";
+import { FindUniqueRoleOrThrowArgs } from "./args/FindUniqueRoleOrThrowArgs";
+import { GroupByRoleArgs } from "./args/GroupByRoleArgs";
+import { UpdateManyRoleArgs } from "./args/UpdateManyRoleArgs";
+import { UpdateOneRoleArgs } from "./args/UpdateOneRoleArgs";
+import { UpsertOneRoleArgs } from "./args/UpsertOneRoleArgs";
+import { Role } from "../../../models/Role";
+import { AffectedRowsOutput } from "../../outputs/AffectedRowsOutput";
+import { AggregateRole } from "../../outputs/AggregateRole";
+import { RoleGroupBy } from "../../outputs/RoleGroupBy";
+export declare class RoleCrudResolver {
+    aggregateRole(ctx: any, info: GraphQLResolveInfo, args: AggregateRoleArgs): Promise<AggregateRole>;
+    createManyRole(ctx: any, info: GraphQLResolveInfo, args: CreateManyRoleArgs): Promise<AffectedRowsOutput>;
+    createOneRole(ctx: any, info: GraphQLResolveInfo, args: CreateOneRoleArgs): Promise<Role>;
+    deleteManyRole(ctx: any, info: GraphQLResolveInfo, args: DeleteManyRoleArgs): Promise<AffectedRowsOutput>;
+    deleteOneRole(ctx: any, info: GraphQLResolveInfo, args: DeleteOneRoleArgs): Promise<Role | null>;
+    findFirstRole(ctx: any, info: GraphQLResolveInfo, args: FindFirstRoleArgs): Promise<Role | null>;
+    findFirstRoleOrThrow(ctx: any, info: GraphQLResolveInfo, args: FindFirstRoleOrThrowArgs): Promise<Role | null>;
+    roles(ctx: any, info: GraphQLResolveInfo, args: FindManyRoleArgs): Promise<Role[]>;
+    role(ctx: any, info: GraphQLResolveInfo, args: FindUniqueRoleArgs): Promise<Role | null>;
+    getRole(ctx: any, info: GraphQLResolveInfo, args: FindUniqueRoleOrThrowArgs): Promise<Role | null>;
+    groupByRole(ctx: any, info: GraphQLResolveInfo, args: GroupByRoleArgs): Promise<RoleGroupBy[]>;
+    updateManyRole(ctx: any, info: GraphQLResolveInfo, args: UpdateManyRoleArgs): Promise<AffectedRowsOutput>;
+    updateOneRole(ctx: any, info: GraphQLResolveInfo, args: UpdateOneRoleArgs): Promise<Role | null>;
+    upsertOneRole(ctx: any, info: GraphQLResolveInfo, args: UpsertOneRoleArgs): Promise<Role>;
+}

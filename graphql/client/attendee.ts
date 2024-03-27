@@ -5,8 +5,10 @@ const ADD_ATTENDEE = gql`
         addAttendee(userId: $userId, eventId: $eventId) {
             event {
                 id
-                tag
-                title
+                info {
+                    tag
+                    title
+                }
             }
             user {
                 id

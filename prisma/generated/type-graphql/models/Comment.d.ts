@@ -1,4 +1,4 @@
-import { Event } from "../models/Event";
+import { Information } from "../models/Information";
 import { User } from "../models/User";
 export declare class Comment {
     id: string;
@@ -6,6 +6,6 @@ export declare class Comment {
     dateTime: Date;
     user?: User;
     userId: string;
-    event?: Event;
-    eventId: string;
+    info?: Information;
+    infoId: string;
 }

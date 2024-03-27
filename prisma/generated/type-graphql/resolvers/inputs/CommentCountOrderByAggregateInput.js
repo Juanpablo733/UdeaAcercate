@@ -35,7 +35,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", String)
-], CommentCountOrderByAggregateInput.prototype, "eventId", void 0);
+], CommentCountOrderByAggregateInput.prototype, "infoId", void 0);
 exports.CommentCountOrderByAggregateInput = CommentCountOrderByAggregateInput = tslib_1.__decorate([
     TypeGraphQL.InputType("CommentCountOrderByAggregateInput", {})
 ], CommentCountOrderByAggregateInput);

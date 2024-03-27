@@ -6,7 +6,7 @@ export declare class CommentGroupBy {
     text: string;
     dateTime: Date;
     userId: string;
-    eventId: string;
+    infoId: string;
     _count: CommentCountAggregate | null;
     _min: CommentMinAggregate | null;
     _max: CommentMaxAggregate | null;

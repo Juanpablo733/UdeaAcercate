@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentCreateWithoutUserInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-const EventCreateNestedOneWithoutCommentsInput_1 = require("../inputs/EventCreateNestedOneWithoutCommentsInput");
+const InformationCreateNestedOneWithoutCommentsInput_1 = require("../inputs/InformationCreateNestedOneWithoutCommentsInput");
 let CommentCreateWithoutUserInput = exports.CommentCreateWithoutUserInput = class CommentCreateWithoutUserInput {
 };
 tslib_1.__decorate([
@@ -25,11 +25,11 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Date)
 ], CommentCreateWithoutUserInput.prototype, "dateTime", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => EventCreateNestedOneWithoutCommentsInput_1.EventCreateNestedOneWithoutCommentsInput, {
+    TypeGraphQL.Field(_type => InformationCreateNestedOneWithoutCommentsInput_1.InformationCreateNestedOneWithoutCommentsInput, {
         nullable: false
     }),
-    tslib_1.__metadata("design:type", EventCreateNestedOneWithoutCommentsInput_1.EventCreateNestedOneWithoutCommentsInput)
-], CommentCreateWithoutUserInput.prototype, "event", void 0);
+    tslib_1.__metadata("design:type", InformationCreateNestedOneWithoutCommentsInput_1.InformationCreateNestedOneWithoutCommentsInput)
+], CommentCreateWithoutUserInput.prototype, "info", void 0);
 exports.CommentCreateWithoutUserInput = CommentCreateWithoutUserInput = tslib_1.__decorate([
     TypeGraphQL.InputType("CommentCreateWithoutUserInput", {})
 ], CommentCreateWithoutUserInput);

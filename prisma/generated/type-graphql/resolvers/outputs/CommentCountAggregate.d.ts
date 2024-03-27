@@ -3,6 +3,6 @@ export declare class CommentCountAggregate {
     text: number;
     dateTime: number;
     userId: number;
-    eventId: number;
+    infoId: number;
     _all: number;
 }

@@ -35,7 +35,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", String)
-], CommentMinOrderByAggregateInput.prototype, "eventId", void 0);
+], CommentMinOrderByAggregateInput.prototype, "infoId", void 0);
 exports.CommentMinOrderByAggregateInput = CommentMinOrderByAggregateInput = tslib_1.__decorate([
     TypeGraphQL.InputType("CommentMinOrderByAggregateInput", {})
 ], CommentMinOrderByAggregateInput);

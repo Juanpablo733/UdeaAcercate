@@ -3,5 +3,5 @@ export declare class CommentCountOrderByAggregateInput {
     text?: "asc" | "desc" | undefined;
     dateTime?: "asc" | "desc" | undefined;
     userId?: "asc" | "desc" | undefined;
-    eventId?: "asc" | "desc" | undefined;
+    infoId?: "asc" | "desc" | undefined;
 }

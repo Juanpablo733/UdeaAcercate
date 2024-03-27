@@ -9,7 +9,7 @@ var CommentScalarFieldEnum;
     CommentScalarFieldEnum["text"] = "text";
     CommentScalarFieldEnum["dateTime"] = "dateTime";
     CommentScalarFieldEnum["userId"] = "userId";
-    CommentScalarFieldEnum["eventId"] = "eventId";
+    CommentScalarFieldEnum["infoId"] = "infoId";
 })(CommentScalarFieldEnum || (exports.CommentScalarFieldEnum = CommentScalarFieldEnum = {}));
 TypeGraphQL.registerEnumType(CommentScalarFieldEnum, {
     name: "CommentScalarFieldEnum",

@@ -3,5 +3,5 @@ export declare enum CommentScalarFieldEnum {
     text = "text",
     dateTime = "dateTime",
     userId = "userId",
-    eventId = "eventId"
+    infoId = "infoId"
 }

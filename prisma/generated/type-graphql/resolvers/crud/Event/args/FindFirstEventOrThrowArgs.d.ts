@@ -7,5 +7,5 @@ export declare class FindFirstEventOrThrowArgs {
     cursor?: EventWhereUniqueInput | undefined;
     take?: number | undefined;
     skip?: number | undefined;
-    distinct?: Array<"id" | "title" | "description" | "place" | "date" | "image" | "tag" | "authorId" | "hashtags"> | undefined;
+    distinct?: Array<"id" | "authorId" | "infoId" | "place"> | undefined;
 }

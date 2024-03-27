@@ -21,7 +21,6 @@ export default function DeleteEventButton({idAutor, sessionUserId, eventId}: Del
                 { refetchQueries: [GET_EVENTS_PREVIEW, GET_EVENTS_CREATED, GET_EVENTS_ATTENDING] }
             );
             toast.success("¡Evento eliminado con éxito!")
-            console.log('Data resultante de la mutación:', resultado.data);
         } catch (error) {
             toast.error("No se ha eliminado el evento")
             console.error('Error al ejecutar la mutación:', error);

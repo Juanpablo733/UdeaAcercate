@@ -13,8 +13,10 @@ declare const crudResolversMap: {
     EmailToken: typeof crudResolvers.EmailTokenCrudResolver;
     Profile: typeof crudResolvers.ProfileCrudResolver;
     Event: typeof crudResolvers.EventCrudResolver;
+    Information: typeof crudResolvers.InformationCrudResolver;
     Attendee: typeof crudResolvers.AttendeeCrudResolver;
     Comment: typeof crudResolvers.CommentCrudResolver;
+    Role: typeof crudResolvers.RoleCrudResolver;
 };
 type ResolverModelNames = keyof typeof crudResolversMap;
 type ModelResolverActionNames<TModel extends ResolverModelNames> = keyof typeof crudResolversMap[TModel]["prototype"];
@@ -44,6 +46,7 @@ declare const relationResolversMap: {
     User: typeof relationResolvers.UserRelationsResolver;
     Profile: typeof relationResolvers.ProfileRelationsResolver;
     Event: typeof relationResolvers.EventRelationsResolver;
+    Information: typeof relationResolvers.InformationRelationsResolver;
     Attendee: typeof relationResolvers.AttendeeRelationsResolver;
     Comment: typeof relationResolvers.CommentRelationsResolver;
 };

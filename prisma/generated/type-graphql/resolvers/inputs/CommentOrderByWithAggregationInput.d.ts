@@ -6,7 +6,7 @@ export declare class CommentOrderByWithAggregationInput {
     text?: "asc" | "desc" | undefined;
     dateTime?: "asc" | "desc" | undefined;
     userId?: "asc" | "desc" | undefined;
-    eventId?: "asc" | "desc" | undefined;
+    infoId?: "asc" | "desc" | undefined;
     _count?: CommentCountOrderByAggregateInput | undefined;
     _max?: CommentMaxOrderByAggregateInput | undefined;
     _min?: CommentMinOrderByAggregateInput | undefined;

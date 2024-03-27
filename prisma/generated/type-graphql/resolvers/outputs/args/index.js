@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserCountSessionsArgs = exports.UserCountEventsCreatedArgs = exports.UserCountCommentsArgs = exports.UserCountAttendeesArgs = exports.UserCountAccountsArgs = exports.EventCountCommentsArgs = exports.EventCountAttendeesArgs = void 0;
+exports.UserCountSessionsArgs = exports.UserCountEventsCreatedArgs = exports.UserCountCommentsArgs = exports.UserCountAttendeesArgs = exports.UserCountAccountsArgs = exports.InformationCountCommentsArgs = exports.EventCountAttendeesArgs = void 0;
 var EventCountAttendeesArgs_1 = require("./EventCountAttendeesArgs");
 Object.defineProperty(exports, "EventCountAttendeesArgs", { enumerable: true, get: function () { return EventCountAttendeesArgs_1.EventCountAttendeesArgs; } });
-var EventCountCommentsArgs_1 = require("./EventCountCommentsArgs");
-Object.defineProperty(exports, "EventCountCommentsArgs", { enumerable: true, get: function () { return EventCountCommentsArgs_1.EventCountCommentsArgs; } });
+var InformationCountCommentsArgs_1 = require("./InformationCountCommentsArgs");
+Object.defineProperty(exports, "InformationCountCommentsArgs", { enumerable: true, get: function () { return InformationCountCommentsArgs_1.InformationCountCommentsArgs; } });
 var UserCountAccountsArgs_1 = require("./UserCountAccountsArgs");
 Object.defineProperty(exports, "UserCountAccountsArgs", { enumerable: true, get: function () { return UserCountAccountsArgs_1.UserCountAccountsArgs; } });
 var UserCountAttendeesArgs_1 = require("./UserCountAttendeesArgs");

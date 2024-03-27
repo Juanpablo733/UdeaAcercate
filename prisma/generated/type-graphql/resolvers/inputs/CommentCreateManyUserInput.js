@@ -28,7 +28,7 @@ tslib_1.__decorate([
         nullable: false
     }),
     tslib_1.__metadata("design:type", String)
-], CommentCreateManyUserInput.prototype, "eventId", void 0);
+], CommentCreateManyUserInput.prototype, "infoId", void 0);
 exports.CommentCreateManyUserInput = CommentCreateManyUserInput = tslib_1.__decorate([
     TypeGraphQL.InputType("CommentCreateManyUserInput", {})
 ], CommentCreateManyUserInput);
