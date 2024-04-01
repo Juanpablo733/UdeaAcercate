@@ -23,6 +23,7 @@ const Home = () => {
         fetchPolicy: 'no-cache',
         variables: { sessionUserId: userId, tag, hashtags }
     })
+    console.log("[Home] tag:", tag)
     if (loadingUser || status === "loading") return (<Loading />)
     if (loadingAll) return (<Loading />)
     if (session && errorAll) {
@@ -34,10 +35,10 @@ const Home = () => {
             <title>
                 Home | UdeAcercate
             </title>
-            <div className='flex flex-col gap-10 pb-4 Yellow-little min-h-screen debug'>
+            <div className='flex flex-col gap-10 pb-4 Yellow-little min-h-screen '>
             {/* <div className='flex flex-col gap-10 pb-4 Yellow-little h-full debug'> */}
                 <Navbar/>
-                <div className=' flex gap-16  justify-center debug'>
+                <div className=' flex gap-16  justify-center '>
                     <button
                         className=' flex gap-12 items-center text-xl text-center bg-white rounded-2xl'
                         onClick={() => setOpenCreateEvent(true)}>

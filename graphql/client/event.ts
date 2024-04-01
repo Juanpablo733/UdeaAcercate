@@ -23,8 +23,8 @@ export const DELETE_EVENT_BY_OWNER = gql`
     }
 `
 export const GET_EVENTS_PREVIEW = gql`  
-    query Events($sessionUserId: String!) {
-        events(sessionUserId: $sessionUserId) {
+    query Events($sessionUserId: String!, $tag: String, $hashtags: [String]) {
+        events(sessionUserId: $sessionUserId, tag: $tag, hashtags: $hashtags) {
             id
             place
             attendeesCount
