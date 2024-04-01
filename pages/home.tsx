@@ -34,8 +34,8 @@ const Home = () => {
             <title>
                 Home | UdeAcercate
             </title>
-            {/* <div className='flex flex-col gap-10 pb-4 Yellow-little h-screen debug'> */}
-            <div className='flex flex-col gap-10 pb-4 Yellow-little h-full debug'>
+            <div className='flex flex-col gap-10 pb-4 Yellow-little min-h-screen debug'>
+            {/* <div className='flex flex-col gap-10 pb-4 Yellow-little h-full debug'> */}
                 <Navbar/>
                 <div className=' flex gap-16  justify-center debug'>
                     <button
