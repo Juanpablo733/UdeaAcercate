@@ -9,6 +9,7 @@ var UserType;
     UserType["Profesor"] = "Profesor";
     UserType["Administrativo"] = "Administrativo";
     UserType["Egresado"] = "Egresado";
+    UserType["Jubilado"] = "Jubilado";
 })(UserType || (exports.UserType = UserType = {}));
 TypeGraphQL.registerEnumType(UserType, {
     name: "UserType",

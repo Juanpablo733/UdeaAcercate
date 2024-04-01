@@ -34,9 +34,10 @@ const Home = () => {
             <title>
                 Home | UdeAcercate
             </title>
-            <div className='flex flex-col gap-10 pb-4 Yellow-little h-full'>
+            {/* <div className='flex flex-col gap-10 pb-4 Yellow-little h-screen debug'> */}
+            <div className='flex flex-col gap-10 pb-4 Yellow-little h-full debug'>
                 <Navbar/>
-                <div className=' flex gap-16  justify-center'>
+                <div className=' flex gap-16  justify-center debug'>
                     <button
                         className=' flex gap-12 items-center text-xl text-center bg-white rounded-2xl'
                         onClick={() => setOpenCreateEvent(true)}>

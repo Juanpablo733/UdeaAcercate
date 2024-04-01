@@ -215,7 +215,8 @@ exports.UserType = exports.$Enums.UserType = {
   Estudiante: 'Estudiante',
   Profesor: 'Profesor',
   Administrativo: 'Administrativo',
-  Egresado: 'Egresado'
+  Egresado: 'Egresado',
+  Jubilado: 'Jubilado'
 };
 
 exports.Campus = exports.$Enums.Campus = {
