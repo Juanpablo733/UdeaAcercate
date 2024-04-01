@@ -29,6 +29,7 @@ enum UserType {
   Profesor
   Administrativo
   Egresado
+  Jubilado
 }
 
 enum Campus {

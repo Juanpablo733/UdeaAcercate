@@ -77,7 +77,8 @@ export namespace $Enums {
   Estudiante: 'Estudiante',
   Profesor: 'Profesor',
   Administrativo: 'Administrativo',
-  Egresado: 'Egresado'
+  Egresado: 'Egresado',
+  Jubilado: 'Jubilado'
 };
 
 export type UserType = (typeof UserType)[keyof typeof UserType]

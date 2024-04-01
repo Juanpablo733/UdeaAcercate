@@ -1,3 +1,3 @@
 export declare class NullableEnumUserTypeFieldUpdateOperationsInput {
-    set?: "Estudiante" | "Profesor" | "Administrativo" | "Egresado" | undefined;
+    set?: "Estudiante" | "Profesor" | "Administrativo" | "Egresado" | "Jubilado" | undefined;
 }
