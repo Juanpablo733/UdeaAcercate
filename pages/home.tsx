@@ -23,9 +23,9 @@ const Home = () => {
         fetchPolicy: 'no-cache',
         variables: { sessionUserId: userId, tag, hashtags }
     })
-    if (loadingUser) return (<Loading />)
+    if (loadingUser || status === "loading") return (<Loading />)
     if (loadingAll) return (<Loading />)
-    if (errorAll) {
+    if (session && errorAll) {
         console.log("Error en carga de eventos", errorAll)
         return <p>error {errorAll.message}</p>
     }    
