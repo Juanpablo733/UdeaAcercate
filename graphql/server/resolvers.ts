@@ -137,8 +137,9 @@ const resolvers: Resolver = {
         },
         events: async (parent, args, context) => {
             const { db } = context;
-
+            console.log("[Events-server] tag:", args.tag)
             const filter = args.hashtags
+            console.log("[Events-server] hashtags:", filter)
             const options = {
                 where: {
                     // NOT: {
@@ -146,17 +147,17 @@ const resolvers: Resolver = {
                     // },
                     info: {
                         tag: args.tag,
-                        hashtags: filter
+                        hashtags: {
+                            hasEvery: filter
+                        }
                     }
                 }
             }
             if (!args.tag) {
                 delete options["where"]["info"]["tag"]
-            } else {
-                options["where"]["info"]["hashtags"] = {
-                    hasEvery: filter,
-                }
             }
+
+            console.log("[events] options:", options)
             return await db.event.findMany(options)
                 .catch((e) => {
                     console.log(e)
