@@ -21,7 +21,7 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
     const minutes = date.getMinutes().toString().padStart(2, '0')
     return (
         // <div className='w-full max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl '>
-        <div className='w-full min-w-[360px] max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl '>
+        <div className='debug w-full min-w-[360px] max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl '>
             <div className='flex justify-between items-center '>
                 <div className='flex gap-1 h-max'>
                     <MdOutlineLabel className="h-8 w-8" />
@@ -30,7 +30,7 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
                 <Link href={`/perfil/${data.author.id}`}>
                     <div className='flex gap-4 items-center'>
                         <span className='text-sm font-bold'>{data.author.name}</span>
-                        <Image src={data.author.image} alt={'avatar-image'} height={30} width={30} className='rounded-full' />
+                        <Image src={data.author.image} alt={'avatar-image'} height={30} width={30} className='rounded-full'/>
                     </div>
                 </Link>
             </div>
