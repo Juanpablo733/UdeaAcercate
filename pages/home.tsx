@@ -36,7 +36,6 @@ const Home = () => {
                 Home | UdeAcercate
             </title>
             <div className='flex flex-col gap-10 pb-4 Yellow-little min-h-screen '>
-            {/* <div className='flex flex-col gap-10 pb-4 Yellow-little h-full debug'> */}
                 <Navbar/>
                 <div className='flex flex-col md:flex-row gap-12 justify-center items-center'>
                     <div className='flex gap-8 md:gap-12'>
@@ -57,24 +56,14 @@ const Home = () => {
                             <option value="">Todos</option>
                         </select>
                     </div>
-                    {/* <div className=' flex gap-10 p-2 items-center justify-center  text-xl text-center bg-white rounded-2xl'>
-                        <span>Filtrar Por Evento</span>
-                        <MdExpandMore className="h-8 w-8" />
-                    </div> */}
                     <input placeholder='Buscar' className='p-2 items-center w-80 text-base sm:text-xl text-center bg-white rounded-2xl shadow-lg'/>
-                    {/* <div className='flex p-2 items-center w-96 justify-between  text-xl text-center bg-white rounded-2xl'>
-                        <span>Buscar</span>
-                        <MdOutlineSearch className="h-10 w-16" />
-                    </div> */}
                 </div>
                 <MiniCardContainer
                     data={eventsData?.events}
                     sessionUserId={userId} 
                 />
             </div>
-
         </PrivateLayout>
     )
 }
-
 export default Home;
