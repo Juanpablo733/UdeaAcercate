@@ -7,6 +7,7 @@ interface MiniCardContainerI2 {
 }
 
 const MiniCardContainer = ({ data, sessionUserId }: MiniCardContainerI2) => {
+    console.log('data: ', data);
     if (data)
         return (
             <div className='grid md:grid-cols-2 gap-4 justify-items-center px-2 sm:px-4'>

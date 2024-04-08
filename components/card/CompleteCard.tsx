@@ -92,7 +92,7 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
             console.error('Error al ejecutar la mutación:', error);
         }
     }
-
+    
     return (
         // <section className='flex justify-evenly debug'>
         <section className='flex flex-col md:flex-row'>
