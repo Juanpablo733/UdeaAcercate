@@ -1,6 +1,6 @@
 import { Navbar } from '@/components/navbar/Navbar';
 import Image from 'next/image';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { MdAddCircleOutline, MdExpandMore, MdOutlineSearch } from "react-icons/md";
 import { ExtendedEvent, GET_EVENTS_PREVIEW } from "@/graphql/client/event"
 import { useQuery } from "@apollo/client"
@@ -11,9 +11,11 @@ import { useUserData } from '@/hooks/useUserData';
 import CreateEventModal from '@/components/modals/CreateEventModal';
 import FormEvent from '@/components/forms/FormEvent';
 import PrivateLayout from '@/layouts/PrivateLayout';
+import SearchBar from '@/components/searchbar/SearchBar';
 
 const Home = () => {
-    const [dataFiltrada, setDataFiltrada] = useState('');
+    const [dataFiltrada, setDataFiltrada] = useState<{ events: ExtendedEvent[]}>();
+
     const [openCreateEvent, setOpenCreateEvent] = useState<boolean>(false);
     const { loading: loadingUser, session, status, userData } = useUserData();
     const userId = userData?.user.id
@@ -23,13 +25,31 @@ const Home = () => {
         fetchPolicy: 'no-cache',
         variables: { sessionUserId: userId, tag, hashtags }
     })
+
+    useEffect(() => {
+        if (eventsData && eventsData.events) {
+            setDataFiltrada({events: eventsData.events});
+        }
+      }, [eventsData]);
+
     console.log("[Home] tag:", tag)
     if (loadingUser || status === "loading") return (<Loading />)
     if (loadingAll) return (<Loading />)
     if (session && errorAll) {
         console.log("Error en carga de eventos", errorAll)
         return <p>error {errorAll.message}</p>
-    }    
+    }
+    const handleSearch = (searchTerm) => {
+        if (!eventsData || loadingAll || !eventsData.events) return;
+    
+        const filteredList = eventsData.events.filter((event) =>
+          event.info.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setDataFiltrada({events: filteredList});
+        console.log('data filtrada: ', dataFiltrada);
+        console.log('filteredList: ', filteredList);
+        
+      };
     return (
         <PrivateLayout>
             <title>
@@ -56,11 +76,12 @@ const Home = () => {
                             <option value="">Todos</option>
                         </select>
                     </div>
-                    <input placeholder='Buscar' className='p-2 items-center w-80 text-base sm:text-xl text-center bg-white rounded-2xl shadow-lg'/>
+                    <SearchBar onSearch={handleSearch}/> 
                 </div>
                 <MiniCardContainer
-                    data={eventsData?.events}
-                    sessionUserId={userId} 
+                    // data={eventsData?.events}
+                    data={dataFiltrada?.events}
+                    sessionUserId={userId}
                 />
             </div>
         </PrivateLayout>
