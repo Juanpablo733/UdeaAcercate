@@ -96,7 +96,8 @@ const CrearPerfil = () => {
               </select>
             </div>
           </label>
-          <label className='Label'>
+          <label className='
+          '>
             <div className='flex justify-between'>
               <span className='LabelText'>
                 Campus:
