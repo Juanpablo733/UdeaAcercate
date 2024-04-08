@@ -17,11 +17,17 @@ interface completeCardProps {
     nombre: string,
     imagenAutor: string,
     imagenEvento: string,
-    sessionUserId: string
+    sessionUserId: string,
+    minutes: string,
+    hours: string,
+    day: string,
+    month: string,
+    year: string,
 }
 
 
-const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEvento, sessionUserId }: completeCardProps) => {
+// const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEvento, sessionUserId }: completeCardProps) => {
+const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEvento, sessionUserId, day, hours, minutes, month, year }: completeCardProps) => {
     const [comentario, setComentario] = useState('');
     const { data, loading, error } = useQuery<{ event: ExtendedEvent }>(GET_EVENT_BY_ID, {
         variables: { eventId: id },
@@ -88,10 +94,12 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
     }
 
     return (
-        <div className='flex justify-evenly'>
+        // <section className='flex justify-evenly debug'>
+        <section className='flex flex-col md:flex-row'>
             {/* lado izquierdo */}
-            <div className='flex flex-col h-full w-[50%] pr-2'>
-                <div className='w-[100%] h-[50%] rounded-lg'>
+            <div className='flex flex-col h-full md:w-[60%] pr-2'>
+                {/* <div className='w-[100%] h-[50%] rounded-lg debug'> */}
+                <div className='w-[100%] rounded-lg'>
                     <Image className='rounded-lg'
                         width={1000}
                         height={0}
@@ -123,12 +131,21 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
                 </div>
             </div>
             {/* lado derecho */}
-            <div className='flex flex-col h-full w-[50%] pl-2 gap-2'>
+            {/* <div className='flex flex-col h-full md:w-[40%] pl-2 gap-2 debug'> */}
+            <div className='flex flex-col h-full md:w-[40%] pl-2 gap-2'>
                 <Avatar
                     name={nombre}
                     imageUrl={imagenAutor}
                     userId={idAutor}
                 />
+                <div className='flex gap-4'>
+                    <span className="text-black font-bold">
+                        {`${year}-${month}-${day}`}
+                    </span>
+                    <span className="text-black font-bold">
+                        {`${hours}:${minutes}`}
+                    </span>
+                </div>
                 <div>
                     {data?.event.info.description}
                 </div>
@@ -158,7 +175,7 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
                 </div>
 
             </div>
-        </div >
+        </section>
     )
 }
 

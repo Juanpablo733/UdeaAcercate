@@ -18,11 +18,13 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
     const month = (date.getMonth() + 1).toString().padStart(2, '0')
     const year = date.getFullYear().toString()
     const hours = date.getHours().toString().padStart(2, '0')
-    const minutes = date.getMinutes().toString().padStart(2, '0')
+    const minutes = date.getMinutes().toString().padStart(2, '0')   
     return (
         // <div className='w-full max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl '>
         <div className='w-full min-w-[360px] max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl '>
-            <div className='flex justify-between items-center '>
+            
+            {/* <div className='flex justify-between items-center'> */}
+            <header className='flex justify-between items-center'>
                 <div className='flex gap-1 h-max'>
                     <MdOutlineLabel className="h-8 w-8" />
                     <TagType type={data.info.tag} />
@@ -30,11 +32,12 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
                 <Link href={`/perfil/${data.author.id}`}>
                     <div className='flex gap-4 items-center'>
                         <span className='text-sm font-bold'>{data.author.name}</span>
-                        <Image src={data.author.image} alt={'avatar-image'} height={30} width={30} className='rounded-full' />
+                        <Image src={data.author.image} alt={'avatar-image'} height={30} width={30} className='rounded-full'/>
                     </div>
                 </Link>
-            </div>
-            <div className="gap-1 flex flex-col justify-between h-full ">
+            </header>
+
+            <section className="gap-1 flex flex-col justify-between h-full">
 
                 <div className="flex flex-col h-auto items-center ">
                     <span className="text-sm font-semibold">{data.info.title}</span>
@@ -76,7 +79,7 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
                             day={day}
                             hours={hours}
                             month={month}
-                            year={year} >
+                            year={year}>
                             <CompleteCard
                                 id={data.id}
                                 nombre={data.author.name}
@@ -85,7 +88,21 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
                                 idAutor={data.author.id}
                                 imagenEvento={data.info.image}
                                 sessionUserId={sessionUserId}
+                                minutes={minutes}
+                                day={day}
+                                hours={hours}
+                                month={month}
+                                year={year}
                             />
+                            {/* <CompleteCard
+                                id={data.id}
+                                nombre={data.author.name}
+                                asistentes={data.attendeesCount}
+                                imagenAutor={data.author.image}
+                                idAutor={data.author.id}
+                                imagenEvento={data.info.image}
+                                sessionUserId={sessionUserId}
+                            /> */}
                         </CardModal>
                     </div>
                     <div className="w-1/4 flex justify-center items-center">
@@ -95,7 +112,7 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
 
                 </div>
 
-            </div>
+            </section>
         </div>
         // </div>
     )
