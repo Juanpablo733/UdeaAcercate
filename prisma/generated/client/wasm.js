@@ -181,7 +181,8 @@ exports.Prisma.InformationScalarFieldEnum = {
 
 exports.Prisma.AttendeeScalarFieldEnum = {
   userId: 'userId',
-  eventId: 'eventId'
+  eventId: 'eventId',
+  dateTime: 'dateTime'
 };
 
 exports.Prisma.CommentScalarFieldEnum = {

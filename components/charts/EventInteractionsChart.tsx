@@ -42,6 +42,13 @@ const findMaxNumber = (data) => {
     return Math.max(...numberArray)
 }
 
+const calculateTicks = (data) => {
+    const max = findMaxNumber(data)
+    let ticks = Math.ceil(max * 0.1)
+    return ticks
+}
+
+
 const customizeTooltip = (pointInfo) => ({
     html: `<div><div class="tooltip-header">${pointInfo.argumentText
         }</div><div class="tooltip-body"><div class="series-name"><span class='top-series-name'>${pointInfo.points[0].seriesName
@@ -51,11 +58,16 @@ const customizeTooltip = (pointInfo) => ({
         }`,
 });
 
-export function EventInteractionsChart() {
-    const { data: interactionsData, loading } = useQuery(GET_INTERACTIONS_PER_EVENT_TAG)
+export function EventInteractionsChart({ startDate, endDate }: { startDate: string, endDate: string }) {
+    const { data: interactionsData, loading } = useQuery(GET_INTERACTIONS_PER_EVENT_TAG, {
+        variables: { startDate, endDate }
+    })
+    if (startDate === '' || endDate === '')
+        return (<></>)
     if (loading) return (<Loading />)
     const interactionsArray = makeInteractionsArray(interactionsData.interactionsPerEventType)
-    const ticks = findMaxNumber(interactionsArray) / 10
+    const ticks = calculateTicks(interactionsArray)
+
     return (
         <Chart
             title="Interacciones por tipo de evento"

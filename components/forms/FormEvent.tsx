@@ -6,6 +6,7 @@ import { useUserData } from '@/hooks/useUserData';
 import Image from 'next/image';
 import { toast } from 'react-toastify';
 import { MdImage } from 'react-icons/md';
+import { DatePicker } from '../atoms/datePicker';
 
 interface FormInterface {
     setModalOpen: Dispatch<SetStateAction<boolean>>
@@ -81,15 +82,7 @@ const FormEvent = ({ setModalOpen }: FormInterface) => {
                 <option value="Cultural">Cultural</option>
                 <option value="Deportivo">Deportivo</option>
             </select>
-            <input
-                className='w-full text-center text-[#1F1F3B] text-lg font-medium border-b-2 border-b-[#5F5F5F] focus:outline-none focus:border-b-[#1F1F3B]'
-                type="datetime-local"
-                name='date'
-                placeholder='Fecha'
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                required
-            />
+            <DatePicker type='datetime-local' date={date} setDate={setDate}/> 
             <div className='pt-5 w-full'>
                 <textarea
                     className='w-full text-center text-[#1F1F3B] text-lg font-medium border-2 rounded-xl border-[#5F5F5F] focus:outline-none focus:border-[#1F1F3B]'

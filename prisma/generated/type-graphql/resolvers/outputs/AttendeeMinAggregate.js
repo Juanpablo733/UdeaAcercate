@@ -17,6 +17,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", String)
 ], AttendeeMinAggregate.prototype, "eventId", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", Date)
+], AttendeeMinAggregate.prototype, "dateTime", void 0);
 exports.AttendeeMinAggregate = AttendeeMinAggregate = tslib_1.__decorate([
     TypeGraphQL.ObjectType("AttendeeMinAggregate", {})
 ], AttendeeMinAggregate);

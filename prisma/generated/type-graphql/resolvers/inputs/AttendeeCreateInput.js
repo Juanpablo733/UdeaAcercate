@@ -8,6 +8,12 @@ const UserCreateNestedOneWithoutAttendeesInput_1 = require("../inputs/UserCreate
 let AttendeeCreateInput = exports.AttendeeCreateInput = class AttendeeCreateInput {
 };
 tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", Date)
+], AttendeeCreateInput.prototype, "dateTime", void 0);
+tslib_1.__decorate([
     TypeGraphQL.Field(_type => UserCreateNestedOneWithoutAttendeesInput_1.UserCreateNestedOneWithoutAttendeesInput, {
         nullable: false
     }),

@@ -4,6 +4,7 @@ import { AttendeeMinOrderByAggregateInput } from "../inputs/AttendeeMinOrderByAg
 export declare class AttendeeOrderByWithAggregationInput {
     userId?: "asc" | "desc" | undefined;
     eventId?: "asc" | "desc" | undefined;
+    dateTime?: "asc" | "desc" | undefined;
     _count?: AttendeeCountOrderByAggregateInput | undefined;
     _max?: AttendeeMaxOrderByAggregateInput | undefined;
     _min?: AttendeeMinOrderByAggregateInput | undefined;

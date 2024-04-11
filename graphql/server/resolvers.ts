@@ -218,7 +218,7 @@ const resolvers: Resolver = {
         },
         interactionsPerEventType: async (parent, args, context) => {
             const { db } = context;
-            return await getInteractionsByEventTags(db)
+            return await getInteractionsByEventTags(db, new Date(args.startDate), new Date(args.endDate))
         }
     },
     Mutation: {

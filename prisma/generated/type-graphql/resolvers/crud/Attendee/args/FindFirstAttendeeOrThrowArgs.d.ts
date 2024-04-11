@@ -7,5 +7,5 @@ export declare class FindFirstAttendeeOrThrowArgs {
     cursor?: AttendeeWhereUniqueInput | undefined;
     take?: number | undefined;
     skip?: number | undefined;
-    distinct?: Array<"userId" | "eventId"> | undefined;
+    distinct?: Array<"userId" | "eventId" | "dateTime"> | undefined;
 }

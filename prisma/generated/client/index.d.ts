@@ -9492,16 +9492,19 @@ export namespace Prisma {
   export type AttendeeMinAggregateOutputType = {
     userId: string | null
     eventId: string | null
+    dateTime: Date | null
   }
 
   export type AttendeeMaxAggregateOutputType = {
     userId: string | null
     eventId: string | null
+    dateTime: Date | null
   }
 
   export type AttendeeCountAggregateOutputType = {
     userId: number
     eventId: number
+    dateTime: number
     _all: number
   }
 
@@ -9509,16 +9512,19 @@ export namespace Prisma {
   export type AttendeeMinAggregateInputType = {
     userId?: true
     eventId?: true
+    dateTime?: true
   }
 
   export type AttendeeMaxAggregateInputType = {
     userId?: true
     eventId?: true
+    dateTime?: true
   }
 
   export type AttendeeCountAggregateInputType = {
     userId?: true
     eventId?: true
+    dateTime?: true
     _all?: true
   }
 
@@ -9597,6 +9603,7 @@ export namespace Prisma {
   export type AttendeeGroupByOutputType = {
     userId: string
     eventId: string
+    dateTime: Date
     _count: AttendeeCountAggregateOutputType | null
     _min: AttendeeMinAggregateOutputType | null
     _max: AttendeeMaxAggregateOutputType | null
@@ -9619,6 +9626,7 @@ export namespace Prisma {
   export type AttendeeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     userId?: boolean
     eventId?: boolean
+    dateTime?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     event?: boolean | EventDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["attendee"]>
@@ -9626,6 +9634,7 @@ export namespace Prisma {
   export type AttendeeSelectScalar = {
     userId?: boolean
     eventId?: boolean
+    dateTime?: boolean
   }
 
   export type AttendeeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9643,6 +9652,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       userId: string
       eventId: string
+      dateTime: Date
     }, ExtArgs["result"]["attendee"]>
     composites: {}
   }
@@ -10042,6 +10052,7 @@ export namespace Prisma {
   interface AttendeeFieldRefs {
     readonly userId: FieldRef<"Attendee", 'String'>
     readonly eventId: FieldRef<"Attendee", 'String'>
+    readonly dateTime: FieldRef<"Attendee", 'DateTime'>
   }
     
 
@@ -12241,7 +12252,8 @@ export namespace Prisma {
 
   export const AttendeeScalarFieldEnum: {
     userId: 'userId',
-    eventId: 'eventId'
+    eventId: 'eventId',
+    dateTime: 'dateTime'
   };
 
   export type AttendeeScalarFieldEnum = (typeof AttendeeScalarFieldEnum)[keyof typeof AttendeeScalarFieldEnum]
@@ -12918,6 +12930,7 @@ export namespace Prisma {
     NOT?: AttendeeWhereInput | AttendeeWhereInput[]
     userId?: StringFilter<"Attendee"> | string
     eventId?: StringFilter<"Attendee"> | string
+    dateTime?: DateTimeFilter<"Attendee"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     event?: XOR<EventRelationFilter, EventWhereInput>
   }
@@ -12925,6 +12938,7 @@ export namespace Prisma {
   export type AttendeeOrderByWithRelationInput = {
     userId?: SortOrder
     eventId?: SortOrder
+    dateTime?: SortOrder
     user?: UserOrderByWithRelationInput
     event?: EventOrderByWithRelationInput
   }
@@ -12936,6 +12950,7 @@ export namespace Prisma {
     NOT?: AttendeeWhereInput | AttendeeWhereInput[]
     userId?: StringFilter<"Attendee"> | string
     eventId?: StringFilter<"Attendee"> | string
+    dateTime?: DateTimeFilter<"Attendee"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     event?: XOR<EventRelationFilter, EventWhereInput>
   }, "userId_eventId">
@@ -12943,6 +12958,7 @@ export namespace Prisma {
   export type AttendeeOrderByWithAggregationInput = {
     userId?: SortOrder
     eventId?: SortOrder
+    dateTime?: SortOrder
     _count?: AttendeeCountOrderByAggregateInput
     _max?: AttendeeMaxOrderByAggregateInput
     _min?: AttendeeMinOrderByAggregateInput
@@ -12954,6 +12970,7 @@ export namespace Prisma {
     NOT?: AttendeeScalarWhereWithAggregatesInput | AttendeeScalarWhereWithAggregatesInput[]
     userId?: StringWithAggregatesFilter<"Attendee"> | string
     eventId?: StringWithAggregatesFilter<"Attendee"> | string
+    dateTime?: DateTimeWithAggregatesFilter<"Attendee"> | Date | string
   }
 
   export type CommentWhereInput = {
@@ -13587,6 +13604,7 @@ export namespace Prisma {
   }
 
   export type AttendeeCreateInput = {
+    dateTime?: Date | string
     user: UserCreateNestedOneWithoutAttendeesInput
     event: EventCreateNestedOneWithoutAttendeesInput
   }
@@ -13594,9 +13612,11 @@ export namespace Prisma {
   export type AttendeeUncheckedCreateInput = {
     userId: string
     eventId: string
+    dateTime?: Date | string
   }
 
   export type AttendeeUpdateInput = {
+    dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutAttendeesNestedInput
     event?: EventUpdateOneRequiredWithoutAttendeesNestedInput
   }
@@ -13604,20 +13624,23 @@ export namespace Prisma {
   export type AttendeeUncheckedUpdateInput = {
     userId?: StringFieldUpdateOperationsInput | string
     eventId?: StringFieldUpdateOperationsInput | string
+    dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AttendeeCreateManyInput = {
     userId: string
     eventId: string
+    dateTime?: Date | string
   }
 
   export type AttendeeUpdateManyMutationInput = {
-
+    dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AttendeeUncheckedUpdateManyInput = {
     userId?: StringFieldUpdateOperationsInput | string
     eventId?: StringFieldUpdateOperationsInput | string
+    dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CommentCreateInput = {
@@ -14229,16 +14252,19 @@ export namespace Prisma {
   export type AttendeeCountOrderByAggregateInput = {
     userId?: SortOrder
     eventId?: SortOrder
+    dateTime?: SortOrder
   }
 
   export type AttendeeMaxOrderByAggregateInput = {
     userId?: SortOrder
     eventId?: SortOrder
+    dateTime?: SortOrder
   }
 
   export type AttendeeMinOrderByAggregateInput = {
     userId?: SortOrder
     eventId?: SortOrder
+    dateTime?: SortOrder
   }
 
   export type CommentCountOrderByAggregateInput = {
@@ -15270,11 +15296,13 @@ export namespace Prisma {
   }
 
   export type AttendeeCreateWithoutUserInput = {
+    dateTime?: Date | string
     event: EventCreateNestedOneWithoutAttendeesInput
   }
 
   export type AttendeeUncheckedCreateWithoutUserInput = {
     eventId: string
+    dateTime?: Date | string
   }
 
   export type AttendeeCreateOrConnectWithoutUserInput = {
@@ -15450,6 +15478,7 @@ export namespace Prisma {
     NOT?: AttendeeScalarWhereInput | AttendeeScalarWhereInput[]
     userId?: StringFilter<"Attendee"> | string
     eventId?: StringFilter<"Attendee"> | string
+    dateTime?: DateTimeFilter<"Attendee"> | Date | string
   }
 
   export type CommentUpsertWithWhereUniqueWithoutUserInput = {
@@ -15678,11 +15707,13 @@ export namespace Prisma {
   }
 
   export type AttendeeCreateWithoutEventInput = {
+    dateTime?: Date | string
     user: UserCreateNestedOneWithoutAttendeesInput
   }
 
   export type AttendeeUncheckedCreateWithoutEventInput = {
     userId: string
+    dateTime?: Date | string
   }
 
   export type AttendeeCreateOrConnectWithoutEventInput = {
@@ -16133,6 +16164,7 @@ export namespace Prisma {
 
   export type AttendeeCreateManyUserInput = {
     eventId: string
+    dateTime?: Date | string
   }
 
   export type CommentCreateManyUserInput = {
@@ -16183,15 +16215,18 @@ export namespace Prisma {
   }
 
   export type AttendeeUpdateWithoutUserInput = {
+    dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
     event?: EventUpdateOneRequiredWithoutAttendeesNestedInput
   }
 
   export type AttendeeUncheckedUpdateWithoutUserInput = {
     eventId?: StringFieldUpdateOperationsInput | string
+    dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AttendeeUncheckedUpdateManyWithoutUserInput = {
     eventId?: StringFieldUpdateOperationsInput | string
+    dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CommentUpdateWithoutUserInput = {
@@ -16277,18 +16312,22 @@ export namespace Prisma {
 
   export type AttendeeCreateManyEventInput = {
     userId: string
+    dateTime?: Date | string
   }
 
   export type AttendeeUpdateWithoutEventInput = {
+    dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutAttendeesNestedInput
   }
 
   export type AttendeeUncheckedUpdateWithoutEventInput = {
     userId?: StringFieldUpdateOperationsInput | string
+    dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AttendeeUncheckedUpdateManyWithoutEventInput = {
     userId?: StringFieldUpdateOperationsInput | string
+    dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CommentCreateManyInfoInput = {

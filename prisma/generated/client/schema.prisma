@@ -141,6 +141,7 @@ model Attendee {
   userId  String
   event   Event  @relation(fields: [eventId], references: [id])
   eventId String
+  dateTime DateTime    @default(now())
 
   @@id([userId, eventId])
 }

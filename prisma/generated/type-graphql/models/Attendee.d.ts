@@ -5,4 +5,5 @@ export declare class Attendee {
     userId: string;
     event?: Event;
     eventId: string;
+    dateTime: Date;
 }

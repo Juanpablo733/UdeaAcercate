@@ -17,6 +17,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", String)
 ], AttendeeMaxAggregate.prototype, "eventId", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", Date)
+], AttendeeMaxAggregate.prototype, "dateTime", void 0);
 exports.AttendeeMaxAggregate = AttendeeMaxAggregate = tslib_1.__decorate([
     TypeGraphQL.ObjectType("AttendeeMaxAggregate", {})
 ], AttendeeMaxAggregate);
