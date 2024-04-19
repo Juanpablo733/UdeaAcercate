@@ -3,5 +3,5 @@ export declare class CommentMinAggregate {
     text: string | null;
     dateTime: Date | null;
     userId: string | null;
-    eventId: string | null;
+    infoId: string | null;
 }

@@ -1,15 +1,8 @@
 import { AttendeeCreateNestedManyWithoutEventInput } from "../inputs/AttendeeCreateNestedManyWithoutEventInput";
-import { CommentCreateNestedManyWithoutEventInput } from "../inputs/CommentCreateNestedManyWithoutEventInput";
-import { EventCreatehashtagsInput } from "../inputs/EventCreatehashtagsInput";
+import { InformationCreateNestedOneWithoutEventInput } from "../inputs/InformationCreateNestedOneWithoutEventInput";
 export declare class EventCreateWithoutAuthorInput {
     id?: string | undefined;
-    title: string;
-    description: string;
     place: string;
-    date: Date;
-    image?: string | undefined;
-    tag: "Deportivo" | "Academico" | "Cultural";
-    hashtags?: EventCreatehashtagsInput | undefined;
-    comments?: CommentCreateNestedManyWithoutEventInput | undefined;
+    info: InformationCreateNestedOneWithoutEventInput;
     attendees?: AttendeeCreateNestedManyWithoutEventInput | undefined;
 }

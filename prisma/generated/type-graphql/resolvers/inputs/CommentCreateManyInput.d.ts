@@ -3,5 +3,5 @@ export declare class CommentCreateManyInput {
     text: string;
     dateTime?: Date | undefined;
     userId: string;
-    eventId: string;
+    infoId: string;
 }

@@ -5,7 +5,7 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const CommentWhereInput_1 = require("../inputs/CommentWhereInput");
 const DateTimeFilter_1 = require("../inputs/DateTimeFilter");
-const EventRelationFilter_1 = require("../inputs/EventRelationFilter");
+const InformationRelationFilter_1 = require("../inputs/InformationRelationFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
 const UserRelationFilter_1 = require("../inputs/UserRelationFilter");
 let CommentWhereUniqueInput = exports.CommentWhereUniqueInput = class CommentWhereUniqueInput {
@@ -57,7 +57,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", StringFilter_1.StringFilter)
-], CommentWhereUniqueInput.prototype, "eventId", void 0);
+], CommentWhereUniqueInput.prototype, "infoId", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => UserRelationFilter_1.UserRelationFilter, {
         nullable: true
@@ -65,11 +65,11 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", UserRelationFilter_1.UserRelationFilter)
 ], CommentWhereUniqueInput.prototype, "user", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => EventRelationFilter_1.EventRelationFilter, {
+    TypeGraphQL.Field(_type => InformationRelationFilter_1.InformationRelationFilter, {
         nullable: true
     }),
-    tslib_1.__metadata("design:type", EventRelationFilter_1.EventRelationFilter)
-], CommentWhereUniqueInput.prototype, "event", void 0);
+    tslib_1.__metadata("design:type", InformationRelationFilter_1.InformationRelationFilter)
+], CommentWhereUniqueInput.prototype, "info", void 0);
 exports.CommentWhereUniqueInput = CommentWhereUniqueInput = tslib_1.__decorate([
     TypeGraphQL.InputType("CommentWhereUniqueInput", {})
 ], CommentWhereUniqueInput);

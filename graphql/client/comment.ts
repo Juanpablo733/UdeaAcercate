@@ -14,4 +14,11 @@ const CREATE_COMMENT = gql`
         }
     }
 `
-export { CREATE_COMMENT }
+
+const DELETE_SELF_COMMENT = gql`
+    mutation Mutation($ownerId: String!, $commentId: String!) {
+        deleteCommentByOwner(ownerId: $ownerId, commentId: $commentId)
+    }
+`
+
+export { CREATE_COMMENT, DELETE_SELF_COMMENT }

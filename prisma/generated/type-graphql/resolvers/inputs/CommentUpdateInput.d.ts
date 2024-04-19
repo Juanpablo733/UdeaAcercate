@@ -1,5 +1,5 @@
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
-import { EventUpdateOneRequiredWithoutCommentsNestedInput } from "../inputs/EventUpdateOneRequiredWithoutCommentsNestedInput";
+import { InformationUpdateOneRequiredWithoutCommentsNestedInput } from "../inputs/InformationUpdateOneRequiredWithoutCommentsNestedInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { UserUpdateOneRequiredWithoutCommentsNestedInput } from "../inputs/UserUpdateOneRequiredWithoutCommentsNestedInput";
 export declare class CommentUpdateInput {
@@ -7,5 +7,5 @@ export declare class CommentUpdateInput {
     text?: StringFieldUpdateOperationsInput | undefined;
     dateTime?: DateTimeFieldUpdateOperationsInput | undefined;
     user?: UserUpdateOneRequiredWithoutCommentsNestedInput | undefined;
-    event?: EventUpdateOneRequiredWithoutCommentsNestedInput | undefined;
+    info?: InformationUpdateOneRequiredWithoutCommentsNestedInput | undefined;
 }

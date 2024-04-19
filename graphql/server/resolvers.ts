@@ -1,16 +1,13 @@
 import { Resolver, Context } from "@/types";
 import { sendVerificationEmail } from "../../util/nodemailerConfig";
 import { cloneDeep } from "@apollo/client/utilities";
+import { deleteEvent, findEvent } from "./utils/eventUtil";
+import { deleteAllAttendeesFromEvent } from "./utils/attendeeUtil";
+import { deleteAllCommentsFromEvent } from "./utils/commentUtil";
+import { findUser } from "./utils/userUtil";
+import { getInteractionsByEventTags } from "./utils/interactionsUtil";
 
-const resolveUser = async (userId: string, context: Context) => {
-    const { db } = context;
-    const user = db.user.findUnique({
-        where: {
-            id: userId
-        }
-    })
-    return user;
-}
+
 
 const resolveEvent = async (eventId: string, context: Context) => {
     const { db } = context;
@@ -32,41 +29,18 @@ const findHashtags = (text: String) => {
 }
 
 const resolvers: Resolver = {
-    Event: {
+    Information: {
         comments: async (parent, args, context) => {
             const { db } = context;
             const comments = await db.comment.findMany({
                 where: {
-                    eventId: parent.id
+                    infoId: parent.id
                 }
             }).catch((e) => {
                 console.log(e)
                 return null
             });
             return comments;
-        },
-        author: async (parent, args, context) => {
-            return resolveUser(parent.authorId, context);
-        },
-        attendeesCount: async (parent, args, context) => {
-            const { db } = context;
-            const count = db.attendee.count({
-                where: {
-                    eventId: parent.id
-                }
-            })
-            return count;
-        },
-        attendees: async (parent, args, context) => {
-            const { db } = context;
-            return await db.attendee.findMany({
-                where: {
-                    eventId: parent.id
-                },
-            }).catch((e) => {
-                console.log(e)
-                return null
-            });
         },
         minutes: async (parent) => {
             const date = new Date(parent.date)
@@ -89,9 +63,42 @@ const resolvers: Resolver = {
             return date.getUTCFullYear()
         },
     },
+    Event: {
+        author: async (parent, args, context) => {
+            return findUser(context.db, parent.authorId);
+        },
+        attendeesCount: async (parent, args, context) => {
+            const { db } = context;
+            const count = db.attendee.count({
+                where: {
+                    eventId: parent.id
+                }
+            })
+            return count;
+        },
+        attendees: async (parent, args, context) => {
+            const { db } = context;
+            return await db.attendee.findMany({
+                where: {
+                    eventId: parent.id
+                },
+            }).catch((e) => {
+                console.log(e)
+                return null
+            });
+        },
+        info: async (parent, args, context) => {
+            const { db } = context;
+            return await db.information.findUnique({
+                where: {
+                    id: parent.infoId
+                }
+            })
+        }
+    },
     Comment: {
         user: async (parent, args, context) => {
-            return resolveUser(parent.userId, context);
+            return findUser(context.db, parent.userId);
         },
         event: async (parent, args, context) => {
             return resolveEvent(parent.eventId, context);
@@ -99,12 +106,12 @@ const resolvers: Resolver = {
     },
     Profile: {
         user: async (parent, args, context) => {
-            return resolveUser(parent.userId, context);
+            return findUser(context.db, parent.userId);
         },
     },
     Attendee: {
         user: async (parent, args, context) => {
-            return resolveUser(parent.userId, context);
+            return findUser(context.db, parent.userId);
         },
         event: async (parent, args, context) => {
             return resolveEvent(parent.eventId, context);
@@ -130,32 +137,32 @@ const resolvers: Resolver = {
         },
         events: async (parent, args, context) => {
             const { db } = context;
-            if (args == undefined)
-                return await db.event.findMany();
-
+            console.log("[Events-server] tag:", args.tag)
             const filter = args.hashtags
+            console.log("[Events-server] hashtags:", filter)
             const options = {
                 where: {
-                    tag: args.tag,
-                    hashtags: filter
+                    // NOT: {
+                    //     authorId: args.sessionUserId
+                    // },
+                    info: {
+                        tag: args.tag,
+                        hashtags: {
+                            hasEvery: filter
+                        }
+                    }
                 }
             }
-            if (args.tag === undefined || args.tag === "") {
-                delete options["where"]["tag"]
+            if (!args.tag) {
+                delete options["where"]["info"]["tag"]
             }
-            if (filter === undefined || filter === "") {
-                delete options["where"]["hashtags"]
-            } else {
-                options["where"]["hashtags"] = {
-                    hasEvery: filter,
-                }
-            }
+
+            console.log("[events] options:", options)
             return await db.event.findMany(options)
                 .catch((e) => {
                     console.log(e)
                     return null
-                });;
-
+                });
         },
         eventsCreated: async (parent, args, context) => {
             const { db } = context;
@@ -181,6 +188,7 @@ const resolvers: Resolver = {
         },
         event: async (parent, args, context) => {
             const { db } = context;
+            console.log("Resolver event id: ", args.id)
             return await db.event.findUnique({
                 where: {
                     id: args.id
@@ -207,6 +215,10 @@ const resolvers: Resolver = {
             }).catch((e) => { console.log(e) })
             if (attendee) return true
             return false
+        },
+        interactionsPerEventType: async (parent, args, context) => {
+            const { db } = context;
+            return await getInteractionsByEventTags(db, new Date(args.startDate), new Date(args.endDate))
         }
     },
     Mutation: {
@@ -231,24 +243,47 @@ const resolvers: Resolver = {
             const hashtags: string[] = findHashtags(description) as string[];
             const newDate = new Date(date);
             console.log(newDate.toString())
-            const newEvent = await db.event.create({
+            const newInfo = await db.information.create({
                 data: {
                     title: title,
                     description: description,
-                    place: place,
                     date: newDate,
-                    image: image,
                     tag: tag,
+                    image: image,
                     hashtags: hashtags,
+                }
+            })
+            const newEvent = await db.event.create({
+                data: {
+                    place: place,
                     author: {
                         connect: {
                             id: authorId
                         }
+                    },
+                    info: {
+                        connect: {
+                            id: (newInfo.id)
+                        }
                     }
                 },
             });
-            console.log("Nuevo evento: ", newEvent)
             return newEvent;
+        },
+        deleteEventByOwner: async (parent, args, context) => {
+            const { db } = context;
+            var deleted: Boolean = false;
+
+            const eventToDelete = await findEvent(db, args.eventId)
+            if (eventToDelete.authorId === args.ownerId) {
+                await deleteAllAttendeesFromEvent(db, args.eventId);
+                await deleteAllCommentsFromEvent(db, args.eventId);
+                if (eventToDelete !== null) {
+                    await deleteEvent(db, args.eventId);
+                    deleted = true
+                }
+            }
+            return deleted
         },
         createProfile: async (parent, args, context) => {
             const { db } = context;
@@ -280,10 +315,15 @@ const resolvers: Resolver = {
         },
         createComment: async (parent, args, context) => {
             const { db } = context;
+            const event = await db.event.findUnique({
+                where: {
+                    id: args.eventId
+                }
+            })
             return await db.comment.create({
                 data: {
                     userId: args.userId,
-                    eventId: args.eventId,
+                    infoId: event.infoId,
                     text: args.text,
                 }
             }).catch((e) => {
@@ -291,17 +331,23 @@ const resolvers: Resolver = {
                 return null
             });
         },
-        deleteComment: async (parent, args, context) => {
+        deleteCommentByOwner: async (parent, args, context) => {
             const { db } = context;
-            var deleted: Boolean = true;
-            await db.comment.delete({
+            var deleted: Boolean = false;
+            const commentToDelete = await db.comment.findUnique({
                 where: {
-                    id: args.id,
+                    id: args.commentId
                 }
-            }).catch((e) => {
-                console.log(e)
-                deleted = false;
-            });
+            })
+            if (commentToDelete) {
+                if (commentToDelete.userId == args.ownerId) {
+                    await db.comment.delete({
+                        where: {
+                            id: args.commentId,
+                        }
+                    }).then(() => deleted = true)
+                }
+            }
             return deleted;
         },
         addAttendee: async (parent, args, context) => {

@@ -13,8 +13,8 @@ generator typegraphql {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
 
@@ -29,6 +29,7 @@ enum UserType {
   Profesor
   Administrativo
   Egresado
+  Jubilado
 }
 
 enum Campus {
@@ -96,8 +97,8 @@ model VerificationToken {
 }
 
 model EmailToken {
-  identifier String @unique
-  token      String   
+  identifier String   @unique
+  token      String
   expires    DateTime
 }
 
@@ -114,18 +115,25 @@ model Profile {
 }
 
 model Event {
-  id          String     @id @default(cuid())
+  id        String      @id @default(cuid())
+  author    User        @relation(fields: [authorId], references: [id])
+  authorId  String
+  info      Information @relation(fields: [infoId], references: [id])
+  infoId    String      @unique
+  place     String
+  attendees Attendee[]
+}
+
+model Information {
+  id          String    @id @default(cuid())
   title       String
   description String
-  place       String
   date        DateTime
   image       String?
   tag         Tag
-  author      User       @relation(fields: [authorId], references: [id])
-  authorId    String
-  comments    Comment[]
-  attendees   Attendee[]
   hashtags    String[]
+  comments    Comment[]
+  event       Event?
 }
 
 model Attendee {
@@ -133,16 +141,27 @@ model Attendee {
   userId  String
   event   Event  @relation(fields: [eventId], references: [id])
   eventId String
+  dateTime DateTime    @default(now())
 
   @@id([userId, eventId])
 }
 
 model Comment {
-  id       String   @id @default(cuid())
+  id       String      @id @default(cuid())
   text     String
-  dateTime DateTime @default(now())
-  user     User     @relation(fields: [userId], references: [id])
+  dateTime DateTime    @default(now())
+  user     User        @relation(fields: [userId], references: [id])
   userId   String
-  event    Event    @relation(fields: [eventId], references: [id])
-  eventId  String
+  info     Information @relation(fields: [infoId], references: [id])
+  infoId   String
+}
+
+model Role {
+  userId String  @unique
+  role   RoleTag
+}
+
+enum RoleTag {
+  User
+  Admin
 }

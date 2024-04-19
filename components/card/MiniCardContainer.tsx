@@ -3,33 +3,21 @@ import { MiniCard } from './MiniCard';
 
 interface MiniCardContainerI2 {
     data?: ExtendedEvent[];
+    sessionUserId: string
 }
 
-
-
-const MiniCardContainer = ({ data }: MiniCardContainerI2) => {
+const MiniCardContainer = ({ data, sessionUserId }: MiniCardContainerI2) => {
+    console.log('data: ', data);
     if (data)
         return (
-            <div className='  grid grid-cols-2 gap-4 justify-items-center" style="grid-auto-rows: 1fr;' >
+            <div className='grid md:grid-cols-2 gap-4 justify-items-center px-2 sm:px-4'>
                 {
                     data.map((item) => {
                         return (
                             <MiniCard
                                 key={item.id}
-                                id={item.id}
-                                titulo={item.title}
-                                asistentes={item.attendeesCount}
-                                tipo={item.tag}
-                                fecha={item.date.toString()}
-                                minutes={item.minutes}
-                                hours={item.hours}
-                                day={item.day}
-                                month={item.month}
-                                year={item.year}
-                                idAutor={item.author?.id??""}
-                                nombreAutor={item.author?.name??""}
-                                imagenAutor={item.author?.image??""}
-                                imagenEvento={item?.image??""}
+                                data={item}
+                                sessionUserId={sessionUserId}
                             />
                         );
                     })
@@ -44,6 +32,5 @@ const MiniCardContainer = ({ data }: MiniCardContainerI2) => {
         )
     }
 };
-
 
 export { MiniCardContainer };

@@ -4,7 +4,7 @@ exports.CommentUpdateInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const DateTimeFieldUpdateOperationsInput_1 = require("../inputs/DateTimeFieldUpdateOperationsInput");
-const EventUpdateOneRequiredWithoutCommentsNestedInput_1 = require("../inputs/EventUpdateOneRequiredWithoutCommentsNestedInput");
+const InformationUpdateOneRequiredWithoutCommentsNestedInput_1 = require("../inputs/InformationUpdateOneRequiredWithoutCommentsNestedInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
 const UserUpdateOneRequiredWithoutCommentsNestedInput_1 = require("../inputs/UserUpdateOneRequiredWithoutCommentsNestedInput");
 let CommentUpdateInput = exports.CommentUpdateInput = class CommentUpdateInput {
@@ -34,11 +34,11 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", UserUpdateOneRequiredWithoutCommentsNestedInput_1.UserUpdateOneRequiredWithoutCommentsNestedInput)
 ], CommentUpdateInput.prototype, "user", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => EventUpdateOneRequiredWithoutCommentsNestedInput_1.EventUpdateOneRequiredWithoutCommentsNestedInput, {
+    TypeGraphQL.Field(_type => InformationUpdateOneRequiredWithoutCommentsNestedInput_1.InformationUpdateOneRequiredWithoutCommentsNestedInput, {
         nullable: true
     }),
-    tslib_1.__metadata("design:type", EventUpdateOneRequiredWithoutCommentsNestedInput_1.EventUpdateOneRequiredWithoutCommentsNestedInput)
-], CommentUpdateInput.prototype, "event", void 0);
+    tslib_1.__metadata("design:type", InformationUpdateOneRequiredWithoutCommentsNestedInput_1.InformationUpdateOneRequiredWithoutCommentsNestedInput)
+], CommentUpdateInput.prototype, "info", void 0);
 exports.CommentUpdateInput = CommentUpdateInput = tslib_1.__decorate([
     TypeGraphQL.InputType("CommentUpdateInput", {})
 ], CommentUpdateInput);

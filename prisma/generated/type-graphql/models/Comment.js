@@ -34,7 +34,7 @@ tslib_1.__decorate([
         nullable: false
     }),
     tslib_1.__metadata("design:type", String)
-], Comment.prototype, "eventId", void 0);
+], Comment.prototype, "infoId", void 0);
 exports.Comment = Comment = tslib_1.__decorate([
     TypeGraphQL.ObjectType("Comment", {})
 ], Comment);

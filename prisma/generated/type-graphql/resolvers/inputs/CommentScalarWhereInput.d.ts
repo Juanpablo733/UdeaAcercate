@@ -8,5 +8,5 @@ export declare class CommentScalarWhereInput {
     text?: StringFilter | undefined;
     dateTime?: DateTimeFilter | undefined;
     userId?: StringFilter | undefined;
-    eventId?: StringFilter | undefined;
+    infoId?: StringFilter | undefined;
 }

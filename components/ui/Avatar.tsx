@@ -11,9 +11,9 @@ interface AvatarProps {
 const Avatar = ({ userId, name, imageUrl }: AvatarProps) => {
   return (
     <Link href={`/perfil/${userId}`}>
-      <div className='flex gap-4 items-center'>
-        <Image src={imageUrl} alt={imageUrl} height={50} width={50} className='' />
-        <span className=' text-black font-bold'>{name}</span>
+      <div className='flex gap-2 items-center w-full h-full'>
+        <Image src={imageUrl} alt={imageUrl} height={50} width={50} className='rounded-full' />
+        <span className='Title font-bold'>{name}</span>
       </div>
     </Link>
   )

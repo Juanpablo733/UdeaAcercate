@@ -7,6 +7,12 @@ const EventCreateNestedOneWithoutAttendeesInput_1 = require("../inputs/EventCrea
 let AttendeeCreateWithoutUserInput = exports.AttendeeCreateWithoutUserInput = class AttendeeCreateWithoutUserInput {
 };
 tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", Date)
+], AttendeeCreateWithoutUserInput.prototype, "dateTime", void 0);
+tslib_1.__decorate([
     TypeGraphQL.Field(_type => EventCreateNestedOneWithoutAttendeesInput_1.EventCreateNestedOneWithoutAttendeesInput, {
         nullable: false
     }),

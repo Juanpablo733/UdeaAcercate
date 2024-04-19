@@ -11,6 +11,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", String)
 ], AttendeeCreateManyEventInput.prototype, "userId", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", Date)
+], AttendeeCreateManyEventInput.prototype, "dateTime", void 0);
 exports.AttendeeCreateManyEventInput = AttendeeCreateManyEventInput = tslib_1.__decorate([
     TypeGraphQL.InputType("AttendeeCreateManyEventInput", {})
 ], AttendeeCreateManyEventInput);

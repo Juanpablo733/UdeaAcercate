@@ -1,6 +1,6 @@
 import { CommentWhereInput } from "../inputs/CommentWhereInput";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
-import { EventRelationFilter } from "../inputs/EventRelationFilter";
+import { InformationRelationFilter } from "../inputs/InformationRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { UserRelationFilter } from "../inputs/UserRelationFilter";
 export declare class CommentWhereUniqueInput {
@@ -11,7 +11,7 @@ export declare class CommentWhereUniqueInput {
     text?: StringFilter | undefined;
     dateTime?: DateTimeFilter | undefined;
     userId?: StringFilter | undefined;
-    eventId?: StringFilter | undefined;
+    infoId?: StringFilter | undefined;
     user?: UserRelationFilter | undefined;
-    event?: EventRelationFilter | undefined;
+    info?: InformationRelationFilter | undefined;
 }

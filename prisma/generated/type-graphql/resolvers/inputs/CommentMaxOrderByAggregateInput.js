@@ -35,7 +35,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", String)
-], CommentMaxOrderByAggregateInput.prototype, "eventId", void 0);
+], CommentMaxOrderByAggregateInput.prototype, "infoId", void 0);
 exports.CommentMaxOrderByAggregateInput = CommentMaxOrderByAggregateInput = tslib_1.__decorate([
     TypeGraphQL.InputType("CommentMaxOrderByAggregateInput", {})
 ], CommentMaxOrderByAggregateInput);

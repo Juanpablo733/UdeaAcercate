@@ -7,6 +7,7 @@ var AttendeeScalarFieldEnum;
 (function (AttendeeScalarFieldEnum) {
     AttendeeScalarFieldEnum["userId"] = "userId";
     AttendeeScalarFieldEnum["eventId"] = "eventId";
+    AttendeeScalarFieldEnum["dateTime"] = "dateTime";
 })(AttendeeScalarFieldEnum || (exports.AttendeeScalarFieldEnum = AttendeeScalarFieldEnum = {}));
 TypeGraphQL.registerEnumType(AttendeeScalarFieldEnum, {
     name: "AttendeeScalarFieldEnum",

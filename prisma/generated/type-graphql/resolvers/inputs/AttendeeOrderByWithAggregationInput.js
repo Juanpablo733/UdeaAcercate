@@ -22,6 +22,12 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], AttendeeOrderByWithAggregationInput.prototype, "eventId", void 0);
 tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
+], AttendeeOrderByWithAggregationInput.prototype, "dateTime", void 0);
+tslib_1.__decorate([
     TypeGraphQL.Field(_type => AttendeeCountOrderByAggregateInput_1.AttendeeCountOrderByAggregateInput, {
         nullable: true
     }),

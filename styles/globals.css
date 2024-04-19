@@ -15,6 +15,7 @@
   --bg-secondary: linear-gradient(306deg, #026937 0%, #35944b 100%);
   --bg-third: linear-gradient(90deg, #43b649 0%, #12803f 100%);
   --shadow: 4px 4px 23px 0px rgba(0, 0, 0, 0.3);
+  --accent-color: #1F1F3B;
 }
 
 h1{
@@ -71,6 +72,9 @@ label{
 .Dark-Grey{
   color: #393636;
 }
+.Title{
+  color: #1F1F3B;
+}
 .background-form{
   background-image: linear-gradient(306deg, #026937 0%, #35944B 100%);
   clip-path: polygon(5% 0, 100% 0, 100% 100%, 0% 100%);
@@ -88,8 +92,9 @@ label{
   position: fixed;
   bottom: 0;
   right: 0;
-  padding: 38px; /* Agrega un poco de espacio para que no esté demasiado pegado al borde */
+  padding: 32px;
 }
+
 
 .button-form{
   border-radius: 28px;
@@ -141,8 +146,14 @@ label{
 .FormHeader {
   text-align: center;
   font-weight: bold;
-  font-size: 2rem;
   color: var(--green-hard);
+  line-height: normal;
+}
+.form-header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: var(--green-little);
   line-height: normal;
 }
 .Label {

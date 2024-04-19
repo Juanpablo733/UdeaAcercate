@@ -22,6 +22,12 @@ tslib_1.__decorate([
         nullable: false
     }),
     tslib_1.__metadata("design:type", Number)
+], AttendeeCountAggregate.prototype, "dateTime", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", Number)
 ], AttendeeCountAggregate.prototype, "_all", void 0);
 exports.AttendeeCountAggregate = AttendeeCountAggregate = tslib_1.__decorate([
     TypeGraphQL.ObjectType("AttendeeCountAggregate", {})

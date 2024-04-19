@@ -79,47 +79,51 @@ const CrearPerfil = () => {
             />
           </label>
           <label className='Label'>
-            <span className='LabelText'>
-              Tipo de Usuario:
-            </span>
-            <select className='rounded-md text-center h-8'
-              value={type}
-              onChange={(e) => setType(e.target.value)}
-              required
-            >
-              <option disabled value={''}>Seleccionar</option>
-              <option value="Estudiante">Estudiante</option>
-              <option value="Profesor">Profesor</option>
-              <option value="Egresado">Egresado</option>
-              <option value="Administrativo">Administrativo</option>
-            </select>
+            <div className='flex justify-between'>
+              <span className='LabelText'>
+                Vínculo:
+              </span>
+              <select className='rounded-md text-center h-8'
+                value={type}
+                onChange={(e) => setType(e.target.value)}
+                required
+              >
+                <option disabled value={''}>Seleccionar</option>
+                <option value="Estudiante">Estudiante</option>
+                <option value="Profesor">Profesor</option>
+                <option value="Egresado">Egresado</option>
+                <option value="Administrativo">Administrativo</option>
+              </select>
+            </div>
+          </label>
+          <label className='
+          '>
+            <div className='flex justify-between'>
+              <span className='LabelText'>
+                Campus:
+              </span>
+              <select className='rounded-md text-center h-8'
+                value={campus}
+                onChange={(e) => setCampus(e.target.value)}
+                required
+              >
+                <option disabled value={''}>Seleccionar</option>
+                <option value="Ciudad_Universitaria">Ciudad Universitaria</option>
+                <option value="Antigua_Escuela_de_Derecho">Antigua Escuela de Derecho</option>
+                <option value="Edificio_Suramericana_del_Centro">Edificio Suramericana</option>
+                <option value="Sede_Posgrados_Universidad_de_Antioquia">Sede Posgrados</option>
+                <option value="Paraninfo">Paraninfo</option>
+                <option value="Liceo_Francisco_Restrepo_Molina">Liceo Francisco Restrepo Molina</option>
+                <option value="Seccional_Oriente">Seccional Oriente</option>
+                <option value="Seccional_Occidente_de_la_Universidad_de_Antioquia">Seccional Occidente</option>
+                <option value="Seccional_Bajo_Cauca">Seccional Bajo Cauca</option>
+                <option value="Sede_Sonson_de_la_Universidad_de_Antioquia">Sede Sonsón</option>
+              </select>
+            </div>
           </label>
           <label className='Label'>
             <span className='LabelText'>
-              Campus:
-            </span>
-            <select className='rounded-md text-center h-8'
-              value={campus}
-              onChange={(e) => setCampus(e.target.value)}
-              required
-            >
-              <option disabled value={''}>Seleccionar</option>
-              <option value="Ciudad_Universitaria">Ciudad Universitaria</option>
-              <option value="Antigua_Escuela_de_Derecho">Antigua Escuela de Derecho</option>
-              <option value="Edificio_Suramericana_del_Centro">Edificio Suramericana</option>
-              <option value="Sede_Posgrados_Universidad_de_Antioquia">Sede Posgrados</option>
-              <option value="Paraninfo">Paraninfo</option>
-              <option value="Liceo_Francisco_Restrepo_Molina">Liceo Francisco Restrepo Molina</option>
-              <option value="Seccional_Oriente">Seccional Oriente</option>
-              <option value="Seccional_Occidente_de_la_Universidad_de_Antioquia">Seccional Occidente</option>
-              <option value="Seccional_Bajo_Cauca">Seccional Bajo Cauca</option>
-              <option value="Sede_Sonson_de_la_Universidad_de_Antioquia">Sede Sonsón</option>
-
-            </select>
-          </label>
-          <label className='Label'>
-            <span className='LabelText'>
-              Facultad:
+              Unidad académica o administrativa:
             </span>
             <input className='Input'
               type="text"
@@ -130,7 +134,7 @@ const CrearPerfil = () => {
           </label>
           <label className='Label'>
             <span className='LabelText'>
-              Carrera:
+              Programa o dependencia:
             </span>
             <input className='Input'
               type="text"

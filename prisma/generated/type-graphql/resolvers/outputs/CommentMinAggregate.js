@@ -34,7 +34,7 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", String)
-], CommentMinAggregate.prototype, "eventId", void 0);
+], CommentMinAggregate.prototype, "infoId", void 0);
 exports.CommentMinAggregate = CommentMinAggregate = tslib_1.__decorate([
     TypeGraphQL.ObjectType("CommentMinAggregate", {})
 ], CommentMinAggregate);
