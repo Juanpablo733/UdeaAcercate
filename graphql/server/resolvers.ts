@@ -219,6 +219,27 @@ const resolvers: Resolver = {
         interactionsPerEventType: async (parent, args, context) => {
             const { db } = context;
             return await getInteractionsByEventTags(db, new Date(args.startDate), new Date(args.endDate))
+        },
+        allComments: async (parent, args, context) => {
+            const { db } = context;
+            let comments
+            if (args.startDate && args.endDate) {
+                comments = await db.comment.findMany({
+                    where: {
+                        dateTime: {
+                            gte: new Date(args.startDate),
+                            lte: new Date(args.endDate),
+                        }
+                    }
+                })
+            }
+            else comments = await db.comment.findMany()
+            console.log(comments)
+            const commentsStringArray = new Array<string>()
+            comments.forEach(element => {
+                commentsStringArray.push(element.text)
+            })
+            return commentsStringArray
         }
     },
     Mutation: {
