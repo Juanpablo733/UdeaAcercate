@@ -6,6 +6,7 @@ import { deleteAllAttendeesFromEvent } from "./utils/attendeeUtil";
 import { deleteAllCommentsFromEvent } from "./utils/commentUtil";
 import { findUser } from "./utils/userUtil";
 import { getInteractionsByEventTags } from "./utils/interactionsUtil";
+import { GenerateAndSaveSentiment } from "@/util/chatgpt";
 
 
 
@@ -240,6 +241,10 @@ const resolvers: Resolver = {
                 commentsStringArray.push(element.text)
             })
             return commentsStringArray
+        },
+        classifyCommentSentiment: async (parent, args, context) => {
+            await GenerateAndSaveSentiment(args.comment)
+            return true
         }
     },
     Mutation: {
