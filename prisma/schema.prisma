@@ -18,6 +18,12 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+enum Sentiment {
+  Positive
+  Neutral
+  Negative
+}
+
 enum Tag {
   Deportivo
   Academico
@@ -137,10 +143,11 @@ model Information {
 }
 
 model Attendee {
-  user    User   @relation(fields: [userId], references: [id])
-  userId  String
-  event   Event  @relation(fields: [eventId], references: [id])
-  eventId String
+  user     User     @relation(fields: [userId], references: [id])
+  userId   String
+  event    Event    @relation(fields: [eventId], references: [id])
+  eventId  String
+  dateTime DateTime @default(now())
 
   @@id([userId, eventId])
 }
@@ -153,6 +160,11 @@ model Comment {
   userId   String
   info     Information @relation(fields: [infoId], references: [id])
   infoId   String
+}
+
+model CommentSentiment {
+  id        String @unique
+  sentiment Sentiment
 }
 
 model Role {

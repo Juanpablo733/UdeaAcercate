@@ -33,35 +33,37 @@ const Comment = ({ id, userImage, userName, text, date, userId, sessionUserId }:
 
     return (
         <li>
-            <div className='flex justify-start'>
-                <div className='p-2'>
-                    <Avatar
-                        name={userName}
-                        imageUrl={userImage}
-                        userId={userId}
-                    />
-                </div>
-                <div className='self-center text-lg font-bold'>·</div>
-                <div className='p-2 self-center text-sm text-center'>
-                    Hace {CalculateTimeAgo(date)}
-                </div>
-            </div>
-            <div className='pl-16 pr-4 pb-2 text-justify leading-tight'>
-                {text}
-            </div>
-            <div className='p-2 flex justify-end'>
-                {sessionUserId === userId
-                    ?
-                    <button
-                        className='flex justify-center items-center hover:bg-white rounded-full'
-                        onClick={executeDeleteSelfComment}
-                    >
-                        <MdOutlineDelete
-                            className='h-[20px] w-[20px]'
+            <div className="mb-2 mr-4 rounded-lg bg-gray-200">
+                <div className='flex justify-start'>
+                    <div className='p-2'>
+                        <Avatar
+                            name={userName}
+                            imageUrl={userImage}
+                            userId={userId}
                         />
-                    </button>
-                    : <></>
-                }
+                    </div>
+                    <div className='self-center text-lg font-bold'>·</div>
+                    <div className='p-2 self-center text-sm text-center'>
+                        Hace {CalculateTimeAgo(date)}
+                    </div>
+                </div>
+                <div className='pl-16 pr-4 pb-2 text-justify leading-tight'>
+                    {text}
+                </div>
+                <div className='p-2 flex justify-end'>
+                    {sessionUserId === userId
+                        ?
+                        <button
+                            className='flex justify-center items-center hover:bg-white rounded-full'
+                            onClick={executeDeleteSelfComment}
+                        >
+                            <MdOutlineDelete
+                                className='h-[20px] w-[20px]'
+                            />
+                        </button>
+                        : <></>
+                    }
+                </div>
             </div>
         </li>
     )

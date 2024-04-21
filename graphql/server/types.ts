@@ -85,7 +85,9 @@ const typeDefs = gql`
         event(id:String!): Event
         profile(userId:String!): Profile
         attendee(userId:String!, eventId:String!): Boolean
-        interactionsPerEventType: InteractionsPerEventType
+        interactionsPerEventType(startDate:DateTime!, endDate:DateTime!): InteractionsPerEventType
+        allComments(startDate:DateTime, endDate:DateTime): [String]
+        classifyCommentSentiment(comment:String!): Boolean
     }
     
     type Mutation {

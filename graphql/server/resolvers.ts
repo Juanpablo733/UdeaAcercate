@@ -6,6 +6,7 @@ import { deleteAllAttendeesFromEvent } from "./utils/attendeeUtil";
 import { deleteAllCommentsFromEvent } from "./utils/commentUtil";
 import { findUser } from "./utils/userUtil";
 import { getInteractionsByEventTags } from "./utils/interactionsUtil";
+import { GenerateAndSaveSentiment } from "@/util/chatgpt";
 
 
 
@@ -218,7 +219,32 @@ const resolvers: Resolver = {
         },
         interactionsPerEventType: async (parent, args, context) => {
             const { db } = context;
-            return await getInteractionsByEventTags(db)
+            return await getInteractionsByEventTags(db, new Date(args.startDate), new Date(args.endDate))
+        },
+        allComments: async (parent, args, context) => {
+            const { db } = context;
+            let comments
+            if (args.startDate && args.endDate) {
+                comments = await db.comment.findMany({
+                    where: {
+                        dateTime: {
+                            gte: new Date(args.startDate),
+                            lte: new Date(args.endDate),
+                        }
+                    }
+                })
+            }
+            else comments = await db.comment.findMany()
+            console.log(comments)
+            const commentsStringArray = new Array<string>()
+            comments.forEach(element => {
+                commentsStringArray.push(element.text)
+            })
+            return commentsStringArray
+        },
+        classifyCommentSentiment: async (parent, args, context) => {
+            await GenerateAndSaveSentiment(args.comment)
+            return true
         }
     },
     Mutation: {

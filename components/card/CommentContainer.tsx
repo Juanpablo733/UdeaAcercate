@@ -12,18 +12,16 @@ const CommentContainer = ({ data, sessionUserId }: CommentContainerI) => {
         <ul className='max-h-80 overflow-y-auto'>
             {data?.map((item) => {
                 return (
-                    <div className="mb-2 mr-4 rounded-lg bg-gray-200">
-                        <Comment
-                            key={item.id}
-                            id={item.id}
-                            userName={item.user?.name ?? ''}
-                            userImage={item.user?.image ?? ''}
-                            text={item.text}
-                            date={item.dateTime.toString()}
-                            userId={item.user?.id ?? ''}
-                            sessionUserId={sessionUserId}
-                        />
-                    </div>
+                    <Comment
+                        key={item.id}
+                        id={item.id}
+                        userName={item.user?.name ?? ''}
+                        userImage={item.user?.image ?? ''}
+                        text={item.text}
+                        date={item.dateTime.toString()}
+                        userId={item.user?.id ?? ''}
+                        sessionUserId={sessionUserId}
+                    />
                 )
             })}
         </ul>

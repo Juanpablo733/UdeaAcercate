@@ -181,7 +181,8 @@ exports.Prisma.InformationScalarFieldEnum = {
 
 exports.Prisma.AttendeeScalarFieldEnum = {
   userId: 'userId',
-  eventId: 'eventId'
+  eventId: 'eventId',
+  dateTime: 'dateTime'
 };
 
 exports.Prisma.CommentScalarFieldEnum = {
@@ -190,6 +191,11 @@ exports.Prisma.CommentScalarFieldEnum = {
   dateTime: 'dateTime',
   userId: 'userId',
   infoId: 'infoId'
+};
+
+exports.Prisma.CommentSentimentScalarFieldEnum = {
+  id: 'id',
+  sentiment: 'sentiment'
 };
 
 exports.Prisma.RoleScalarFieldEnum = {
@@ -238,6 +244,12 @@ exports.Tag = exports.$Enums.Tag = {
   Cultural: 'Cultural'
 };
 
+exports.Sentiment = exports.$Enums.Sentiment = {
+  Positive: 'Positive',
+  Neutral: 'Neutral',
+  Negative: 'Negative'
+};
+
 exports.RoleTag = exports.$Enums.RoleTag = {
   User: 'User',
   Admin: 'Admin'
@@ -254,6 +266,7 @@ exports.Prisma.ModelName = {
   Information: 'Information',
   Attendee: 'Attendee',
   Comment: 'Comment',
+  CommentSentiment: 'CommentSentiment',
   Role: 'Role'
 };
 
