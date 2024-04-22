@@ -3,10 +3,11 @@ import { sendVerificationEmail } from "../../util/nodemailerConfig";
 import { cloneDeep } from "@apollo/client/utilities";
 import { deleteEvent, findEvent } from "./utils/eventUtil";
 import { deleteAllAttendeesFromEvent } from "./utils/attendeeUtil";
-import { deleteAllCommentsFromEvent } from "./utils/commentUtil";
+import { deleteAllCommentsFromEvent, saveCommentSentiment } from "./utils/commentUtil";
 import { findUser } from "./utils/userUtil";
 import { getInteractionsByEventTags } from "./utils/interactionsUtil";
-import { GenerateAndSaveSentiment } from "@/util/chatgpt";
+import { GenerateAndSaveSentiment } from '@/util/chatgpt';
+import { getCommentSentimentCount } from "./utils/commentSentimentUtil";
 
 
 
@@ -242,9 +243,9 @@ const resolvers: Resolver = {
             })
             return commentsStringArray
         },
-        classifyCommentSentiment: async (parent, args, context) => {
-            await GenerateAndSaveSentiment(args.comment)
-            return true
+        commentSentimentCount: async (parent, args, context) => {
+            const { db } = context
+            return getCommentSentimentCount(db)
         }
     },
     Mutation: {
@@ -469,6 +470,24 @@ const resolvers: Resolver = {
                 )
                 return true
             }
+            return false
+        },
+        classifyCommentSentiment: async (parent, args, context) => {
+            const { db } = context
+            const commentSentiment = await context.db.commentSentiment.findUnique({ where: { id: args.commentId } })
+            if (commentSentiment) {
+                console.log("Este comentario ya fue analizado")
+                return false
+            }
+
+            const comment = await context.db.comment.findUnique({ where: { id: args.commentId } })
+            if (comment) {
+                console.log(comment)
+                const responseJSON = await GenerateAndSaveSentiment(comment.text)
+                await saveCommentSentiment(args.commentId, JSON.parse(responseJSON))
+                return true
+            }
+            console.log("No hay un comentario con este id")
             return false
         },
     }
