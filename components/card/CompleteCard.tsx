@@ -9,6 +9,8 @@ import { CommentContainer } from './CommentContainer'
 import { ADD_ATTENDEE, FIND_ATTENDEE, QUIT_ATTENDEE } from '@/graphql/client/attendee'
 import { CREATE_COMMENT } from '@/graphql/client/comment'
 import DeleteEventButton from '../buttons/DeleteEventButton';
+import { CLASIFFY_COMMENT_SENTIMENT } from '@/graphql/client/commentSentiment'
+import { toast } from 'react-toastify'
 
 interface completeCardProps {
     id: string,
@@ -49,8 +51,10 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
             variables: { userId: sessionUserId, eventId: id },
         });
 
-    const [createComment] = useMutation<{ comment: Comment }>(CREATE_COMMENT,
+    const [createComment] = useMutation(CREATE_COMMENT,
         { variables: { userId: sessionUserId, eventId: id, text: comentario } });
+
+    const [classifyCommentSentiment] = useMutation(CLASIFFY_COMMENT_SENTIMENT)
 
     if (loading) return <p>Loading...</p>
     if (error) {
@@ -88,11 +92,18 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
                 { refetchQueries: [GET_EVENT_BY_ID] }
             );
             console.log('Data resultante de la mutación:', resultado.data);
+            const commentId = resultado.data.createComment.id
+            const classifyResult = await classifyCommentSentiment(
+                { variables: { commentId } }
+            )
+            console.log("Clasificación de comentario:", classifyResult)
+            setComentario("")
         } catch (error) {
+            toast.error("No se ha logrado crear el comentario. por favor intenta más tarde.")
             console.error('Error al ejecutar la mutación:', error);
         }
     }
-    
+
     return (
         // <section className='flex justify-evenly debug'>
         <section className='flex flex-col md:flex-row'>
