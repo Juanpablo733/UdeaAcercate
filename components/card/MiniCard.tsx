@@ -21,7 +21,7 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
     const minutes = date.getMinutes().toString().padStart(2, '0')   
     return (
         // <div className='w-full max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl '>
-        <div className='w-full min-w-[360px] max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl '>
+        <div className='hover:scale-105 transition-transform duration-300 w-full min-w-[360px] max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl '>
             
             {/* <div className='flex justify-between items-center'> */}
             <header className='flex justify-between items-center'>
