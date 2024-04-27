@@ -75,6 +75,12 @@ const typeDefs = gql`
         comments: Int
     }
 
+    type SentimentCount {
+        positive: Int
+        negative: Int
+        neutral: Int
+    }
+
     type Query {
         test(bool:Boolean!): Boolean
         users: [User]
@@ -86,6 +92,8 @@ const typeDefs = gql`
         profile(userId:String!): Profile
         attendee(userId:String!, eventId:String!): Boolean
         interactionsPerEventType(startDate:DateTime!, endDate:DateTime!): InteractionsPerEventType
+        allComments(startDate:DateTime, endDate:DateTime): [String]
+        commentSentimentCount: SentimentCount
     }
     
     type Mutation {
@@ -103,6 +111,7 @@ const typeDefs = gql`
         quitAttendee(userId:String!, eventId:String!): Boolean
         generateEmailToken(userId:String!): EmailToken
         verifyEmailToken(identifier:String!, token:String!): Boolean
+        classifyCommentSentiment(commentId:String!): Boolean
     }
 `;
 

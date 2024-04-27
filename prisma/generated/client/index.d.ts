@@ -64,6 +64,11 @@ export type Attendee = $Result.DefaultSelection<Prisma.$AttendeePayload>
  */
 export type Comment = $Result.DefaultSelection<Prisma.$CommentPayload>
 /**
+ * Model CommentSentiment
+ * 
+ */
+export type CommentSentiment = $Result.DefaultSelection<Prisma.$CommentSentimentPayload>
+/**
  * Model Role
  * 
  */
@@ -109,6 +114,15 @@ export const Tag: {
 export type Tag = (typeof Tag)[keyof typeof Tag]
 
 
+export const Sentiment: {
+  Positive: 'Positive',
+  Neutral: 'Neutral',
+  Negative: 'Negative'
+};
+
+export type Sentiment = (typeof Sentiment)[keyof typeof Sentiment]
+
+
 export const RoleTag: {
   User: 'User',
   Admin: 'Admin'
@@ -129,6 +143,10 @@ export const Campus: typeof $Enums.Campus
 export type Tag = $Enums.Tag
 
 export const Tag: typeof $Enums.Tag
+
+export type Sentiment = $Enums.Sentiment
+
+export const Sentiment: typeof $Enums.Sentiment
 
 export type RoleTag = $Enums.RoleTag
 
@@ -355,6 +373,16 @@ export class PrismaClient<
     * ```
     */
   get comment(): Prisma.CommentDelegate<ExtArgs>;
+
+  /**
+   * `prisma.commentSentiment`: Exposes CRUD operations for the **CommentSentiment** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CommentSentiments
+    * const commentSentiments = await prisma.commentSentiment.findMany()
+    * ```
+    */
+  get commentSentiment(): Prisma.CommentSentimentDelegate<ExtArgs>;
 
   /**
    * `prisma.role`: Exposes CRUD operations for the **Role** model.
@@ -845,6 +873,7 @@ export namespace Prisma {
     Information: 'Information',
     Attendee: 'Attendee',
     Comment: 'Comment',
+    CommentSentiment: 'CommentSentiment',
     Role: 'Role'
   };
 
@@ -862,7 +891,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'account' | 'session' | 'user' | 'verificationToken' | 'emailToken' | 'profile' | 'event' | 'information' | 'attendee' | 'comment' | 'role'
+      modelProps: 'account' | 'session' | 'user' | 'verificationToken' | 'emailToken' | 'profile' | 'event' | 'information' | 'attendee' | 'comment' | 'commentSentiment' | 'role'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -1523,6 +1552,72 @@ export namespace Prisma {
           count: {
             args: Prisma.CommentCountArgs<ExtArgs>,
             result: $Utils.Optional<CommentCountAggregateOutputType> | number
+          }
+        }
+      }
+      CommentSentiment: {
+        payload: Prisma.$CommentSentimentPayload<ExtArgs>
+        fields: Prisma.CommentSentimentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CommentSentimentFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CommentSentimentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CommentSentimentFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CommentSentimentPayload>
+          }
+          findFirst: {
+            args: Prisma.CommentSentimentFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CommentSentimentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CommentSentimentFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CommentSentimentPayload>
+          }
+          findMany: {
+            args: Prisma.CommentSentimentFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CommentSentimentPayload>[]
+          }
+          create: {
+            args: Prisma.CommentSentimentCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CommentSentimentPayload>
+          }
+          createMany: {
+            args: Prisma.CommentSentimentCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.CommentSentimentDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CommentSentimentPayload>
+          }
+          update: {
+            args: Prisma.CommentSentimentUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CommentSentimentPayload>
+          }
+          deleteMany: {
+            args: Prisma.CommentSentimentDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CommentSentimentUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.CommentSentimentUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CommentSentimentPayload>
+          }
+          aggregate: {
+            args: Prisma.CommentSentimentAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateCommentSentiment>
+          }
+          groupBy: {
+            args: Prisma.CommentSentimentGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<CommentSentimentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CommentSentimentCountArgs<ExtArgs>,
+            result: $Utils.Optional<CommentSentimentCountAggregateOutputType> | number
           }
         }
       }
@@ -11304,6 +11399,843 @@ export namespace Prisma {
 
 
   /**
+   * Model CommentSentiment
+   */
+
+  export type AggregateCommentSentiment = {
+    _count: CommentSentimentCountAggregateOutputType | null
+    _min: CommentSentimentMinAggregateOutputType | null
+    _max: CommentSentimentMaxAggregateOutputType | null
+  }
+
+  export type CommentSentimentMinAggregateOutputType = {
+    id: string | null
+    sentiment: $Enums.Sentiment | null
+  }
+
+  export type CommentSentimentMaxAggregateOutputType = {
+    id: string | null
+    sentiment: $Enums.Sentiment | null
+  }
+
+  export type CommentSentimentCountAggregateOutputType = {
+    id: number
+    sentiment: number
+    _all: number
+  }
+
+
+  export type CommentSentimentMinAggregateInputType = {
+    id?: true
+    sentiment?: true
+  }
+
+  export type CommentSentimentMaxAggregateInputType = {
+    id?: true
+    sentiment?: true
+  }
+
+  export type CommentSentimentCountAggregateInputType = {
+    id?: true
+    sentiment?: true
+    _all?: true
+  }
+
+  export type CommentSentimentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CommentSentiment to aggregate.
+     */
+    where?: CommentSentimentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CommentSentiments to fetch.
+     */
+    orderBy?: CommentSentimentOrderByWithRelationInput | CommentSentimentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CommentSentimentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CommentSentiments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CommentSentiments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CommentSentiments
+    **/
+    _count?: true | CommentSentimentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CommentSentimentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CommentSentimentMaxAggregateInputType
+  }
+
+  export type GetCommentSentimentAggregateType<T extends CommentSentimentAggregateArgs> = {
+        [P in keyof T & keyof AggregateCommentSentiment]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCommentSentiment[P]>
+      : GetScalarType<T[P], AggregateCommentSentiment[P]>
+  }
+
+
+
+
+  export type CommentSentimentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommentSentimentWhereInput
+    orderBy?: CommentSentimentOrderByWithAggregationInput | CommentSentimentOrderByWithAggregationInput[]
+    by: CommentSentimentScalarFieldEnum[] | CommentSentimentScalarFieldEnum
+    having?: CommentSentimentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CommentSentimentCountAggregateInputType | true
+    _min?: CommentSentimentMinAggregateInputType
+    _max?: CommentSentimentMaxAggregateInputType
+  }
+
+  export type CommentSentimentGroupByOutputType = {
+    id: string
+    sentiment: $Enums.Sentiment
+    _count: CommentSentimentCountAggregateOutputType | null
+    _min: CommentSentimentMinAggregateOutputType | null
+    _max: CommentSentimentMaxAggregateOutputType | null
+  }
+
+  type GetCommentSentimentGroupByPayload<T extends CommentSentimentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CommentSentimentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CommentSentimentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CommentSentimentGroupByOutputType[P]>
+            : GetScalarType<T[P], CommentSentimentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CommentSentimentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sentiment?: boolean
+  }, ExtArgs["result"]["commentSentiment"]>
+
+  export type CommentSentimentSelectScalar = {
+    id?: boolean
+    sentiment?: boolean
+  }
+
+
+  export type $CommentSentimentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CommentSentiment"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      sentiment: $Enums.Sentiment
+    }, ExtArgs["result"]["commentSentiment"]>
+    composites: {}
+  }
+
+
+  type CommentSentimentGetPayload<S extends boolean | null | undefined | CommentSentimentDefaultArgs> = $Result.GetResult<Prisma.$CommentSentimentPayload, S>
+
+  type CommentSentimentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<CommentSentimentFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: CommentSentimentCountAggregateInputType | true
+    }
+
+  export interface CommentSentimentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CommentSentiment'], meta: { name: 'CommentSentiment' } }
+    /**
+     * Find zero or one CommentSentiment that matches the filter.
+     * @param {CommentSentimentFindUniqueArgs} args - Arguments to find a CommentSentiment
+     * @example
+     * // Get one CommentSentiment
+     * const commentSentiment = await prisma.commentSentiment.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends CommentSentimentFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, CommentSentimentFindUniqueArgs<ExtArgs>>
+    ): Prisma__CommentSentimentClient<$Result.GetResult<Prisma.$CommentSentimentPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one CommentSentiment that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {CommentSentimentFindUniqueOrThrowArgs} args - Arguments to find a CommentSentiment
+     * @example
+     * // Get one CommentSentiment
+     * const commentSentiment = await prisma.commentSentiment.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends CommentSentimentFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, CommentSentimentFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__CommentSentimentClient<$Result.GetResult<Prisma.$CommentSentimentPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first CommentSentiment that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentSentimentFindFirstArgs} args - Arguments to find a CommentSentiment
+     * @example
+     * // Get one CommentSentiment
+     * const commentSentiment = await prisma.commentSentiment.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends CommentSentimentFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, CommentSentimentFindFirstArgs<ExtArgs>>
+    ): Prisma__CommentSentimentClient<$Result.GetResult<Prisma.$CommentSentimentPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first CommentSentiment that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentSentimentFindFirstOrThrowArgs} args - Arguments to find a CommentSentiment
+     * @example
+     * // Get one CommentSentiment
+     * const commentSentiment = await prisma.commentSentiment.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends CommentSentimentFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, CommentSentimentFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__CommentSentimentClient<$Result.GetResult<Prisma.$CommentSentimentPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more CommentSentiments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentSentimentFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CommentSentiments
+     * const commentSentiments = await prisma.commentSentiment.findMany()
+     * 
+     * // Get first 10 CommentSentiments
+     * const commentSentiments = await prisma.commentSentiment.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const commentSentimentWithIdOnly = await prisma.commentSentiment.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends CommentSentimentFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, CommentSentimentFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentSentimentPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a CommentSentiment.
+     * @param {CommentSentimentCreateArgs} args - Arguments to create a CommentSentiment.
+     * @example
+     * // Create one CommentSentiment
+     * const CommentSentiment = await prisma.commentSentiment.create({
+     *   data: {
+     *     // ... data to create a CommentSentiment
+     *   }
+     * })
+     * 
+    **/
+    create<T extends CommentSentimentCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, CommentSentimentCreateArgs<ExtArgs>>
+    ): Prisma__CommentSentimentClient<$Result.GetResult<Prisma.$CommentSentimentPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many CommentSentiments.
+     *     @param {CommentSentimentCreateManyArgs} args - Arguments to create many CommentSentiments.
+     *     @example
+     *     // Create many CommentSentiments
+     *     const commentSentiment = await prisma.commentSentiment.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends CommentSentimentCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, CommentSentimentCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a CommentSentiment.
+     * @param {CommentSentimentDeleteArgs} args - Arguments to delete one CommentSentiment.
+     * @example
+     * // Delete one CommentSentiment
+     * const CommentSentiment = await prisma.commentSentiment.delete({
+     *   where: {
+     *     // ... filter to delete one CommentSentiment
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends CommentSentimentDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, CommentSentimentDeleteArgs<ExtArgs>>
+    ): Prisma__CommentSentimentClient<$Result.GetResult<Prisma.$CommentSentimentPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one CommentSentiment.
+     * @param {CommentSentimentUpdateArgs} args - Arguments to update one CommentSentiment.
+     * @example
+     * // Update one CommentSentiment
+     * const commentSentiment = await prisma.commentSentiment.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends CommentSentimentUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, CommentSentimentUpdateArgs<ExtArgs>>
+    ): Prisma__CommentSentimentClient<$Result.GetResult<Prisma.$CommentSentimentPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more CommentSentiments.
+     * @param {CommentSentimentDeleteManyArgs} args - Arguments to filter CommentSentiments to delete.
+     * @example
+     * // Delete a few CommentSentiments
+     * const { count } = await prisma.commentSentiment.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends CommentSentimentDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, CommentSentimentDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CommentSentiments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentSentimentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CommentSentiments
+     * const commentSentiment = await prisma.commentSentiment.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends CommentSentimentUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, CommentSentimentUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one CommentSentiment.
+     * @param {CommentSentimentUpsertArgs} args - Arguments to update or create a CommentSentiment.
+     * @example
+     * // Update or create a CommentSentiment
+     * const commentSentiment = await prisma.commentSentiment.upsert({
+     *   create: {
+     *     // ... data to create a CommentSentiment
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CommentSentiment we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends CommentSentimentUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, CommentSentimentUpsertArgs<ExtArgs>>
+    ): Prisma__CommentSentimentClient<$Result.GetResult<Prisma.$CommentSentimentPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of CommentSentiments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentSentimentCountArgs} args - Arguments to filter CommentSentiments to count.
+     * @example
+     * // Count the number of CommentSentiments
+     * const count = await prisma.commentSentiment.count({
+     *   where: {
+     *     // ... the filter for the CommentSentiments we want to count
+     *   }
+     * })
+    **/
+    count<T extends CommentSentimentCountArgs>(
+      args?: Subset<T, CommentSentimentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CommentSentimentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CommentSentiment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentSentimentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CommentSentimentAggregateArgs>(args: Subset<T, CommentSentimentAggregateArgs>): Prisma.PrismaPromise<GetCommentSentimentAggregateType<T>>
+
+    /**
+     * Group by CommentSentiment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentSentimentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CommentSentimentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CommentSentimentGroupByArgs['orderBy'] }
+        : { orderBy?: CommentSentimentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CommentSentimentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommentSentimentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CommentSentiment model
+   */
+  readonly fields: CommentSentimentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CommentSentiment.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CommentSentimentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the CommentSentiment model
+   */ 
+  interface CommentSentimentFieldRefs {
+    readonly id: FieldRef<"CommentSentiment", 'String'>
+    readonly sentiment: FieldRef<"CommentSentiment", 'Sentiment'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * CommentSentiment findUnique
+   */
+  export type CommentSentimentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentSentiment
+     */
+    select?: CommentSentimentSelect<ExtArgs> | null
+    /**
+     * Filter, which CommentSentiment to fetch.
+     */
+    where: CommentSentimentWhereUniqueInput
+  }
+
+
+  /**
+   * CommentSentiment findUniqueOrThrow
+   */
+  export type CommentSentimentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentSentiment
+     */
+    select?: CommentSentimentSelect<ExtArgs> | null
+    /**
+     * Filter, which CommentSentiment to fetch.
+     */
+    where: CommentSentimentWhereUniqueInput
+  }
+
+
+  /**
+   * CommentSentiment findFirst
+   */
+  export type CommentSentimentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentSentiment
+     */
+    select?: CommentSentimentSelect<ExtArgs> | null
+    /**
+     * Filter, which CommentSentiment to fetch.
+     */
+    where?: CommentSentimentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CommentSentiments to fetch.
+     */
+    orderBy?: CommentSentimentOrderByWithRelationInput | CommentSentimentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CommentSentiments.
+     */
+    cursor?: CommentSentimentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CommentSentiments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CommentSentiments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CommentSentiments.
+     */
+    distinct?: CommentSentimentScalarFieldEnum | CommentSentimentScalarFieldEnum[]
+  }
+
+
+  /**
+   * CommentSentiment findFirstOrThrow
+   */
+  export type CommentSentimentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentSentiment
+     */
+    select?: CommentSentimentSelect<ExtArgs> | null
+    /**
+     * Filter, which CommentSentiment to fetch.
+     */
+    where?: CommentSentimentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CommentSentiments to fetch.
+     */
+    orderBy?: CommentSentimentOrderByWithRelationInput | CommentSentimentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CommentSentiments.
+     */
+    cursor?: CommentSentimentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CommentSentiments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CommentSentiments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CommentSentiments.
+     */
+    distinct?: CommentSentimentScalarFieldEnum | CommentSentimentScalarFieldEnum[]
+  }
+
+
+  /**
+   * CommentSentiment findMany
+   */
+  export type CommentSentimentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentSentiment
+     */
+    select?: CommentSentimentSelect<ExtArgs> | null
+    /**
+     * Filter, which CommentSentiments to fetch.
+     */
+    where?: CommentSentimentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CommentSentiments to fetch.
+     */
+    orderBy?: CommentSentimentOrderByWithRelationInput | CommentSentimentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CommentSentiments.
+     */
+    cursor?: CommentSentimentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CommentSentiments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CommentSentiments.
+     */
+    skip?: number
+    distinct?: CommentSentimentScalarFieldEnum | CommentSentimentScalarFieldEnum[]
+  }
+
+
+  /**
+   * CommentSentiment create
+   */
+  export type CommentSentimentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentSentiment
+     */
+    select?: CommentSentimentSelect<ExtArgs> | null
+    /**
+     * The data needed to create a CommentSentiment.
+     */
+    data: XOR<CommentSentimentCreateInput, CommentSentimentUncheckedCreateInput>
+  }
+
+
+  /**
+   * CommentSentiment createMany
+   */
+  export type CommentSentimentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CommentSentiments.
+     */
+    data: CommentSentimentCreateManyInput | CommentSentimentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * CommentSentiment update
+   */
+  export type CommentSentimentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentSentiment
+     */
+    select?: CommentSentimentSelect<ExtArgs> | null
+    /**
+     * The data needed to update a CommentSentiment.
+     */
+    data: XOR<CommentSentimentUpdateInput, CommentSentimentUncheckedUpdateInput>
+    /**
+     * Choose, which CommentSentiment to update.
+     */
+    where: CommentSentimentWhereUniqueInput
+  }
+
+
+  /**
+   * CommentSentiment updateMany
+   */
+  export type CommentSentimentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CommentSentiments.
+     */
+    data: XOR<CommentSentimentUpdateManyMutationInput, CommentSentimentUncheckedUpdateManyInput>
+    /**
+     * Filter which CommentSentiments to update
+     */
+    where?: CommentSentimentWhereInput
+  }
+
+
+  /**
+   * CommentSentiment upsert
+   */
+  export type CommentSentimentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentSentiment
+     */
+    select?: CommentSentimentSelect<ExtArgs> | null
+    /**
+     * The filter to search for the CommentSentiment to update in case it exists.
+     */
+    where: CommentSentimentWhereUniqueInput
+    /**
+     * In case the CommentSentiment found by the `where` argument doesn't exist, create a new CommentSentiment with this data.
+     */
+    create: XOR<CommentSentimentCreateInput, CommentSentimentUncheckedCreateInput>
+    /**
+     * In case the CommentSentiment was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CommentSentimentUpdateInput, CommentSentimentUncheckedUpdateInput>
+  }
+
+
+  /**
+   * CommentSentiment delete
+   */
+  export type CommentSentimentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentSentiment
+     */
+    select?: CommentSentimentSelect<ExtArgs> | null
+    /**
+     * Filter which CommentSentiment to delete.
+     */
+    where: CommentSentimentWhereUniqueInput
+  }
+
+
+  /**
+   * CommentSentiment deleteMany
+   */
+  export type CommentSentimentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CommentSentiments to delete
+     */
+    where?: CommentSentimentWhereInput
+  }
+
+
+  /**
+   * CommentSentiment without action
+   */
+  export type CommentSentimentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentSentiment
+     */
+    select?: CommentSentimentSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Model Role
    */
 
@@ -12270,6 +13202,14 @@ export namespace Prisma {
   export type CommentScalarFieldEnum = (typeof CommentScalarFieldEnum)[keyof typeof CommentScalarFieldEnum]
 
 
+  export const CommentSentimentScalarFieldEnum: {
+    id: 'id',
+    sentiment: 'sentiment'
+  };
+
+  export type CommentSentimentScalarFieldEnum = (typeof CommentSentimentScalarFieldEnum)[keyof typeof CommentSentimentScalarFieldEnum]
+
+
   export const RoleScalarFieldEnum: {
     userId: 'userId',
     role: 'role'
@@ -12388,6 +13328,20 @@ export namespace Prisma {
    * Reference to a field of type 'Tag[]'
    */
   export type ListEnumTagFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Tag[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Sentiment'
+   */
+  export type EnumSentimentFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Sentiment'>
+    
+
+
+  /**
+   * Reference to a field of type 'Sentiment[]'
+   */
+  export type ListEnumSentimentFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Sentiment[]'>
     
 
 
@@ -13029,6 +13983,43 @@ export namespace Prisma {
     dateTime?: DateTimeWithAggregatesFilter<"Comment"> | Date | string
     userId?: StringWithAggregatesFilter<"Comment"> | string
     infoId?: StringWithAggregatesFilter<"Comment"> | string
+  }
+
+  export type CommentSentimentWhereInput = {
+    AND?: CommentSentimentWhereInput | CommentSentimentWhereInput[]
+    OR?: CommentSentimentWhereInput[]
+    NOT?: CommentSentimentWhereInput | CommentSentimentWhereInput[]
+    id?: StringFilter<"CommentSentiment"> | string
+    sentiment?: EnumSentimentFilter<"CommentSentiment"> | $Enums.Sentiment
+  }
+
+  export type CommentSentimentOrderByWithRelationInput = {
+    id?: SortOrder
+    sentiment?: SortOrder
+  }
+
+  export type CommentSentimentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CommentSentimentWhereInput | CommentSentimentWhereInput[]
+    OR?: CommentSentimentWhereInput[]
+    NOT?: CommentSentimentWhereInput | CommentSentimentWhereInput[]
+    sentiment?: EnumSentimentFilter<"CommentSentiment"> | $Enums.Sentiment
+  }, "id">
+
+  export type CommentSentimentOrderByWithAggregationInput = {
+    id?: SortOrder
+    sentiment?: SortOrder
+    _count?: CommentSentimentCountOrderByAggregateInput
+    _max?: CommentSentimentMaxOrderByAggregateInput
+    _min?: CommentSentimentMinOrderByAggregateInput
+  }
+
+  export type CommentSentimentScalarWhereWithAggregatesInput = {
+    AND?: CommentSentimentScalarWhereWithAggregatesInput | CommentSentimentScalarWhereWithAggregatesInput[]
+    OR?: CommentSentimentScalarWhereWithAggregatesInput[]
+    NOT?: CommentSentimentScalarWhereWithAggregatesInput | CommentSentimentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CommentSentiment"> | string
+    sentiment?: EnumSentimentWithAggregatesFilter<"CommentSentiment"> | $Enums.Sentiment
   }
 
   export type RoleWhereInput = {
@@ -13697,6 +14688,41 @@ export namespace Prisma {
     infoId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type CommentSentimentCreateInput = {
+    id: string
+    sentiment: $Enums.Sentiment
+  }
+
+  export type CommentSentimentUncheckedCreateInput = {
+    id: string
+    sentiment: $Enums.Sentiment
+  }
+
+  export type CommentSentimentUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sentiment?: EnumSentimentFieldUpdateOperationsInput | $Enums.Sentiment
+  }
+
+  export type CommentSentimentUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sentiment?: EnumSentimentFieldUpdateOperationsInput | $Enums.Sentiment
+  }
+
+  export type CommentSentimentCreateManyInput = {
+    id: string
+    sentiment: $Enums.Sentiment
+  }
+
+  export type CommentSentimentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sentiment?: EnumSentimentFieldUpdateOperationsInput | $Enums.Sentiment
+  }
+
+  export type CommentSentimentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sentiment?: EnumSentimentFieldUpdateOperationsInput | $Enums.Sentiment
+  }
+
   export type RoleCreateInput = {
     userId: string
     role: $Enums.RoleTag
@@ -14291,6 +15317,38 @@ export namespace Prisma {
     infoId?: SortOrder
   }
 
+  export type EnumSentimentFilter<$PrismaModel = never> = {
+    equals?: $Enums.Sentiment | EnumSentimentFieldRefInput<$PrismaModel>
+    in?: $Enums.Sentiment[] | ListEnumSentimentFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Sentiment[] | ListEnumSentimentFieldRefInput<$PrismaModel>
+    not?: NestedEnumSentimentFilter<$PrismaModel> | $Enums.Sentiment
+  }
+
+  export type CommentSentimentCountOrderByAggregateInput = {
+    id?: SortOrder
+    sentiment?: SortOrder
+  }
+
+  export type CommentSentimentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    sentiment?: SortOrder
+  }
+
+  export type CommentSentimentMinOrderByAggregateInput = {
+    id?: SortOrder
+    sentiment?: SortOrder
+  }
+
+  export type EnumSentimentWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Sentiment | EnumSentimentFieldRefInput<$PrismaModel>
+    in?: $Enums.Sentiment[] | ListEnumSentimentFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Sentiment[] | ListEnumSentimentFieldRefInput<$PrismaModel>
+    not?: NestedEnumSentimentWithAggregatesFilter<$PrismaModel> | $Enums.Sentiment
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumSentimentFilter<$PrismaModel>
+    _max?: NestedEnumSentimentFilter<$PrismaModel>
+  }
+
   export type EnumRoleTagFilter<$PrismaModel = never> = {
     equals?: $Enums.RoleTag | EnumRoleTagFieldRefInput<$PrismaModel>
     in?: $Enums.RoleTag[] | ListEnumRoleTagFieldRefInput<$PrismaModel>
@@ -14861,6 +15919,10 @@ export namespace Prisma {
     update?: XOR<XOR<InformationUpdateToOneWithWhereWithoutCommentsInput, InformationUpdateWithoutCommentsInput>, InformationUncheckedUpdateWithoutCommentsInput>
   }
 
+  export type EnumSentimentFieldUpdateOperationsInput = {
+    set?: $Enums.Sentiment
+  }
+
   export type EnumRoleTagFieldUpdateOperationsInput = {
     set?: $Enums.RoleTag
   }
@@ -15075,6 +16137,23 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumTagFilter<$PrismaModel>
     _max?: NestedEnumTagFilter<$PrismaModel>
+  }
+
+  export type NestedEnumSentimentFilter<$PrismaModel = never> = {
+    equals?: $Enums.Sentiment | EnumSentimentFieldRefInput<$PrismaModel>
+    in?: $Enums.Sentiment[] | ListEnumSentimentFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Sentiment[] | ListEnumSentimentFieldRefInput<$PrismaModel>
+    not?: NestedEnumSentimentFilter<$PrismaModel> | $Enums.Sentiment
+  }
+
+  export type NestedEnumSentimentWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Sentiment | EnumSentimentFieldRefInput<$PrismaModel>
+    in?: $Enums.Sentiment[] | ListEnumSentimentFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Sentiment[] | ListEnumSentimentFieldRefInput<$PrismaModel>
+    not?: NestedEnumSentimentWithAggregatesFilter<$PrismaModel> | $Enums.Sentiment
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumSentimentFilter<$PrismaModel>
+    _max?: NestedEnumSentimentFilter<$PrismaModel>
   }
 
   export type NestedEnumRoleTagFilter<$PrismaModel = never> = {
@@ -16415,6 +17494,10 @@ export namespace Prisma {
      * @deprecated Use CommentDefaultArgs instead
      */
     export type CommentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CommentDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use CommentSentimentDefaultArgs instead
+     */
+    export type CommentSentimentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CommentSentimentDefaultArgs<ExtArgs>
     /**
      * @deprecated Use RoleDefaultArgs instead
      */

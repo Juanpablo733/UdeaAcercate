@@ -1,3 +1,4 @@
+
 {
   "name": "udeacercate",
   "version": "0.1.0",
@@ -29,6 +30,7 @@
     "@types/node": "^20.8.4",
     "@types/react": "^18.2.27",
     "@types/react-dom": "18.2.7",
+    "ai": "^3.0.24",
     "apollo-server": "^3.13.0",
     "apollo-server-micro": "^3.12.1",
     "autoprefixer": "^10.4.16",
@@ -51,6 +53,8 @@
     "next-auth-client": "^1.5.0",
     "next-cloudinary": "^5.7.0",
     "nodemailer": "^6.9.7",
+    "openai": "^4.38.2",
+    "openai-edge": "^1.2.2",
     "postcss": "8.4.29",
     "prisma": "^5.10.2",
     "react": "18.2.0",
