@@ -9,6 +9,10 @@ import { ExtendedEvent, GET_EVENTS_ATTENDING, GET_EVENTS_CREATED } from '@/graph
 import { MiniCardContainer } from '@/components/card/MiniCardContainer';
 import { useState } from 'react';
 import { useUserData } from '@/hooks/useUserData';
+import InfoProfile from '@/components/profile/InfoProfile';
+import { CgProfile } from "react-icons/cg";
+import { LuCalendarRange } from "react-icons/lu";
+import { LuCalendarCheck } from "react-icons/lu";
 
 const Perfil = () => {
     const { userData } = useUserData();
@@ -37,59 +41,55 @@ const Perfil = () => {
         console.log("errorCreated:", errorCreated)
         console.log("errorProfile:", errorProfile)
     }
+    console.log('profile: ', profile)
+    console.log('user: ', user)
     return (
         <>
             <title>
                 Perfil | UdeAcercate
             </title>
-            <div className='Yellow-little gap-15 flex flex-col h-screen'>
+            <div className='Yellow-little gap-15 flex flex-col min-h-screen'>
                 <div>
                     <Navbar/>
                 </div>
 
-                <div className=' h-full flex flex-row'>
-                    <div className=' w-1/3 flex flex-col items-center p-4 gap-4'>
-                        <Image src={user?.image!} alt={'avatar-image'} height={200} width={200} className=' rounded-full' />
-                        <span className='text-xl font-extrabold'>{user?.name}</span>
-                        <span className='text-sm font-bold'>{profile?.faculty}</span>
-                        <span className='text-sm font-bold'>{profile?.career}</span>
-                        <span className='text-sm font-bold'>{profile?.campus?.replace('_', ' ')}</span>
-                        <span className='text-sm font-bold'>{profile?.type}</span>
-                        <span className='text-sm font-bold mr-7 ml-7'>
-                            {profile?.description}
-                        </span>
-                        <span className='text-sm font-bold mr-7 ml-7'>
-                            {profile?.hobbies}
-                        </span>
-                        <span className='text-sm font-bold mr-7 ml-7'>
-                            {profile?.socialLinks}
-                        </span>
+                {/* <div className='h-full flex flex-row'> */}
+                <div className='flex '>
+                    {/* <div className=' w-1/3 flex flex-col items-center p-4 gap-4'> */}
+                    <div className=' flex flex-col items-center p-4 gap-5'>
+                        <Image src={user?.image!} alt={'avatar-image'} height={200} width={200} className=' rounded-full'/>
+                        <InfoProfile profile={profile} />
                     </div>
-                    <div className=' w-full'>
-                        <div className=' w-full p-4 grid grid-cols-2 gap-4 justify-items-center'>
+                    <div className='w-full debug'>
+                        {/* <div className=' w-full p-4 grid grid-cols-2 gap-4 justify-items-center debug'> */}
+                        <div className='flex p-4 gap-4 justify-center debug'>
                             <button className=
                                 {eventType === 'created'
-                                    ? ' ButtonCard  flex items-center h-14 w-60 justify-center'
-                                    : ' border-2 flex items-center h-14 w-60 justify-center'}
+                                    // ? ' ButtonCard flex items-center h-14 w-60 justify-center'
+                                    ? ' ButtonCard flex items-center h-14 w-50 justify-center lg:w-52'
+                                    // : ' border-2 flex items-center h-14 w-60 justify-center'}
+                                    : ' border-2 border-gray-400 bg-gray-200 rounded-2xl flex items-center h-14 w-50 lg:w-52 justify-center text-base font-bold'}
                                 onClick={setCreatedType}>
                                 Eventos Creados
                             </button>
                             <button className=
                                 {eventType === 'attending'
-                                    ? ' ButtonCard  flex items-center h-14 w-60 justify-center'
-                                    : ' border-2 flex items-center h-14 w-60 justify-center'}
+                                    // ? ' ButtonCard flex items-center h-14 w-60 justify-center'
+                                    ? ' ButtonCard flex items-center h-14 w-50 justify-center lg:w-52'
+                                    // : ' border-2 flex items-center h-14 w-60 justify-center'}
+                                    : ' border-2 border-gray-400 bg-gray-200 rounded-2xl flex items-center h-14 w-50 lg:w-52 justify-center text-base font-bold'}
                                 onClick={setAttendingType}>
                                 Eventos a asistir
                             </button>
                         </div>
-                        <div>
+                        {/* <div> */}
                             <MiniCardContainer data=
                                 {eventType === 'created'
                                     ? eventsCreatedData?.eventsCreated
                                     : eventsAttendingData?.eventsAttending}
                                 sessionUserId={userData?.user.id}
                             />
-                        </div>
+                        {/* </div> */}
                     </div>
                 </div>
 

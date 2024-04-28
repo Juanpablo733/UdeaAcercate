@@ -1,0 +1,35 @@
+import type { GraphQLResolveInfo } from "graphql";
+import { AggregateEmailTokenArgs } from "./args/AggregateEmailTokenArgs";
+import { CreateManyEmailTokenArgs } from "./args/CreateManyEmailTokenArgs";
+import { CreateOneEmailTokenArgs } from "./args/CreateOneEmailTokenArgs";
+import { DeleteManyEmailTokenArgs } from "./args/DeleteManyEmailTokenArgs";
+import { DeleteOneEmailTokenArgs } from "./args/DeleteOneEmailTokenArgs";
+import { FindFirstEmailTokenArgs } from "./args/FindFirstEmailTokenArgs";
+import { FindFirstEmailTokenOrThrowArgs } from "./args/FindFirstEmailTokenOrThrowArgs";
+import { FindManyEmailTokenArgs } from "./args/FindManyEmailTokenArgs";
+import { FindUniqueEmailTokenArgs } from "./args/FindUniqueEmailTokenArgs";
+import { FindUniqueEmailTokenOrThrowArgs } from "./args/FindUniqueEmailTokenOrThrowArgs";
+import { GroupByEmailTokenArgs } from "./args/GroupByEmailTokenArgs";
+import { UpdateManyEmailTokenArgs } from "./args/UpdateManyEmailTokenArgs";
+import { UpdateOneEmailTokenArgs } from "./args/UpdateOneEmailTokenArgs";
+import { UpsertOneEmailTokenArgs } from "./args/UpsertOneEmailTokenArgs";
+import { EmailToken } from "../../../models/EmailToken";
+import { AffectedRowsOutput } from "../../outputs/AffectedRowsOutput";
+import { AggregateEmailToken } from "../../outputs/AggregateEmailToken";
+import { EmailTokenGroupBy } from "../../outputs/EmailTokenGroupBy";
+export declare class EmailTokenCrudResolver {
+    aggregateEmailToken(ctx: any, info: GraphQLResolveInfo, args: AggregateEmailTokenArgs): Promise<AggregateEmailToken>;
+    createManyEmailToken(ctx: any, info: GraphQLResolveInfo, args: CreateManyEmailTokenArgs): Promise<AffectedRowsOutput>;
+    createOneEmailToken(ctx: any, info: GraphQLResolveInfo, args: CreateOneEmailTokenArgs): Promise<EmailToken>;
+    deleteManyEmailToken(ctx: any, info: GraphQLResolveInfo, args: DeleteManyEmailTokenArgs): Promise<AffectedRowsOutput>;
+    deleteOneEmailToken(ctx: any, info: GraphQLResolveInfo, args: DeleteOneEmailTokenArgs): Promise<EmailToken | null>;
+    findFirstEmailToken(ctx: any, info: GraphQLResolveInfo, args: FindFirstEmailTokenArgs): Promise<EmailToken | null>;
+    findFirstEmailTokenOrThrow(ctx: any, info: GraphQLResolveInfo, args: FindFirstEmailTokenOrThrowArgs): Promise<EmailToken | null>;
+    emailTokens(ctx: any, info: GraphQLResolveInfo, args: FindManyEmailTokenArgs): Promise<EmailToken[]>;
+    emailToken(ctx: any, info: GraphQLResolveInfo, args: FindUniqueEmailTokenArgs): Promise<EmailToken | null>;
+    getEmailToken(ctx: any, info: GraphQLResolveInfo, args: FindUniqueEmailTokenOrThrowArgs): Promise<EmailToken | null>;
+    groupByEmailToken(ctx: any, info: GraphQLResolveInfo, args: GroupByEmailTokenArgs): Promise<EmailTokenGroupBy[]>;
+    updateManyEmailToken(ctx: any, info: GraphQLResolveInfo, args: UpdateManyEmailTokenArgs): Promise<AffectedRowsOutput>;
+    updateOneEmailToken(ctx: any, info: GraphQLResolveInfo, args: UpdateOneEmailTokenArgs): Promise<EmailToken | null>;
+    upsertOneEmailToken(ctx: any, info: GraphQLResolveInfo, args: UpsertOneEmailTokenArgs): Promise<EmailToken>;
+}
