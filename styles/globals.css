@@ -8,6 +8,7 @@
   --green-little: #43B649;
   --blue-dark: #205B70;
   --blue-mid: #0E7774;
+  /* --light-grey-try: #c9c9c9; */
   --light-grey: #5F5F5F;
   --dark-grey: #393636;
   --white: #fff;
@@ -164,4 +165,15 @@ label{
   font-size: 1rem;
   font-weight: 500;
   color: var(--light-grey);
+}
+
+.InfoProfile {
+  @apply flex bg-white w-72 p-3 rounded-3xl shadow-xl flex-col items-center hover:scale-105 transition-transform duration-300;
+}
+
+.CardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 24px;
+  justify-items: center;
 }
