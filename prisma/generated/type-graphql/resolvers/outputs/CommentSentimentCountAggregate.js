@@ -22,6 +22,24 @@ tslib_1.__decorate([
         nullable: false
     }),
     tslib_1.__metadata("design:type", Number)
+], CommentSentimentCountAggregate.prototype, "confidence", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", Number)
+], CommentSentimentCountAggregate.prototype, "commentTag", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", Number)
+], CommentSentimentCountAggregate.prototype, "dateTime", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", Number)
 ], CommentSentimentCountAggregate.prototype, "_all", void 0);
 exports.CommentSentimentCountAggregate = CommentSentimentCountAggregate = tslib_1.__decorate([
     TypeGraphQL.ObjectType("CommentSentimentCountAggregate", {})

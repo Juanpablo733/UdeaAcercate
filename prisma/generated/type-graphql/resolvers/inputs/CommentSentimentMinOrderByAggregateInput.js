@@ -18,6 +18,24 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", String)
 ], CommentSentimentMinOrderByAggregateInput.prototype, "sentiment", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
+], CommentSentimentMinOrderByAggregateInput.prototype, "confidence", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
+], CommentSentimentMinOrderByAggregateInput.prototype, "commentTag", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
+], CommentSentimentMinOrderByAggregateInput.prototype, "dateTime", void 0);
 exports.CommentSentimentMinOrderByAggregateInput = CommentSentimentMinOrderByAggregateInput = tslib_1.__decorate([
     TypeGraphQL.InputType("CommentSentimentMinOrderByAggregateInput", {})
 ], CommentSentimentMinOrderByAggregateInput);

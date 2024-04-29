@@ -195,7 +195,10 @@ exports.Prisma.CommentScalarFieldEnum = {
 
 exports.Prisma.CommentSentimentScalarFieldEnum = {
   id: 'id',
-  sentiment: 'sentiment'
+  sentiment: 'sentiment',
+  confidence: 'confidence',
+  commentTag: 'commentTag',
+  dateTime: 'dateTime'
 };
 
 exports.Prisma.RoleScalarFieldEnum = {

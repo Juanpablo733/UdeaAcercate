@@ -1,4 +1,7 @@
 export declare enum CommentSentimentScalarFieldEnum {
     id = "id",
-    sentiment = "sentiment"
+    sentiment = "sentiment",
+    confidence = "confidence",
+    commentTag = "commentTag",
+    dateTime = "dateTime"
 }

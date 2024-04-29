@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import prisma from "@/config/prisma"
-import { Sentiment } from "@/prisma/generated/client";
+import { Sentiment, Tag } from "@/prisma/generated/client";
 
 export async function deleteAllCommentsFromEvent(db: PrismaClient, eventId: string) {
     const event = await db.event.findUnique({
@@ -21,34 +21,36 @@ type SentimentJSON = {
     neutral: number,
 }
 
-export async function saveCommentSentiment(commentId: string, sentiment: SentimentJSON) {
-    const sentimentPolarity = getPolarity(sentiment)
+export async function saveCommentSentiment(commentId: string, commentTag: Tag, sentiment: SentimentJSON) {
+    const selectedSentiment = selectSentiment(sentiment)
     console.log("Sentiment:", sentiment)
-    console.log("Polarity:", sentimentPolarity)
+    console.log("Polarity, Confidence:", selectedSentiment)
     await prisma.commentSentiment.create({
         data: {
             id: commentId,
-            sentiment: sentimentPolarity
+            sentiment: selectedSentiment.polarity,
+            confidence: selectedSentiment.confidence,
+            commentTag: commentTag
         }
     })
 }
 
-function getPolarity(sentiment: SentimentJSON): Sentiment {
+function selectSentiment(sentiment: SentimentJSON): { polarity: Sentiment, confidence: number } {
     let polarity: Sentiment = "Neutral"
-    if (sentiment.positive == sentiment.negative)
-        return polarity
-    else if (sentiment.neutral > sentiment.negative || sentiment.neutral > sentiment.positive) {
-        if (sentiment.negative >= sentiment.neutral)
-            polarity = "Negative"
-        else if (sentiment.positive >= sentiment.neutral)
+    if (sentiment.positive != sentiment.negative) {
+        if (sentiment.neutral > sentiment.negative || sentiment.neutral > sentiment.positive) {
+            if (sentiment.negative >= sentiment.neutral)
+                polarity = "Negative"
+            else if (sentiment.positive >= sentiment.neutral)
+                polarity = "Positive"
+        }
+        else if (sentiment.positive > sentiment.negative) {
             polarity = "Positive"
-        return polarity
+        }
+        else if (sentiment.negative > sentiment.positive) {
+            polarity = "Negative"
+        }
     }
-    else if (sentiment.positive > sentiment.negative) {
-        polarity = "Positive"
-    }
-    else if (sentiment.negative > sentiment.positive) {
-        polarity = "Negative"
-    }
-    return polarity
+    const confidence: number = sentiment[polarity.toLowerCase()]
+    return { polarity, confidence }
 }

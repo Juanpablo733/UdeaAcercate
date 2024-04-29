@@ -11404,40 +11404,76 @@ export namespace Prisma {
 
   export type AggregateCommentSentiment = {
     _count: CommentSentimentCountAggregateOutputType | null
+    _avg: CommentSentimentAvgAggregateOutputType | null
+    _sum: CommentSentimentSumAggregateOutputType | null
     _min: CommentSentimentMinAggregateOutputType | null
     _max: CommentSentimentMaxAggregateOutputType | null
+  }
+
+  export type CommentSentimentAvgAggregateOutputType = {
+    confidence: number | null
+  }
+
+  export type CommentSentimentSumAggregateOutputType = {
+    confidence: number | null
   }
 
   export type CommentSentimentMinAggregateOutputType = {
     id: string | null
     sentiment: $Enums.Sentiment | null
+    confidence: number | null
+    commentTag: $Enums.Tag | null
+    dateTime: Date | null
   }
 
   export type CommentSentimentMaxAggregateOutputType = {
     id: string | null
     sentiment: $Enums.Sentiment | null
+    confidence: number | null
+    commentTag: $Enums.Tag | null
+    dateTime: Date | null
   }
 
   export type CommentSentimentCountAggregateOutputType = {
     id: number
     sentiment: number
+    confidence: number
+    commentTag: number
+    dateTime: number
     _all: number
   }
 
 
+  export type CommentSentimentAvgAggregateInputType = {
+    confidence?: true
+  }
+
+  export type CommentSentimentSumAggregateInputType = {
+    confidence?: true
+  }
+
   export type CommentSentimentMinAggregateInputType = {
     id?: true
     sentiment?: true
+    confidence?: true
+    commentTag?: true
+    dateTime?: true
   }
 
   export type CommentSentimentMaxAggregateInputType = {
     id?: true
     sentiment?: true
+    confidence?: true
+    commentTag?: true
+    dateTime?: true
   }
 
   export type CommentSentimentCountAggregateInputType = {
     id?: true
     sentiment?: true
+    confidence?: true
+    commentTag?: true
+    dateTime?: true
     _all?: true
   }
 
@@ -11479,6 +11515,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: CommentSentimentAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CommentSentimentSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: CommentSentimentMinAggregateInputType
@@ -11509,6 +11557,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: CommentSentimentCountAggregateInputType | true
+    _avg?: CommentSentimentAvgAggregateInputType
+    _sum?: CommentSentimentSumAggregateInputType
     _min?: CommentSentimentMinAggregateInputType
     _max?: CommentSentimentMaxAggregateInputType
   }
@@ -11516,7 +11566,12 @@ export namespace Prisma {
   export type CommentSentimentGroupByOutputType = {
     id: string
     sentiment: $Enums.Sentiment
+    confidence: number
+    commentTag: $Enums.Tag
+    dateTime: Date
     _count: CommentSentimentCountAggregateOutputType | null
+    _avg: CommentSentimentAvgAggregateOutputType | null
+    _sum: CommentSentimentSumAggregateOutputType | null
     _min: CommentSentimentMinAggregateOutputType | null
     _max: CommentSentimentMaxAggregateOutputType | null
   }
@@ -11538,11 +11593,17 @@ export namespace Prisma {
   export type CommentSentimentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     sentiment?: boolean
+    confidence?: boolean
+    commentTag?: boolean
+    dateTime?: boolean
   }, ExtArgs["result"]["commentSentiment"]>
 
   export type CommentSentimentSelectScalar = {
     id?: boolean
     sentiment?: boolean
+    confidence?: boolean
+    commentTag?: boolean
+    dateTime?: boolean
   }
 
 
@@ -11552,6 +11613,9 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       sentiment: $Enums.Sentiment
+      confidence: number
+      commentTag: $Enums.Tag
+      dateTime: Date
     }, ExtArgs["result"]["commentSentiment"]>
     composites: {}
   }
@@ -11948,6 +12012,9 @@ export namespace Prisma {
   interface CommentSentimentFieldRefs {
     readonly id: FieldRef<"CommentSentiment", 'String'>
     readonly sentiment: FieldRef<"CommentSentiment", 'Sentiment'>
+    readonly confidence: FieldRef<"CommentSentiment", 'Float'>
+    readonly commentTag: FieldRef<"CommentSentiment", 'Tag'>
+    readonly dateTime: FieldRef<"CommentSentiment", 'DateTime'>
   }
     
 
@@ -13204,7 +13271,10 @@ export namespace Prisma {
 
   export const CommentSentimentScalarFieldEnum: {
     id: 'id',
-    sentiment: 'sentiment'
+    sentiment: 'sentiment',
+    confidence: 'confidence',
+    commentTag: 'commentTag',
+    dateTime: 'dateTime'
   };
 
   export type CommentSentimentScalarFieldEnum = (typeof CommentSentimentScalarFieldEnum)[keyof typeof CommentSentimentScalarFieldEnum]
@@ -13346,20 +13416,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'RoleTag'
-   */
-  export type EnumRoleTagFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RoleTag'>
-    
-
-
-  /**
-   * Reference to a field of type 'RoleTag[]'
-   */
-  export type ListEnumRoleTagFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RoleTag[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -13370,6 +13426,20 @@ export namespace Prisma {
    * Reference to a field of type 'Float[]'
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'RoleTag'
+   */
+  export type EnumRoleTagFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RoleTag'>
+    
+
+
+  /**
+   * Reference to a field of type 'RoleTag[]'
+   */
+  export type ListEnumRoleTagFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RoleTag[]'>
     
   /**
    * Deep Input Types
@@ -13991,11 +14061,17 @@ export namespace Prisma {
     NOT?: CommentSentimentWhereInput | CommentSentimentWhereInput[]
     id?: StringFilter<"CommentSentiment"> | string
     sentiment?: EnumSentimentFilter<"CommentSentiment"> | $Enums.Sentiment
+    confidence?: FloatFilter<"CommentSentiment"> | number
+    commentTag?: EnumTagFilter<"CommentSentiment"> | $Enums.Tag
+    dateTime?: DateTimeFilter<"CommentSentiment"> | Date | string
   }
 
   export type CommentSentimentOrderByWithRelationInput = {
     id?: SortOrder
     sentiment?: SortOrder
+    confidence?: SortOrder
+    commentTag?: SortOrder
+    dateTime?: SortOrder
   }
 
   export type CommentSentimentWhereUniqueInput = Prisma.AtLeast<{
@@ -14004,14 +14080,22 @@ export namespace Prisma {
     OR?: CommentSentimentWhereInput[]
     NOT?: CommentSentimentWhereInput | CommentSentimentWhereInput[]
     sentiment?: EnumSentimentFilter<"CommentSentiment"> | $Enums.Sentiment
+    confidence?: FloatFilter<"CommentSentiment"> | number
+    commentTag?: EnumTagFilter<"CommentSentiment"> | $Enums.Tag
+    dateTime?: DateTimeFilter<"CommentSentiment"> | Date | string
   }, "id">
 
   export type CommentSentimentOrderByWithAggregationInput = {
     id?: SortOrder
     sentiment?: SortOrder
+    confidence?: SortOrder
+    commentTag?: SortOrder
+    dateTime?: SortOrder
     _count?: CommentSentimentCountOrderByAggregateInput
+    _avg?: CommentSentimentAvgOrderByAggregateInput
     _max?: CommentSentimentMaxOrderByAggregateInput
     _min?: CommentSentimentMinOrderByAggregateInput
+    _sum?: CommentSentimentSumOrderByAggregateInput
   }
 
   export type CommentSentimentScalarWhereWithAggregatesInput = {
@@ -14020,6 +14104,9 @@ export namespace Prisma {
     NOT?: CommentSentimentScalarWhereWithAggregatesInput | CommentSentimentScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"CommentSentiment"> | string
     sentiment?: EnumSentimentWithAggregatesFilter<"CommentSentiment"> | $Enums.Sentiment
+    confidence?: FloatWithAggregatesFilter<"CommentSentiment"> | number
+    commentTag?: EnumTagWithAggregatesFilter<"CommentSentiment"> | $Enums.Tag
+    dateTime?: DateTimeWithAggregatesFilter<"CommentSentiment"> | Date | string
   }
 
   export type RoleWhereInput = {
@@ -14691,36 +14778,57 @@ export namespace Prisma {
   export type CommentSentimentCreateInput = {
     id: string
     sentiment: $Enums.Sentiment
+    confidence: number
+    commentTag: $Enums.Tag
+    dateTime?: Date | string
   }
 
   export type CommentSentimentUncheckedCreateInput = {
     id: string
     sentiment: $Enums.Sentiment
+    confidence: number
+    commentTag: $Enums.Tag
+    dateTime?: Date | string
   }
 
   export type CommentSentimentUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     sentiment?: EnumSentimentFieldUpdateOperationsInput | $Enums.Sentiment
+    confidence?: FloatFieldUpdateOperationsInput | number
+    commentTag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
+    dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CommentSentimentUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     sentiment?: EnumSentimentFieldUpdateOperationsInput | $Enums.Sentiment
+    confidence?: FloatFieldUpdateOperationsInput | number
+    commentTag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
+    dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CommentSentimentCreateManyInput = {
     id: string
     sentiment: $Enums.Sentiment
+    confidence: number
+    commentTag: $Enums.Tag
+    dateTime?: Date | string
   }
 
   export type CommentSentimentUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     sentiment?: EnumSentimentFieldUpdateOperationsInput | $Enums.Sentiment
+    confidence?: FloatFieldUpdateOperationsInput | number
+    commentTag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
+    dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CommentSentimentUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     sentiment?: EnumSentimentFieldUpdateOperationsInput | $Enums.Sentiment
+    confidence?: FloatFieldUpdateOperationsInput | number
+    commentTag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
+    dateTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type RoleCreateInput = {
@@ -15324,19 +15432,47 @@ export namespace Prisma {
     not?: NestedEnumSentimentFilter<$PrismaModel> | $Enums.Sentiment
   }
 
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type CommentSentimentCountOrderByAggregateInput = {
     id?: SortOrder
     sentiment?: SortOrder
+    confidence?: SortOrder
+    commentTag?: SortOrder
+    dateTime?: SortOrder
+  }
+
+  export type CommentSentimentAvgOrderByAggregateInput = {
+    confidence?: SortOrder
   }
 
   export type CommentSentimentMaxOrderByAggregateInput = {
     id?: SortOrder
     sentiment?: SortOrder
+    confidence?: SortOrder
+    commentTag?: SortOrder
+    dateTime?: SortOrder
   }
 
   export type CommentSentimentMinOrderByAggregateInput = {
     id?: SortOrder
     sentiment?: SortOrder
+    confidence?: SortOrder
+    commentTag?: SortOrder
+    dateTime?: SortOrder
+  }
+
+  export type CommentSentimentSumOrderByAggregateInput = {
+    confidence?: SortOrder
   }
 
   export type EnumSentimentWithAggregatesFilter<$PrismaModel = never> = {
@@ -15347,6 +15483,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumSentimentFilter<$PrismaModel>
     _max?: NestedEnumSentimentFilter<$PrismaModel>
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type EnumRoleTagFilter<$PrismaModel = never> = {
@@ -15923,6 +16075,14 @@ export namespace Prisma {
     set?: $Enums.Sentiment
   }
 
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type EnumRoleTagFieldUpdateOperationsInput = {
     set?: $Enums.RoleTag
   }
@@ -16146,6 +16306,17 @@ export namespace Prisma {
     not?: NestedEnumSentimentFilter<$PrismaModel> | $Enums.Sentiment
   }
 
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type NestedEnumSentimentWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.Sentiment | EnumSentimentFieldRefInput<$PrismaModel>
     in?: $Enums.Sentiment[] | ListEnumSentimentFieldRefInput<$PrismaModel>
@@ -16154,6 +16325,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumSentimentFilter<$PrismaModel>
     _max?: NestedEnumSentimentFilter<$PrismaModel>
+  }
+
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type NestedEnumRoleTagFilter<$PrismaModel = never> = {

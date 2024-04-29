@@ -15,3 +15,13 @@ export const CLASIFFY_COMMENT_SENTIMENT = gql`
         classifyCommentSentiment(commentId: $commentId)
     }
 `
+
+export const GET_SENTIMENT_CONFIDENCE_AVERAGE = gql`
+    query CommentSentimentConfidenceAverage {
+        commentSentimentConfidenceAverage {
+            positive
+            negative
+            neutral
+        }
+    }
+`

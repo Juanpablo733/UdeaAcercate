@@ -7,7 +7,7 @@ import { deleteAllCommentsFromEvent, saveCommentSentiment } from "./utils/commen
 import { findUser } from "./utils/userUtil";
 import { getInteractionsByEventTags } from "./utils/interactionsUtil";
 import { GenerateAndSaveSentiment } from '@/util/chatgpt';
-import { getCommentSentimentCount } from "./utils/commentSentimentUtil";
+import { getCommentSentimentCount, getConfidenceAverage } from "./utils/commentSentimentUtil";
 
 
 
@@ -244,8 +244,10 @@ const resolvers: Resolver = {
             return commentsStringArray
         },
         commentSentimentCount: async (parent, args, context) => {
-            const { db } = context
-            return getCommentSentimentCount(db)
+            return getCommentSentimentCount(context.db)
+        },
+        commentSentimentConfidenceAverage: async (parent, args, context) => {
+            return getConfidenceAverage(context.db)
         }
     },
     Mutation: {
@@ -480,11 +482,12 @@ const resolvers: Resolver = {
                 return false
             }
 
-            const comment = await context.db.comment.findUnique({ where: { id: args.commentId } })
+            const comment = await db.comment.findUnique({ where: { id: args.commentId } })
+            const info = await db.information.findUnique({ where: { id: comment.infoId } })
             if (comment) {
                 console.log(comment)
                 const responseJSON = await GenerateAndSaveSentiment(comment.text)
-                await saveCommentSentiment(args.commentId, JSON.parse(responseJSON))
+                await saveCommentSentiment(args.commentId, info.tag, JSON.parse(responseJSON))
                 return true
             }
             console.log("No hay un comentario con este id")

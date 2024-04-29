@@ -2,7 +2,7 @@ import {
     Chart, ChartTypes, Series, CommonSeriesSettings, Label, Format, Legend, Export,
     ValueAxis,
 } from 'devextreme-react/chart';
-import { grossProductData } from './data.ts';
+import { grossProductData } from './data';
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { Loading } from '../ui/Loading';
@@ -50,7 +50,7 @@ export function SentimentHistogram() {
                 argumentField="sentiment"
                 type="bar"
                 hoverMode="allArgumentPoints"
-                // selectionMode="allArgumentPoints"
+                selectionMode="allArgumentPoints"
             >
                 <Label visible={true}>
                     <Format type="fixedPoint" precision={0} />
