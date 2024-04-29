@@ -163,8 +163,11 @@ model Comment {
 }
 
 model CommentSentiment {
-  id        String @unique
-  sentiment Sentiment
+  id         String    @unique
+  sentiment  Sentiment
+  confidence Float
+  commentTag Tag
+  dateTime   DateTime  @default(now())
 }
 
 model Role {

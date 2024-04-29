@@ -83,6 +83,7 @@ export { CommentOrderByWithAggregationInput } from "./CommentOrderByWithAggregat
 export { CommentOrderByWithRelationInput } from "./CommentOrderByWithRelationInput";
 export { CommentScalarWhereInput } from "./CommentScalarWhereInput";
 export { CommentScalarWhereWithAggregatesInput } from "./CommentScalarWhereWithAggregatesInput";
+export { CommentSentimentAvgOrderByAggregateInput } from "./CommentSentimentAvgOrderByAggregateInput";
 export { CommentSentimentCountOrderByAggregateInput } from "./CommentSentimentCountOrderByAggregateInput";
 export { CommentSentimentCreateInput } from "./CommentSentimentCreateInput";
 export { CommentSentimentCreateManyInput } from "./CommentSentimentCreateManyInput";
@@ -91,6 +92,7 @@ export { CommentSentimentMinOrderByAggregateInput } from "./CommentSentimentMinO
 export { CommentSentimentOrderByWithAggregationInput } from "./CommentSentimentOrderByWithAggregationInput";
 export { CommentSentimentOrderByWithRelationInput } from "./CommentSentimentOrderByWithRelationInput";
 export { CommentSentimentScalarWhereWithAggregatesInput } from "./CommentSentimentScalarWhereWithAggregatesInput";
+export { CommentSentimentSumOrderByAggregateInput } from "./CommentSentimentSumOrderByAggregateInput";
 export { CommentSentimentUpdateInput } from "./CommentSentimentUpdateInput";
 export { CommentSentimentUpdateManyMutationInput } from "./CommentSentimentUpdateManyMutationInput";
 export { CommentSentimentWhereInput } from "./CommentSentimentWhereInput";
@@ -180,6 +182,9 @@ export { EventUpsertWithoutAttendeesInput } from "./EventUpsertWithoutAttendeesI
 export { EventUpsertWithoutInfoInput } from "./EventUpsertWithoutInfoInput";
 export { EventWhereInput } from "./EventWhereInput";
 export { EventWhereUniqueInput } from "./EventWhereUniqueInput";
+export { FloatFieldUpdateOperationsInput } from "./FloatFieldUpdateOperationsInput";
+export { FloatFilter } from "./FloatFilter";
+export { FloatWithAggregatesFilter } from "./FloatWithAggregatesFilter";
 export { InformationCountOrderByAggregateInput } from "./InformationCountOrderByAggregateInput";
 export { InformationCreateInput } from "./InformationCreateInput";
 export { InformationCreateManyInput } from "./InformationCreateManyInput";
@@ -225,7 +230,9 @@ export { NestedEnumTagFilter } from "./NestedEnumTagFilter";
 export { NestedEnumTagWithAggregatesFilter } from "./NestedEnumTagWithAggregatesFilter";
 export { NestedEnumUserTypeNullableFilter } from "./NestedEnumUserTypeNullableFilter";
 export { NestedEnumUserTypeNullableWithAggregatesFilter } from "./NestedEnumUserTypeNullableWithAggregatesFilter";
+export { NestedFloatFilter } from "./NestedFloatFilter";
 export { NestedFloatNullableFilter } from "./NestedFloatNullableFilter";
+export { NestedFloatWithAggregatesFilter } from "./NestedFloatWithAggregatesFilter";
 export { NestedIntFilter } from "./NestedIntFilter";
 export { NestedIntNullableFilter } from "./NestedIntNullableFilter";
 export { NestedIntNullableWithAggregatesFilter } from "./NestedIntNullableWithAggregatesFilter";

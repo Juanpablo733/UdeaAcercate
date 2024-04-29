@@ -4,7 +4,7 @@ import { CommentSentimentWhereInput } from "../../../inputs/CommentSentimentWher
 export declare class GroupByCommentSentimentArgs {
     where?: CommentSentimentWhereInput | undefined;
     orderBy?: CommentSentimentOrderByWithAggregationInput[] | undefined;
-    by: Array<"id" | "sentiment">;
+    by: Array<"id" | "sentiment" | "confidence" | "commentTag" | "dateTime">;
     having?: CommentSentimentScalarWhereWithAggregatesInput | undefined;
     take?: number | undefined;
     skip?: number | undefined;

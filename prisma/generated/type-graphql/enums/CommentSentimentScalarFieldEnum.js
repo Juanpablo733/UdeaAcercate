@@ -7,6 +7,9 @@ var CommentSentimentScalarFieldEnum;
 (function (CommentSentimentScalarFieldEnum) {
     CommentSentimentScalarFieldEnum["id"] = "id";
     CommentSentimentScalarFieldEnum["sentiment"] = "sentiment";
+    CommentSentimentScalarFieldEnum["confidence"] = "confidence";
+    CommentSentimentScalarFieldEnum["commentTag"] = "commentTag";
+    CommentSentimentScalarFieldEnum["dateTime"] = "dateTime";
 })(CommentSentimentScalarFieldEnum || (exports.CommentSentimentScalarFieldEnum = CommentSentimentScalarFieldEnum = {}));
 TypeGraphQL.registerEnumType(CommentSentimentScalarFieldEnum, {
     name: "CommentSentimentScalarFieldEnum",

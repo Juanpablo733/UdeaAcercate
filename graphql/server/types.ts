@@ -80,6 +80,11 @@ const typeDefs = gql`
         negative: Int
         neutral: Int
     }
+    type ConfidenceAverage {
+        positive: Float
+        negative: Float
+        neutral: Float
+    }
 
     type Query {
         test(bool:Boolean!): Boolean
@@ -94,6 +99,7 @@ const typeDefs = gql`
         interactionsPerEventType(startDate:DateTime!, endDate:DateTime!): InteractionsPerEventType
         allComments(startDate:DateTime, endDate:DateTime): [String]
         commentSentimentCount: SentimentCount
+        commentSentimentConfidenceAverage: ConfidenceAverage
     }
     
     type Mutation {

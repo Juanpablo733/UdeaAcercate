@@ -11,7 +11,7 @@ const Navbar = () => {
   const userId = userData?.user.id
   const CloseSession = () => { signOut({ callbackUrl: '/' }) }  
   return (
-    <div className='w-full h-16 bg-[#026937] flex items-center justify-between px-4'>
+    <div className='w-full h-16 bg-[#026937] flex items-center justify-between px-4 fixed z-10'>
       <button className='text-white font-bold hidden sm:block' onClick={CloseSession} >
         Cerrar sesión
       </button>

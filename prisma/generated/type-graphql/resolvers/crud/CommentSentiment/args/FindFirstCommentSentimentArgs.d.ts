@@ -7,5 +7,5 @@ export declare class FindFirstCommentSentimentArgs {
     cursor?: CommentSentimentWhereUniqueInput | undefined;
     take?: number | undefined;
     skip?: number | undefined;
-    distinct?: Array<"id" | "sentiment"> | undefined;
+    distinct?: Array<"id" | "sentiment" | "confidence" | "commentTag" | "dateTime"> | undefined;
 }
