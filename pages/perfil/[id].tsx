@@ -54,7 +54,7 @@ const Perfil = () => {
                 </div>
 
                 {/* <div className='h-full flex flex-row'> */}
-                <div className='flex '>
+                <div className='flex mt-16'>
                     {/* <div className=' w-1/3 flex flex-col items-center p-4 gap-4'> */}
                     <div className=' flex flex-col items-center p-4 gap-5'>
                         <Image src={user?.image!} alt={'avatar-image'} height={200} width={200} className=' rounded-full'/>

@@ -18,21 +18,21 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
     const month = (date.getMonth() + 1).toString().padStart(2, '0')
     const year = date.getFullYear().toString()
     const hours = date.getHours().toString().padStart(2, '0')
-    const minutes = date.getMinutes().toString().padStart(2, '0')   
+    const minutes = date.getMinutes().toString().padStart(2, '0')
     return (
         // <div className='w-full max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl '>
-        <div className='hover:scale-105 transition-transform duration-300 w-full min-w-[360px] max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl '>
-            
+        <div className='hover:scale-105 transition-transform duration-300 w-full min-w-[360px] max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pb-4 px-4 bg-white gap-4 flex flex-col shadow-xl '>
+
             {/* <div className='flex justify-between items-center'> */}
-            <header className='flex justify-between items-center'>
-                <div className='flex gap-1 h-max'>
+            <header className='flex justify-between items-center gap-4 w-full'>
+                <div className='flex gap-1 h-max w-full'>
                     <MdOutlineLabel className="h-8 w-8" />
-                    <TagType type={data.info.tag} />
+                    <TagType type={data.info.tag}/>
                 </div>
-                <Link href={`/perfil/${data.author.id}`}>
-                    <div className='flex gap-4 items-center'>
-                        <span className='text-sm font-bold'>{data.author.name}</span>
-                        <Image src={data.author.image} alt={'avatar-image'} height={30} width={30} className='rounded-full'/>
+                <Link href={`/perfil/${data.author.id}`} className="w-3/5">
+                    <div className='flex gap-2 items-center justify-end w-full'>
+                        <span className='text-sm font-bold text-right truncate w-full'>{data.author.name}</span>
+                        <Image src={data.author.image} alt={'avatar-image'} height={30} width={30} className='rounded-full' />
                     </div>
                 </Link>
             </header>

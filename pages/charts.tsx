@@ -1,5 +1,7 @@
 import { DatePicker } from "@/components/atoms/datePicker";
 import { EventInteractionsChart } from "@/components/charts/EventInteractionsChart";
+import { SentimentAnalysisChart } from "@/components/charts/SentimentAnalysisChart";
+import { SentimentHistogram } from "@/components/charts/SentimentHistogram";
 import { useState } from "react";
 
 export default function Charts() {
@@ -17,6 +19,7 @@ export default function Charts() {
                     <DatePicker type="date" date={endDate} setDate={setEndDate} />
                 </div>
             </div>
+            <SentimentHistogram/>
             <EventInteractionsChart startDate={startDate} endDate={endDate} />
         </div>
     )
