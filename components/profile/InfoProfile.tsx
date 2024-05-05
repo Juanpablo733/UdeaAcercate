@@ -6,11 +6,12 @@ interface ProfileProps {
 }
 const InfoProfile = ({profile}: ProfileProps) => {
     return(
-        <div className='flex flex-col gap-5'>
+        <div className='flex flex-col gap-6 items-center py-4'>
 
-            <div className='InfoProfile'>
+            {/* <div className='InfoProfile'>
                 <span className='text-xl font-extrabold'>{profile.user?.name}</span>
-            </div>
+            </div> */}
+            <h1 className='text-[var(--green-hard)] text-3xl font-extrabold'>Información del perfil</h1>
             <div className='InfoProfile'>
                 <span className='text-sm font-extrabold text-[var(--green-hard)]'>Unidad Académica o Administrativa</span>
                 <span className='text-sm font-semibold'>{profile?.faculty}</span>
