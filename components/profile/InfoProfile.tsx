@@ -9,7 +9,7 @@ const InfoProfile = ({profile}: ProfileProps) => {
         <div className='flex flex-col gap-5'>
 
             <div className='InfoProfile'>
-                <span className='text-xl font-extrabold'>{profile.user?.name}</span>
+                <span className='text-xl font-extrabold text-center'>{profile.user?.name}</span>
             </div>
             <div className='InfoProfile'>
                 <span className='text-sm font-extrabold text-[var(--green-hard)]'>Unidad Académica o Administrativa</span>

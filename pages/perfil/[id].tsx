@@ -60,9 +60,9 @@ const Perfil = () => {
                         <Image src={user?.image!} alt={'avatar-image'} height={200} width={200} className=' rounded-full'/>
                         <InfoProfile profile={profile} />
                     </div>
-                    <div className='w-full debug'>
-                        {/* <div className=' w-full p-4 grid grid-cols-2 gap-4 justify-items-center debug'> */}
-                        <div className='flex p-4 gap-4 justify-center debug'>
+                    <div className='w-full  '>
+                        {/* <div className=' w-full p-4 grid grid-cols-2 gap-4 justify-items-center  '> */}
+                        <div className='flex p-4 gap-4 justify-center  '>
                             <button className=
                                 {eventType === 'created'
                                     // ? ' ButtonCard flex items-center h-14 w-60 justify-center'
