@@ -11,24 +11,33 @@ import Chart, {
 import { useQuery } from '@apollo/client';
 import { GET_INTERACTIONS_PER_EVENT_TAG } from '@/graphql/client/interactions';
 import { Loading } from '../ui/Loading';
+import { Export } from 'devextreme-react/cjs/polar-chart';
+import { toast } from 'react-toastify';
 
-
-const makeInteractionsArray = (data) => {
+const EXPORT_FILE_NAME = "Interacciones-Eventos"
+let fileName
+const makeInteractionsArray = (data, startDate, endDate) => {
     return [
         {
             tag: "Academico",
             comments: data.academico.comments,
-            attendees: data.academico.attendees
+            attendees: data.academico.attendees,
+            startDate: startDate,
+            endDate: endDate,
         },
         {
             tag: "Cultural",
             comments: data.cultural.comments,
-            attendees: data.cultural.attendees
+            attendees: data.cultural.attendees,
+            startDate: startDate,
+            endDate: endDate,
         },
         {
             tag: "Deportivo",
             comments: data.deportivo.comments,
-            attendees: data.deportivo.attendees
+            attendees: data.deportivo.attendees,
+            startDate: startDate,
+            endDate: endDate,
         },
     ]
 }
@@ -65,41 +74,82 @@ export function EventInteractionsChart({ startDate, endDate }: { startDate: stri
     if (startDate === '' || endDate === '')
         return (<></>)
     if (loading) return (<Loading />)
-    const interactionsArray = makeInteractionsArray(interactionsData.interactionsPerEventType)
+    const interactionsArray = makeInteractionsArray(interactionsData.interactionsPerEventType,
+        startDate, endDate)
     const ticks = calculateTicks(interactionsArray)
+    const onExport = async () => {
+        fileName = `${EXPORT_FILE_NAME}`
+            + `_${new Date(Date.now()).toLocaleDateString()
+                .replaceAll('/', '_')}`
+            + `_${new Date(Date.now()).toLocaleTimeString()
+                .replaceAll(':', '_')}`
+        const body = {
+            fileName: fileName,
+            header: [
+                { id: 'tag', title: 'Tipo de evento' },
+                { id: 'attendees', title: 'Asitencias' },
+                { id: 'comments', title: 'Comentarios' },
+                { id: 'startDate', title: 'Desde' },
+                { id: 'endDate', title: 'Hasta' },
+            ],
+            data: interactionsArray,
+        }
+        const res = await fetch('/api/writeCsv', {
+            method: 'POST',
+            body: JSON.stringify(body)
+        })
+        if (res.status == 500) {
+            toast.error("Algo salió mal")
+            return
+        }
+        const link = document.createElement('a');
+        link.href = `./${fileName}.csv`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
 
     return (
-        <Chart
-            title="Interacciones por tipo de evento"
-            dataSource={interactionsArray}
-            palette="Harmony Light"
-            id="chart"
-        >
-            <CommonSeriesSettings argumentField="tag" />
-            <Series
-                name="Comentarios"
-                valueField="comments"
-                axis="frequency"
-                type="bar"
-                color="#026937"
-            />
-            <Series
-                name="Asistentes"
-                valueField="attendees"
-                axis="frequency"
-                type="bar"
-                color="#43B649"
-            />
+        <>
+            <Chart
+                title="Interacciones por tipo de evento"
+                dataSource={interactionsArray}
+                palette="Harmony Light"
+                id="chart"
+            >
+                <CommonSeriesSettings argumentField="tag" />
+                <Series
+                    name="Comentarios"
+                    valueField="comments"
+                    axis="frequency"
+                    type="bar"
+                    color="#026937"
+                />
+                <Series
+                    name="Asistentes"
+                    valueField="attendees"
+                    axis="frequency"
+                    type="bar"
+                    color="#43B649"
+                />
 
-            <ArgumentAxis>
-                <Label overlappingBehavior="stagger" />
-            </ArgumentAxis>
+                <ArgumentAxis>
+                    <Label overlappingBehavior="stagger" />
+                </ArgumentAxis>
 
-            <ValueAxis title="Frecuencia" name="frequency" position="left" tickInterval={ticks} />
+                <ValueAxis title="Frecuencia" name="frequency" position="left" tickInterval={ticks} />
 
-            <Tooltip enabled={true} shared={true} customizeTooltip={customizeTooltip} />
+                <Tooltip enabled={true} shared={true} customizeTooltip={customizeTooltip} />
 
-            <Legend verticalAlignment="top" horizontalAlignment="center" />
-        </Chart>
+                <Legend verticalAlignment="top" horizontalAlignment="center" />
+                <Export enabled={true} formats={['JPEG', 'PDF', 'PNG']} />
+            </Chart >
+            <button
+                className='ButtonCard'
+                onClick={onExport}>
+                Exportar CSV
+            </button>
+        </>
     );
 }

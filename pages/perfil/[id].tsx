@@ -59,7 +59,7 @@ const Perfil = () => {
                         <div className='flex items-center gap-4'>
                             <Image src={user?.image!} alt={'avatar-image'} height={80} width={80} className=' rounded-full'/>
                             <div className='flex flex-col'>
-                                <span className='text-lg font-extrabold text-white'>{profile.user?.name}</span>
+                                <span className='text-lg text-center font-extrabold text-white'>{profile.user?.name}</span>
                                 <span className='text-base font-semibold text-white'>{profile?.career}</span>
                             </div>
                         </div>

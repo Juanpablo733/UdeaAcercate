@@ -55,7 +55,7 @@ const Home = () => {
             <title>
                 Home | UdeAcercate
             </title>
-            <div className='flex flex-col gap-10 pb-4 Yellow-little min-h-screen debug'>
+            <div className='flex flex-col gap-10 pb-4 Yellow-little min-h-screen'>
                 <Navbar/>
                 <div className='flex flex-col md:flex-row gap-12 justify-center items-center mt-[104px]'>
                     <div className='flex gap-8 md:gap-12'>
