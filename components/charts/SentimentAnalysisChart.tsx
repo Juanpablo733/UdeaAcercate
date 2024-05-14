@@ -48,11 +48,11 @@ export function SentimentAnalysisChart() {
         sentimentSources.map((item) => <Series
           key={item.value}
           valueField={item.value}
-          name={item.name} 
+          name={item.name}
           color={item.color}
-          />)
+        />)
       }
-      <Export enabled={true} />
+      <Export enabled={true} formats={['JPEG', 'PDF', 'PNG']} />
       <Tooltip enabled={true} />
     </PolarChart>
   );

@@ -263,7 +263,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\santi\\OneDrive\\Escritorio\\UDEA\\udea10\\PI\\UdeaAcercate\\prisma\\generated\\client",
+      "value": "C:\\Users\\Jose\\Desktop\\Jose\\UdeA\\8 Semestre\\Proyecto Integrador 1\\Repositorio\\Nuevo Repo\\UdeaAcercate\\prisma\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -280,7 +280,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../..",

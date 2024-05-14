@@ -2,7 +2,6 @@ import {
     Chart, ChartTypes, Series, CommonSeriesSettings, Label, Format, Legend, Export,
     ValueAxis,
 } from 'devextreme-react/chart';
-import { grossProductData } from './data';
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { Loading } from '../ui/Loading';
@@ -73,7 +72,7 @@ export function SentimentHistogram() {
             />
             <ValueAxis title="Frecuencia" name="frequency" position="left" tickInterval={ticks+1} />
             <Legend verticalAlignment="bottom" horizontalAlignment="center"></Legend>
-            <Export enabled={true} />
+            <Export enabled={true} formats={['JPEG', 'PDF', 'PNG']} />
         </Chart>
     )
 }
