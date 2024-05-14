@@ -102,8 +102,11 @@ export function EventInteractionsChart({ startDate, endDate }: { startDate: stri
             toast.error("Algo salió mal")
             return
         }
-        const resBody = res.json()
-        console.log(resBody)
+        const link = document.createElement('a');
+        link.href = `./${fileName}.csv`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
 
 
@@ -142,12 +145,11 @@ export function EventInteractionsChart({ startDate, endDate }: { startDate: stri
                 <Legend verticalAlignment="top" horizontalAlignment="center" />
                 <Export enabled={true} formats={['JPEG', 'PDF', 'PNG']} />
             </Chart >
-            <a
-                // download href={`./${fileName}`}
+            <button
                 className='ButtonCard'
                 onClick={onExport}>
                 Exportar CSV
-            </a>
+            </button>
         </>
     );
 }
