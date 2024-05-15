@@ -13,6 +13,7 @@ import { GET_INTERACTIONS_PER_EVENT_TAG } from '@/graphql/client/interactions';
 import { Loading } from '../ui/Loading';
 import { Export } from 'devextreme-react/cjs/polar-chart';
 import { toast } from 'react-toastify';
+import { createObjectCsvStringifier } from 'csv-writer';
 
 const EXPORT_FILE_NAME = "Interacciones-Eventos"
 let fileName
@@ -66,7 +67,39 @@ const customizeTooltip = (pointInfo) => ({
         }</span>: </div><div class="value-text"><span class='bottom-series-value'>${pointInfo.points[1].valueText
         }`,
 });
+function ExportCsv(data) {
+    return async () => {
+        fileName = getFileNameAtNow();
+        const csvWriter = createObjectCsvStringifier({
+            header: csvHeaderArray
+        });
+        const csvData = csvWriter.stringifyRecords(data);
+        downloadCsvFile(csvWriter, csvData);
+    };
+}
 
+function downloadCsvFile(csvWriter, csvData: string) {
+    const element = document.createElement('a');
+    element.setAttribute('href', `data:text/csv;charset=utf-8,${csvWriter.getHeaderString()}${csvData}`);
+    element.setAttribute('download', `${fileName}.csv`);
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+}
+const csvHeaderArray = [
+    { id: 'tag', title: 'Tipo de evento' },
+    { id: 'attendees', title: 'Asitencias' },
+    { id: 'comments', title: 'Comentarios' },
+    { id: 'startDate', title: 'Desde' },
+    { id: 'endDate', title: 'Hasta' },
+];
+function getFileNameAtNow() {
+    return `${EXPORT_FILE_NAME}`
+        + `_${new Date(Date.now()).toLocaleDateString()
+            .replaceAll('/', '_')}`
+        + `_${new Date(Date.now()).toLocaleTimeString()
+            .replaceAll(':', '_')}`
+}
 export function EventInteractionsChart({ startDate, endDate }: { startDate: string, endDate: string }) {
     const { data: interactionsData, loading } = useQuery(GET_INTERACTIONS_PER_EVENT_TAG, {
         variables: { startDate, endDate }
@@ -74,42 +107,11 @@ export function EventInteractionsChart({ startDate, endDate }: { startDate: stri
     if (startDate === '' || endDate === '')
         return (<></>)
     if (loading) return (<Loading />)
+
     const interactionsArray = makeInteractionsArray(interactionsData.interactionsPerEventType,
         startDate, endDate)
     const ticks = calculateTicks(interactionsArray)
-    const onExport = async () => {
-        fileName = `${EXPORT_FILE_NAME}`
-            + `_${new Date(Date.now()).toLocaleDateString()
-                .replaceAll('/', '_')}`
-            + `_${new Date(Date.now()).toLocaleTimeString()
-                .replaceAll(':', '_')}`
-        const body = {
-            fileName: fileName,
-            header: [
-                { id: 'tag', title: 'Tipo de evento' },
-                { id: 'attendees', title: 'Asitencias' },
-                { id: 'comments', title: 'Comentarios' },
-                { id: 'startDate', title: 'Desde' },
-                { id: 'endDate', title: 'Hasta' },
-            ],
-            data: interactionsArray,
-        }
-        const res = await fetch('/api/writeCsv', {
-            method: 'POST',
-            body: JSON.stringify(body)
-        })
-        if (res.status == 500) {
-            toast.error("Algo salió mal")
-            return
-        }
-        const link = document.createElement('a');
-        link.href = `./${fileName}.csv`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-
-
+    const onExport = ExportCsv(interactionsArray)
     return (
         <>
             <Chart
@@ -153,3 +155,5 @@ export function EventInteractionsChart({ startDate, endDate }: { startDate: stri
         </>
     );
 }
+
+
