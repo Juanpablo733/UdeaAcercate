@@ -16,7 +16,7 @@ export default function Charts() {
             <div className="flex flex-col">
                 <Navbar />
                 <div className="m-20 flex flex-col items-center gap-10">
-                    <SentimentAnalysisChart />
+                    {/* <SentimentAnalysisChart /> */}
                     <SentimentHistogram />
                     <span className="text-base sm:text-xl ">Interacciones</span>
                     <div className="w-full flex flex-row justify-center items-center">

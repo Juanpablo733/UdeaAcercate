@@ -1,6 +1,5 @@
-import { resolvers } from '@/graphql/server/resolvers';
-import { typeDefs } from '@/graphql/server/types';
-import { PrismaClient } from '@/prisma/generated/client';
+import { customResolvers } from '@/graphql/server/resolvers';
+import { customTypeDefs } from '@/graphql/server/types';
 import { Context } from '@/types';
 import { ApolloServer } from '@apollo/server';
 import { startServerAndCreateNextHandler } from '@as-integrations/next';
@@ -10,8 +9,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 // const prisma = new PrismaClient()
 
 const server = new ApolloServer({
-    resolvers,
-    typeDefs,
+    resolvers: customResolvers,
+    typeDefs: customTypeDefs,
 });
 
 export default startServerAndCreateNextHandler<NextApiRequest, Context>(
