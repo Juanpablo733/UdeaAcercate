@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import prisma from "@/config/prisma"
 import { Sentiment, Tag } from "@/prisma/generated/client";
+import { Context } from "@/types";
 
 export async function deleteAllCommentsFromEvent(db: PrismaClient, eventId: string) {
     const event = await db.event.findUnique({
@@ -53,4 +54,14 @@ function selectSentiment(sentiment: SentimentJSON): { polarity: Sentiment, confi
     }
     const confidence: number = sentiment[polarity.toLowerCase()]
     return { polarity, confidence }
+}
+
+export async function resolveEvent(eventId: string, context: Context) {
+    const { db } = context;
+    const event = db.event.findUnique({
+        where: {
+            id: eventId
+        }
+    })
+    return event;
 }
