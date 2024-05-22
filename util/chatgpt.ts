@@ -1,4 +1,31 @@
+import { Tag } from "@/prisma/generated/client";
 import { OpenAI } from "openai";
+
+const commentQueue = new Array<CommentAnalysisInfo>()
+let interval: NodeJS.Timeout | null = null
+
+type CommentAnalysisInfo = {
+    id: string,
+    tag: Tag,
+    comment: string
+}
+
+export function AddCommentToQueue(comment: CommentAnalysisInfo) {
+    commentQueue.push(comment)
+    if (!interval) {
+        interval = setInterval(executeInterval, 10000)
+    }
+}
+
+const executeInterval = () => {
+    const commentData = commentQueue.shift()
+    if (!commentData) {
+        clearInterval(interval)
+        console.log("queue clear")
+        return
+    }
+    console.log(commentData)
+}
 
 export async function GenerateAndSaveSentiment(comment: string): Promise<string> {
     try {
