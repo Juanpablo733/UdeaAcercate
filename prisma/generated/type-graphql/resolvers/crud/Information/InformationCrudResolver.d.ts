@@ -1,0 +1,35 @@
+import type { GraphQLResolveInfo } from "graphql";
+import { AggregateInformationArgs } from "./args/AggregateInformationArgs";
+import { CreateManyInformationArgs } from "./args/CreateManyInformationArgs";
+import { CreateOneInformationArgs } from "./args/CreateOneInformationArgs";
+import { DeleteManyInformationArgs } from "./args/DeleteManyInformationArgs";
+import { DeleteOneInformationArgs } from "./args/DeleteOneInformationArgs";
+import { FindFirstInformationArgs } from "./args/FindFirstInformationArgs";
+import { FindFirstInformationOrThrowArgs } from "./args/FindFirstInformationOrThrowArgs";
+import { FindManyInformationArgs } from "./args/FindManyInformationArgs";
+import { FindUniqueInformationArgs } from "./args/FindUniqueInformationArgs";
+import { FindUniqueInformationOrThrowArgs } from "./args/FindUniqueInformationOrThrowArgs";
+import { GroupByInformationArgs } from "./args/GroupByInformationArgs";
+import { UpdateManyInformationArgs } from "./args/UpdateManyInformationArgs";
+import { UpdateOneInformationArgs } from "./args/UpdateOneInformationArgs";
+import { UpsertOneInformationArgs } from "./args/UpsertOneInformationArgs";
+import { Information } from "../../../models/Information";
+import { AffectedRowsOutput } from "../../outputs/AffectedRowsOutput";
+import { AggregateInformation } from "../../outputs/AggregateInformation";
+import { InformationGroupBy } from "../../outputs/InformationGroupBy";
+export declare class InformationCrudResolver {
+    aggregateInformation(ctx: any, info: GraphQLResolveInfo, args: AggregateInformationArgs): Promise<AggregateInformation>;
+    createManyInformation(ctx: any, info: GraphQLResolveInfo, args: CreateManyInformationArgs): Promise<AffectedRowsOutput>;
+    createOneInformation(ctx: any, info: GraphQLResolveInfo, args: CreateOneInformationArgs): Promise<Information>;
+    deleteManyInformation(ctx: any, info: GraphQLResolveInfo, args: DeleteManyInformationArgs): Promise<AffectedRowsOutput>;
+    deleteOneInformation(ctx: any, info: GraphQLResolveInfo, args: DeleteOneInformationArgs): Promise<Information | null>;
+    findFirstInformation(ctx: any, info: GraphQLResolveInfo, args: FindFirstInformationArgs): Promise<Information | null>;
+    findFirstInformationOrThrow(ctx: any, info: GraphQLResolveInfo, args: FindFirstInformationOrThrowArgs): Promise<Information | null>;
+    findManyInformation(ctx: any, info: GraphQLResolveInfo, args: FindManyInformationArgs): Promise<Information[]>;
+    findUniqueInformation(ctx: any, info: GraphQLResolveInfo, args: FindUniqueInformationArgs): Promise<Information | null>;
+    findUniqueInformationOrThrow(ctx: any, info: GraphQLResolveInfo, args: FindUniqueInformationOrThrowArgs): Promise<Information | null>;
+    groupByInformation(ctx: any, info: GraphQLResolveInfo, args: GroupByInformationArgs): Promise<InformationGroupBy[]>;
+    updateManyInformation(ctx: any, info: GraphQLResolveInfo, args: UpdateManyInformationArgs): Promise<AffectedRowsOutput>;
+    updateOneInformation(ctx: any, info: GraphQLResolveInfo, args: UpdateOneInformationArgs): Promise<Information | null>;
+    upsertOneInformation(ctx: any, info: GraphQLResolveInfo, args: UpsertOneInformationArgs): Promise<Information>;
+}

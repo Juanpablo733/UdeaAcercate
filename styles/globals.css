@@ -177,3 +177,30 @@ label{
   gap: 24px;
   justify-items: center;
 }
+
+
+
+.sidebar {
+  width: 250px;
+  background-color: var(--green-hard);
+  padding: 8px;
+  position: fixed; /* O cualquier otra posición que necesites */
+  height: 100vh; /* Para que ocupe toda la altura de la ventana */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.sidebar-mobile {
+  /* width: 250px; */
+  background-color: var(--green-hard);
+  padding: 8px;
+  position: fixed; /* O cualquier otra posición que necesites */
+  height: 100vh; /* Para que ocupe toda la altura de la ventana */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar-item {
+  @apply flex gap-4 text-white font-bold items-center;
+}
