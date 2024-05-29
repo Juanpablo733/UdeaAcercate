@@ -13,7 +13,7 @@ const Avatar = ({ userId, name, imageUrl }: AvatarProps) => {
     <Link href={`/perfil/${userId}`}>
       <div className='flex gap-2 items-center w-full h-full'>
         <Image src={imageUrl} alt={imageUrl} height={50} width={50} className='rounded-full' />
-        <span className='Title font-bold'>{name}</span>
+        <span className='Title font-bold overflow-clip'>{name}</span>
       </div>
     </Link>
   )

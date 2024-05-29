@@ -1,124 +1,14 @@
-import { Resolver, Context } from "@/types";
+import { Resolver } from "@/types";
 import { sendVerificationEmail } from "../../util/nodemailerConfig";
-import { cloneDeep } from "@apollo/client/utilities";
-import { deleteEvent, findEvent } from "./utils/eventUtil";
-import { deleteAllAttendeesFromEvent } from "./utils/attendeeUtil";
-import { deleteAllCommentsFromEvent, saveCommentSentiment } from "./utils/commentUtil";
-import { findUser } from "./utils/userUtil";
 import { getInteractionsByEventTags } from "./utils/interactionsUtil";
-import { GenerateAndSaveSentiment } from '@/util/chatgpt';
-import { getCommentSentimentCount } from "./utils/commentSentimentUtil";
-
-
-
-const resolveEvent = async (eventId: string, context: Context) => {
-    const { db } = context;
-    const event = db.event.findUnique({
-        where: {
-            id: eventId
-        }
-    })
-    return event;
-}
-
-const findHashtags = (text: String) => {
-    const regex: RegExp = /#(\w+)/g;
-    const hashtags = text.match(regex);
-    if (hashtags === null) {
-        return new Array();
-    }
-    return hashtags;
-}
+import { eventResolvers } from "./event/resolvers";
+import { profileResolvers } from "./profile/resolvers";
+import { informationResolvers } from "./information/resolvers";
+import { commentResolvers } from "./comment/resolvers";
+import { attendeeResolvers } from "./attendee/resolvers";
+import { sentimentResolvers } from "./sentiment/resolvers";
 
 const resolvers: Resolver = {
-    Information: {
-        comments: async (parent, args, context) => {
-            const { db } = context;
-            const comments = await db.comment.findMany({
-                where: {
-                    infoId: parent.id
-                }
-            }).catch((e) => {
-                console.log(e)
-                return null
-            });
-            return comments;
-        },
-        minutes: async (parent) => {
-            const date = new Date(parent.date)
-            return date.getMinutes()
-        },
-        hours: async (parent) => {
-            const date = new Date(parent.date)
-            return date.getHours()
-        },
-        day: async (parent) => {
-            const date = new Date(parent.date)
-            return date.getUTCDay()
-        },
-        month: async (parent) => {
-            const date = new Date(parent.date)
-            return date.getUTCMonth() + 1
-        },
-        year: async (parent) => {
-            const date = new Date(parent.date)
-            return date.getUTCFullYear()
-        },
-    },
-    Event: {
-        author: async (parent, args, context) => {
-            return findUser(context.db, parent.authorId);
-        },
-        attendeesCount: async (parent, args, context) => {
-            const { db } = context;
-            const count = db.attendee.count({
-                where: {
-                    eventId: parent.id
-                }
-            })
-            return count;
-        },
-        attendees: async (parent, args, context) => {
-            const { db } = context;
-            return await db.attendee.findMany({
-                where: {
-                    eventId: parent.id
-                },
-            }).catch((e) => {
-                console.log(e)
-                return null
-            });
-        },
-        info: async (parent, args, context) => {
-            const { db } = context;
-            return await db.information.findUnique({
-                where: {
-                    id: parent.infoId
-                }
-            })
-        }
-    },
-    Comment: {
-        user: async (parent, args, context) => {
-            return findUser(context.db, parent.userId);
-        },
-        event: async (parent, args, context) => {
-            return resolveEvent(parent.eventId, context);
-        },
-    },
-    Profile: {
-        user: async (parent, args, context) => {
-            return findUser(context.db, parent.userId);
-        },
-    },
-    Attendee: {
-        user: async (parent, args, context) => {
-            return findUser(context.db, parent.userId);
-        },
-        event: async (parent, args, context) => {
-            return resolveEvent(parent.eventId, context);
-        },
-    },
     Query: {
         test: async (parent, args, context) => {
             return args.bool;
@@ -137,273 +27,12 @@ const resolvers: Resolver = {
             });
             return user;
         },
-        events: async (parent, args, context) => {
-            const { db } = context;
-            console.log("[Events-server] tag:", args.tag)
-            const filter = args.hashtags
-            console.log("[Events-server] hashtags:", filter)
-            const options = {
-                where: {
-                    // NOT: {
-                    //     authorId: args.sessionUserId
-                    // },
-                    info: {
-                        tag: args.tag,
-                        hashtags: {
-                            hasEvery: filter
-                        }
-                    }
-                }
-            }
-            if (!args.tag) {
-                delete options["where"]["info"]["tag"]
-            }
-
-            console.log("[events] options:", options)
-            return await db.event.findMany(options)
-                .catch((e) => {
-                    console.log(e)
-                    return null
-                });
-        },
-        eventsCreated: async (parent, args, context) => {
-            const { db } = context;
-            return await db.event.findMany({
-                where: {
-                    authorId: args.userId
-                }
-            })
-        },
-        eventsAttending: async (parent, args, context) => {
-            const { db } = context;
-            return await db.event.findMany({
-                where: {
-                    attendees: {
-                        some: {
-                            user: {
-                                id: args.userId
-                            }
-                        }
-                    }
-                }
-            })
-        },
-        event: async (parent, args, context) => {
-            const { db } = context;
-            console.log("Resolver event id: ", args.id)
-            return await db.event.findUnique({
-                where: {
-                    id: args.id
-                }
-            });
-        },
-        profile: async (parent, args, context) => {
-            const { db } = context;
-            return await db.profile.findUnique({
-                where: {
-                    userId: args.userId
-                }
-            })
-        },
-        attendee: async (parent, args, context) => {
-            const { db } = context;
-            const userId = args.userId;
-            const eventId = args.eventId;
-
-            const attendee = await db.attendee.findUnique({
-                where: {
-                    userId_eventId: { userId, eventId }
-                }
-            }).catch((e) => { console.log(e) })
-            if (attendee) return true
-            return false
-        },
         interactionsPerEventType: async (parent, args, context) => {
             const { db } = context;
             return await getInteractionsByEventTags(db, new Date(args.startDate), new Date(args.endDate))
         },
-        allComments: async (parent, args, context) => {
-            const { db } = context;
-            let comments
-            if (args.startDate && args.endDate) {
-                comments = await db.comment.findMany({
-                    where: {
-                        dateTime: {
-                            gte: new Date(args.startDate),
-                            lte: new Date(args.endDate),
-                        }
-                    }
-                })
-            }
-            else comments = await db.comment.findMany()
-            console.log(comments)
-            const commentsStringArray = new Array<string>()
-            comments.forEach(element => {
-                commentsStringArray.push(element.text)
-            })
-            return commentsStringArray
-        },
-        commentSentimentCount: async (parent, args, context) => {
-            const { db } = context
-            return getCommentSentimentCount(db)
-        }
     },
     Mutation: {
-        createUser: async (parent, args, context) => {
-            const { db } = context;
-            const { name, email, image, emailVerified } = args;
-
-            const newUser = await db.user.create({
-                data: {
-                    email,
-                    name,
-                    image,
-                    emailVerified
-                },
-            });
-
-            return newUser;
-        },
-        createEvent: async (parent, args, context) => {
-            const { db } = context;
-            const { title, description, place, date, image, tag, authorId } = args;
-            const hashtags: string[] = findHashtags(description) as string[];
-            const newDate = new Date(date);
-            console.log(newDate.toString())
-            const newInfo = await db.information.create({
-                data: {
-                    title: title,
-                    description: description,
-                    date: newDate,
-                    tag: tag,
-                    image: image,
-                    hashtags: hashtags,
-                }
-            })
-            const newEvent = await db.event.create({
-                data: {
-                    place: place,
-                    author: {
-                        connect: {
-                            id: authorId
-                        }
-                    },
-                    info: {
-                        connect: {
-                            id: (newInfo.id)
-                        }
-                    }
-                },
-            });
-            return newEvent;
-        },
-        deleteEventByOwner: async (parent, args, context) => {
-            const { db } = context;
-            var deleted: Boolean = false;
-
-            const eventToDelete = await findEvent(db, args.eventId)
-            if (eventToDelete.authorId === args.ownerId) {
-                await deleteAllAttendeesFromEvent(db, args.eventId);
-                await deleteAllCommentsFromEvent(db, args.eventId);
-                if (eventToDelete !== null) {
-                    await deleteEvent(db, args.eventId);
-                    deleted = true
-                }
-            }
-            return deleted
-        },
-        createProfile: async (parent, args, context) => {
-            const { db } = context;
-            const findProfile = await db.profile.findUnique({
-                where: {
-                    userId: args.userId
-                }
-            });
-            if (findProfile != null) return findProfile;
-            const newProfile = await db.profile.create({
-                data: args
-
-            }).catch((error) => { return null });
-            return newProfile;
-        },
-        updateProfile: async (parent, args, context) => {
-            const { db } = context;
-            const newData = cloneDeep(args);
-            delete newData.userId;
-            return await db.profile.update({
-                where: {
-                    userId: args.userId
-                },
-                data: newData,
-            }).catch((e) => {
-                console.log(e)
-                return null
-            });
-        },
-        createComment: async (parent, args, context) => {
-            const { db } = context;
-            const event = await db.event.findUnique({
-                where: {
-                    id: args.eventId
-                }
-            })
-            return await db.comment.create({
-                data: {
-                    userId: args.userId,
-                    infoId: event.infoId,
-                    text: args.text,
-                }
-            }).catch((e) => {
-                console.log(e)
-                return null
-            });
-        },
-        deleteCommentByOwner: async (parent, args, context) => {
-            const { db } = context;
-            var deleted: Boolean = false;
-            const commentToDelete = await db.comment.findUnique({
-                where: {
-                    id: args.commentId
-                }
-            })
-            if (commentToDelete) {
-                if (commentToDelete.userId == args.ownerId) {
-                    await db.comment.delete({
-                        where: {
-                            id: args.commentId,
-                        }
-                    }).then(() => deleted = true)
-                }
-            }
-            return deleted;
-        },
-        addAttendee: async (parent, args, context) => {
-            const { db } = context;
-            return await db.attendee.create({
-                data: {
-                    userId: args.userId,
-                    eventId: args.eventId
-                }
-            }).catch((e) => {
-                console.log(e)
-                return null
-            });
-        },
-        quitAttendee: async (parent, args, context) => {
-            const { db } = context;
-            var deleted: Boolean = true;
-            const userId = args.userId
-            const eventId = args.eventId
-            await db.attendee.delete({
-                where: {
-                    userId_eventId: { userId, eventId }
-                }
-            }).catch((e) => {
-                console.log(e)
-                deleted = false;
-            });
-            return deleted;
-        },
         generateEmailToken: async (parent, args, context) => {
             const { db } = context;
             const token = Math.trunc(Math.random() * Math.pow(10, 6))
@@ -472,25 +101,17 @@ const resolvers: Resolver = {
             }
             return false
         },
-        classifyCommentSentiment: async (parent, args, context) => {
-            const { db } = context
-            const commentSentiment = await context.db.commentSentiment.findUnique({ where: { id: args.commentId } })
-            if (commentSentiment) {
-                console.log("Este comentario ya fue analizado")
-                return false
-            }
-
-            const comment = await context.db.comment.findUnique({ where: { id: args.commentId } })
-            if (comment) {
-                console.log(comment)
-                const responseJSON = await GenerateAndSaveSentiment(comment.text)
-                await saveCommentSentiment(args.commentId, JSON.parse(responseJSON))
-                return true
-            }
-            console.log("No hay un comentario con este id")
-            return false
-        },
     }
 };
 
-export { resolvers }
+const customResolvers = [
+    resolvers,
+    profileResolvers,
+    informationResolvers,
+    eventResolvers,
+    commentResolvers,
+    attendeeResolvers,
+    sentimentResolvers,
+]
+
+export { customResolvers }

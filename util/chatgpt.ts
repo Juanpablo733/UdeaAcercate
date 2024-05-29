@@ -16,9 +16,9 @@ const config = {
     apiKey: process.env.OPENAI_API_KEY,
 }
 const openai = new OpenAI(config);
-const systemPrompt = "You will be provided with a tweet, and your task is to classify its sentiment " +
-    "as positive, neutral, or negative, and the percentage in a decimal between 0 and" +
-    " 1 of each sentiment, in a json format"
+const systemPrompt = `You will be provided with a tweet. Your task is to classify its sentiment 
+    as positive, neutral, or negative, and give the confidence percentage as a three decimal number 
+    between 0 and 1 for each sentiment. Use json format for the response.`
 
 function requestChatgptSentimentAnalysis(comment: string) {
     return openai.chat.completions.create({
