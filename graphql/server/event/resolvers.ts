@@ -3,15 +3,8 @@ import { findUser } from "../utils/userUtil";
 import { deleteEvent, findEvent } from "../utils/eventUtil";
 import { deleteAllAttendeesFromEvent } from "../utils/attendeeUtil";
 import { deleteAllCommentsFromEvent } from "../utils/commentUtil";
+import { findHashtags } from "../utils/infoUtil";
 
-const findHashtags = (text: String) => {
-    const regex: RegExp = /#(\w+)/g;
-    const hashtags = text.match(regex);
-    if (hashtags === null) {
-        return new Array();
-    }
-    return hashtags;
-}
 
 const eventResolvers: Resolver = {
     Event: {
@@ -55,9 +48,9 @@ const eventResolvers: Resolver = {
             console.log("[Events-server] hashtags:", filter)
             const options = {
                 where: {
-                    // NOT: {
-                    //     authorId: args.sessionUserId
-                    // },
+                    NOT: {
+                        authorId: args.sessionUserId
+                    },
                     info: {
                         tag: args.tag,
                         hashtags: {
@@ -68,6 +61,9 @@ const eventResolvers: Resolver = {
             }
             if (!args.tag) {
                 delete options["where"]["info"]["tag"]
+            }
+            if (!filter) {
+                delete options["where"]["info"]["hashtags"]
             }
 
             console.log("[events] options:", options)

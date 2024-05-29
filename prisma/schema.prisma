@@ -51,6 +51,11 @@ enum Campus {
   Sede_Sonson_de_la_Universidad_de_Antioquia
 }
 
+enum RoleTag {
+  User
+  Admin
+}
+
 model Account {
   id                String  @id @default(cuid())
   userId            String
@@ -79,12 +84,12 @@ model Session {
 }
 
 model User {
-  id            String     @id @default(cuid())
+  id            String        @id @default(cuid())
   name          String?
-  email         String?    @unique
+  email         String?       @unique
   emailVerified DateTime?
-  createdAt     DateTime   @default(now())
-  updatedAt     DateTime   @updatedAt
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
   image         String?
   profile       Profile?
   eventsCreated Event[]
@@ -92,6 +97,7 @@ model User {
   comments      Comment[]
   accounts      Account[]
   sessions      Session[]
+  newsCreated   Information[]
 }
 
 model VerificationToken {
@@ -132,12 +138,15 @@ model Event {
 
 model Information {
   id          String    @id @default(cuid())
+  author      User?     @relation(fields: [authorId], references: [id])
+  authorId    String?   @default(cuid())
   title       String
   description String
   date        DateTime
   image       String?
   tag         Tag
   hashtags    String[]
+  official    Boolean   @default(false)
   comments    Comment[]
   event       Event?
 }
@@ -173,9 +182,4 @@ model CommentSentiment {
 model Role {
   userId String  @unique
   role   RoleTag
-}
-
-enum RoleTag {
-  User
-  Admin
 }

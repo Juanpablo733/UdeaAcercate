@@ -15,6 +15,10 @@ const informationTypeDefs = gql`
         comments:    [Comment]
         hashtags:    [String]
     }
+    type Mutation {
+        createInfo(title: String!, description: String!, date: DateTime!, 
+                image: String!, tag: String!, authorId: String!): Information
+    }
 `
 
 export { informationTypeDefs }

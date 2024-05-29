@@ -1851,6 +1851,7 @@ export namespace Prisma {
     comments: number
     accounts: number
     sessions: number
+    newsCreated: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1859,6 +1860,7 @@ export namespace Prisma {
     comments?: boolean | UserCountOutputTypeCountCommentsArgs
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
     sessions?: boolean | UserCountOutputTypeCountSessionsArgs
+    newsCreated?: boolean | UserCountOutputTypeCountNewsCreatedArgs
   }
 
   // Custom InputTypes
@@ -1911,6 +1913,14 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SessionWhereInput
+  }
+
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountNewsCreatedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InformationWhereInput
   }
 
 
@@ -4109,6 +4119,7 @@ export namespace Prisma {
     comments?: boolean | User$commentsArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
+    newsCreated?: boolean | User$newsCreatedArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -4129,6 +4140,7 @@ export namespace Prisma {
     comments?: boolean | User$commentsArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
+    newsCreated?: boolean | User$newsCreatedArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -4142,6 +4154,7 @@ export namespace Prisma {
       comments: Prisma.$CommentPayload<ExtArgs>[]
       accounts: Prisma.$AccountPayload<ExtArgs>[]
       sessions: Prisma.$SessionPayload<ExtArgs>[]
+      newsCreated: Prisma.$InformationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4527,6 +4540,8 @@ export namespace Prisma {
     accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    newsCreated<T extends User$newsCreatedArgs<ExtArgs> = {}>(args?: Subset<T, User$newsCreatedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InformationPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4992,6 +5007,27 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: SessionScalarFieldEnum | SessionScalarFieldEnum[]
+  }
+
+
+  /**
+   * User.newsCreated
+   */
+  export type User$newsCreatedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Information
+     */
+    select?: InformationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: InformationInclude<ExtArgs> | null
+    where?: InformationWhereInput
+    orderBy?: InformationOrderByWithRelationInput | InformationOrderByWithRelationInput[]
+    cursor?: InformationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InformationScalarFieldEnum | InformationScalarFieldEnum[]
   }
 
 
@@ -8606,60 +8642,72 @@ export namespace Prisma {
 
   export type InformationMinAggregateOutputType = {
     id: string | null
+    authorId: string | null
     title: string | null
     description: string | null
     date: Date | null
     image: string | null
     tag: $Enums.Tag | null
+    official: boolean | null
   }
 
   export type InformationMaxAggregateOutputType = {
     id: string | null
+    authorId: string | null
     title: string | null
     description: string | null
     date: Date | null
     image: string | null
     tag: $Enums.Tag | null
+    official: boolean | null
   }
 
   export type InformationCountAggregateOutputType = {
     id: number
+    authorId: number
     title: number
     description: number
     date: number
     image: number
     tag: number
     hashtags: number
+    official: number
     _all: number
   }
 
 
   export type InformationMinAggregateInputType = {
     id?: true
+    authorId?: true
     title?: true
     description?: true
     date?: true
     image?: true
     tag?: true
+    official?: true
   }
 
   export type InformationMaxAggregateInputType = {
     id?: true
+    authorId?: true
     title?: true
     description?: true
     date?: true
     image?: true
     tag?: true
+    official?: true
   }
 
   export type InformationCountAggregateInputType = {
     id?: true
+    authorId?: true
     title?: true
     description?: true
     date?: true
     image?: true
     tag?: true
     hashtags?: true
+    official?: true
     _all?: true
   }
 
@@ -8737,12 +8785,14 @@ export namespace Prisma {
 
   export type InformationGroupByOutputType = {
     id: string
+    authorId: string | null
     title: string
     description: string
     date: Date
     image: string | null
     tag: $Enums.Tag
     hashtags: string[]
+    official: boolean
     _count: InformationCountAggregateOutputType | null
     _min: InformationMinAggregateOutputType | null
     _max: InformationMaxAggregateOutputType | null
@@ -8764,12 +8814,15 @@ export namespace Prisma {
 
   export type InformationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    authorId?: boolean
     title?: boolean
     description?: boolean
     date?: boolean
     image?: boolean
     tag?: boolean
     hashtags?: boolean
+    official?: boolean
+    author?: boolean | Information$authorArgs<ExtArgs>
     comments?: boolean | Information$commentsArgs<ExtArgs>
     event?: boolean | Information$eventArgs<ExtArgs>
     _count?: boolean | InformationCountOutputTypeDefaultArgs<ExtArgs>
@@ -8777,15 +8830,18 @@ export namespace Prisma {
 
   export type InformationSelectScalar = {
     id?: boolean
+    authorId?: boolean
     title?: boolean
     description?: boolean
     date?: boolean
     image?: boolean
     tag?: boolean
     hashtags?: boolean
+    official?: boolean
   }
 
   export type InformationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | Information$authorArgs<ExtArgs>
     comments?: boolean | Information$commentsArgs<ExtArgs>
     event?: boolean | Information$eventArgs<ExtArgs>
     _count?: boolean | InformationCountOutputTypeDefaultArgs<ExtArgs>
@@ -8795,17 +8851,20 @@ export namespace Prisma {
   export type $InformationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Information"
     objects: {
+      author: Prisma.$UserPayload<ExtArgs> | null
       comments: Prisma.$CommentPayload<ExtArgs>[]
       event: Prisma.$EventPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      authorId: string | null
       title: string
       description: string
       date: Date
       image: string | null
       tag: $Enums.Tag
       hashtags: string[]
+      official: boolean
     }, ExtArgs["result"]["information"]>
     composites: {}
   }
@@ -9171,6 +9230,8 @@ export namespace Prisma {
   export interface Prisma__InformationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
+    author<T extends Information$authorArgs<ExtArgs> = {}>(args?: Subset<T, Information$authorArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
     comments<T extends Information$commentsArgs<ExtArgs> = {}>(args?: Subset<T, Information$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     event<T extends Information$eventArgs<ExtArgs> = {}>(args?: Subset<T, Information$eventArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
@@ -9204,12 +9265,14 @@ export namespace Prisma {
    */ 
   interface InformationFieldRefs {
     readonly id: FieldRef<"Information", 'String'>
+    readonly authorId: FieldRef<"Information", 'String'>
     readonly title: FieldRef<"Information", 'String'>
     readonly description: FieldRef<"Information", 'String'>
     readonly date: FieldRef<"Information", 'DateTime'>
     readonly image: FieldRef<"Information", 'String'>
     readonly tag: FieldRef<"Information", 'Tag'>
     readonly hashtags: FieldRef<"Information", 'String[]'>
+    readonly official: FieldRef<"Information", 'Boolean'>
   }
     
 
@@ -9518,6 +9581,22 @@ export namespace Prisma {
      * Filter which Information to delete
      */
     where?: InformationWhereInput
+  }
+
+
+  /**
+   * Information.author
+   */
+  export type Information$authorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
   }
 
 
@@ -13238,12 +13317,14 @@ export namespace Prisma {
 
   export const InformationScalarFieldEnum: {
     id: 'id',
+    authorId: 'authorId',
     title: 'title',
     description: 'description',
     date: 'date',
     image: 'image',
     tag: 'tag',
-    hashtags: 'hashtags'
+    hashtags: 'hashtags',
+    official: 'official'
   };
 
   export type InformationScalarFieldEnum = (typeof InformationScalarFieldEnum)[keyof typeof InformationScalarFieldEnum]
@@ -13398,6 +13479,13 @@ export namespace Prisma {
    * Reference to a field of type 'Tag[]'
    */
   export type ListEnumTagFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Tag[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -13606,6 +13694,7 @@ export namespace Prisma {
     comments?: CommentListRelationFilter
     accounts?: AccountListRelationFilter
     sessions?: SessionListRelationFilter
+    newsCreated?: InformationListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -13622,6 +13711,7 @@ export namespace Prisma {
     comments?: CommentOrderByRelationAggregateInput
     accounts?: AccountOrderByRelationAggregateInput
     sessions?: SessionOrderByRelationAggregateInput
+    newsCreated?: InformationOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -13641,6 +13731,7 @@ export namespace Prisma {
     comments?: CommentListRelationFilter
     accounts?: AccountListRelationFilter
     sessions?: SessionListRelationFilter
+    newsCreated?: InformationListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -13885,24 +13976,30 @@ export namespace Prisma {
     OR?: InformationWhereInput[]
     NOT?: InformationWhereInput | InformationWhereInput[]
     id?: StringFilter<"Information"> | string
+    authorId?: StringNullableFilter<"Information"> | string | null
     title?: StringFilter<"Information"> | string
     description?: StringFilter<"Information"> | string
     date?: DateTimeFilter<"Information"> | Date | string
     image?: StringNullableFilter<"Information"> | string | null
     tag?: EnumTagFilter<"Information"> | $Enums.Tag
     hashtags?: StringNullableListFilter<"Information">
+    official?: BoolFilter<"Information"> | boolean
+    author?: XOR<UserNullableRelationFilter, UserWhereInput> | null
     comments?: CommentListRelationFilter
     event?: XOR<EventNullableRelationFilter, EventWhereInput> | null
   }
 
   export type InformationOrderByWithRelationInput = {
     id?: SortOrder
+    authorId?: SortOrderInput | SortOrder
     title?: SortOrder
     description?: SortOrder
     date?: SortOrder
     image?: SortOrderInput | SortOrder
     tag?: SortOrder
     hashtags?: SortOrder
+    official?: SortOrder
+    author?: UserOrderByWithRelationInput
     comments?: CommentOrderByRelationAggregateInput
     event?: EventOrderByWithRelationInput
   }
@@ -13912,24 +14009,29 @@ export namespace Prisma {
     AND?: InformationWhereInput | InformationWhereInput[]
     OR?: InformationWhereInput[]
     NOT?: InformationWhereInput | InformationWhereInput[]
+    authorId?: StringNullableFilter<"Information"> | string | null
     title?: StringFilter<"Information"> | string
     description?: StringFilter<"Information"> | string
     date?: DateTimeFilter<"Information"> | Date | string
     image?: StringNullableFilter<"Information"> | string | null
     tag?: EnumTagFilter<"Information"> | $Enums.Tag
     hashtags?: StringNullableListFilter<"Information">
+    official?: BoolFilter<"Information"> | boolean
+    author?: XOR<UserNullableRelationFilter, UserWhereInput> | null
     comments?: CommentListRelationFilter
     event?: XOR<EventNullableRelationFilter, EventWhereInput> | null
   }, "id">
 
   export type InformationOrderByWithAggregationInput = {
     id?: SortOrder
+    authorId?: SortOrderInput | SortOrder
     title?: SortOrder
     description?: SortOrder
     date?: SortOrder
     image?: SortOrderInput | SortOrder
     tag?: SortOrder
     hashtags?: SortOrder
+    official?: SortOrder
     _count?: InformationCountOrderByAggregateInput
     _max?: InformationMaxOrderByAggregateInput
     _min?: InformationMinOrderByAggregateInput
@@ -13940,12 +14042,14 @@ export namespace Prisma {
     OR?: InformationScalarWhereWithAggregatesInput[]
     NOT?: InformationScalarWhereWithAggregatesInput | InformationScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Information"> | string
+    authorId?: StringNullableWithAggregatesFilter<"Information"> | string | null
     title?: StringWithAggregatesFilter<"Information"> | string
     description?: StringWithAggregatesFilter<"Information"> | string
     date?: DateTimeWithAggregatesFilter<"Information"> | Date | string
     image?: StringNullableWithAggregatesFilter<"Information"> | string | null
     tag?: EnumTagWithAggregatesFilter<"Information"> | $Enums.Tag
     hashtags?: StringNullableListFilter<"Information">
+    official?: BoolWithAggregatesFilter<"Information"> | boolean
   }
 
   export type AttendeeWhereInput = {
@@ -14312,6 +14416,7 @@ export namespace Prisma {
     comments?: CommentCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
+    newsCreated?: InformationCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -14328,6 +14433,7 @@ export namespace Prisma {
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    newsCreated?: InformationUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUpdateInput = {
@@ -14344,6 +14450,7 @@ export namespace Prisma {
     comments?: CommentUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
+    newsCreated?: InformationUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -14360,6 +14467,7 @@ export namespace Prisma {
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    newsCreated?: InformationUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -14611,18 +14719,22 @@ export namespace Prisma {
     image?: string | null
     tag: $Enums.Tag
     hashtags?: InformationCreatehashtagsInput | string[]
+    official?: boolean
+    author?: UserCreateNestedOneWithoutNewsCreatedInput
     comments?: CommentCreateNestedManyWithoutInfoInput
     event?: EventCreateNestedOneWithoutInfoInput
   }
 
   export type InformationUncheckedCreateInput = {
     id?: string
+    authorId?: string | null
     title: string
     description: string
     date: Date | string
     image?: string | null
     tag: $Enums.Tag
     hashtags?: InformationCreatehashtagsInput | string[]
+    official?: boolean
     comments?: CommentUncheckedCreateNestedManyWithoutInfoInput
     event?: EventUncheckedCreateNestedOneWithoutInfoInput
   }
@@ -14635,30 +14747,36 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
     hashtags?: InformationUpdatehashtagsInput | string[]
+    official?: BoolFieldUpdateOperationsInput | boolean
+    author?: UserUpdateOneWithoutNewsCreatedNestedInput
     comments?: CommentUpdateManyWithoutInfoNestedInput
     event?: EventUpdateOneWithoutInfoNestedInput
   }
 
   export type InformationUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    authorId?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
     hashtags?: InformationUpdatehashtagsInput | string[]
+    official?: BoolFieldUpdateOperationsInput | boolean
     comments?: CommentUncheckedUpdateManyWithoutInfoNestedInput
     event?: EventUncheckedUpdateOneWithoutInfoNestedInput
   }
 
   export type InformationCreateManyInput = {
     id?: string
+    authorId?: string | null
     title: string
     description: string
     date: Date | string
     image?: string | null
     tag: $Enums.Tag
     hashtags?: InformationCreatehashtagsInput | string[]
+    official?: boolean
   }
 
   export type InformationUpdateManyMutationInput = {
@@ -14669,16 +14787,19 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
     hashtags?: InformationUpdatehashtagsInput | string[]
+    official?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type InformationUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    authorId?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
     hashtags?: InformationUpdatehashtagsInput | string[]
+    official?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type AttendeeCreateInput = {
@@ -15119,6 +15240,12 @@ export namespace Prisma {
     none?: SessionWhereInput
   }
 
+  export type InformationListRelationFilter = {
+    every?: InformationWhereInput
+    some?: InformationWhereInput
+    none?: InformationWhereInput
+  }
+
   export type EventOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -15136,6 +15263,10 @@ export namespace Prisma {
   }
 
   export type SessionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type InformationOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -15330,6 +15461,16 @@ export namespace Prisma {
     not?: NestedEnumTagFilter<$PrismaModel> | $Enums.Tag
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type UserNullableRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
+  }
+
   export type EventNullableRelationFilter = {
     is?: EventWhereInput | null
     isNot?: EventWhereInput | null
@@ -15337,30 +15478,36 @@ export namespace Prisma {
 
   export type InformationCountOrderByAggregateInput = {
     id?: SortOrder
+    authorId?: SortOrder
     title?: SortOrder
     description?: SortOrder
     date?: SortOrder
     image?: SortOrder
     tag?: SortOrder
     hashtags?: SortOrder
+    official?: SortOrder
   }
 
   export type InformationMaxOrderByAggregateInput = {
     id?: SortOrder
+    authorId?: SortOrder
     title?: SortOrder
     description?: SortOrder
     date?: SortOrder
     image?: SortOrder
     tag?: SortOrder
+    official?: SortOrder
   }
 
   export type InformationMinOrderByAggregateInput = {
     id?: SortOrder
+    authorId?: SortOrder
     title?: SortOrder
     description?: SortOrder
     date?: SortOrder
     image?: SortOrder
     tag?: SortOrder
+    official?: SortOrder
   }
 
   export type EnumTagWithAggregatesFilter<$PrismaModel = never> = {
@@ -15371,6 +15518,14 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumTagFilter<$PrismaModel>
     _max?: NestedEnumTagFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type EventRelationFilter = {
@@ -15622,6 +15777,13 @@ export namespace Prisma {
     connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
   }
 
+  export type InformationCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<InformationCreateWithoutAuthorInput, InformationUncheckedCreateWithoutAuthorInput> | InformationCreateWithoutAuthorInput[] | InformationUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: InformationCreateOrConnectWithoutAuthorInput | InformationCreateOrConnectWithoutAuthorInput[]
+    createMany?: InformationCreateManyAuthorInputEnvelope
+    connect?: InformationWhereUniqueInput | InformationWhereUniqueInput[]
+  }
+
   export type ProfileUncheckedCreateNestedOneWithoutUserInput = {
     create?: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
     connectOrCreate?: ProfileCreateOrConnectWithoutUserInput
@@ -15661,6 +15823,13 @@ export namespace Prisma {
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
     createMany?: SessionCreateManyUserInputEnvelope
     connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+  }
+
+  export type InformationUncheckedCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<InformationCreateWithoutAuthorInput, InformationUncheckedCreateWithoutAuthorInput> | InformationCreateWithoutAuthorInput[] | InformationUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: InformationCreateOrConnectWithoutAuthorInput | InformationCreateOrConnectWithoutAuthorInput[]
+    createMany?: InformationCreateManyAuthorInputEnvelope
+    connect?: InformationWhereUniqueInput | InformationWhereUniqueInput[]
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
@@ -15747,6 +15916,20 @@ export namespace Prisma {
     deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
   }
 
+  export type InformationUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<InformationCreateWithoutAuthorInput, InformationUncheckedCreateWithoutAuthorInput> | InformationCreateWithoutAuthorInput[] | InformationUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: InformationCreateOrConnectWithoutAuthorInput | InformationCreateOrConnectWithoutAuthorInput[]
+    upsert?: InformationUpsertWithWhereUniqueWithoutAuthorInput | InformationUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: InformationCreateManyAuthorInputEnvelope
+    set?: InformationWhereUniqueInput | InformationWhereUniqueInput[]
+    disconnect?: InformationWhereUniqueInput | InformationWhereUniqueInput[]
+    delete?: InformationWhereUniqueInput | InformationWhereUniqueInput[]
+    connect?: InformationWhereUniqueInput | InformationWhereUniqueInput[]
+    update?: InformationUpdateWithWhereUniqueWithoutAuthorInput | InformationUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: InformationUpdateManyWithWhereWithoutAuthorInput | InformationUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: InformationScalarWhereInput | InformationScalarWhereInput[]
+  }
+
   export type ProfileUncheckedUpdateOneWithoutUserNestedInput = {
     create?: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
     connectOrCreate?: ProfileCreateOrConnectWithoutUserInput
@@ -15825,6 +16008,20 @@ export namespace Prisma {
     update?: SessionUpdateWithWhereUniqueWithoutUserInput | SessionUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: SessionUpdateManyWithWhereWithoutUserInput | SessionUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
+  }
+
+  export type InformationUncheckedUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<InformationCreateWithoutAuthorInput, InformationUncheckedCreateWithoutAuthorInput> | InformationCreateWithoutAuthorInput[] | InformationUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: InformationCreateOrConnectWithoutAuthorInput | InformationCreateOrConnectWithoutAuthorInput[]
+    upsert?: InformationUpsertWithWhereUniqueWithoutAuthorInput | InformationUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: InformationCreateManyAuthorInputEnvelope
+    set?: InformationWhereUniqueInput | InformationWhereUniqueInput[]
+    disconnect?: InformationWhereUniqueInput | InformationWhereUniqueInput[]
+    delete?: InformationWhereUniqueInput | InformationWhereUniqueInput[]
+    connect?: InformationWhereUniqueInput | InformationWhereUniqueInput[]
+    update?: InformationUpdateWithWhereUniqueWithoutAuthorInput | InformationUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: InformationUpdateManyWithWhereWithoutAuthorInput | InformationUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: InformationScalarWhereInput | InformationScalarWhereInput[]
   }
 
   export type ProfileCreatesocialLinksInput = {
@@ -15932,6 +16129,12 @@ export namespace Prisma {
     set: string[]
   }
 
+  export type UserCreateNestedOneWithoutNewsCreatedInput = {
+    create?: XOR<UserCreateWithoutNewsCreatedInput, UserUncheckedCreateWithoutNewsCreatedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutNewsCreatedInput
+    connect?: UserWhereUniqueInput
+  }
+
   export type CommentCreateNestedManyWithoutInfoInput = {
     create?: XOR<CommentCreateWithoutInfoInput, CommentUncheckedCreateWithoutInfoInput> | CommentCreateWithoutInfoInput[] | CommentUncheckedCreateWithoutInfoInput[]
     connectOrCreate?: CommentCreateOrConnectWithoutInfoInput | CommentCreateOrConnectWithoutInfoInput[]
@@ -15965,6 +16168,20 @@ export namespace Prisma {
   export type InformationUpdatehashtagsInput = {
     set?: string[]
     push?: string | string[]
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type UserUpdateOneWithoutNewsCreatedNestedInput = {
+    create?: XOR<UserCreateWithoutNewsCreatedInput, UserUncheckedCreateWithoutNewsCreatedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutNewsCreatedInput
+    upsert?: UserUpsertWithoutNewsCreatedInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutNewsCreatedInput, UserUpdateWithoutNewsCreatedInput>, UserUncheckedUpdateWithoutNewsCreatedInput>
   }
 
   export type CommentUpdateManyWithoutInfoNestedInput = {
@@ -16289,6 +16506,11 @@ export namespace Prisma {
     not?: NestedEnumTagFilter<$PrismaModel> | $Enums.Tag
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedEnumTagWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.Tag | EnumTagFieldRefInput<$PrismaModel>
     in?: $Enums.Tag[] | ListEnumTagFieldRefInput<$PrismaModel>
@@ -16297,6 +16519,14 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumTagFilter<$PrismaModel>
     _max?: NestedEnumTagFilter<$PrismaModel>
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedEnumSentimentFilter<$PrismaModel = never> = {
@@ -16373,6 +16603,7 @@ export namespace Prisma {
     attendees?: AttendeeCreateNestedManyWithoutUserInput
     comments?: CommentCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
+    newsCreated?: InformationCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -16388,6 +16619,7 @@ export namespace Prisma {
     attendees?: AttendeeUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    newsCreated?: InformationUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -16419,6 +16651,7 @@ export namespace Prisma {
     attendees?: AttendeeUpdateManyWithoutUserNestedInput
     comments?: CommentUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
+    newsCreated?: InformationUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -16434,6 +16667,7 @@ export namespace Prisma {
     attendees?: AttendeeUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    newsCreated?: InformationUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserCreateWithoutSessionsInput = {
@@ -16449,6 +16683,7 @@ export namespace Prisma {
     attendees?: AttendeeCreateNestedManyWithoutUserInput
     comments?: CommentCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
+    newsCreated?: InformationCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
@@ -16464,6 +16699,7 @@ export namespace Prisma {
     attendees?: AttendeeUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    newsCreated?: InformationUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -16495,6 +16731,7 @@ export namespace Prisma {
     attendees?: AttendeeUpdateManyWithoutUserNestedInput
     comments?: CommentUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
+    newsCreated?: InformationUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -16510,6 +16747,7 @@ export namespace Prisma {
     attendees?: AttendeeUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    newsCreated?: InformationUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type ProfileCreateWithoutUserInput = {
@@ -16662,6 +16900,42 @@ export namespace Prisma {
 
   export type SessionCreateManyUserInputEnvelope = {
     data: SessionCreateManyUserInput | SessionCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type InformationCreateWithoutAuthorInput = {
+    id?: string
+    title: string
+    description: string
+    date: Date | string
+    image?: string | null
+    tag: $Enums.Tag
+    hashtags?: InformationCreatehashtagsInput | string[]
+    official?: boolean
+    comments?: CommentCreateNestedManyWithoutInfoInput
+    event?: EventCreateNestedOneWithoutInfoInput
+  }
+
+  export type InformationUncheckedCreateWithoutAuthorInput = {
+    id?: string
+    title: string
+    description: string
+    date: Date | string
+    image?: string | null
+    tag: $Enums.Tag
+    hashtags?: InformationCreatehashtagsInput | string[]
+    official?: boolean
+    comments?: CommentUncheckedCreateNestedManyWithoutInfoInput
+    event?: EventUncheckedCreateNestedOneWithoutInfoInput
+  }
+
+  export type InformationCreateOrConnectWithoutAuthorInput = {
+    where: InformationWhereUniqueInput
+    create: XOR<InformationCreateWithoutAuthorInput, InformationUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type InformationCreateManyAuthorInputEnvelope = {
+    data: InformationCreateManyAuthorInput | InformationCreateManyAuthorInput[]
     skipDuplicates?: boolean
   }
 
@@ -16834,6 +17108,37 @@ export namespace Prisma {
     expires?: DateTimeFilter<"Session"> | Date | string
   }
 
+  export type InformationUpsertWithWhereUniqueWithoutAuthorInput = {
+    where: InformationWhereUniqueInput
+    update: XOR<InformationUpdateWithoutAuthorInput, InformationUncheckedUpdateWithoutAuthorInput>
+    create: XOR<InformationCreateWithoutAuthorInput, InformationUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type InformationUpdateWithWhereUniqueWithoutAuthorInput = {
+    where: InformationWhereUniqueInput
+    data: XOR<InformationUpdateWithoutAuthorInput, InformationUncheckedUpdateWithoutAuthorInput>
+  }
+
+  export type InformationUpdateManyWithWhereWithoutAuthorInput = {
+    where: InformationScalarWhereInput
+    data: XOR<InformationUpdateManyMutationInput, InformationUncheckedUpdateManyWithoutAuthorInput>
+  }
+
+  export type InformationScalarWhereInput = {
+    AND?: InformationScalarWhereInput | InformationScalarWhereInput[]
+    OR?: InformationScalarWhereInput[]
+    NOT?: InformationScalarWhereInput | InformationScalarWhereInput[]
+    id?: StringFilter<"Information"> | string
+    authorId?: StringNullableFilter<"Information"> | string | null
+    title?: StringFilter<"Information"> | string
+    description?: StringFilter<"Information"> | string
+    date?: DateTimeFilter<"Information"> | Date | string
+    image?: StringNullableFilter<"Information"> | string | null
+    tag?: EnumTagFilter<"Information"> | $Enums.Tag
+    hashtags?: StringNullableListFilter<"Information">
+    official?: BoolFilter<"Information"> | boolean
+  }
+
   export type UserCreateWithoutProfileInput = {
     id?: string
     name?: string | null
@@ -16847,6 +17152,7 @@ export namespace Prisma {
     comments?: CommentCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
+    newsCreated?: InformationCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutProfileInput = {
@@ -16862,6 +17168,7 @@ export namespace Prisma {
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    newsCreated?: InformationUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutProfileInput = {
@@ -16893,6 +17200,7 @@ export namespace Prisma {
     comments?: CommentUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
+    newsCreated?: InformationUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProfileInput = {
@@ -16908,6 +17216,7 @@ export namespace Prisma {
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    newsCreated?: InformationUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserCreateWithoutEventsCreatedInput = {
@@ -16923,6 +17232,7 @@ export namespace Prisma {
     comments?: CommentCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
+    newsCreated?: InformationCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutEventsCreatedInput = {
@@ -16938,6 +17248,7 @@ export namespace Prisma {
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    newsCreated?: InformationUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutEventsCreatedInput = {
@@ -16953,17 +17264,21 @@ export namespace Prisma {
     image?: string | null
     tag: $Enums.Tag
     hashtags?: InformationCreatehashtagsInput | string[]
+    official?: boolean
+    author?: UserCreateNestedOneWithoutNewsCreatedInput
     comments?: CommentCreateNestedManyWithoutInfoInput
   }
 
   export type InformationUncheckedCreateWithoutEventInput = {
     id?: string
+    authorId?: string | null
     title: string
     description: string
     date: Date | string
     image?: string | null
     tag: $Enums.Tag
     hashtags?: InformationCreatehashtagsInput | string[]
+    official?: boolean
     comments?: CommentUncheckedCreateNestedManyWithoutInfoInput
   }
 
@@ -17016,6 +17331,7 @@ export namespace Prisma {
     comments?: CommentUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
+    newsCreated?: InformationUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutEventsCreatedInput = {
@@ -17031,6 +17347,7 @@ export namespace Prisma {
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    newsCreated?: InformationUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type InformationUpsertWithoutEventInput = {
@@ -17052,17 +17369,21 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
     hashtags?: InformationUpdatehashtagsInput | string[]
+    official?: BoolFieldUpdateOperationsInput | boolean
+    author?: UserUpdateOneWithoutNewsCreatedNestedInput
     comments?: CommentUpdateManyWithoutInfoNestedInput
   }
 
   export type InformationUncheckedUpdateWithoutEventInput = {
     id?: StringFieldUpdateOperationsInput | string
+    authorId?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
     hashtags?: InformationUpdatehashtagsInput | string[]
+    official?: BoolFieldUpdateOperationsInput | boolean
     comments?: CommentUncheckedUpdateManyWithoutInfoNestedInput
   }
 
@@ -17080,6 +17401,43 @@ export namespace Prisma {
   export type AttendeeUpdateManyWithWhereWithoutEventInput = {
     where: AttendeeScalarWhereInput
     data: XOR<AttendeeUpdateManyMutationInput, AttendeeUncheckedUpdateManyWithoutEventInput>
+  }
+
+  export type UserCreateWithoutNewsCreatedInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    emailVerified?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    image?: string | null
+    profile?: ProfileCreateNestedOneWithoutUserInput
+    eventsCreated?: EventCreateNestedManyWithoutAuthorInput
+    attendees?: AttendeeCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutUserInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutNewsCreatedInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    emailVerified?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    image?: string | null
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
+    eventsCreated?: EventUncheckedCreateNestedManyWithoutAuthorInput
+    attendees?: AttendeeUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutUserInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutNewsCreatedInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutNewsCreatedInput, UserUncheckedCreateWithoutNewsCreatedInput>
   }
 
   export type CommentCreateWithoutInfoInput = {
@@ -17123,6 +17481,49 @@ export namespace Prisma {
   export type EventCreateOrConnectWithoutInfoInput = {
     where: EventWhereUniqueInput
     create: XOR<EventCreateWithoutInfoInput, EventUncheckedCreateWithoutInfoInput>
+  }
+
+  export type UserUpsertWithoutNewsCreatedInput = {
+    update: XOR<UserUpdateWithoutNewsCreatedInput, UserUncheckedUpdateWithoutNewsCreatedInput>
+    create: XOR<UserCreateWithoutNewsCreatedInput, UserUncheckedCreateWithoutNewsCreatedInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutNewsCreatedInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutNewsCreatedInput, UserUncheckedUpdateWithoutNewsCreatedInput>
+  }
+
+  export type UserUpdateWithoutNewsCreatedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    profile?: ProfileUpdateOneWithoutUserNestedInput
+    eventsCreated?: EventUpdateManyWithoutAuthorNestedInput
+    attendees?: AttendeeUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutUserNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutNewsCreatedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
+    eventsCreated?: EventUncheckedUpdateManyWithoutAuthorNestedInput
+    attendees?: AttendeeUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CommentUpsertWithWhereUniqueWithoutInfoInput = {
@@ -17179,6 +17580,7 @@ export namespace Prisma {
     comments?: CommentCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
+    newsCreated?: InformationCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutAttendeesInput = {
@@ -17194,6 +17596,7 @@ export namespace Prisma {
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    newsCreated?: InformationUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutAttendeesInput = {
@@ -17244,6 +17647,7 @@ export namespace Prisma {
     comments?: CommentUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
+    newsCreated?: InformationUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAttendeesInput = {
@@ -17259,6 +17663,7 @@ export namespace Prisma {
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    newsCreated?: InformationUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type EventUpsertWithoutAttendeesInput = {
@@ -17299,6 +17704,7 @@ export namespace Prisma {
     attendees?: AttendeeCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
+    newsCreated?: InformationCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutCommentsInput = {
@@ -17314,6 +17720,7 @@ export namespace Prisma {
     attendees?: AttendeeUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    newsCreated?: InformationUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutCommentsInput = {
@@ -17329,17 +17736,21 @@ export namespace Prisma {
     image?: string | null
     tag: $Enums.Tag
     hashtags?: InformationCreatehashtagsInput | string[]
+    official?: boolean
+    author?: UserCreateNestedOneWithoutNewsCreatedInput
     event?: EventCreateNestedOneWithoutInfoInput
   }
 
   export type InformationUncheckedCreateWithoutCommentsInput = {
     id?: string
+    authorId?: string | null
     title: string
     description: string
     date: Date | string
     image?: string | null
     tag: $Enums.Tag
     hashtags?: InformationCreatehashtagsInput | string[]
+    official?: boolean
     event?: EventUncheckedCreateNestedOneWithoutInfoInput
   }
 
@@ -17372,6 +17783,7 @@ export namespace Prisma {
     attendees?: AttendeeUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
+    newsCreated?: InformationUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -17387,6 +17799,7 @@ export namespace Prisma {
     attendees?: AttendeeUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    newsCreated?: InformationUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type InformationUpsertWithoutCommentsInput = {
@@ -17408,17 +17821,21 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
     hashtags?: InformationUpdatehashtagsInput | string[]
+    official?: BoolFieldUpdateOperationsInput | boolean
+    author?: UserUpdateOneWithoutNewsCreatedNestedInput
     event?: EventUpdateOneWithoutInfoNestedInput
   }
 
   export type InformationUncheckedUpdateWithoutCommentsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    authorId?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
     hashtags?: InformationUpdatehashtagsInput | string[]
+    official?: BoolFieldUpdateOperationsInput | boolean
     event?: EventUncheckedUpdateOneWithoutInfoNestedInput
   }
 
@@ -17458,6 +17875,17 @@ export namespace Prisma {
     id?: string
     sessionToken: string
     expires: Date | string
+  }
+
+  export type InformationCreateManyAuthorInput = {
+    id?: string
+    title: string
+    description: string
+    date: Date | string
+    image?: string | null
+    tag: $Enums.Tag
+    hashtags?: InformationCreatehashtagsInput | string[]
+    official?: boolean
   }
 
   export type EventUpdateWithoutAuthorInput = {
@@ -17574,6 +18002,43 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     sessionToken?: StringFieldUpdateOperationsInput | string
     expires?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InformationUpdateWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
+    hashtags?: InformationUpdatehashtagsInput | string[]
+    official?: BoolFieldUpdateOperationsInput | boolean
+    comments?: CommentUpdateManyWithoutInfoNestedInput
+    event?: EventUpdateOneWithoutInfoNestedInput
+  }
+
+  export type InformationUncheckedUpdateWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
+    hashtags?: InformationUpdatehashtagsInput | string[]
+    official?: BoolFieldUpdateOperationsInput | boolean
+    comments?: CommentUncheckedUpdateManyWithoutInfoNestedInput
+    event?: EventUncheckedUpdateOneWithoutInfoNestedInput
+  }
+
+  export type InformationUncheckedUpdateManyWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    tag?: EnumTagFieldUpdateOperationsInput | $Enums.Tag
+    hashtags?: InformationUpdatehashtagsInput | string[]
+    official?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type AttendeeCreateManyEventInput = {

@@ -1,0 +1,10 @@
+import { AttendeeOrderByWithRelationInput } from "../../../inputs/AttendeeOrderByWithRelationInput";
+import { AttendeeWhereInput } from "../../../inputs/AttendeeWhereInput";
+import { AttendeeWhereUniqueInput } from "../../../inputs/AttendeeWhereUniqueInput";
+export declare class AggregateAttendeeArgs {
+    where?: AttendeeWhereInput | undefined;
+    orderBy?: AttendeeOrderByWithRelationInput[] | undefined;
+    cursor?: AttendeeWhereUniqueInput | undefined;
+    take?: number | undefined;
+    skip?: number | undefined;
+}

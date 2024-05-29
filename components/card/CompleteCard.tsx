@@ -103,6 +103,7 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
             console.error('Error al ejecutar la mutación:', error);
         }
     }
+    const image = imagenEvento == '' ? '/evento1.png' : imagenEvento
 
     return (
         // <section className='flex justify-evenly debug'>
@@ -114,7 +115,7 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
                     <Image className='rounded-lg'
                         width={1000}
                         height={0}
-                        src={imagenEvento}
+                        src={image}
                         alt={'Imagen de evento'} />
                 </div>
                 <div className='flex justify-between p-2'>
