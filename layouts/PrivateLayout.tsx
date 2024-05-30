@@ -6,10 +6,11 @@ import router, { useRouter } from 'next/router';
 import { GET_PROFILE } from '@/graphql/client/profile'
 import { useQuery } from "@apollo/client";
 import { Profile } from "@/prisma/generated/type-graphql";
+import { Navbar } from "@/components/navbar/Navbar";
 
 
 const PrivateLayout = ({ children }: PropsWithChildren) => {
-
+ 
     const { loading: loadingUser, session, status, userData } = useUserData();
     const notVerified = userData?.user?.emailVerified === null || userData?.user?.emailVerified === undefined
     const userId = userData?.user.id
@@ -44,13 +45,11 @@ const PrivateLayout = ({ children }: PropsWithChildren) => {
     } else {
         return (
             <div>
+                <Navbar/>
                 {children}
             </div>
         )
     }
-
-
-
 }
 
 export default PrivateLayout
