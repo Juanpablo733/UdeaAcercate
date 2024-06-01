@@ -47,9 +47,9 @@ const eventResolvers: Resolver = {
             console.log("[Events-server] hashtags:", filter)
             const options = {
                 where: {
-                    // NOT: {
-                    //     authorId: args.sessionUserId
-                    // },
+                    NOT: {
+                        authorId: args.sessionUserId
+                    },
                     info: {
                         tag: args.tag,
                         hashtags: {
@@ -60,6 +60,9 @@ const eventResolvers: Resolver = {
             }
             if (!args.tag) {
                 delete options["where"]["info"]["tag"]
+            }
+            if (!filter) {
+                delete options["where"]["info"]["hashtags"]
             }
 
             console.log("[events] options:", options)

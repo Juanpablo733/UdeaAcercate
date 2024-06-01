@@ -29,9 +29,12 @@ const informationResolvers: Resolver = {
             })
             return newInfo;
         },
+<<<<<<< HEAD
         deleteInformationByOwner: async (parent, args, context) => {
 
         }
+=======
+>>>>>>> 0c2a6ada9b580a2142dce216569757ccc4f57349
     },
     Information: {
         comments: async (parent, args, context) => {
