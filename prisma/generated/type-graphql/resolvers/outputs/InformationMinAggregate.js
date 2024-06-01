@@ -17,6 +17,12 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", String)
+], InformationMinAggregate.prototype, "authorId", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
 ], InformationMinAggregate.prototype, "title", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
@@ -42,6 +48,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", String)
 ], InformationMinAggregate.prototype, "tag", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Boolean, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", Boolean)
+], InformationMinAggregate.prototype, "official", void 0);
 exports.InformationMinAggregate = InformationMinAggregate = tslib_1.__decorate([
     TypeGraphQL.ObjectType("InformationMinAggregate", {})
 ], InformationMinAggregate);

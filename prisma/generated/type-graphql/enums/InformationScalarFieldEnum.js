@@ -6,12 +6,14 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 var InformationScalarFieldEnum;
 (function (InformationScalarFieldEnum) {
     InformationScalarFieldEnum["id"] = "id";
+    InformationScalarFieldEnum["authorId"] = "authorId";
     InformationScalarFieldEnum["title"] = "title";
     InformationScalarFieldEnum["description"] = "description";
     InformationScalarFieldEnum["date"] = "date";
     InformationScalarFieldEnum["image"] = "image";
     InformationScalarFieldEnum["tag"] = "tag";
     InformationScalarFieldEnum["hashtags"] = "hashtags";
+    InformationScalarFieldEnum["official"] = "official";
 })(InformationScalarFieldEnum || (exports.InformationScalarFieldEnum = InformationScalarFieldEnum = {}));
 TypeGraphQL.registerEnumType(InformationScalarFieldEnum, {
     name: "InformationScalarFieldEnum",

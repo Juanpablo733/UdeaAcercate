@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.InformationScalarWhereWithAggregatesInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
+const BoolWithAggregatesFilter_1 = require("../inputs/BoolWithAggregatesFilter");
 const DateTimeWithAggregatesFilter_1 = require("../inputs/DateTimeWithAggregatesFilter");
 const EnumTagWithAggregatesFilter_1 = require("../inputs/EnumTagWithAggregatesFilter");
 const StringNullableListFilter_1 = require("../inputs/StringNullableListFilter");
@@ -35,6 +36,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", StringWithAggregatesFilter_1.StringWithAggregatesFilter)
 ], InformationScalarWhereWithAggregatesInput.prototype, "id", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringNullableWithAggregatesFilter_1.StringNullableWithAggregatesFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", StringNullableWithAggregatesFilter_1.StringNullableWithAggregatesFilter)
+], InformationScalarWhereWithAggregatesInput.prototype, "authorId", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => StringWithAggregatesFilter_1.StringWithAggregatesFilter, {
         nullable: true
@@ -71,6 +78,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", StringNullableListFilter_1.StringNullableListFilter)
 ], InformationScalarWhereWithAggregatesInput.prototype, "hashtags", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => BoolWithAggregatesFilter_1.BoolWithAggregatesFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", BoolWithAggregatesFilter_1.BoolWithAggregatesFilter)
+], InformationScalarWhereWithAggregatesInput.prototype, "official", void 0);
 exports.InformationScalarWhereWithAggregatesInput = InformationScalarWhereWithAggregatesInput = InformationScalarWhereWithAggregatesInput_1 = tslib_1.__decorate([
     TypeGraphQL.InputType("InformationScalarWhereWithAggregatesInput", {})
 ], InformationScalarWhereWithAggregatesInput);

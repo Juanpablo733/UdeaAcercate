@@ -4,6 +4,7 @@ import { CommentListRelationFilter } from "../inputs/CommentListRelationFilter";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
 import { DateTimeNullableFilter } from "../inputs/DateTimeNullableFilter";
 import { EventListRelationFilter } from "../inputs/EventListRelationFilter";
+import { InformationListRelationFilter } from "../inputs/InformationListRelationFilter";
 import { ProfileNullableRelationFilter } from "../inputs/ProfileNullableRelationFilter";
 import { SessionListRelationFilter } from "../inputs/SessionListRelationFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
@@ -25,4 +26,5 @@ export declare class UserWhereUniqueInput {
     comments?: CommentListRelationFilter | undefined;
     accounts?: AccountListRelationFilter | undefined;
     sessions?: SessionListRelationFilter | undefined;
+    newsCreated?: InformationListRelationFilter | undefined;
 }

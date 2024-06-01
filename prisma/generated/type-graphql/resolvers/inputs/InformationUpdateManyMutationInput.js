@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.InformationUpdateManyMutationInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
+const BoolFieldUpdateOperationsInput_1 = require("../inputs/BoolFieldUpdateOperationsInput");
 const DateTimeFieldUpdateOperationsInput_1 = require("../inputs/DateTimeFieldUpdateOperationsInput");
 const EnumTagFieldUpdateOperationsInput_1 = require("../inputs/EnumTagFieldUpdateOperationsInput");
 const InformationUpdatehashtagsInput_1 = require("../inputs/InformationUpdatehashtagsInput");
@@ -52,6 +53,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", InformationUpdatehashtagsInput_1.InformationUpdatehashtagsInput)
 ], InformationUpdateManyMutationInput.prototype, "hashtags", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => BoolFieldUpdateOperationsInput_1.BoolFieldUpdateOperationsInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", BoolFieldUpdateOperationsInput_1.BoolFieldUpdateOperationsInput)
+], InformationUpdateManyMutationInput.prototype, "official", void 0);
 exports.InformationUpdateManyMutationInput = InformationUpdateManyMutationInput = tslib_1.__decorate([
     TypeGraphQL.InputType("InformationUpdateManyMutationInput", {})
 ], InformationUpdateManyMutationInput);

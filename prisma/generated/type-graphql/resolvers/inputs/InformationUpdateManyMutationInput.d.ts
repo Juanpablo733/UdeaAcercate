@@ -1,3 +1,4 @@
+import { BoolFieldUpdateOperationsInput } from "../inputs/BoolFieldUpdateOperationsInput";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
 import { EnumTagFieldUpdateOperationsInput } from "../inputs/EnumTagFieldUpdateOperationsInput";
 import { InformationUpdatehashtagsInput } from "../inputs/InformationUpdatehashtagsInput";
@@ -11,4 +12,5 @@ export declare class InformationUpdateManyMutationInput {
     image?: NullableStringFieldUpdateOperationsInput | undefined;
     tag?: EnumTagFieldUpdateOperationsInput | undefined;
     hashtags?: InformationUpdatehashtagsInput | undefined;
+    official?: BoolFieldUpdateOperationsInput | undefined;
 }

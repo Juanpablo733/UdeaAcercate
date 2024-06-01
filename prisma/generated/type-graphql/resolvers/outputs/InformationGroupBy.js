@@ -17,6 +17,12 @@ tslib_1.__decorate([
 ], InformationGroupBy.prototype, "id", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
+], InformationGroupBy.prototype, "authorId", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, {
         nullable: false
     }),
     tslib_1.__metadata("design:type", String)
@@ -51,6 +57,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", Array)
 ], InformationGroupBy.prototype, "hashtags", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Boolean, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", Boolean)
+], InformationGroupBy.prototype, "official", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => InformationCountAggregate_1.InformationCountAggregate, {
         nullable: true

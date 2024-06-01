@@ -7,6 +7,7 @@ const AccountUpdateManyWithoutUserNestedInput_1 = require("../inputs/AccountUpda
 const CommentUpdateManyWithoutUserNestedInput_1 = require("../inputs/CommentUpdateManyWithoutUserNestedInput");
 const DateTimeFieldUpdateOperationsInput_1 = require("../inputs/DateTimeFieldUpdateOperationsInput");
 const EventUpdateManyWithoutAuthorNestedInput_1 = require("../inputs/EventUpdateManyWithoutAuthorNestedInput");
+const InformationUpdateManyWithoutAuthorNestedInput_1 = require("../inputs/InformationUpdateManyWithoutAuthorNestedInput");
 const NullableDateTimeFieldUpdateOperationsInput_1 = require("../inputs/NullableDateTimeFieldUpdateOperationsInput");
 const NullableStringFieldUpdateOperationsInput_1 = require("../inputs/NullableStringFieldUpdateOperationsInput");
 const ProfileUpdateOneWithoutUserNestedInput_1 = require("../inputs/ProfileUpdateOneWithoutUserNestedInput");
@@ -86,6 +87,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", SessionUpdateManyWithoutUserNestedInput_1.SessionUpdateManyWithoutUserNestedInput)
 ], UserUpdateWithoutAttendeesInput.prototype, "sessions", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => InformationUpdateManyWithoutAuthorNestedInput_1.InformationUpdateManyWithoutAuthorNestedInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", InformationUpdateManyWithoutAuthorNestedInput_1.InformationUpdateManyWithoutAuthorNestedInput)
+], UserUpdateWithoutAttendeesInput.prototype, "newsCreated", void 0);
 exports.UserUpdateWithoutAttendeesInput = UserUpdateWithoutAttendeesInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserUpdateWithoutAttendeesInput", {})
 ], UserUpdateWithoutAttendeesInput);

@@ -15,6 +15,12 @@ tslib_1.__decorate([
 ], InformationCreateManyInput.prototype, "id", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
+], InformationCreateManyInput.prototype, "authorId", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, {
         nullable: false
     }),
     tslib_1.__metadata("design:type", String)
@@ -49,6 +55,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", InformationCreatehashtagsInput_1.InformationCreatehashtagsInput)
 ], InformationCreateManyInput.prototype, "hashtags", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Boolean, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", Boolean)
+], InformationCreateManyInput.prototype, "official", void 0);
 exports.InformationCreateManyInput = InformationCreateManyInput = tslib_1.__decorate([
     TypeGraphQL.InputType("InformationCreateManyInput", {})
 ], InformationCreateManyInput);

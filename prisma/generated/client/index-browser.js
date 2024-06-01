@@ -171,12 +171,14 @@ exports.Prisma.EventScalarFieldEnum = {
 
 exports.Prisma.InformationScalarFieldEnum = {
   id: 'id',
+  authorId: 'authorId',
   title: 'title',
   description: 'description',
   date: 'date',
   image: 'image',
   tag: 'tag',
-  hashtags: 'hashtags'
+  hashtags: 'hashtags',
+  official: 'official'
 };
 
 exports.Prisma.AttendeeScalarFieldEnum = {

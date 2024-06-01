@@ -7,5 +7,5 @@ export declare class FindFirstInformationArgs {
     cursor?: InformationWhereUniqueInput | undefined;
     take?: number | undefined;
     skip?: number | undefined;
-    distinct?: Array<"id" | "title" | "description" | "date" | "image" | "tag" | "hashtags"> | undefined;
+    distinct?: Array<"id" | "authorId" | "title" | "description" | "date" | "image" | "tag" | "hashtags" | "official"> | undefined;
 }

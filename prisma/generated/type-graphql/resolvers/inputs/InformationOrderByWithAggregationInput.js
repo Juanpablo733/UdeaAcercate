@@ -17,6 +17,12 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], InformationOrderByWithAggregationInput.prototype, "id", void 0);
 tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrderInput_1.SortOrderInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", SortOrderInput_1.SortOrderInput)
+], InformationOrderByWithAggregationInput.prototype, "authorId", void 0);
+tslib_1.__decorate([
     TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
         nullable: true
     }),
@@ -52,6 +58,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", String)
 ], InformationOrderByWithAggregationInput.prototype, "hashtags", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
+], InformationOrderByWithAggregationInput.prototype, "official", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => InformationCountOrderByAggregateInput_1.InformationCountOrderByAggregateInput, {
         nullable: true

@@ -5,6 +5,7 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const EventCreateNestedOneWithoutInfoInput_1 = require("../inputs/EventCreateNestedOneWithoutInfoInput");
 const InformationCreatehashtagsInput_1 = require("../inputs/InformationCreatehashtagsInput");
+const UserCreateNestedOneWithoutNewsCreatedInput_1 = require("../inputs/UserCreateNestedOneWithoutNewsCreatedInput");
 const Tag_1 = require("../../enums/Tag");
 let InformationCreateWithoutCommentsInput = exports.InformationCreateWithoutCommentsInput = class InformationCreateWithoutCommentsInput {
 };
@@ -50,6 +51,18 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", InformationCreatehashtagsInput_1.InformationCreatehashtagsInput)
 ], InformationCreateWithoutCommentsInput.prototype, "hashtags", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Boolean, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", Boolean)
+], InformationCreateWithoutCommentsInput.prototype, "official", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => UserCreateNestedOneWithoutNewsCreatedInput_1.UserCreateNestedOneWithoutNewsCreatedInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", UserCreateNestedOneWithoutNewsCreatedInput_1.UserCreateNestedOneWithoutNewsCreatedInput)
+], InformationCreateWithoutCommentsInput.prototype, "author", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => EventCreateNestedOneWithoutInfoInput_1.EventCreateNestedOneWithoutInfoInput, {
         nullable: true

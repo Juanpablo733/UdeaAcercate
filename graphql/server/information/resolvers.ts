@@ -1,8 +1,38 @@
 import { Resolver } from "@/types";
+import { findHashtags, isAdmin } from "../utils/infoUtil";
+import { Information } from "@/prisma/generated/type-graphql";
 
 const informationResolvers: Resolver = {
     Query: {},
-    Mutation: {},
+    Mutation: {
+        createInfo: async (parent, args, context) => {
+            const { db } = context;
+            const authorId = args.authorId
+            const isAdminUser = await isAdmin(db, authorId)
+            if (!isAdminUser) {
+                console.log("No tienes permisos para crear noticias")
+                return null
+            }
+            const { title, description, place, date, image, tag } = args;
+            const hashtags: string[] = findHashtags(description);
+            const newDate = new Date(date);
+            const newInfo = await db.information.create({
+                data: {
+                    title: title,
+                    description: description,
+                    date: newDate,
+                    tag: tag,
+                    image: image,
+                    hashtags: hashtags,
+                    authorId: authorId
+                }
+            })
+            return newInfo;
+        },
+        deleteInformationByOwner: async (parent, args, context) => {
+
+        }
+    },
     Information: {
         comments: async (parent, args, context) => {
             const { db } = context;

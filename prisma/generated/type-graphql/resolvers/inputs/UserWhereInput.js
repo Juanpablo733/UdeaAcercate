@@ -10,6 +10,7 @@ const CommentListRelationFilter_1 = require("../inputs/CommentListRelationFilter
 const DateTimeFilter_1 = require("../inputs/DateTimeFilter");
 const DateTimeNullableFilter_1 = require("../inputs/DateTimeNullableFilter");
 const EventListRelationFilter_1 = require("../inputs/EventListRelationFilter");
+const InformationListRelationFilter_1 = require("../inputs/InformationListRelationFilter");
 const ProfileNullableRelationFilter_1 = require("../inputs/ProfileNullableRelationFilter");
 const SessionListRelationFilter_1 = require("../inputs/SessionListRelationFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
@@ -112,6 +113,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", SessionListRelationFilter_1.SessionListRelationFilter)
 ], UserWhereInput.prototype, "sessions", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => InformationListRelationFilter_1.InformationListRelationFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", InformationListRelationFilter_1.InformationListRelationFilter)
+], UserWhereInput.prototype, "newsCreated", void 0);
 exports.UserWhereInput = UserWhereInput = UserWhereInput_1 = tslib_1.__decorate([
     TypeGraphQL.InputType("UserWhereInput", {})
 ], UserWhereInput);
