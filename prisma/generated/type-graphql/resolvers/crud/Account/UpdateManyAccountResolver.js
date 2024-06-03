@@ -7,7 +7,7 @@ const UpdateManyAccountArgs_1 = require("./args/UpdateManyAccountArgs");
 const Account_1 = require("../../../models/Account");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const helpers_1 = require("../../../helpers");
-let UpdateManyAccountResolver = exports.UpdateManyAccountResolver = class UpdateManyAccountResolver {
+let UpdateManyAccountResolver = class UpdateManyAccountResolver {
     async updateManyAccount(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).account.updateMany({
@@ -16,6 +16,7 @@ let UpdateManyAccountResolver = exports.UpdateManyAccountResolver = class Update
         });
     }
 };
+exports.UpdateManyAccountResolver = UpdateManyAccountResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, {
         nullable: false

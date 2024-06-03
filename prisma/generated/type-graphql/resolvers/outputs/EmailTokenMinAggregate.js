@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.EmailTokenMinAggregate = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let EmailTokenMinAggregate = exports.EmailTokenMinAggregate = class EmailTokenMinAggregate {
+let EmailTokenMinAggregate = class EmailTokenMinAggregate {
 };
+exports.EmailTokenMinAggregate = EmailTokenMinAggregate;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

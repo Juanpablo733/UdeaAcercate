@@ -4,8 +4,9 @@ exports.CommentSentimentSumOrderByAggregateInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const SortOrder_1 = require("../../enums/SortOrder");
-let CommentSentimentSumOrderByAggregateInput = exports.CommentSentimentSumOrderByAggregateInput = class CommentSentimentSumOrderByAggregateInput {
+let CommentSentimentSumOrderByAggregateInput = class CommentSentimentSumOrderByAggregateInput {
 };
+exports.CommentSentimentSumOrderByAggregateInput = CommentSentimentSumOrderByAggregateInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
         nullable: true

@@ -7,7 +7,7 @@ const CreateManyProfileArgs_1 = require("./args/CreateManyProfileArgs");
 const Profile_1 = require("../../../models/Profile");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const helpers_1 = require("../../../helpers");
-let CreateManyProfileResolver = exports.CreateManyProfileResolver = class CreateManyProfileResolver {
+let CreateManyProfileResolver = class CreateManyProfileResolver {
     async createManyProfile(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).profile.createMany({
@@ -16,6 +16,7 @@ let CreateManyProfileResolver = exports.CreateManyProfileResolver = class Create
         });
     }
 };
+exports.CreateManyProfileResolver = CreateManyProfileResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, {
         nullable: false

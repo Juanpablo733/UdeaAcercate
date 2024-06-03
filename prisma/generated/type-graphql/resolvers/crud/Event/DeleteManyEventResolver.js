@@ -7,7 +7,7 @@ const DeleteManyEventArgs_1 = require("./args/DeleteManyEventArgs");
 const Event_1 = require("../../../models/Event");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const helpers_1 = require("../../../helpers");
-let DeleteManyEventResolver = exports.DeleteManyEventResolver = class DeleteManyEventResolver {
+let DeleteManyEventResolver = class DeleteManyEventResolver {
     async deleteManyEvent(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).event.deleteMany({
@@ -16,6 +16,7 @@ let DeleteManyEventResolver = exports.DeleteManyEventResolver = class DeleteMany
         });
     }
 };
+exports.DeleteManyEventResolver = DeleteManyEventResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, {
         nullable: false

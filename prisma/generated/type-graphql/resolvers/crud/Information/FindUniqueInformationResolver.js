@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const FindUniqueInformationArgs_1 = require("./args/FindUniqueInformationArgs");
 const Information_1 = require("../../../models/Information");
 const helpers_1 = require("../../../helpers");
-let FindUniqueInformationResolver = exports.FindUniqueInformationResolver = class FindUniqueInformationResolver {
+let FindUniqueInformationResolver = class FindUniqueInformationResolver {
     async findUniqueInformation(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).information.findUnique({
@@ -15,6 +15,7 @@ let FindUniqueInformationResolver = exports.FindUniqueInformationResolver = clas
         });
     }
 };
+exports.FindUniqueInformationResolver = FindUniqueInformationResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => Information_1.Information, {
         nullable: true

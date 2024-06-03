@@ -19,7 +19,7 @@ const UserNewsCreatedArgs_1 = require("./args/UserNewsCreatedArgs");
 const UserProfileArgs_1 = require("./args/UserProfileArgs");
 const UserSessionsArgs_1 = require("./args/UserSessionsArgs");
 const helpers_1 = require("../../../helpers");
-let UserRelationsResolver = exports.UserRelationsResolver = class UserRelationsResolver {
+let UserRelationsResolver = class UserRelationsResolver {
     async profile(user, ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).user.findUniqueOrThrow({
@@ -98,6 +98,7 @@ let UserRelationsResolver = exports.UserRelationsResolver = class UserRelationsR
         });
     }
 };
+exports.UserRelationsResolver = UserRelationsResolver;
 tslib_1.__decorate([
     TypeGraphQL.FieldResolver(_type => Profile_1.Profile, {
         nullable: true

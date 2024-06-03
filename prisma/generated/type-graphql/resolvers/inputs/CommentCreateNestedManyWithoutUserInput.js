@@ -7,8 +7,9 @@ const CommentCreateManyUserInputEnvelope_1 = require("../inputs/CommentCreateMan
 const CommentCreateOrConnectWithoutUserInput_1 = require("../inputs/CommentCreateOrConnectWithoutUserInput");
 const CommentCreateWithoutUserInput_1 = require("../inputs/CommentCreateWithoutUserInput");
 const CommentWhereUniqueInput_1 = require("../inputs/CommentWhereUniqueInput");
-let CommentCreateNestedManyWithoutUserInput = exports.CommentCreateNestedManyWithoutUserInput = class CommentCreateNestedManyWithoutUserInput {
+let CommentCreateNestedManyWithoutUserInput = class CommentCreateNestedManyWithoutUserInput {
 };
+exports.CommentCreateNestedManyWithoutUserInput = CommentCreateNestedManyWithoutUserInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => [CommentCreateWithoutUserInput_1.CommentCreateWithoutUserInput], {
         nullable: true

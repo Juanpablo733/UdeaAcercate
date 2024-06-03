@@ -7,8 +7,9 @@ const AccountCreateManyUserInputEnvelope_1 = require("../inputs/AccountCreateMan
 const AccountCreateOrConnectWithoutUserInput_1 = require("../inputs/AccountCreateOrConnectWithoutUserInput");
 const AccountCreateWithoutUserInput_1 = require("../inputs/AccountCreateWithoutUserInput");
 const AccountWhereUniqueInput_1 = require("../inputs/AccountWhereUniqueInput");
-let AccountCreateNestedManyWithoutUserInput = exports.AccountCreateNestedManyWithoutUserInput = class AccountCreateNestedManyWithoutUserInput {
+let AccountCreateNestedManyWithoutUserInput = class AccountCreateNestedManyWithoutUserInput {
 };
+exports.AccountCreateNestedManyWithoutUserInput = AccountCreateNestedManyWithoutUserInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => [AccountCreateWithoutUserInput_1.AccountCreateWithoutUserInput], {
         nullable: true

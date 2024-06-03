@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AttendeeCountAggregate_1 = require("../outputs/AttendeeCountAggregate");
 const AttendeeMaxAggregate_1 = require("../outputs/AttendeeMaxAggregate");
 const AttendeeMinAggregate_1 = require("../outputs/AttendeeMinAggregate");
-let AttendeeGroupBy = exports.AttendeeGroupBy = class AttendeeGroupBy {
+let AttendeeGroupBy = class AttendeeGroupBy {
 };
+exports.AttendeeGroupBy = AttendeeGroupBy;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: false

@@ -11,8 +11,9 @@ const SessionUpdateManyWithWhereWithoutUserInput_1 = require("../inputs/SessionU
 const SessionUpdateWithWhereUniqueWithoutUserInput_1 = require("../inputs/SessionUpdateWithWhereUniqueWithoutUserInput");
 const SessionUpsertWithWhereUniqueWithoutUserInput_1 = require("../inputs/SessionUpsertWithWhereUniqueWithoutUserInput");
 const SessionWhereUniqueInput_1 = require("../inputs/SessionWhereUniqueInput");
-let SessionUpdateManyWithoutUserNestedInput = exports.SessionUpdateManyWithoutUserNestedInput = class SessionUpdateManyWithoutUserNestedInput {
+let SessionUpdateManyWithoutUserNestedInput = class SessionUpdateManyWithoutUserNestedInput {
 };
+exports.SessionUpdateManyWithoutUserNestedInput = SessionUpdateManyWithoutUserNestedInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => [SessionCreateWithoutUserInput_1.SessionCreateWithoutUserInput], {
         nullable: true

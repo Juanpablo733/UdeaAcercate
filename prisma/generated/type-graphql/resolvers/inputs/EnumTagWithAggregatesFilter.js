@@ -7,8 +7,9 @@ const NestedEnumTagFilter_1 = require("../inputs/NestedEnumTagFilter");
 const NestedEnumTagWithAggregatesFilter_1 = require("../inputs/NestedEnumTagWithAggregatesFilter");
 const NestedIntFilter_1 = require("../inputs/NestedIntFilter");
 const Tag_1 = require("../../enums/Tag");
-let EnumTagWithAggregatesFilter = exports.EnumTagWithAggregatesFilter = class EnumTagWithAggregatesFilter {
+let EnumTagWithAggregatesFilter = class EnumTagWithAggregatesFilter {
 };
+exports.EnumTagWithAggregatesFilter = EnumTagWithAggregatesFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => Tag_1.Tag, {
         nullable: true

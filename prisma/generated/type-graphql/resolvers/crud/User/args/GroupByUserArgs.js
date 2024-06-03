@@ -7,8 +7,9 @@ const UserOrderByWithAggregationInput_1 = require("../../../inputs/UserOrderByWi
 const UserScalarWhereWithAggregatesInput_1 = require("../../../inputs/UserScalarWhereWithAggregatesInput");
 const UserWhereInput_1 = require("../../../inputs/UserWhereInput");
 const UserScalarFieldEnum_1 = require("../../../../enums/UserScalarFieldEnum");
-let GroupByUserArgs = exports.GroupByUserArgs = class GroupByUserArgs {
+let GroupByUserArgs = class GroupByUserArgs {
 };
+exports.GroupByUserArgs = GroupByUserArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => UserWhereInput_1.UserWhereInput, {
         nullable: true

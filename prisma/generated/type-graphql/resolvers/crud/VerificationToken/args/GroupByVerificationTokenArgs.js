@@ -7,8 +7,9 @@ const VerificationTokenOrderByWithAggregationInput_1 = require("../../../inputs/
 const VerificationTokenScalarWhereWithAggregatesInput_1 = require("../../../inputs/VerificationTokenScalarWhereWithAggregatesInput");
 const VerificationTokenWhereInput_1 = require("../../../inputs/VerificationTokenWhereInput");
 const VerificationTokenScalarFieldEnum_1 = require("../../../../enums/VerificationTokenScalarFieldEnum");
-let GroupByVerificationTokenArgs = exports.GroupByVerificationTokenArgs = class GroupByVerificationTokenArgs {
+let GroupByVerificationTokenArgs = class GroupByVerificationTokenArgs {
 };
+exports.GroupByVerificationTokenArgs = GroupByVerificationTokenArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => VerificationTokenWhereInput_1.VerificationTokenWhereInput, {
         nullable: true

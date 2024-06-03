@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const UpsertOneRoleArgs_1 = require("./args/UpsertOneRoleArgs");
 const Role_1 = require("../../../models/Role");
 const helpers_1 = require("../../../helpers");
-let UpsertOneRoleResolver = exports.UpsertOneRoleResolver = class UpsertOneRoleResolver {
+let UpsertOneRoleResolver = class UpsertOneRoleResolver {
     async upsertOneRole(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).role.upsert({
@@ -15,6 +15,7 @@ let UpsertOneRoleResolver = exports.UpsertOneRoleResolver = class UpsertOneRoleR
         });
     }
 };
+exports.UpsertOneRoleResolver = UpsertOneRoleResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Role_1.Role, {
         nullable: false

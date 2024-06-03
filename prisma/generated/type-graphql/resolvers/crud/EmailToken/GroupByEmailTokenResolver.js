@@ -7,7 +7,7 @@ const GroupByEmailTokenArgs_1 = require("./args/GroupByEmailTokenArgs");
 const EmailToken_1 = require("../../../models/EmailToken");
 const EmailTokenGroupBy_1 = require("../../outputs/EmailTokenGroupBy");
 const helpers_1 = require("../../../helpers");
-let GroupByEmailTokenResolver = exports.GroupByEmailTokenResolver = class GroupByEmailTokenResolver {
+let GroupByEmailTokenResolver = class GroupByEmailTokenResolver {
     async groupByEmailToken(ctx, info, args) {
         const { _count, _avg, _sum, _min, _max } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).emailToken.groupBy({
@@ -16,6 +16,7 @@ let GroupByEmailTokenResolver = exports.GroupByEmailTokenResolver = class GroupB
         });
     }
 };
+exports.GroupByEmailTokenResolver = GroupByEmailTokenResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [EmailTokenGroupBy_1.EmailTokenGroupBy], {
         nullable: false

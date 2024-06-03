@@ -1,6 +1,5 @@
 import { Resolver } from "@/types";
 import { findHashtags, isAdmin } from "../utils/infoUtil";
-import { Information } from "@/prisma/generated/type-graphql";
 
 const informationResolvers: Resolver = {
     Query: {},
@@ -16,6 +15,7 @@ const informationResolvers: Resolver = {
             const { title, description, place, date, image, tag } = args;
             const hashtags: string[] = findHashtags(description);
             const newDate = new Date(date);
+            
             const newInfo = await db.information.create({
                 data: {
                     title: title,

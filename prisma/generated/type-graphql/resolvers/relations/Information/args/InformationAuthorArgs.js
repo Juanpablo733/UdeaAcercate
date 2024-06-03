@@ -4,8 +4,9 @@ exports.InformationAuthorArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const UserWhereInput_1 = require("../../../inputs/UserWhereInput");
-let InformationAuthorArgs = exports.InformationAuthorArgs = class InformationAuthorArgs {
+let InformationAuthorArgs = class InformationAuthorArgs {
 };
+exports.InformationAuthorArgs = InformationAuthorArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => UserWhereInput_1.UserWhereInput, {
         nullable: true

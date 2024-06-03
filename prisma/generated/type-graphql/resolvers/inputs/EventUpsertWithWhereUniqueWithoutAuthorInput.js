@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const EventCreateWithoutAuthorInput_1 = require("../inputs/EventCreateWithoutAuthorInput");
 const EventUpdateWithoutAuthorInput_1 = require("../inputs/EventUpdateWithoutAuthorInput");
 const EventWhereUniqueInput_1 = require("../inputs/EventWhereUniqueInput");
-let EventUpsertWithWhereUniqueWithoutAuthorInput = exports.EventUpsertWithWhereUniqueWithoutAuthorInput = class EventUpsertWithWhereUniqueWithoutAuthorInput {
+let EventUpsertWithWhereUniqueWithoutAuthorInput = class EventUpsertWithWhereUniqueWithoutAuthorInput {
 };
+exports.EventUpsertWithWhereUniqueWithoutAuthorInput = EventUpsertWithWhereUniqueWithoutAuthorInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => EventWhereUniqueInput_1.EventWhereUniqueInput, {
         nullable: false

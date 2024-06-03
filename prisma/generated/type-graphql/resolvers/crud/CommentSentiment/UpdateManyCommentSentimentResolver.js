@@ -7,7 +7,7 @@ const UpdateManyCommentSentimentArgs_1 = require("./args/UpdateManyCommentSentim
 const CommentSentiment_1 = require("../../../models/CommentSentiment");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const helpers_1 = require("../../../helpers");
-let UpdateManyCommentSentimentResolver = exports.UpdateManyCommentSentimentResolver = class UpdateManyCommentSentimentResolver {
+let UpdateManyCommentSentimentResolver = class UpdateManyCommentSentimentResolver {
     async updateManyCommentSentiment(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).commentSentiment.updateMany({
@@ -16,6 +16,7 @@ let UpdateManyCommentSentimentResolver = exports.UpdateManyCommentSentimentResol
         });
     }
 };
+exports.UpdateManyCommentSentimentResolver = UpdateManyCommentSentimentResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, {
         nullable: false

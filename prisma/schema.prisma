@@ -183,3 +183,11 @@ model Role {
   userId String  @unique
   role   RoleTag
 }
+
+model Report {
+  userId   String   
+  eventId  String   
+  reason   String
+  dateTime DateTime @default(now())
+  @@id([userId, eventId])
+}

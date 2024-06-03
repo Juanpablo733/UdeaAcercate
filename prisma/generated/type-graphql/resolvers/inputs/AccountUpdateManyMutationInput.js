@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const NullableIntFieldUpdateOperationsInput_1 = require("../inputs/NullableIntFieldUpdateOperationsInput");
 const NullableStringFieldUpdateOperationsInput_1 = require("../inputs/NullableStringFieldUpdateOperationsInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
-let AccountUpdateManyMutationInput = exports.AccountUpdateManyMutationInput = class AccountUpdateManyMutationInput {
+let AccountUpdateManyMutationInput = class AccountUpdateManyMutationInput {
 };
+exports.AccountUpdateManyMutationInput = AccountUpdateManyMutationInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, {
         nullable: true

@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AttendeeMinAggregate = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let AttendeeMinAggregate = exports.AttendeeMinAggregate = class AttendeeMinAggregate {
+let AttendeeMinAggregate = class AttendeeMinAggregate {
 };
+exports.AttendeeMinAggregate = AttendeeMinAggregate;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

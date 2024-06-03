@@ -4,8 +4,9 @@ exports.InformationListRelationFilter = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const InformationWhereInput_1 = require("../inputs/InformationWhereInput");
-let InformationListRelationFilter = exports.InformationListRelationFilter = class InformationListRelationFilter {
+let InformationListRelationFilter = class InformationListRelationFilter {
 };
+exports.InformationListRelationFilter = InformationListRelationFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => InformationWhereInput_1.InformationWhereInput, {
         nullable: true

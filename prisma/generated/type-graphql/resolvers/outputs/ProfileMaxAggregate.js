@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const Campus_1 = require("../../enums/Campus");
 const UserType_1 = require("../../enums/UserType");
-let ProfileMaxAggregate = exports.ProfileMaxAggregate = class ProfileMaxAggregate {
+let ProfileMaxAggregate = class ProfileMaxAggregate {
 };
+exports.ProfileMaxAggregate = ProfileMaxAggregate;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

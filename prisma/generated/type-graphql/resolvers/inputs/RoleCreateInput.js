@@ -4,8 +4,9 @@ exports.RoleCreateInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const RoleTag_1 = require("../../enums/RoleTag");
-let RoleCreateInput = exports.RoleCreateInput = class RoleCreateInput {
+let RoleCreateInput = class RoleCreateInput {
 };
+exports.RoleCreateInput = RoleCreateInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: false

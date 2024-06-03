@@ -4,8 +4,9 @@ exports.DeleteOneInformationArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const InformationWhereUniqueInput_1 = require("../../../inputs/InformationWhereUniqueInput");
-let DeleteOneInformationArgs = exports.DeleteOneInformationArgs = class DeleteOneInformationArgs {
+let DeleteOneInformationArgs = class DeleteOneInformationArgs {
 };
+exports.DeleteOneInformationArgs = DeleteOneInformationArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => InformationWhereUniqueInput_1.InformationWhereUniqueInput, {
         nullable: false

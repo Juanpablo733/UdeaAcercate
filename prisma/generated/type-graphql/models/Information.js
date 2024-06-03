@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const Tag_1 = require("../enums/Tag");
 const InformationCount_1 = require("../resolvers/outputs/InformationCount");
-let Information = exports.Information = class Information {
+let Information = class Information {
 };
+exports.Information = Information;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: false

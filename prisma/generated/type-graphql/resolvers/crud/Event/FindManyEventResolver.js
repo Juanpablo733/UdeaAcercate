@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const FindManyEventArgs_1 = require("./args/FindManyEventArgs");
 const Event_1 = require("../../../models/Event");
 const helpers_1 = require("../../../helpers");
-let FindManyEventResolver = exports.FindManyEventResolver = class FindManyEventResolver {
+let FindManyEventResolver = class FindManyEventResolver {
     async events(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).event.findMany({
@@ -15,6 +15,7 @@ let FindManyEventResolver = exports.FindManyEventResolver = class FindManyEventR
         });
     }
 };
+exports.FindManyEventResolver = FindManyEventResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [Event_1.Event], {
         nullable: false

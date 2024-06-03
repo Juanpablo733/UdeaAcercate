@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.VerificationToken = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let VerificationToken = exports.VerificationToken = class VerificationToken {
+let VerificationToken = class VerificationToken {
 };
+exports.VerificationToken = VerificationToken;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: false

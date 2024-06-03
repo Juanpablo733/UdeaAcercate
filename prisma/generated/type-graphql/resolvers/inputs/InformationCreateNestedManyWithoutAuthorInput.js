@@ -7,8 +7,9 @@ const InformationCreateManyAuthorInputEnvelope_1 = require("../inputs/Informatio
 const InformationCreateOrConnectWithoutAuthorInput_1 = require("../inputs/InformationCreateOrConnectWithoutAuthorInput");
 const InformationCreateWithoutAuthorInput_1 = require("../inputs/InformationCreateWithoutAuthorInput");
 const InformationWhereUniqueInput_1 = require("../inputs/InformationWhereUniqueInput");
-let InformationCreateNestedManyWithoutAuthorInput = exports.InformationCreateNestedManyWithoutAuthorInput = class InformationCreateNestedManyWithoutAuthorInput {
+let InformationCreateNestedManyWithoutAuthorInput = class InformationCreateNestedManyWithoutAuthorInput {
 };
+exports.InformationCreateNestedManyWithoutAuthorInput = InformationCreateNestedManyWithoutAuthorInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => [InformationCreateWithoutAuthorInput_1.InformationCreateWithoutAuthorInput], {
         nullable: true

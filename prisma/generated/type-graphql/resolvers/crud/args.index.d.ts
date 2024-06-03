@@ -6,6 +6,7 @@ export * from "./EmailToken/args";
 export * from "./Event/args";
 export * from "./Information/args";
 export * from "./Profile/args";
+export * from "./Report/args";
 export * from "./Role/args";
 export * from "./Session/args";
 export * from "./User/args";

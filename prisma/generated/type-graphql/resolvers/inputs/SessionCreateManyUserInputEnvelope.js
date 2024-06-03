@@ -4,8 +4,9 @@ exports.SessionCreateManyUserInputEnvelope = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const SessionCreateManyUserInput_1 = require("../inputs/SessionCreateManyUserInput");
-let SessionCreateManyUserInputEnvelope = exports.SessionCreateManyUserInputEnvelope = class SessionCreateManyUserInputEnvelope {
+let SessionCreateManyUserInputEnvelope = class SessionCreateManyUserInputEnvelope {
 };
+exports.SessionCreateManyUserInputEnvelope = SessionCreateManyUserInputEnvelope;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => [SessionCreateManyUserInput_1.SessionCreateManyUserInput], {
         nullable: false

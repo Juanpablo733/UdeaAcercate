@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const NestedFloatNullableFilter_1 = require("../inputs/NestedFloatNullableFilter");
 const NestedIntNullableFilter_1 = require("../inputs/NestedIntNullableFilter");
 const NestedIntNullableWithAggregatesFilter_1 = require("../inputs/NestedIntNullableWithAggregatesFilter");
-let IntNullableWithAggregatesFilter = exports.IntNullableWithAggregatesFilter = class IntNullableWithAggregatesFilter {
+let IntNullableWithAggregatesFilter = class IntNullableWithAggregatesFilter {
 };
+exports.IntNullableWithAggregatesFilter = IntNullableWithAggregatesFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, {
         nullable: true

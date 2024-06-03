@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const EventScalarWhereInput_1 = require("../inputs/EventScalarWhereInput");
 const EventUpdateManyMutationInput_1 = require("../inputs/EventUpdateManyMutationInput");
-let EventUpdateManyWithWhereWithoutAuthorInput = exports.EventUpdateManyWithWhereWithoutAuthorInput = class EventUpdateManyWithWhereWithoutAuthorInput {
+let EventUpdateManyWithWhereWithoutAuthorInput = class EventUpdateManyWithWhereWithoutAuthorInput {
 };
+exports.EventUpdateManyWithWhereWithoutAuthorInput = EventUpdateManyWithWhereWithoutAuthorInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => EventScalarWhereInput_1.EventScalarWhereInput, {
         nullable: false

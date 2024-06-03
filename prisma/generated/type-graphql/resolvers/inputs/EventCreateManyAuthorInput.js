@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.EventCreateManyAuthorInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let EventCreateManyAuthorInput = exports.EventCreateManyAuthorInput = class EventCreateManyAuthorInput {
+let EventCreateManyAuthorInput = class EventCreateManyAuthorInput {
 };
+exports.EventCreateManyAuthorInput = EventCreateManyAuthorInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

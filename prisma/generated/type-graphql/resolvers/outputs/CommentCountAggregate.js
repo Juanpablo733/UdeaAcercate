@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentCountAggregate = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let CommentCountAggregate = exports.CommentCountAggregate = class CommentCountAggregate {
+let CommentCountAggregate = class CommentCountAggregate {
 };
+exports.CommentCountAggregate = CommentCountAggregate;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, {
         nullable: false

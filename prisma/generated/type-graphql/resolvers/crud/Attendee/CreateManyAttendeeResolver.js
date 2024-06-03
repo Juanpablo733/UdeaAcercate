@@ -7,7 +7,7 @@ const CreateManyAttendeeArgs_1 = require("./args/CreateManyAttendeeArgs");
 const Attendee_1 = require("../../../models/Attendee");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const helpers_1 = require("../../../helpers");
-let CreateManyAttendeeResolver = exports.CreateManyAttendeeResolver = class CreateManyAttendeeResolver {
+let CreateManyAttendeeResolver = class CreateManyAttendeeResolver {
     async createManyAttendee(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).attendee.createMany({
@@ -16,6 +16,7 @@ let CreateManyAttendeeResolver = exports.CreateManyAttendeeResolver = class Crea
         });
     }
 };
+exports.CreateManyAttendeeResolver = CreateManyAttendeeResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, {
         nullable: false

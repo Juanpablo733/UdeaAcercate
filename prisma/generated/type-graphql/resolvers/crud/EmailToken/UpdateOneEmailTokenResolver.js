@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const UpdateOneEmailTokenArgs_1 = require("./args/UpdateOneEmailTokenArgs");
 const EmailToken_1 = require("../../../models/EmailToken");
 const helpers_1 = require("../../../helpers");
-let UpdateOneEmailTokenResolver = exports.UpdateOneEmailTokenResolver = class UpdateOneEmailTokenResolver {
+let UpdateOneEmailTokenResolver = class UpdateOneEmailTokenResolver {
     async updateOneEmailToken(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).emailToken.update({
@@ -15,6 +15,7 @@ let UpdateOneEmailTokenResolver = exports.UpdateOneEmailTokenResolver = class Up
         });
     }
 };
+exports.UpdateOneEmailTokenResolver = UpdateOneEmailTokenResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => EmailToken_1.EmailToken, {
         nullable: true

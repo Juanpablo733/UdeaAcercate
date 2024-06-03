@@ -1,3 +1,4 @@
+export { CreateManyInformationAndReturnOutputTypeAuthorArgs } from "./CreateManyInformationAndReturnOutputTypeAuthorArgs";
 export { EventCountAttendeesArgs } from "./EventCountAttendeesArgs";
 export { InformationCountCommentsArgs } from "./InformationCountCommentsArgs";
 export { UserCountAccountsArgs } from "./UserCountAccountsArgs";

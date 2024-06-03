@@ -7,7 +7,7 @@ const UpdateManyVerificationTokenArgs_1 = require("./args/UpdateManyVerification
 const VerificationToken_1 = require("../../../models/VerificationToken");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const helpers_1 = require("../../../helpers");
-let UpdateManyVerificationTokenResolver = exports.UpdateManyVerificationTokenResolver = class UpdateManyVerificationTokenResolver {
+let UpdateManyVerificationTokenResolver = class UpdateManyVerificationTokenResolver {
     async updateManyVerificationToken(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).verificationToken.updateMany({
@@ -16,6 +16,7 @@ let UpdateManyVerificationTokenResolver = exports.UpdateManyVerificationTokenRes
         });
     }
 };
+exports.UpdateManyVerificationTokenResolver = UpdateManyVerificationTokenResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, {
         nullable: false

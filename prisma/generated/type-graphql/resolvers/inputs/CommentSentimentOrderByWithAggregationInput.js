@@ -9,8 +9,9 @@ const CommentSentimentMaxOrderByAggregateInput_1 = require("../inputs/CommentSen
 const CommentSentimentMinOrderByAggregateInput_1 = require("../inputs/CommentSentimentMinOrderByAggregateInput");
 const CommentSentimentSumOrderByAggregateInput_1 = require("../inputs/CommentSentimentSumOrderByAggregateInput");
 const SortOrder_1 = require("../../enums/SortOrder");
-let CommentSentimentOrderByWithAggregationInput = exports.CommentSentimentOrderByWithAggregationInput = class CommentSentimentOrderByWithAggregationInput {
+let CommentSentimentOrderByWithAggregationInput = class CommentSentimentOrderByWithAggregationInput {
 };
+exports.CommentSentimentOrderByWithAggregationInput = CommentSentimentOrderByWithAggregationInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
         nullable: true

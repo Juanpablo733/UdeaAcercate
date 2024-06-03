@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.RoleCountAggregate = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let RoleCountAggregate = exports.RoleCountAggregate = class RoleCountAggregate {
+let RoleCountAggregate = class RoleCountAggregate {
 };
+exports.RoleCountAggregate = RoleCountAggregate;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, {
         nullable: false

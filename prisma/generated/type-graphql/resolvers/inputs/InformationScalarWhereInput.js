@@ -1,5 +1,4 @@
 "use strict";
-var InformationScalarWhereInput_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InformationScalarWhereInput = void 0;
 const tslib_1 = require("tslib");
@@ -10,22 +9,23 @@ const EnumTagFilter_1 = require("../inputs/EnumTagFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
 const StringNullableFilter_1 = require("../inputs/StringNullableFilter");
 const StringNullableListFilter_1 = require("../inputs/StringNullableListFilter");
-let InformationScalarWhereInput = exports.InformationScalarWhereInput = InformationScalarWhereInput_1 = class InformationScalarWhereInput {
+let InformationScalarWhereInput = class InformationScalarWhereInput {
 };
+exports.InformationScalarWhereInput = InformationScalarWhereInput;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [InformationScalarWhereInput_1], {
+    TypeGraphQL.Field(_type => [InformationScalarWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], InformationScalarWhereInput.prototype, "AND", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [InformationScalarWhereInput_1], {
+    TypeGraphQL.Field(_type => [InformationScalarWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], InformationScalarWhereInput.prototype, "OR", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [InformationScalarWhereInput_1], {
+    TypeGraphQL.Field(_type => [InformationScalarWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
@@ -84,6 +84,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", BoolFilter_1.BoolFilter)
 ], InformationScalarWhereInput.prototype, "official", void 0);
-exports.InformationScalarWhereInput = InformationScalarWhereInput = InformationScalarWhereInput_1 = tslib_1.__decorate([
+exports.InformationScalarWhereInput = InformationScalarWhereInput = tslib_1.__decorate([
     TypeGraphQL.InputType("InformationScalarWhereInput", {})
 ], InformationScalarWhereInput);

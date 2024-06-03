@@ -4,8 +4,9 @@ exports.CreateOneProfileArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const ProfileCreateInput_1 = require("../../../inputs/ProfileCreateInput");
-let CreateOneProfileArgs = exports.CreateOneProfileArgs = class CreateOneProfileArgs {
+let CreateOneProfileArgs = class CreateOneProfileArgs {
 };
+exports.CreateOneProfileArgs = CreateOneProfileArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ProfileCreateInput_1.ProfileCreateInput, {
         nullable: false

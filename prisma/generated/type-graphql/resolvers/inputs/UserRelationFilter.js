@@ -4,8 +4,9 @@ exports.UserRelationFilter = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const UserWhereInput_1 = require("../inputs/UserWhereInput");
-let UserRelationFilter = exports.UserRelationFilter = class UserRelationFilter {
+let UserRelationFilter = class UserRelationFilter {
 };
+exports.UserRelationFilter = UserRelationFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => UserWhereInput_1.UserWhereInput, {
         nullable: true

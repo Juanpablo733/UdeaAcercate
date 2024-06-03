@@ -7,8 +7,9 @@ const NestedEnumUserTypeNullableFilter_1 = require("../inputs/NestedEnumUserType
 const NestedEnumUserTypeNullableWithAggregatesFilter_1 = require("../inputs/NestedEnumUserTypeNullableWithAggregatesFilter");
 const NestedIntNullableFilter_1 = require("../inputs/NestedIntNullableFilter");
 const UserType_1 = require("../../enums/UserType");
-let EnumUserTypeNullableWithAggregatesFilter = exports.EnumUserTypeNullableWithAggregatesFilter = class EnumUserTypeNullableWithAggregatesFilter {
+let EnumUserTypeNullableWithAggregatesFilter = class EnumUserTypeNullableWithAggregatesFilter {
 };
+exports.EnumUserTypeNullableWithAggregatesFilter = EnumUserTypeNullableWithAggregatesFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => UserType_1.UserType, {
         nullable: true

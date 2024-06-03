@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const FindUniqueProfileOrThrowArgs_1 = require("./args/FindUniqueProfileOrThrowArgs");
 const Profile_1 = require("../../../models/Profile");
 const helpers_1 = require("../../../helpers");
-let FindUniqueProfileOrThrowResolver = exports.FindUniqueProfileOrThrowResolver = class FindUniqueProfileOrThrowResolver {
+let FindUniqueProfileOrThrowResolver = class FindUniqueProfileOrThrowResolver {
     async getProfile(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).profile.findUniqueOrThrow({
@@ -15,6 +15,7 @@ let FindUniqueProfileOrThrowResolver = exports.FindUniqueProfileOrThrowResolver 
         });
     }
 };
+exports.FindUniqueProfileOrThrowResolver = FindUniqueProfileOrThrowResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => Profile_1.Profile, {
         nullable: true

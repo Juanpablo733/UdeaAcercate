@@ -4,11 +4,12 @@ exports.InformationCount = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const InformationCountCommentsArgs_1 = require("./args/InformationCountCommentsArgs");
-let InformationCount = exports.InformationCount = class InformationCount {
+let InformationCount = class InformationCount {
     getComments(root, args) {
         return root.comments;
     }
 };
+exports.InformationCount = InformationCount;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, {
         name: "comments",

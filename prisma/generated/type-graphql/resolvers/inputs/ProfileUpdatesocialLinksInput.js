@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProfileUpdatesocialLinksInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let ProfileUpdatesocialLinksInput = exports.ProfileUpdatesocialLinksInput = class ProfileUpdatesocialLinksInput {
+let ProfileUpdatesocialLinksInput = class ProfileUpdatesocialLinksInput {
 };
+exports.ProfileUpdatesocialLinksInput = ProfileUpdatesocialLinksInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => [String], {
         nullable: true

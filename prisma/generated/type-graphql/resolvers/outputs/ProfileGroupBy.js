@@ -8,8 +8,9 @@ const ProfileMaxAggregate_1 = require("../outputs/ProfileMaxAggregate");
 const ProfileMinAggregate_1 = require("../outputs/ProfileMinAggregate");
 const Campus_1 = require("../../enums/Campus");
 const UserType_1 = require("../../enums/UserType");
-let ProfileGroupBy = exports.ProfileGroupBy = class ProfileGroupBy {
+let ProfileGroupBy = class ProfileGroupBy {
 };
+exports.ProfileGroupBy = ProfileGroupBy;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

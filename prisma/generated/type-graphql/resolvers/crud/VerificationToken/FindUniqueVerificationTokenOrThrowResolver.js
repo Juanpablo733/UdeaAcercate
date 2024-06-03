@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const FindUniqueVerificationTokenOrThrowArgs_1 = require("./args/FindUniqueVerificationTokenOrThrowArgs");
 const VerificationToken_1 = require("../../../models/VerificationToken");
 const helpers_1 = require("../../../helpers");
-let FindUniqueVerificationTokenOrThrowResolver = exports.FindUniqueVerificationTokenOrThrowResolver = class FindUniqueVerificationTokenOrThrowResolver {
+let FindUniqueVerificationTokenOrThrowResolver = class FindUniqueVerificationTokenOrThrowResolver {
     async getVerificationToken(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).verificationToken.findUniqueOrThrow({
@@ -15,6 +15,7 @@ let FindUniqueVerificationTokenOrThrowResolver = exports.FindUniqueVerificationT
         });
     }
 };
+exports.FindUniqueVerificationTokenOrThrowResolver = FindUniqueVerificationTokenOrThrowResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => VerificationToken_1.VerificationToken, {
         nullable: true

@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const CommentCreateInput_1 = require("../../../inputs/CommentCreateInput");
 const CommentUpdateInput_1 = require("../../../inputs/CommentUpdateInput");
 const CommentWhereUniqueInput_1 = require("../../../inputs/CommentWhereUniqueInput");
-let UpsertOneCommentArgs = exports.UpsertOneCommentArgs = class UpsertOneCommentArgs {
+let UpsertOneCommentArgs = class UpsertOneCommentArgs {
 };
+exports.UpsertOneCommentArgs = UpsertOneCommentArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => CommentWhereUniqueInput_1.CommentWhereUniqueInput, {
         nullable: false

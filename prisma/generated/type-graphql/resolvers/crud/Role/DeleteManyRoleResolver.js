@@ -7,7 +7,7 @@ const DeleteManyRoleArgs_1 = require("./args/DeleteManyRoleArgs");
 const Role_1 = require("../../../models/Role");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const helpers_1 = require("../../../helpers");
-let DeleteManyRoleResolver = exports.DeleteManyRoleResolver = class DeleteManyRoleResolver {
+let DeleteManyRoleResolver = class DeleteManyRoleResolver {
     async deleteManyRole(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).role.deleteMany({
@@ -16,6 +16,7 @@ let DeleteManyRoleResolver = exports.DeleteManyRoleResolver = class DeleteManyRo
         });
     }
 };
+exports.DeleteManyRoleResolver = DeleteManyRoleResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, {
         nullable: false

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VerificationTokenScalarFieldEnum = exports.UserType = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.Tag = exports.SortOrder = exports.SessionScalarFieldEnum = exports.Sentiment = exports.RoleTag = exports.RoleScalarFieldEnum = exports.QueryMode = exports.ProfileScalarFieldEnum = exports.NullsOrder = exports.InformationScalarFieldEnum = exports.EventScalarFieldEnum = exports.EmailTokenScalarFieldEnum = exports.CommentSentimentScalarFieldEnum = exports.CommentScalarFieldEnum = exports.Campus = exports.AttendeeScalarFieldEnum = exports.AccountScalarFieldEnum = void 0;
+exports.VerificationTokenScalarFieldEnum = exports.UserType = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.Tag = exports.SortOrder = exports.SessionScalarFieldEnum = exports.Sentiment = exports.RoleTag = exports.RoleScalarFieldEnum = exports.ReportScalarFieldEnum = exports.QueryMode = exports.ProfileScalarFieldEnum = exports.NullsOrder = exports.InformationScalarFieldEnum = exports.EventScalarFieldEnum = exports.EmailTokenScalarFieldEnum = exports.CommentSentimentScalarFieldEnum = exports.CommentScalarFieldEnum = exports.Campus = exports.AttendeeScalarFieldEnum = exports.AccountScalarFieldEnum = void 0;
 var AccountScalarFieldEnum_1 = require("./AccountScalarFieldEnum");
 Object.defineProperty(exports, "AccountScalarFieldEnum", { enumerable: true, get: function () { return AccountScalarFieldEnum_1.AccountScalarFieldEnum; } });
 var AttendeeScalarFieldEnum_1 = require("./AttendeeScalarFieldEnum");
@@ -23,6 +23,8 @@ var ProfileScalarFieldEnum_1 = require("./ProfileScalarFieldEnum");
 Object.defineProperty(exports, "ProfileScalarFieldEnum", { enumerable: true, get: function () { return ProfileScalarFieldEnum_1.ProfileScalarFieldEnum; } });
 var QueryMode_1 = require("./QueryMode");
 Object.defineProperty(exports, "QueryMode", { enumerable: true, get: function () { return QueryMode_1.QueryMode; } });
+var ReportScalarFieldEnum_1 = require("./ReportScalarFieldEnum");
+Object.defineProperty(exports, "ReportScalarFieldEnum", { enumerable: true, get: function () { return ReportScalarFieldEnum_1.ReportScalarFieldEnum; } });
 var RoleScalarFieldEnum_1 = require("./RoleScalarFieldEnum");
 Object.defineProperty(exports, "RoleScalarFieldEnum", { enumerable: true, get: function () { return RoleScalarFieldEnum_1.RoleScalarFieldEnum; } });
 var RoleTag_1 = require("./RoleTag");

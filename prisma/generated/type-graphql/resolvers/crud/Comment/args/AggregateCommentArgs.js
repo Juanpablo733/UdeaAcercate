@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const CommentOrderByWithRelationInput_1 = require("../../../inputs/CommentOrderByWithRelationInput");
 const CommentWhereInput_1 = require("../../../inputs/CommentWhereInput");
 const CommentWhereUniqueInput_1 = require("../../../inputs/CommentWhereUniqueInput");
-let AggregateCommentArgs = exports.AggregateCommentArgs = class AggregateCommentArgs {
+let AggregateCommentArgs = class AggregateCommentArgs {
 };
+exports.AggregateCommentArgs = AggregateCommentArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => CommentWhereInput_1.CommentWhereInput, {
         nullable: true

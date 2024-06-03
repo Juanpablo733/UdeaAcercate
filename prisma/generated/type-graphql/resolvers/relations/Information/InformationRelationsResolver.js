@@ -11,7 +11,7 @@ const InformationAuthorArgs_1 = require("./args/InformationAuthorArgs");
 const InformationCommentsArgs_1 = require("./args/InformationCommentsArgs");
 const InformationEventArgs_1 = require("./args/InformationEventArgs");
 const helpers_1 = require("../../../helpers");
-let InformationRelationsResolver = exports.InformationRelationsResolver = class InformationRelationsResolver {
+let InformationRelationsResolver = class InformationRelationsResolver {
     async author(information, ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).information.findUniqueOrThrow({
@@ -46,6 +46,7 @@ let InformationRelationsResolver = exports.InformationRelationsResolver = class 
         });
     }
 };
+exports.InformationRelationsResolver = InformationRelationsResolver;
 tslib_1.__decorate([
     TypeGraphQL.FieldResolver(_type => User_1.User, {
         nullable: true

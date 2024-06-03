@@ -7,8 +7,9 @@ const InformationCountAggregate_1 = require("../outputs/InformationCountAggregat
 const InformationMaxAggregate_1 = require("../outputs/InformationMaxAggregate");
 const InformationMinAggregate_1 = require("../outputs/InformationMinAggregate");
 const Tag_1 = require("../../enums/Tag");
-let InformationGroupBy = exports.InformationGroupBy = class InformationGroupBy {
+let InformationGroupBy = class InformationGroupBy {
 };
+exports.InformationGroupBy = InformationGroupBy;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: false

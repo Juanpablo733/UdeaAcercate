@@ -22,7 +22,7 @@ const Account_1 = require("../../../models/Account");
 const AccountGroupBy_1 = require("../../outputs/AccountGroupBy");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const AggregateAccount_1 = require("../../outputs/AggregateAccount");
-let AccountCrudResolver = exports.AccountCrudResolver = class AccountCrudResolver {
+let AccountCrudResolver = class AccountCrudResolver {
     async aggregateAccount(ctx, info, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).account.aggregate({
             ...args,
@@ -121,6 +121,7 @@ let AccountCrudResolver = exports.AccountCrudResolver = class AccountCrudResolve
         });
     }
 };
+exports.AccountCrudResolver = AccountCrudResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateAccount_1.AggregateAccount, {
         nullable: false

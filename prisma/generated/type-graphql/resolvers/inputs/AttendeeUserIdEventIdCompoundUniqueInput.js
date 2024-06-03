@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AttendeeUserIdEventIdCompoundUniqueInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let AttendeeUserIdEventIdCompoundUniqueInput = exports.AttendeeUserIdEventIdCompoundUniqueInput = class AttendeeUserIdEventIdCompoundUniqueInput {
+let AttendeeUserIdEventIdCompoundUniqueInput = class AttendeeUserIdEventIdCompoundUniqueInput {
 };
+exports.AttendeeUserIdEventIdCompoundUniqueInput = AttendeeUserIdEventIdCompoundUniqueInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: false

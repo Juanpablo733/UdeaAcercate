@@ -7,8 +7,9 @@ const VerificationTokenOrderByWithRelationInput_1 = require("../../../inputs/Ver
 const VerificationTokenWhereInput_1 = require("../../../inputs/VerificationTokenWhereInput");
 const VerificationTokenWhereUniqueInput_1 = require("../../../inputs/VerificationTokenWhereUniqueInput");
 const VerificationTokenScalarFieldEnum_1 = require("../../../../enums/VerificationTokenScalarFieldEnum");
-let FindManyVerificationTokenArgs = exports.FindManyVerificationTokenArgs = class FindManyVerificationTokenArgs {
+let FindManyVerificationTokenArgs = class FindManyVerificationTokenArgs {
 };
+exports.FindManyVerificationTokenArgs = FindManyVerificationTokenArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => VerificationTokenWhereInput_1.VerificationTokenWhereInput, {
         nullable: true

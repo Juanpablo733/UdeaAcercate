@@ -7,7 +7,7 @@ const AggregateProfileArgs_1 = require("./args/AggregateProfileArgs");
 const Profile_1 = require("../../../models/Profile");
 const AggregateProfile_1 = require("../../outputs/AggregateProfile");
 const helpers_1 = require("../../../helpers");
-let AggregateProfileResolver = exports.AggregateProfileResolver = class AggregateProfileResolver {
+let AggregateProfileResolver = class AggregateProfileResolver {
     async aggregateProfile(ctx, info, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).profile.aggregate({
             ...args,
@@ -15,6 +15,7 @@ let AggregateProfileResolver = exports.AggregateProfileResolver = class Aggregat
         });
     }
 };
+exports.AggregateProfileResolver = AggregateProfileResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateProfile_1.AggregateProfile, {
         nullable: false

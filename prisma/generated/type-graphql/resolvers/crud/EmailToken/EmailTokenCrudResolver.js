@@ -22,7 +22,7 @@ const EmailToken_1 = require("../../../models/EmailToken");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const AggregateEmailToken_1 = require("../../outputs/AggregateEmailToken");
 const EmailTokenGroupBy_1 = require("../../outputs/EmailTokenGroupBy");
-let EmailTokenCrudResolver = exports.EmailTokenCrudResolver = class EmailTokenCrudResolver {
+let EmailTokenCrudResolver = class EmailTokenCrudResolver {
     async aggregateEmailToken(ctx, info, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).emailToken.aggregate({
             ...args,
@@ -121,6 +121,7 @@ let EmailTokenCrudResolver = exports.EmailTokenCrudResolver = class EmailTokenCr
         });
     }
 };
+exports.EmailTokenCrudResolver = EmailTokenCrudResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateEmailToken_1.AggregateEmailToken, {
         nullable: false

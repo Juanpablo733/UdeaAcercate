@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AccountOrderByWithRelationInput_1 = require("../../../inputs/AccountOrderByWithRelationInput");
 const AccountWhereInput_1 = require("../../../inputs/AccountWhereInput");
 const AccountWhereUniqueInput_1 = require("../../../inputs/AccountWhereUniqueInput");
-let AggregateAccountArgs = exports.AggregateAccountArgs = class AggregateAccountArgs {
+let AggregateAccountArgs = class AggregateAccountArgs {
 };
+exports.AggregateAccountArgs = AggregateAccountArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AccountWhereInput_1.AccountWhereInput, {
         nullable: true

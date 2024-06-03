@@ -7,7 +7,7 @@ const GroupByCommentSentimentArgs_1 = require("./args/GroupByCommentSentimentArg
 const CommentSentiment_1 = require("../../../models/CommentSentiment");
 const CommentSentimentGroupBy_1 = require("../../outputs/CommentSentimentGroupBy");
 const helpers_1 = require("../../../helpers");
-let GroupByCommentSentimentResolver = exports.GroupByCommentSentimentResolver = class GroupByCommentSentimentResolver {
+let GroupByCommentSentimentResolver = class GroupByCommentSentimentResolver {
     async groupByCommentSentiment(ctx, info, args) {
         const { _count, _avg, _sum, _min, _max } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).commentSentiment.groupBy({
@@ -16,6 +16,7 @@ let GroupByCommentSentimentResolver = exports.GroupByCommentSentimentResolver = 
         });
     }
 };
+exports.GroupByCommentSentimentResolver = GroupByCommentSentimentResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [CommentSentimentGroupBy_1.CommentSentimentGroupBy], {
         nullable: false

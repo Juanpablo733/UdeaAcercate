@@ -22,7 +22,8 @@ const crudResolversMap = {
     Attendee: crudResolvers.AttendeeCrudResolver,
     Comment: crudResolvers.CommentCrudResolver,
     CommentSentiment: crudResolvers.CommentSentimentCrudResolver,
-    Role: crudResolvers.RoleCrudResolver
+    Role: crudResolvers.RoleCrudResolver,
+    Report: crudResolvers.ReportCrudResolver
 };
 const actionResolversMap = {
     Account: {
@@ -216,6 +217,22 @@ const actionResolversMap = {
         updateManyRole: actionResolvers.UpdateManyRoleResolver,
         updateOneRole: actionResolvers.UpdateOneRoleResolver,
         upsertOneRole: actionResolvers.UpsertOneRoleResolver
+    },
+    Report: {
+        aggregateReport: actionResolvers.AggregateReportResolver,
+        createManyReport: actionResolvers.CreateManyReportResolver,
+        createOneReport: actionResolvers.CreateOneReportResolver,
+        deleteManyReport: actionResolvers.DeleteManyReportResolver,
+        deleteOneReport: actionResolvers.DeleteOneReportResolver,
+        findFirstReport: actionResolvers.FindFirstReportResolver,
+        findFirstReportOrThrow: actionResolvers.FindFirstReportOrThrowResolver,
+        reports: actionResolvers.FindManyReportResolver,
+        report: actionResolvers.FindUniqueReportResolver,
+        getReport: actionResolvers.FindUniqueReportOrThrowResolver,
+        groupByReport: actionResolvers.GroupByReportResolver,
+        updateManyReport: actionResolvers.UpdateManyReportResolver,
+        updateOneReport: actionResolvers.UpdateOneReportResolver,
+        upsertOneReport: actionResolvers.UpsertOneReportResolver
     }
 };
 const crudResolversInfo = {
@@ -230,7 +247,8 @@ const crudResolversInfo = {
     Attendee: ["aggregateAttendee", "createManyAttendee", "createOneAttendee", "deleteManyAttendee", "deleteOneAttendee", "findFirstAttendee", "findFirstAttendeeOrThrow", "attendees", "attendee", "getAttendee", "groupByAttendee", "updateManyAttendee", "updateOneAttendee", "upsertOneAttendee"],
     Comment: ["aggregateComment", "createManyComment", "createOneComment", "deleteManyComment", "deleteOneComment", "findFirstComment", "findFirstCommentOrThrow", "comments", "comment", "getComment", "groupByComment", "updateManyComment", "updateOneComment", "upsertOneComment"],
     CommentSentiment: ["aggregateCommentSentiment", "createManyCommentSentiment", "createOneCommentSentiment", "deleteManyCommentSentiment", "deleteOneCommentSentiment", "findFirstCommentSentiment", "findFirstCommentSentimentOrThrow", "commentSentiments", "commentSentiment", "getCommentSentiment", "groupByCommentSentiment", "updateManyCommentSentiment", "updateOneCommentSentiment", "upsertOneCommentSentiment"],
-    Role: ["aggregateRole", "createManyRole", "createOneRole", "deleteManyRole", "deleteOneRole", "findFirstRole", "findFirstRoleOrThrow", "roles", "role", "getRole", "groupByRole", "updateManyRole", "updateOneRole", "upsertOneRole"]
+    Role: ["aggregateRole", "createManyRole", "createOneRole", "deleteManyRole", "deleteOneRole", "findFirstRole", "findFirstRoleOrThrow", "roles", "role", "getRole", "groupByRole", "updateManyRole", "updateOneRole", "upsertOneRole"],
+    Report: ["aggregateReport", "createManyReport", "createOneReport", "deleteManyReport", "deleteOneReport", "findFirstReport", "findFirstReportOrThrow", "reports", "report", "getReport", "groupByReport", "updateManyReport", "updateOneReport", "upsertOneReport"]
 };
 const argsInfo = {
     AggregateAccountArgs: ["where", "orderBy", "cursor", "take", "skip"],
@@ -400,7 +418,21 @@ const argsInfo = {
     GroupByRoleArgs: ["where", "orderBy", "by", "having", "take", "skip"],
     UpdateManyRoleArgs: ["data", "where"],
     UpdateOneRoleArgs: ["data", "where"],
-    UpsertOneRoleArgs: ["where", "create", "update"]
+    UpsertOneRoleArgs: ["where", "create", "update"],
+    AggregateReportArgs: ["where", "orderBy", "cursor", "take", "skip"],
+    CreateManyReportArgs: ["data", "skipDuplicates"],
+    CreateOneReportArgs: ["data"],
+    DeleteManyReportArgs: ["where"],
+    DeleteOneReportArgs: ["where"],
+    FindFirstReportArgs: ["where", "orderBy", "cursor", "take", "skip", "distinct"],
+    FindFirstReportOrThrowArgs: ["where", "orderBy", "cursor", "take", "skip", "distinct"],
+    FindManyReportArgs: ["where", "orderBy", "cursor", "take", "skip", "distinct"],
+    FindUniqueReportArgs: ["where"],
+    FindUniqueReportOrThrowArgs: ["where"],
+    GroupByReportArgs: ["where", "orderBy", "by", "having", "take", "skip"],
+    UpdateManyReportArgs: ["data", "where"],
+    UpdateOneReportArgs: ["data", "where"],
+    UpsertOneReportArgs: ["where", "create", "update"]
 };
 function applyResolversEnhanceMap(resolversEnhanceMap) {
     const mutationOperationPrefixes = [
@@ -418,15 +450,15 @@ function applyResolversEnhanceMap(resolversEnhanceMap) {
             const isWriteOperation = mutationOperationPrefixes.some(prefix => resolverActionName.startsWith(prefix));
             const operationKindDecorators = isWriteOperation ? resolverActionsConfig._mutation : resolverActionsConfig._query;
             const mainDecorators = [
-                ...allActionsDecorators !== null && allActionsDecorators !== void 0 ? allActionsDecorators : [],
-                ...operationKindDecorators !== null && operationKindDecorators !== void 0 ? operationKindDecorators : [],
+                ...allActionsDecorators ?? [],
+                ...operationKindDecorators ?? [],
             ];
             let decorators;
             if (typeof maybeDecoratorsOrFn === "function") {
                 decorators = maybeDecoratorsOrFn(mainDecorators);
             }
             else {
-                decorators = [...mainDecorators, ...maybeDecoratorsOrFn !== null && maybeDecoratorsOrFn !== void 0 ? maybeDecoratorsOrFn : []];
+                decorators = [...mainDecorators, ...maybeDecoratorsOrFn ?? []];
             }
             const actionTarget = actionResolversConfig[resolverActionName].prototype;
             tslib.__decorate(decorators, crudTarget, resolverActionName, null);
@@ -466,12 +498,11 @@ const relationResolversInfo = {
     Comment: ["user", "info"]
 };
 function applyRelationResolversEnhanceMap(relationResolversEnhanceMap) {
-    var _a;
     for (const relationResolversEnhanceMapKey of Object.keys(relationResolversEnhanceMap)) {
         const modelName = relationResolversEnhanceMapKey;
         const relationResolverTarget = relationResolversMap[modelName].prototype;
         const relationResolverActionsConfig = relationResolversEnhanceMap[modelName];
-        const allActionsDecorators = (_a = relationResolverActionsConfig._all) !== null && _a !== void 0 ? _a : [];
+        const allActionsDecorators = relationResolverActionsConfig._all ?? [];
         const relationResolverActionNames = relationResolversInfo[modelName];
         for (const relationResolverActionName of relationResolverActionNames) {
             const maybeDecoratorsOrFn = relationResolverActionsConfig[relationResolverActionName];
@@ -480,7 +511,7 @@ function applyRelationResolversEnhanceMap(relationResolversEnhanceMap) {
                 decorators = maybeDecoratorsOrFn(allActionsDecorators);
             }
             else {
-                decorators = [...allActionsDecorators, ...maybeDecoratorsOrFn !== null && maybeDecoratorsOrFn !== void 0 ? maybeDecoratorsOrFn : []];
+                decorators = [...allActionsDecorators, ...maybeDecoratorsOrFn ?? []];
             }
             tslib.__decorate(decorators, relationResolverTarget, relationResolverActionName, null);
         }
@@ -488,12 +519,11 @@ function applyRelationResolversEnhanceMap(relationResolversEnhanceMap) {
 }
 exports.applyRelationResolversEnhanceMap = applyRelationResolversEnhanceMap;
 function applyTypeClassEnhanceConfig(enhanceConfig, typeClass, typePrototype, typeFieldNames) {
-    var _a;
     if (enhanceConfig.class) {
         tslib.__decorate(enhanceConfig.class, typeClass);
     }
     if (enhanceConfig.fields) {
-        const allFieldsDecorators = (_a = enhanceConfig.fields._all) !== null && _a !== void 0 ? _a : [];
+        const allFieldsDecorators = enhanceConfig.fields._all ?? [];
         for (const typeFieldName of typeFieldNames) {
             const maybeDecoratorsOrFn = enhanceConfig.fields[typeFieldName];
             let decorators;
@@ -501,7 +531,7 @@ function applyTypeClassEnhanceConfig(enhanceConfig, typeClass, typePrototype, ty
                 decorators = maybeDecoratorsOrFn(allFieldsDecorators);
             }
             else {
-                decorators = [...allFieldsDecorators, ...maybeDecoratorsOrFn !== null && maybeDecoratorsOrFn !== void 0 ? maybeDecoratorsOrFn : []];
+                decorators = [...allFieldsDecorators, ...maybeDecoratorsOrFn ?? []];
             }
             tslib.__decorate(decorators, typePrototype, typeFieldName, void 0);
         }
@@ -519,7 +549,8 @@ const modelsInfo = {
     Attendee: ["userId", "eventId", "dateTime"],
     Comment: ["id", "text", "dateTime", "userId", "infoId"],
     CommentSentiment: ["id", "sentiment", "confidence", "commentTag", "dateTime"],
-    Role: ["userId", "role"]
+    Role: ["userId", "role"],
+    Report: ["userId", "eventId", "reason", "dateTime"]
 };
 function applyModelsEnhanceMap(modelsEnhanceMap) {
     for (const modelsEnhanceMapKey of Object.keys(modelsEnhanceMap)) {
@@ -556,6 +587,8 @@ const outputsInfo = {
     CommentSentimentGroupBy: ["id", "sentiment", "confidence", "commentTag", "dateTime", "_count", "_avg", "_sum", "_min", "_max"],
     AggregateRole: ["_count", "_min", "_max"],
     RoleGroupBy: ["userId", "role", "_count", "_min", "_max"],
+    AggregateReport: ["_count", "_min", "_max"],
+    ReportGroupBy: ["userId", "eventId", "reason", "dateTime", "_count", "_min", "_max"],
     AffectedRowsOutput: ["count"],
     AccountCountAggregate: ["id", "userId", "type", "provider", "providerAccountId", "refresh_token", "access_token", "expires_at", "token_type", "scope", "id_token", "session_state", "_all"],
     AccountAvgAggregate: ["expires_at"],
@@ -599,7 +632,23 @@ const outputsInfo = {
     CommentSentimentMaxAggregate: ["id", "sentiment", "confidence", "commentTag", "dateTime"],
     RoleCountAggregate: ["userId", "role", "_all"],
     RoleMinAggregate: ["userId", "role"],
-    RoleMaxAggregate: ["userId", "role"]
+    RoleMaxAggregate: ["userId", "role"],
+    ReportCountAggregate: ["userId", "eventId", "reason", "dateTime", "_all"],
+    ReportMinAggregate: ["userId", "eventId", "reason", "dateTime"],
+    ReportMaxAggregate: ["userId", "eventId", "reason", "dateTime"],
+    CreateManyAccountAndReturnOutputType: ["id", "userId", "type", "provider", "providerAccountId", "refresh_token", "access_token", "expires_at", "token_type", "scope", "id_token", "session_state", "user"],
+    CreateManySessionAndReturnOutputType: ["id", "sessionToken", "userId", "expires", "user"],
+    CreateManyUserAndReturnOutputType: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image"],
+    CreateManyVerificationTokenAndReturnOutputType: ["identifier", "token", "expires"],
+    CreateManyEmailTokenAndReturnOutputType: ["identifier", "token", "expires"],
+    CreateManyProfileAndReturnOutputType: ["faculty", "career", "type", "campus", "userId", "description", "hobbies", "socialLinks", "user"],
+    CreateManyEventAndReturnOutputType: ["id", "authorId", "infoId", "place", "author", "info"],
+    CreateManyInformationAndReturnOutputType: ["id", "authorId", "title", "description", "date", "image", "tag", "hashtags", "official", "author"],
+    CreateManyAttendeeAndReturnOutputType: ["userId", "eventId", "dateTime", "user", "event"],
+    CreateManyCommentAndReturnOutputType: ["id", "text", "dateTime", "userId", "infoId", "user", "info"],
+    CreateManyCommentSentimentAndReturnOutputType: ["id", "sentiment", "confidence", "commentTag", "dateTime"],
+    CreateManyRoleAndReturnOutputType: ["userId", "role"],
+    CreateManyReportAndReturnOutputType: ["userId", "eventId", "reason", "dateTime"]
 };
 function applyOutputTypesEnhanceMap(outputTypesEnhanceMap) {
     for (const outputTypeEnhanceMapKey of Object.keys(outputTypesEnhanceMap)) {
@@ -672,6 +721,11 @@ const inputsInfo = {
     RoleWhereUniqueInput: ["userId", "AND", "OR", "NOT", "role"],
     RoleOrderByWithAggregationInput: ["userId", "role", "_count", "_max", "_min"],
     RoleScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "userId", "role"],
+    ReportWhereInput: ["AND", "OR", "NOT", "userId", "eventId", "reason", "dateTime"],
+    ReportOrderByWithRelationInput: ["userId", "eventId", "reason", "dateTime"],
+    ReportWhereUniqueInput: ["userId_eventId", "AND", "OR", "NOT", "userId", "eventId", "reason", "dateTime"],
+    ReportOrderByWithAggregationInput: ["userId", "eventId", "reason", "dateTime", "_count", "_max", "_min"],
+    ReportScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "userId", "eventId", "reason", "dateTime"],
     AccountCreateInput: ["id", "type", "provider", "providerAccountId", "refresh_token", "access_token", "expires_at", "token_type", "scope", "id_token", "session_state", "user"],
     AccountUpdateInput: ["id", "type", "provider", "providerAccountId", "refresh_token", "access_token", "expires_at", "token_type", "scope", "id_token", "session_state", "user"],
     AccountCreateManyInput: ["id", "userId", "type", "provider", "providerAccountId", "refresh_token", "access_token", "expires_at", "token_type", "scope", "id_token", "session_state"],
@@ -720,6 +774,10 @@ const inputsInfo = {
     RoleUpdateInput: ["userId", "role"],
     RoleCreateManyInput: ["userId", "role"],
     RoleUpdateManyMutationInput: ["userId", "role"],
+    ReportCreateInput: ["userId", "eventId", "reason", "dateTime"],
+    ReportUpdateInput: ["userId", "eventId", "reason", "dateTime"],
+    ReportCreateManyInput: ["userId", "eventId", "reason", "dateTime"],
+    ReportUpdateManyMutationInput: ["userId", "eventId", "reason", "dateTime"],
     StringFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "mode", "not"],
     StringNullableFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "mode", "not"],
     IntNullableFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not"],
@@ -807,6 +865,10 @@ const inputsInfo = {
     RoleMaxOrderByAggregateInput: ["userId", "role"],
     RoleMinOrderByAggregateInput: ["userId", "role"],
     EnumRoleTagWithAggregatesFilter: ["equals", "in", "notIn", "not", "_count", "_min", "_max"],
+    ReportUserIdEventIdCompoundUniqueInput: ["userId", "eventId"],
+    ReportCountOrderByAggregateInput: ["userId", "eventId", "reason", "dateTime"],
+    ReportMaxOrderByAggregateInput: ["userId", "eventId", "reason", "dateTime"],
+    ReportMinOrderByAggregateInput: ["userId", "eventId", "reason", "dateTime"],
     UserCreateNestedOneWithoutAccountsInput: ["create", "connectOrCreate", "connect"],
     StringFieldUpdateOperationsInput: ["set"],
     NullableStringFieldUpdateOperationsInput: ["set"],

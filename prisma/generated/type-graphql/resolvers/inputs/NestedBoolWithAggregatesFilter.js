@@ -1,13 +1,13 @@
 "use strict";
-var NestedBoolWithAggregatesFilter_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NestedBoolWithAggregatesFilter = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const NestedBoolFilter_1 = require("../inputs/NestedBoolFilter");
 const NestedIntFilter_1 = require("../inputs/NestedIntFilter");
-let NestedBoolWithAggregatesFilter = exports.NestedBoolWithAggregatesFilter = NestedBoolWithAggregatesFilter_1 = class NestedBoolWithAggregatesFilter {
+let NestedBoolWithAggregatesFilter = class NestedBoolWithAggregatesFilter {
 };
+exports.NestedBoolWithAggregatesFilter = NestedBoolWithAggregatesFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => Boolean, {
         nullable: true
@@ -15,7 +15,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Boolean)
 ], NestedBoolWithAggregatesFilter.prototype, "equals", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => NestedBoolWithAggregatesFilter_1, {
+    TypeGraphQL.Field(_type => NestedBoolWithAggregatesFilter, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", NestedBoolWithAggregatesFilter)
@@ -38,6 +38,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", NestedBoolFilter_1.NestedBoolFilter)
 ], NestedBoolWithAggregatesFilter.prototype, "_max", void 0);
-exports.NestedBoolWithAggregatesFilter = NestedBoolWithAggregatesFilter = NestedBoolWithAggregatesFilter_1 = tslib_1.__decorate([
+exports.NestedBoolWithAggregatesFilter = NestedBoolWithAggregatesFilter = tslib_1.__decorate([
     TypeGraphQL.InputType("NestedBoolWithAggregatesFilter", {})
 ], NestedBoolWithAggregatesFilter);

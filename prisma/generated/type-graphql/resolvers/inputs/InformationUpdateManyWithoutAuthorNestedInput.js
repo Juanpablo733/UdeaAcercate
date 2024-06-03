@@ -11,8 +11,9 @@ const InformationUpdateManyWithWhereWithoutAuthorInput_1 = require("../inputs/In
 const InformationUpdateWithWhereUniqueWithoutAuthorInput_1 = require("../inputs/InformationUpdateWithWhereUniqueWithoutAuthorInput");
 const InformationUpsertWithWhereUniqueWithoutAuthorInput_1 = require("../inputs/InformationUpsertWithWhereUniqueWithoutAuthorInput");
 const InformationWhereUniqueInput_1 = require("../inputs/InformationWhereUniqueInput");
-let InformationUpdateManyWithoutAuthorNestedInput = exports.InformationUpdateManyWithoutAuthorNestedInput = class InformationUpdateManyWithoutAuthorNestedInput {
+let InformationUpdateManyWithoutAuthorNestedInput = class InformationUpdateManyWithoutAuthorNestedInput {
 };
+exports.InformationUpdateManyWithoutAuthorNestedInput = InformationUpdateManyWithoutAuthorNestedInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => [InformationCreateWithoutAuthorInput_1.InformationCreateWithoutAuthorInput], {
         nullable: true

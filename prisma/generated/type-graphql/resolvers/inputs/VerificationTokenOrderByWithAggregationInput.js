@@ -7,8 +7,9 @@ const VerificationTokenCountOrderByAggregateInput_1 = require("../inputs/Verific
 const VerificationTokenMaxOrderByAggregateInput_1 = require("../inputs/VerificationTokenMaxOrderByAggregateInput");
 const VerificationTokenMinOrderByAggregateInput_1 = require("../inputs/VerificationTokenMinOrderByAggregateInput");
 const SortOrder_1 = require("../../enums/SortOrder");
-let VerificationTokenOrderByWithAggregationInput = exports.VerificationTokenOrderByWithAggregationInput = class VerificationTokenOrderByWithAggregationInput {
+let VerificationTokenOrderByWithAggregationInput = class VerificationTokenOrderByWithAggregationInput {
 };
+exports.VerificationTokenOrderByWithAggregationInput = VerificationTokenOrderByWithAggregationInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
         nullable: true

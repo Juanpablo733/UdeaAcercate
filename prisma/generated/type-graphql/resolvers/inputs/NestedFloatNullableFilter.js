@@ -1,11 +1,11 @@
 "use strict";
-var NestedFloatNullableFilter_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NestedFloatNullableFilter = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let NestedFloatNullableFilter = exports.NestedFloatNullableFilter = NestedFloatNullableFilter_1 = class NestedFloatNullableFilter {
+let NestedFloatNullableFilter = class NestedFloatNullableFilter {
 };
+exports.NestedFloatNullableFilter = NestedFloatNullableFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Float, {
         nullable: true
@@ -49,11 +49,11 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Number)
 ], NestedFloatNullableFilter.prototype, "gte", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => NestedFloatNullableFilter_1, {
+    TypeGraphQL.Field(_type => NestedFloatNullableFilter, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", NestedFloatNullableFilter)
 ], NestedFloatNullableFilter.prototype, "not", void 0);
-exports.NestedFloatNullableFilter = NestedFloatNullableFilter = NestedFloatNullableFilter_1 = tslib_1.__decorate([
+exports.NestedFloatNullableFilter = NestedFloatNullableFilter = tslib_1.__decorate([
     TypeGraphQL.InputType("NestedFloatNullableFilter", {})
 ], NestedFloatNullableFilter);

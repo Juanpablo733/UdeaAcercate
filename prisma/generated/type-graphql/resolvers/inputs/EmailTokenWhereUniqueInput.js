@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const DateTimeFilter_1 = require("../inputs/DateTimeFilter");
 const EmailTokenWhereInput_1 = require("../inputs/EmailTokenWhereInput");
 const StringFilter_1 = require("../inputs/StringFilter");
-let EmailTokenWhereUniqueInput = exports.EmailTokenWhereUniqueInput = class EmailTokenWhereUniqueInput {
+let EmailTokenWhereUniqueInput = class EmailTokenWhereUniqueInput {
 };
+exports.EmailTokenWhereUniqueInput = EmailTokenWhereUniqueInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

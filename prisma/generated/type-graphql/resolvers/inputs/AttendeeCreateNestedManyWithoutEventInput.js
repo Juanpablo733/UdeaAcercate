@@ -7,8 +7,9 @@ const AttendeeCreateManyEventInputEnvelope_1 = require("../inputs/AttendeeCreate
 const AttendeeCreateOrConnectWithoutEventInput_1 = require("../inputs/AttendeeCreateOrConnectWithoutEventInput");
 const AttendeeCreateWithoutEventInput_1 = require("../inputs/AttendeeCreateWithoutEventInput");
 const AttendeeWhereUniqueInput_1 = require("../inputs/AttendeeWhereUniqueInput");
-let AttendeeCreateNestedManyWithoutEventInput = exports.AttendeeCreateNestedManyWithoutEventInput = class AttendeeCreateNestedManyWithoutEventInput {
+let AttendeeCreateNestedManyWithoutEventInput = class AttendeeCreateNestedManyWithoutEventInput {
 };
+exports.AttendeeCreateNestedManyWithoutEventInput = AttendeeCreateNestedManyWithoutEventInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => [AttendeeCreateWithoutEventInput_1.AttendeeCreateWithoutEventInput], {
         nullable: true

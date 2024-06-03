@@ -7,7 +7,7 @@ const DeleteManyAttendeeArgs_1 = require("./args/DeleteManyAttendeeArgs");
 const Attendee_1 = require("../../../models/Attendee");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const helpers_1 = require("../../../helpers");
-let DeleteManyAttendeeResolver = exports.DeleteManyAttendeeResolver = class DeleteManyAttendeeResolver {
+let DeleteManyAttendeeResolver = class DeleteManyAttendeeResolver {
     async deleteManyAttendee(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).attendee.deleteMany({
@@ -16,6 +16,7 @@ let DeleteManyAttendeeResolver = exports.DeleteManyAttendeeResolver = class Dele
         });
     }
 };
+exports.DeleteManyAttendeeResolver = DeleteManyAttendeeResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, {
         nullable: false

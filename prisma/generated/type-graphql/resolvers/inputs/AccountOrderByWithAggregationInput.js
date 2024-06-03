@@ -10,8 +10,9 @@ const AccountMinOrderByAggregateInput_1 = require("../inputs/AccountMinOrderByAg
 const AccountSumOrderByAggregateInput_1 = require("../inputs/AccountSumOrderByAggregateInput");
 const SortOrderInput_1 = require("../inputs/SortOrderInput");
 const SortOrder_1 = require("../../enums/SortOrder");
-let AccountOrderByWithAggregationInput = exports.AccountOrderByWithAggregationInput = class AccountOrderByWithAggregationInput {
+let AccountOrderByWithAggregationInput = class AccountOrderByWithAggregationInput {
 };
+exports.AccountOrderByWithAggregationInput = AccountOrderByWithAggregationInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
         nullable: true

@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const DeleteOneSessionArgs_1 = require("./args/DeleteOneSessionArgs");
 const Session_1 = require("../../../models/Session");
 const helpers_1 = require("../../../helpers");
-let DeleteOneSessionResolver = exports.DeleteOneSessionResolver = class DeleteOneSessionResolver {
+let DeleteOneSessionResolver = class DeleteOneSessionResolver {
     async deleteOneSession(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).session.delete({
@@ -15,6 +15,7 @@ let DeleteOneSessionResolver = exports.DeleteOneSessionResolver = class DeleteOn
         });
     }
 };
+exports.DeleteOneSessionResolver = DeleteOneSessionResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Session_1.Session, {
         nullable: true

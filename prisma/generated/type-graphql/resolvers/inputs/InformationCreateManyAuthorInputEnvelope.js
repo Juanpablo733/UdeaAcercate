@@ -4,8 +4,9 @@ exports.InformationCreateManyAuthorInputEnvelope = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const InformationCreateManyAuthorInput_1 = require("../inputs/InformationCreateManyAuthorInput");
-let InformationCreateManyAuthorInputEnvelope = exports.InformationCreateManyAuthorInputEnvelope = class InformationCreateManyAuthorInputEnvelope {
+let InformationCreateManyAuthorInputEnvelope = class InformationCreateManyAuthorInputEnvelope {
 };
+exports.InformationCreateManyAuthorInputEnvelope = InformationCreateManyAuthorInputEnvelope;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => [InformationCreateManyAuthorInput_1.InformationCreateManyAuthorInput], {
         nullable: false

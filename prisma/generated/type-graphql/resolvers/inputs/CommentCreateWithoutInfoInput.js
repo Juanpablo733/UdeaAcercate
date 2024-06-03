@@ -4,8 +4,9 @@ exports.CommentCreateWithoutInfoInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const UserCreateNestedOneWithoutCommentsInput_1 = require("../inputs/UserCreateNestedOneWithoutCommentsInput");
-let CommentCreateWithoutInfoInput = exports.CommentCreateWithoutInfoInput = class CommentCreateWithoutInfoInput {
+let CommentCreateWithoutInfoInput = class CommentCreateWithoutInfoInput {
 };
+exports.CommentCreateWithoutInfoInput = CommentCreateWithoutInfoInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

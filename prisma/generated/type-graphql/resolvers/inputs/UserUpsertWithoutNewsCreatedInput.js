@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const UserCreateWithoutNewsCreatedInput_1 = require("../inputs/UserCreateWithoutNewsCreatedInput");
 const UserUpdateWithoutNewsCreatedInput_1 = require("../inputs/UserUpdateWithoutNewsCreatedInput");
 const UserWhereInput_1 = require("../inputs/UserWhereInput");
-let UserUpsertWithoutNewsCreatedInput = exports.UserUpsertWithoutNewsCreatedInput = class UserUpsertWithoutNewsCreatedInput {
+let UserUpsertWithoutNewsCreatedInput = class UserUpsertWithoutNewsCreatedInput {
 };
+exports.UserUpsertWithoutNewsCreatedInput = UserUpsertWithoutNewsCreatedInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => UserUpdateWithoutNewsCreatedInput_1.UserUpdateWithoutNewsCreatedInput, {
         nullable: false

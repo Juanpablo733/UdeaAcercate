@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const NestedEnumRoleTagFilter_1 = require("../inputs/NestedEnumRoleTagFilter");
 const RoleTag_1 = require("../../enums/RoleTag");
-let EnumRoleTagFilter = exports.EnumRoleTagFilter = class EnumRoleTagFilter {
+let EnumRoleTagFilter = class EnumRoleTagFilter {
 };
+exports.EnumRoleTagFilter = EnumRoleTagFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => RoleTag_1.RoleTag, {
         nullable: true

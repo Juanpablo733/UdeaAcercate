@@ -12,8 +12,9 @@ const ProfileOrderByWithRelationInput_1 = require("../inputs/ProfileOrderByWithR
 const SessionOrderByRelationAggregateInput_1 = require("../inputs/SessionOrderByRelationAggregateInput");
 const SortOrderInput_1 = require("../inputs/SortOrderInput");
 const SortOrder_1 = require("../../enums/SortOrder");
-let UserOrderByWithRelationInput = exports.UserOrderByWithRelationInput = class UserOrderByWithRelationInput {
+let UserOrderByWithRelationInput = class UserOrderByWithRelationInput {
 };
+exports.UserOrderByWithRelationInput = UserOrderByWithRelationInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
         nullable: true

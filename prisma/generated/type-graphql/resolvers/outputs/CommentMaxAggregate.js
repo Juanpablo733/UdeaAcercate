@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentMaxAggregate = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let CommentMaxAggregate = exports.CommentMaxAggregate = class CommentMaxAggregate {
+let CommentMaxAggregate = class CommentMaxAggregate {
 };
+exports.CommentMaxAggregate = CommentMaxAggregate;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

@@ -4,8 +4,9 @@ exports.DateTimeNullableFilter = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const NestedDateTimeNullableFilter_1 = require("../inputs/NestedDateTimeNullableFilter");
-let DateTimeNullableFilter = exports.DateTimeNullableFilter = class DateTimeNullableFilter {
+let DateTimeNullableFilter = class DateTimeNullableFilter {
 };
+exports.DateTimeNullableFilter = DateTimeNullableFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => Date, {
         nullable: true

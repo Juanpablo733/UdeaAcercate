@@ -7,8 +7,9 @@ const DateTimeFilter_1 = require("../inputs/DateTimeFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
 const VerificationTokenIdentifierTokenCompoundUniqueInput_1 = require("../inputs/VerificationTokenIdentifierTokenCompoundUniqueInput");
 const VerificationTokenWhereInput_1 = require("../inputs/VerificationTokenWhereInput");
-let VerificationTokenWhereUniqueInput = exports.VerificationTokenWhereUniqueInput = class VerificationTokenWhereUniqueInput {
+let VerificationTokenWhereUniqueInput = class VerificationTokenWhereUniqueInput {
 };
+exports.VerificationTokenWhereUniqueInput = VerificationTokenWhereUniqueInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

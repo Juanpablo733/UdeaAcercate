@@ -8,8 +8,9 @@ const DateTimeFilter_1 = require("../inputs/DateTimeFilter");
 const InformationRelationFilter_1 = require("../inputs/InformationRelationFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
 const UserRelationFilter_1 = require("../inputs/UserRelationFilter");
-let CommentWhereUniqueInput = exports.CommentWhereUniqueInput = class CommentWhereUniqueInput {
+let CommentWhereUniqueInput = class CommentWhereUniqueInput {
 };
+exports.CommentWhereUniqueInput = CommentWhereUniqueInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

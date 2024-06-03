@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const EmailTokenUpdateInput_1 = require("../../../inputs/EmailTokenUpdateInput");
 const EmailTokenWhereUniqueInput_1 = require("../../../inputs/EmailTokenWhereUniqueInput");
-let UpdateOneEmailTokenArgs = exports.UpdateOneEmailTokenArgs = class UpdateOneEmailTokenArgs {
+let UpdateOneEmailTokenArgs = class UpdateOneEmailTokenArgs {
 };
+exports.UpdateOneEmailTokenArgs = UpdateOneEmailTokenArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => EmailTokenUpdateInput_1.EmailTokenUpdateInput, {
         nullable: false

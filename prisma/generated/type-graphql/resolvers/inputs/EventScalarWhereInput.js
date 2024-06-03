@@ -1,26 +1,26 @@
 "use strict";
-var EventScalarWhereInput_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EventScalarWhereInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const StringFilter_1 = require("../inputs/StringFilter");
-let EventScalarWhereInput = exports.EventScalarWhereInput = EventScalarWhereInput_1 = class EventScalarWhereInput {
+let EventScalarWhereInput = class EventScalarWhereInput {
 };
+exports.EventScalarWhereInput = EventScalarWhereInput;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [EventScalarWhereInput_1], {
+    TypeGraphQL.Field(_type => [EventScalarWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], EventScalarWhereInput.prototype, "AND", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [EventScalarWhereInput_1], {
+    TypeGraphQL.Field(_type => [EventScalarWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], EventScalarWhereInput.prototype, "OR", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [EventScalarWhereInput_1], {
+    TypeGraphQL.Field(_type => [EventScalarWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
@@ -49,6 +49,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", StringFilter_1.StringFilter)
 ], EventScalarWhereInput.prototype, "place", void 0);
-exports.EventScalarWhereInput = EventScalarWhereInput = EventScalarWhereInput_1 = tslib_1.__decorate([
+exports.EventScalarWhereInput = EventScalarWhereInput = tslib_1.__decorate([
     TypeGraphQL.InputType("EventScalarWhereInput", {})
 ], EventScalarWhereInput);

@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const DeleteOneEmailTokenArgs_1 = require("./args/DeleteOneEmailTokenArgs");
 const EmailToken_1 = require("../../../models/EmailToken");
 const helpers_1 = require("../../../helpers");
-let DeleteOneEmailTokenResolver = exports.DeleteOneEmailTokenResolver = class DeleteOneEmailTokenResolver {
+let DeleteOneEmailTokenResolver = class DeleteOneEmailTokenResolver {
     async deleteOneEmailToken(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).emailToken.delete({
@@ -15,6 +15,7 @@ let DeleteOneEmailTokenResolver = exports.DeleteOneEmailTokenResolver = class De
         });
     }
 };
+exports.DeleteOneEmailTokenResolver = DeleteOneEmailTokenResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => EmailToken_1.EmailToken, {
         nullable: true

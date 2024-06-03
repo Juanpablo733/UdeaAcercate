@@ -1,27 +1,27 @@
 "use strict";
-var SessionScalarWhereInput_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SessionScalarWhereInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const DateTimeFilter_1 = require("../inputs/DateTimeFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
-let SessionScalarWhereInput = exports.SessionScalarWhereInput = SessionScalarWhereInput_1 = class SessionScalarWhereInput {
+let SessionScalarWhereInput = class SessionScalarWhereInput {
 };
+exports.SessionScalarWhereInput = SessionScalarWhereInput;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [SessionScalarWhereInput_1], {
+    TypeGraphQL.Field(_type => [SessionScalarWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], SessionScalarWhereInput.prototype, "AND", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [SessionScalarWhereInput_1], {
+    TypeGraphQL.Field(_type => [SessionScalarWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], SessionScalarWhereInput.prototype, "OR", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [SessionScalarWhereInput_1], {
+    TypeGraphQL.Field(_type => [SessionScalarWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
@@ -50,6 +50,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", DateTimeFilter_1.DateTimeFilter)
 ], SessionScalarWhereInput.prototype, "expires", void 0);
-exports.SessionScalarWhereInput = SessionScalarWhereInput = SessionScalarWhereInput_1 = tslib_1.__decorate([
+exports.SessionScalarWhereInput = SessionScalarWhereInput = tslib_1.__decorate([
     TypeGraphQL.InputType("SessionScalarWhereInput", {})
 ], SessionScalarWhereInput);

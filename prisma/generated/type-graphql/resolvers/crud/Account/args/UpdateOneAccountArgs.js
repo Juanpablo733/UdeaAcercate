@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AccountUpdateInput_1 = require("../../../inputs/AccountUpdateInput");
 const AccountWhereUniqueInput_1 = require("../../../inputs/AccountWhereUniqueInput");
-let UpdateOneAccountArgs = exports.UpdateOneAccountArgs = class UpdateOneAccountArgs {
+let UpdateOneAccountArgs = class UpdateOneAccountArgs {
 };
+exports.UpdateOneAccountArgs = UpdateOneAccountArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AccountUpdateInput_1.AccountUpdateInput, {
         nullable: false

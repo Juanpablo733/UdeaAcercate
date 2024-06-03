@@ -7,7 +7,7 @@ const Comment_1 = require("../../../models/Comment");
 const Information_1 = require("../../../models/Information");
 const User_1 = require("../../../models/User");
 const helpers_1 = require("../../../helpers");
-let CommentRelationsResolver = exports.CommentRelationsResolver = class CommentRelationsResolver {
+let CommentRelationsResolver = class CommentRelationsResolver {
     async user(comment, ctx, info) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).comment.findUniqueOrThrow({
@@ -29,6 +29,7 @@ let CommentRelationsResolver = exports.CommentRelationsResolver = class CommentR
         });
     }
 };
+exports.CommentRelationsResolver = CommentRelationsResolver;
 tslib_1.__decorate([
     TypeGraphQL.FieldResolver(_type => User_1.User, {
         nullable: false

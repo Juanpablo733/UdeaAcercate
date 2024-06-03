@@ -4,8 +4,9 @@ exports.FindUniqueUserOrThrowArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const UserWhereUniqueInput_1 = require("../../../inputs/UserWhereUniqueInput");
-let FindUniqueUserOrThrowArgs = exports.FindUniqueUserOrThrowArgs = class FindUniqueUserOrThrowArgs {
+let FindUniqueUserOrThrowArgs = class FindUniqueUserOrThrowArgs {
 };
+exports.FindUniqueUserOrThrowArgs = FindUniqueUserOrThrowArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => UserWhereUniqueInput_1.UserWhereUniqueInput, {
         nullable: false

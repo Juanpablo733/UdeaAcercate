@@ -4,8 +4,9 @@ exports.ProfileMaxOrderByAggregateInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const SortOrder_1 = require("../../enums/SortOrder");
-let ProfileMaxOrderByAggregateInput = exports.ProfileMaxOrderByAggregateInput = class ProfileMaxOrderByAggregateInput {
+let ProfileMaxOrderByAggregateInput = class ProfileMaxOrderByAggregateInput {
 };
+exports.ProfileMaxOrderByAggregateInput = ProfileMaxOrderByAggregateInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
         nullable: true

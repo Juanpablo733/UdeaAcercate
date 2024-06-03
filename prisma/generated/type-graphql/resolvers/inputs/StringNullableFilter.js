@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const NestedStringNullableFilter_1 = require("../inputs/NestedStringNullableFilter");
 const QueryMode_1 = require("../../enums/QueryMode");
-let StringNullableFilter = exports.StringNullableFilter = class StringNullableFilter {
+let StringNullableFilter = class StringNullableFilter {
 };
+exports.StringNullableFilter = StringNullableFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

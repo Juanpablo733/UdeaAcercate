@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const InformationOrderByWithRelationInput_1 = require("../../../inputs/InformationOrderByWithRelationInput");
 const InformationWhereInput_1 = require("../../../inputs/InformationWhereInput");
 const InformationWhereUniqueInput_1 = require("../../../inputs/InformationWhereUniqueInput");
-let AggregateInformationArgs = exports.AggregateInformationArgs = class AggregateInformationArgs {
+let AggregateInformationArgs = class AggregateInformationArgs {
 };
+exports.AggregateInformationArgs = AggregateInformationArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => InformationWhereInput_1.InformationWhereInput, {
         nullable: true

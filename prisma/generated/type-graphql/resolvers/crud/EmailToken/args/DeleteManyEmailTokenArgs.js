@@ -4,8 +4,9 @@ exports.DeleteManyEmailTokenArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const EmailTokenWhereInput_1 = require("../../../inputs/EmailTokenWhereInput");
-let DeleteManyEmailTokenArgs = exports.DeleteManyEmailTokenArgs = class DeleteManyEmailTokenArgs {
+let DeleteManyEmailTokenArgs = class DeleteManyEmailTokenArgs {
 };
+exports.DeleteManyEmailTokenArgs = DeleteManyEmailTokenArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => EmailTokenWhereInput_1.EmailTokenWhereInput, {
         nullable: true

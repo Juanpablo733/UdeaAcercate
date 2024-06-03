@@ -4,8 +4,9 @@ exports.DeleteManyAttendeeArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AttendeeWhereInput_1 = require("../../../inputs/AttendeeWhereInput");
-let DeleteManyAttendeeArgs = exports.DeleteManyAttendeeArgs = class DeleteManyAttendeeArgs {
+let DeleteManyAttendeeArgs = class DeleteManyAttendeeArgs {
 };
+exports.DeleteManyAttendeeArgs = DeleteManyAttendeeArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AttendeeWhereInput_1.AttendeeWhereInput, {
         nullable: true

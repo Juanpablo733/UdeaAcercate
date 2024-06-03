@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.NullableStringFieldUpdateOperationsInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let NullableStringFieldUpdateOperationsInput = exports.NullableStringFieldUpdateOperationsInput = class NullableStringFieldUpdateOperationsInput {
+let NullableStringFieldUpdateOperationsInput = class NullableStringFieldUpdateOperationsInput {
 };
+exports.NullableStringFieldUpdateOperationsInput = NullableStringFieldUpdateOperationsInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

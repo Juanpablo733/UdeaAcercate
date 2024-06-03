@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AccountCreateInput_1 = require("../../../inputs/AccountCreateInput");
 const AccountUpdateInput_1 = require("../../../inputs/AccountUpdateInput");
 const AccountWhereUniqueInput_1 = require("../../../inputs/AccountWhereUniqueInput");
-let UpsertOneAccountArgs = exports.UpsertOneAccountArgs = class UpsertOneAccountArgs {
+let UpsertOneAccountArgs = class UpsertOneAccountArgs {
 };
+exports.UpsertOneAccountArgs = UpsertOneAccountArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AccountWhereUniqueInput_1.AccountWhereUniqueInput, {
         nullable: false

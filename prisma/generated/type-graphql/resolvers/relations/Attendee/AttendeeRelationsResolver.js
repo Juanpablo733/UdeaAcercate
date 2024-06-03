@@ -7,7 +7,7 @@ const Attendee_1 = require("../../../models/Attendee");
 const Event_1 = require("../../../models/Event");
 const User_1 = require("../../../models/User");
 const helpers_1 = require("../../../helpers");
-let AttendeeRelationsResolver = exports.AttendeeRelationsResolver = class AttendeeRelationsResolver {
+let AttendeeRelationsResolver = class AttendeeRelationsResolver {
     async user(attendee, ctx, info) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).attendee.findUniqueOrThrow({
@@ -35,6 +35,7 @@ let AttendeeRelationsResolver = exports.AttendeeRelationsResolver = class Attend
         });
     }
 };
+exports.AttendeeRelationsResolver = AttendeeRelationsResolver;
 tslib_1.__decorate([
     TypeGraphQL.FieldResolver(_type => User_1.User, {
         nullable: false

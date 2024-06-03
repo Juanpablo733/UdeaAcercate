@@ -7,7 +7,7 @@ const GroupByInformationArgs_1 = require("./args/GroupByInformationArgs");
 const Information_1 = require("../../../models/Information");
 const InformationGroupBy_1 = require("../../outputs/InformationGroupBy");
 const helpers_1 = require("../../../helpers");
-let GroupByInformationResolver = exports.GroupByInformationResolver = class GroupByInformationResolver {
+let GroupByInformationResolver = class GroupByInformationResolver {
     async groupByInformation(ctx, info, args) {
         const { _count, _avg, _sum, _min, _max } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).information.groupBy({
@@ -16,6 +16,7 @@ let GroupByInformationResolver = exports.GroupByInformationResolver = class Grou
         });
     }
 };
+exports.GroupByInformationResolver = GroupByInformationResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [InformationGroupBy_1.InformationGroupBy], {
         nullable: false

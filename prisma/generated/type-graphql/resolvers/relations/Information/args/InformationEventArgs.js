@@ -4,8 +4,9 @@ exports.InformationEventArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const EventWhereInput_1 = require("../../../inputs/EventWhereInput");
-let InformationEventArgs = exports.InformationEventArgs = class InformationEventArgs {
+let InformationEventArgs = class InformationEventArgs {
 };
+exports.InformationEventArgs = InformationEventArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => EventWhereInput_1.EventWhereInput, {
         nullable: true

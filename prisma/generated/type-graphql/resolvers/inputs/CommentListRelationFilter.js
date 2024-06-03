@@ -4,8 +4,9 @@ exports.CommentListRelationFilter = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const CommentWhereInput_1 = require("../inputs/CommentWhereInput");
-let CommentListRelationFilter = exports.CommentListRelationFilter = class CommentListRelationFilter {
+let CommentListRelationFilter = class CommentListRelationFilter {
 };
+exports.CommentListRelationFilter = CommentListRelationFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => CommentWhereInput_1.CommentWhereInput, {
         nullable: true

@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const FindUniqueSessionArgs_1 = require("./args/FindUniqueSessionArgs");
 const Session_1 = require("../../../models/Session");
 const helpers_1 = require("../../../helpers");
-let FindUniqueSessionResolver = exports.FindUniqueSessionResolver = class FindUniqueSessionResolver {
+let FindUniqueSessionResolver = class FindUniqueSessionResolver {
     async session(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).session.findUnique({
@@ -15,6 +15,7 @@ let FindUniqueSessionResolver = exports.FindUniqueSessionResolver = class FindUn
         });
     }
 };
+exports.FindUniqueSessionResolver = FindUniqueSessionResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => Session_1.Session, {
         nullable: true

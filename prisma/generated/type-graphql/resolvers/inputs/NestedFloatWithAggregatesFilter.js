@@ -1,13 +1,13 @@
 "use strict";
-var NestedFloatWithAggregatesFilter_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NestedFloatWithAggregatesFilter = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const NestedFloatFilter_1 = require("../inputs/NestedFloatFilter");
 const NestedIntFilter_1 = require("../inputs/NestedIntFilter");
-let NestedFloatWithAggregatesFilter = exports.NestedFloatWithAggregatesFilter = NestedFloatWithAggregatesFilter_1 = class NestedFloatWithAggregatesFilter {
+let NestedFloatWithAggregatesFilter = class NestedFloatWithAggregatesFilter {
 };
+exports.NestedFloatWithAggregatesFilter = NestedFloatWithAggregatesFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Float, {
         nullable: true
@@ -51,7 +51,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Number)
 ], NestedFloatWithAggregatesFilter.prototype, "gte", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => NestedFloatWithAggregatesFilter_1, {
+    TypeGraphQL.Field(_type => NestedFloatWithAggregatesFilter, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", NestedFloatWithAggregatesFilter)
@@ -86,6 +86,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", NestedFloatFilter_1.NestedFloatFilter)
 ], NestedFloatWithAggregatesFilter.prototype, "_max", void 0);
-exports.NestedFloatWithAggregatesFilter = NestedFloatWithAggregatesFilter = NestedFloatWithAggregatesFilter_1 = tslib_1.__decorate([
+exports.NestedFloatWithAggregatesFilter = NestedFloatWithAggregatesFilter = tslib_1.__decorate([
     TypeGraphQL.InputType("NestedFloatWithAggregatesFilter", {})
 ], NestedFloatWithAggregatesFilter);

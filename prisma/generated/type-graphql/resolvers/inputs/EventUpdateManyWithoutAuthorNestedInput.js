@@ -11,8 +11,9 @@ const EventUpdateManyWithWhereWithoutAuthorInput_1 = require("../inputs/EventUpd
 const EventUpdateWithWhereUniqueWithoutAuthorInput_1 = require("../inputs/EventUpdateWithWhereUniqueWithoutAuthorInput");
 const EventUpsertWithWhereUniqueWithoutAuthorInput_1 = require("../inputs/EventUpsertWithWhereUniqueWithoutAuthorInput");
 const EventWhereUniqueInput_1 = require("../inputs/EventWhereUniqueInput");
-let EventUpdateManyWithoutAuthorNestedInput = exports.EventUpdateManyWithoutAuthorNestedInput = class EventUpdateManyWithoutAuthorNestedInput {
+let EventUpdateManyWithoutAuthorNestedInput = class EventUpdateManyWithoutAuthorNestedInput {
 };
+exports.EventUpdateManyWithoutAuthorNestedInput = EventUpdateManyWithoutAuthorNestedInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => [EventCreateWithoutAuthorInput_1.EventCreateWithoutAuthorInput], {
         nullable: true

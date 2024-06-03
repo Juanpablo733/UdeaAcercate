@@ -4,8 +4,9 @@ exports.CreateOneEventArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const EventCreateInput_1 = require("../../../inputs/EventCreateInput");
-let CreateOneEventArgs = exports.CreateOneEventArgs = class CreateOneEventArgs {
+let CreateOneEventArgs = class CreateOneEventArgs {
 };
+exports.CreateOneEventArgs = CreateOneEventArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => EventCreateInput_1.EventCreateInput, {
         nullable: false

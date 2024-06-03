@@ -7,7 +7,7 @@ const AggregateEventArgs_1 = require("./args/AggregateEventArgs");
 const Event_1 = require("../../../models/Event");
 const AggregateEvent_1 = require("../../outputs/AggregateEvent");
 const helpers_1 = require("../../../helpers");
-let AggregateEventResolver = exports.AggregateEventResolver = class AggregateEventResolver {
+let AggregateEventResolver = class AggregateEventResolver {
     async aggregateEvent(ctx, info, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).event.aggregate({
             ...args,
@@ -15,6 +15,7 @@ let AggregateEventResolver = exports.AggregateEventResolver = class AggregateEve
         });
     }
 };
+exports.AggregateEventResolver = AggregateEventResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateEvent_1.AggregateEvent, {
         nullable: false

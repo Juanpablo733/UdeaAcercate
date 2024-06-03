@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const RoleOrderByWithRelationInput_1 = require("../../../inputs/RoleOrderByWithRelationInput");
 const RoleWhereInput_1 = require("../../../inputs/RoleWhereInput");
 const RoleWhereUniqueInput_1 = require("../../../inputs/RoleWhereUniqueInput");
-let AggregateRoleArgs = exports.AggregateRoleArgs = class AggregateRoleArgs {
+let AggregateRoleArgs = class AggregateRoleArgs {
 };
+exports.AggregateRoleArgs = AggregateRoleArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => RoleWhereInput_1.RoleWhereInput, {
         nullable: true

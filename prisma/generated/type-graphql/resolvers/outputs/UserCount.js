@@ -9,7 +9,7 @@ const UserCountCommentsArgs_1 = require("./args/UserCountCommentsArgs");
 const UserCountEventsCreatedArgs_1 = require("./args/UserCountEventsCreatedArgs");
 const UserCountNewsCreatedArgs_1 = require("./args/UserCountNewsCreatedArgs");
 const UserCountSessionsArgs_1 = require("./args/UserCountSessionsArgs");
-let UserCount = exports.UserCount = class UserCount {
+let UserCount = class UserCount {
     getEventsCreated(root, args) {
         return root.eventsCreated;
     }
@@ -29,6 +29,7 @@ let UserCount = exports.UserCount = class UserCount {
         return root.newsCreated;
     }
 };
+exports.UserCount = UserCount;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, {
         name: "eventsCreated",

@@ -9,8 +9,9 @@ const CommentCreateNestedManyWithoutUserInput_1 = require("../inputs/CommentCrea
 const EventCreateNestedManyWithoutAuthorInput_1 = require("../inputs/EventCreateNestedManyWithoutAuthorInput");
 const ProfileCreateNestedOneWithoutUserInput_1 = require("../inputs/ProfileCreateNestedOneWithoutUserInput");
 const SessionCreateNestedManyWithoutUserInput_1 = require("../inputs/SessionCreateNestedManyWithoutUserInput");
-let UserCreateWithoutNewsCreatedInput = exports.UserCreateWithoutNewsCreatedInput = class UserCreateWithoutNewsCreatedInput {
+let UserCreateWithoutNewsCreatedInput = class UserCreateWithoutNewsCreatedInput {
 };
+exports.UserCreateWithoutNewsCreatedInput = UserCreateWithoutNewsCreatedInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

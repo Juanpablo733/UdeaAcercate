@@ -7,6 +7,7 @@ import { informationResolvers } from "./information/resolvers";
 import { commentResolvers } from "./comment/resolvers";
 import { attendeeResolvers } from "./attendee/resolvers";
 import { sentimentResolvers } from "./sentiment/resolvers";
+import { reportResolvers } from "./report/resolvers";
 
 const resolvers: Resolver = {
     Query: {
@@ -112,6 +113,7 @@ const customResolvers = [
     commentResolvers,
     attendeeResolvers,
     sentimentResolvers,
+    reportResolvers
 ]
 
 export { customResolvers }

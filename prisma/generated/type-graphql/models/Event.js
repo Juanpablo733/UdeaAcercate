@@ -4,8 +4,9 @@ exports.Event = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const EventCount_1 = require("../resolvers/outputs/EventCount");
-let Event = exports.Event = class Event {
+let Event = class Event {
 };
+exports.Event = Event;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: false

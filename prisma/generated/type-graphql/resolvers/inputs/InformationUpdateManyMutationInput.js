@@ -9,8 +9,9 @@ const EnumTagFieldUpdateOperationsInput_1 = require("../inputs/EnumTagFieldUpdat
 const InformationUpdatehashtagsInput_1 = require("../inputs/InformationUpdatehashtagsInput");
 const NullableStringFieldUpdateOperationsInput_1 = require("../inputs/NullableStringFieldUpdateOperationsInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
-let InformationUpdateManyMutationInput = exports.InformationUpdateManyMutationInput = class InformationUpdateManyMutationInput {
+let InformationUpdateManyMutationInput = class InformationUpdateManyMutationInput {
 };
+exports.InformationUpdateManyMutationInput = InformationUpdateManyMutationInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, {
         nullable: true

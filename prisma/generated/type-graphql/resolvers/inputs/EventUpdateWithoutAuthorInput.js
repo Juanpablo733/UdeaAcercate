@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AttendeeUpdateManyWithoutEventNestedInput_1 = require("../inputs/AttendeeUpdateManyWithoutEventNestedInput");
 const InformationUpdateOneRequiredWithoutEventNestedInput_1 = require("../inputs/InformationUpdateOneRequiredWithoutEventNestedInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
-let EventUpdateWithoutAuthorInput = exports.EventUpdateWithoutAuthorInput = class EventUpdateWithoutAuthorInput {
+let EventUpdateWithoutAuthorInput = class EventUpdateWithoutAuthorInput {
 };
+exports.EventUpdateWithoutAuthorInput = EventUpdateWithoutAuthorInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, {
         nullable: true

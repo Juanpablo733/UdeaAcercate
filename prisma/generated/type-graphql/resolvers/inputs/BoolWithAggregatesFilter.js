@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const NestedBoolFilter_1 = require("../inputs/NestedBoolFilter");
 const NestedBoolWithAggregatesFilter_1 = require("../inputs/NestedBoolWithAggregatesFilter");
 const NestedIntFilter_1 = require("../inputs/NestedIntFilter");
-let BoolWithAggregatesFilter = exports.BoolWithAggregatesFilter = class BoolWithAggregatesFilter {
+let BoolWithAggregatesFilter = class BoolWithAggregatesFilter {
 };
+exports.BoolWithAggregatesFilter = BoolWithAggregatesFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => Boolean, {
         nullable: true

@@ -7,8 +7,9 @@ const RoleCountOrderByAggregateInput_1 = require("../inputs/RoleCountOrderByAggr
 const RoleMaxOrderByAggregateInput_1 = require("../inputs/RoleMaxOrderByAggregateInput");
 const RoleMinOrderByAggregateInput_1 = require("../inputs/RoleMinOrderByAggregateInput");
 const SortOrder_1 = require("../../enums/SortOrder");
-let RoleOrderByWithAggregationInput = exports.RoleOrderByWithAggregationInput = class RoleOrderByWithAggregationInput {
+let RoleOrderByWithAggregationInput = class RoleOrderByWithAggregationInput {
 };
+exports.RoleOrderByWithAggregationInput = RoleOrderByWithAggregationInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
         nullable: true

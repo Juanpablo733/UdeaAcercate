@@ -4,8 +4,9 @@ exports.InformationMaxAggregate = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const Tag_1 = require("../../enums/Tag");
-let InformationMaxAggregate = exports.InformationMaxAggregate = class InformationMaxAggregate {
+let InformationMaxAggregate = class InformationMaxAggregate {
 };
+exports.InformationMaxAggregate = InformationMaxAggregate;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

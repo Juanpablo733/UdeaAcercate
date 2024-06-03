@@ -7,7 +7,7 @@ const CreateManyRoleArgs_1 = require("./args/CreateManyRoleArgs");
 const Role_1 = require("../../../models/Role");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const helpers_1 = require("../../../helpers");
-let CreateManyRoleResolver = exports.CreateManyRoleResolver = class CreateManyRoleResolver {
+let CreateManyRoleResolver = class CreateManyRoleResolver {
     async createManyRole(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).role.createMany({
@@ -16,6 +16,7 @@ let CreateManyRoleResolver = exports.CreateManyRoleResolver = class CreateManyRo
         });
     }
 };
+exports.CreateManyRoleResolver = CreateManyRoleResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, {
         nullable: false

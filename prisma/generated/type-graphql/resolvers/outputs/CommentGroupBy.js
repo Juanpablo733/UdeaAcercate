@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const CommentCountAggregate_1 = require("../outputs/CommentCountAggregate");
 const CommentMaxAggregate_1 = require("../outputs/CommentMaxAggregate");
 const CommentMinAggregate_1 = require("../outputs/CommentMinAggregate");
-let CommentGroupBy = exports.CommentGroupBy = class CommentGroupBy {
+let CommentGroupBy = class CommentGroupBy {
 };
+exports.CommentGroupBy = CommentGroupBy;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: false

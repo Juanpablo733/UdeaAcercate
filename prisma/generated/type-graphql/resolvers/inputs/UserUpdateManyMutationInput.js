@@ -7,8 +7,9 @@ const DateTimeFieldUpdateOperationsInput_1 = require("../inputs/DateTimeFieldUpd
 const NullableDateTimeFieldUpdateOperationsInput_1 = require("../inputs/NullableDateTimeFieldUpdateOperationsInput");
 const NullableStringFieldUpdateOperationsInput_1 = require("../inputs/NullableStringFieldUpdateOperationsInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
-let UserUpdateManyMutationInput = exports.UserUpdateManyMutationInput = class UserUpdateManyMutationInput {
+let UserUpdateManyMutationInput = class UserUpdateManyMutationInput {
 };
+exports.UserUpdateManyMutationInput = UserUpdateManyMutationInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, {
         nullable: true

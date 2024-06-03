@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const UpsertOneProfileArgs_1 = require("./args/UpsertOneProfileArgs");
 const Profile_1 = require("../../../models/Profile");
 const helpers_1 = require("../../../helpers");
-let UpsertOneProfileResolver = exports.UpsertOneProfileResolver = class UpsertOneProfileResolver {
+let UpsertOneProfileResolver = class UpsertOneProfileResolver {
     async upsertOneProfile(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).profile.upsert({
@@ -15,6 +15,7 @@ let UpsertOneProfileResolver = exports.UpsertOneProfileResolver = class UpsertOn
         });
     }
 };
+exports.UpsertOneProfileResolver = UpsertOneProfileResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Profile_1.Profile, {
         nullable: false

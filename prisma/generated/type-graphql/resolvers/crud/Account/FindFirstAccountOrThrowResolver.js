@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const FindFirstAccountOrThrowArgs_1 = require("./args/FindFirstAccountOrThrowArgs");
 const Account_1 = require("../../../models/Account");
 const helpers_1 = require("../../../helpers");
-let FindFirstAccountOrThrowResolver = exports.FindFirstAccountOrThrowResolver = class FindFirstAccountOrThrowResolver {
+let FindFirstAccountOrThrowResolver = class FindFirstAccountOrThrowResolver {
     async findFirstAccountOrThrow(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).account.findFirstOrThrow({
@@ -15,6 +15,7 @@ let FindFirstAccountOrThrowResolver = exports.FindFirstAccountOrThrowResolver = 
         });
     }
 };
+exports.FindFirstAccountOrThrowResolver = FindFirstAccountOrThrowResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => Account_1.Account, {
         nullable: true

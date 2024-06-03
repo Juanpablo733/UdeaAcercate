@@ -7,8 +7,9 @@ const ProfileOrderByWithRelationInput_1 = require("../../../inputs/ProfileOrderB
 const ProfileWhereInput_1 = require("../../../inputs/ProfileWhereInput");
 const ProfileWhereUniqueInput_1 = require("../../../inputs/ProfileWhereUniqueInput");
 const ProfileScalarFieldEnum_1 = require("../../../../enums/ProfileScalarFieldEnum");
-let FindFirstProfileArgs = exports.FindFirstProfileArgs = class FindFirstProfileArgs {
+let FindFirstProfileArgs = class FindFirstProfileArgs {
 };
+exports.FindFirstProfileArgs = FindFirstProfileArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ProfileWhereInput_1.ProfileWhereInput, {
         nullable: true

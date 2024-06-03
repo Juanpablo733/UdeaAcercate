@@ -4,11 +4,12 @@ exports.EventCount = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const EventCountAttendeesArgs_1 = require("./args/EventCountAttendeesArgs");
-let EventCount = exports.EventCount = class EventCount {
+let EventCount = class EventCount {
     getAttendees(root, args) {
         return root.attendees;
     }
 };
+exports.EventCount = EventCount;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, {
         name: "attendees",

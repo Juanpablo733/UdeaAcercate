@@ -7,8 +7,9 @@ const AttendeeCountOrderByAggregateInput_1 = require("../inputs/AttendeeCountOrd
 const AttendeeMaxOrderByAggregateInput_1 = require("../inputs/AttendeeMaxOrderByAggregateInput");
 const AttendeeMinOrderByAggregateInput_1 = require("../inputs/AttendeeMinOrderByAggregateInput");
 const SortOrder_1 = require("../../enums/SortOrder");
-let AttendeeOrderByWithAggregationInput = exports.AttendeeOrderByWithAggregationInput = class AttendeeOrderByWithAggregationInput {
+let AttendeeOrderByWithAggregationInput = class AttendeeOrderByWithAggregationInput {
 };
+exports.AttendeeOrderByWithAggregationInput = AttendeeOrderByWithAggregationInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
         nullable: true

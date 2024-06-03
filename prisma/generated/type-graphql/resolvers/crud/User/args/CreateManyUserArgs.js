@@ -4,8 +4,9 @@ exports.CreateManyUserArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const UserCreateManyInput_1 = require("../../../inputs/UserCreateManyInput");
-let CreateManyUserArgs = exports.CreateManyUserArgs = class CreateManyUserArgs {
+let CreateManyUserArgs = class CreateManyUserArgs {
 };
+exports.CreateManyUserArgs = CreateManyUserArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => [UserCreateManyInput_1.UserCreateManyInput], {
         nullable: false

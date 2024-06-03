@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const RoleCountAggregate_1 = require("../outputs/RoleCountAggregate");
 const RoleMaxAggregate_1 = require("../outputs/RoleMaxAggregate");
 const RoleMinAggregate_1 = require("../outputs/RoleMinAggregate");
-let AggregateRole = exports.AggregateRole = class AggregateRole {
+let AggregateRole = class AggregateRole {
 };
+exports.AggregateRole = AggregateRole;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => RoleCountAggregate_1.RoleCountAggregate, {
         nullable: true

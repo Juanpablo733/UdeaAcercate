@@ -1,5 +1,4 @@
 "use strict";
-var CommentWhereInput_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentWhereInput = void 0;
 const tslib_1 = require("tslib");
@@ -8,22 +7,23 @@ const DateTimeFilter_1 = require("../inputs/DateTimeFilter");
 const InformationRelationFilter_1 = require("../inputs/InformationRelationFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
 const UserRelationFilter_1 = require("../inputs/UserRelationFilter");
-let CommentWhereInput = exports.CommentWhereInput = CommentWhereInput_1 = class CommentWhereInput {
+let CommentWhereInput = class CommentWhereInput {
 };
+exports.CommentWhereInput = CommentWhereInput;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [CommentWhereInput_1], {
+    TypeGraphQL.Field(_type => [CommentWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], CommentWhereInput.prototype, "AND", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [CommentWhereInput_1], {
+    TypeGraphQL.Field(_type => [CommentWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], CommentWhereInput.prototype, "OR", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [CommentWhereInput_1], {
+    TypeGraphQL.Field(_type => [CommentWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
@@ -70,6 +70,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", InformationRelationFilter_1.InformationRelationFilter)
 ], CommentWhereInput.prototype, "info", void 0);
-exports.CommentWhereInput = CommentWhereInput = CommentWhereInput_1 = tslib_1.__decorate([
+exports.CommentWhereInput = CommentWhereInput = tslib_1.__decorate([
     TypeGraphQL.InputType("CommentWhereInput", {})
 ], CommentWhereInput);

@@ -1,27 +1,27 @@
 "use strict";
-var RoleScalarWhereWithAggregatesInput_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RoleScalarWhereWithAggregatesInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const EnumRoleTagWithAggregatesFilter_1 = require("../inputs/EnumRoleTagWithAggregatesFilter");
 const StringWithAggregatesFilter_1 = require("../inputs/StringWithAggregatesFilter");
-let RoleScalarWhereWithAggregatesInput = exports.RoleScalarWhereWithAggregatesInput = RoleScalarWhereWithAggregatesInput_1 = class RoleScalarWhereWithAggregatesInput {
+let RoleScalarWhereWithAggregatesInput = class RoleScalarWhereWithAggregatesInput {
 };
+exports.RoleScalarWhereWithAggregatesInput = RoleScalarWhereWithAggregatesInput;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [RoleScalarWhereWithAggregatesInput_1], {
+    TypeGraphQL.Field(_type => [RoleScalarWhereWithAggregatesInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], RoleScalarWhereWithAggregatesInput.prototype, "AND", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [RoleScalarWhereWithAggregatesInput_1], {
+    TypeGraphQL.Field(_type => [RoleScalarWhereWithAggregatesInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], RoleScalarWhereWithAggregatesInput.prototype, "OR", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [RoleScalarWhereWithAggregatesInput_1], {
+    TypeGraphQL.Field(_type => [RoleScalarWhereWithAggregatesInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
@@ -38,6 +38,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", EnumRoleTagWithAggregatesFilter_1.EnumRoleTagWithAggregatesFilter)
 ], RoleScalarWhereWithAggregatesInput.prototype, "role", void 0);
-exports.RoleScalarWhereWithAggregatesInput = RoleScalarWhereWithAggregatesInput = RoleScalarWhereWithAggregatesInput_1 = tslib_1.__decorate([
+exports.RoleScalarWhereWithAggregatesInput = RoleScalarWhereWithAggregatesInput = tslib_1.__decorate([
     TypeGraphQL.InputType("RoleScalarWhereWithAggregatesInput", {})
 ], RoleScalarWhereWithAggregatesInput);

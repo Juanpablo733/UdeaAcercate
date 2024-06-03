@@ -7,8 +7,9 @@ const AttendeeOrderByWithAggregationInput_1 = require("../../../inputs/AttendeeO
 const AttendeeScalarWhereWithAggregatesInput_1 = require("../../../inputs/AttendeeScalarWhereWithAggregatesInput");
 const AttendeeWhereInput_1 = require("../../../inputs/AttendeeWhereInput");
 const AttendeeScalarFieldEnum_1 = require("../../../../enums/AttendeeScalarFieldEnum");
-let GroupByAttendeeArgs = exports.GroupByAttendeeArgs = class GroupByAttendeeArgs {
+let GroupByAttendeeArgs = class GroupByAttendeeArgs {
 };
+exports.GroupByAttendeeArgs = GroupByAttendeeArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AttendeeWhereInput_1.AttendeeWhereInput, {
         nullable: true

@@ -4,8 +4,9 @@ exports.InformationMinAggregate = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const Tag_1 = require("../../enums/Tag");
-let InformationMinAggregate = exports.InformationMinAggregate = class InformationMinAggregate {
+let InformationMinAggregate = class InformationMinAggregate {
 };
+exports.InformationMinAggregate = InformationMinAggregate;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

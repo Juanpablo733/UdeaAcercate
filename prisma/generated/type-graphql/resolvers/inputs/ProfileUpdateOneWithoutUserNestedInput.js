@@ -9,8 +9,9 @@ const ProfileUpdateToOneWithWhereWithoutUserInput_1 = require("../inputs/Profile
 const ProfileUpsertWithoutUserInput_1 = require("../inputs/ProfileUpsertWithoutUserInput");
 const ProfileWhereInput_1 = require("../inputs/ProfileWhereInput");
 const ProfileWhereUniqueInput_1 = require("../inputs/ProfileWhereUniqueInput");
-let ProfileUpdateOneWithoutUserNestedInput = exports.ProfileUpdateOneWithoutUserNestedInput = class ProfileUpdateOneWithoutUserNestedInput {
+let ProfileUpdateOneWithoutUserNestedInput = class ProfileUpdateOneWithoutUserNestedInput {
 };
+exports.ProfileUpdateOneWithoutUserNestedInput = ProfileUpdateOneWithoutUserNestedInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ProfileCreateWithoutUserInput_1.ProfileCreateWithoutUserInput, {
         nullable: true

@@ -4,8 +4,9 @@ exports.IntNullableFilter = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const NestedIntNullableFilter_1 = require("../inputs/NestedIntNullableFilter");
-let IntNullableFilter = exports.IntNullableFilter = class IntNullableFilter {
+let IntNullableFilter = class IntNullableFilter {
 };
+exports.IntNullableFilter = IntNullableFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, {
         nullable: true

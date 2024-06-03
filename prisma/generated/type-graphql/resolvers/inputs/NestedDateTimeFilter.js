@@ -1,11 +1,11 @@
 "use strict";
-var NestedDateTimeFilter_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NestedDateTimeFilter = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let NestedDateTimeFilter = exports.NestedDateTimeFilter = NestedDateTimeFilter_1 = class NestedDateTimeFilter {
+let NestedDateTimeFilter = class NestedDateTimeFilter {
 };
+exports.NestedDateTimeFilter = NestedDateTimeFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => Date, {
         nullable: true
@@ -49,11 +49,11 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Date)
 ], NestedDateTimeFilter.prototype, "gte", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => NestedDateTimeFilter_1, {
+    TypeGraphQL.Field(_type => NestedDateTimeFilter, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", NestedDateTimeFilter)
 ], NestedDateTimeFilter.prototype, "not", void 0);
-exports.NestedDateTimeFilter = NestedDateTimeFilter = NestedDateTimeFilter_1 = tslib_1.__decorate([
+exports.NestedDateTimeFilter = NestedDateTimeFilter = tslib_1.__decorate([
     TypeGraphQL.InputType("NestedDateTimeFilter", {})
 ], NestedDateTimeFilter);

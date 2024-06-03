@@ -7,7 +7,7 @@ const CreateManyCommentArgs_1 = require("./args/CreateManyCommentArgs");
 const Comment_1 = require("../../../models/Comment");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const helpers_1 = require("../../../helpers");
-let CreateManyCommentResolver = exports.CreateManyCommentResolver = class CreateManyCommentResolver {
+let CreateManyCommentResolver = class CreateManyCommentResolver {
     async createManyComment(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).comment.createMany({
@@ -16,6 +16,7 @@ let CreateManyCommentResolver = exports.CreateManyCommentResolver = class Create
         });
     }
 };
+exports.CreateManyCommentResolver = CreateManyCommentResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, {
         nullable: false

@@ -7,7 +7,7 @@ const AggregateInformationArgs_1 = require("./args/AggregateInformationArgs");
 const Information_1 = require("../../../models/Information");
 const AggregateInformation_1 = require("../../outputs/AggregateInformation");
 const helpers_1 = require("../../../helpers");
-let AggregateInformationResolver = exports.AggregateInformationResolver = class AggregateInformationResolver {
+let AggregateInformationResolver = class AggregateInformationResolver {
     async aggregateInformation(ctx, info, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).information.aggregate({
             ...args,
@@ -15,6 +15,7 @@ let AggregateInformationResolver = exports.AggregateInformationResolver = class 
         });
     }
 };
+exports.AggregateInformationResolver = AggregateInformationResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateInformation_1.AggregateInformation, {
         nullable: false

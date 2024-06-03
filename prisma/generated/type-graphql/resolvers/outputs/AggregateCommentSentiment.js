@@ -8,8 +8,9 @@ const CommentSentimentCountAggregate_1 = require("../outputs/CommentSentimentCou
 const CommentSentimentMaxAggregate_1 = require("../outputs/CommentSentimentMaxAggregate");
 const CommentSentimentMinAggregate_1 = require("../outputs/CommentSentimentMinAggregate");
 const CommentSentimentSumAggregate_1 = require("../outputs/CommentSentimentSumAggregate");
-let AggregateCommentSentiment = exports.AggregateCommentSentiment = class AggregateCommentSentiment {
+let AggregateCommentSentiment = class AggregateCommentSentiment {
 };
+exports.AggregateCommentSentiment = AggregateCommentSentiment;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => CommentSentimentCountAggregate_1.CommentSentimentCountAggregate, {
         nullable: true

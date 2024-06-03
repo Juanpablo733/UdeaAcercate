@@ -1,5 +1,4 @@
 "use strict";
-var InformationScalarWhereWithAggregatesInput_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InformationScalarWhereWithAggregatesInput = void 0;
 const tslib_1 = require("tslib");
@@ -10,22 +9,23 @@ const EnumTagWithAggregatesFilter_1 = require("../inputs/EnumTagWithAggregatesFi
 const StringNullableListFilter_1 = require("../inputs/StringNullableListFilter");
 const StringNullableWithAggregatesFilter_1 = require("../inputs/StringNullableWithAggregatesFilter");
 const StringWithAggregatesFilter_1 = require("../inputs/StringWithAggregatesFilter");
-let InformationScalarWhereWithAggregatesInput = exports.InformationScalarWhereWithAggregatesInput = InformationScalarWhereWithAggregatesInput_1 = class InformationScalarWhereWithAggregatesInput {
+let InformationScalarWhereWithAggregatesInput = class InformationScalarWhereWithAggregatesInput {
 };
+exports.InformationScalarWhereWithAggregatesInput = InformationScalarWhereWithAggregatesInput;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [InformationScalarWhereWithAggregatesInput_1], {
+    TypeGraphQL.Field(_type => [InformationScalarWhereWithAggregatesInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], InformationScalarWhereWithAggregatesInput.prototype, "AND", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [InformationScalarWhereWithAggregatesInput_1], {
+    TypeGraphQL.Field(_type => [InformationScalarWhereWithAggregatesInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], InformationScalarWhereWithAggregatesInput.prototype, "OR", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [InformationScalarWhereWithAggregatesInput_1], {
+    TypeGraphQL.Field(_type => [InformationScalarWhereWithAggregatesInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
@@ -84,6 +84,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", BoolWithAggregatesFilter_1.BoolWithAggregatesFilter)
 ], InformationScalarWhereWithAggregatesInput.prototype, "official", void 0);
-exports.InformationScalarWhereWithAggregatesInput = InformationScalarWhereWithAggregatesInput = InformationScalarWhereWithAggregatesInput_1 = tslib_1.__decorate([
+exports.InformationScalarWhereWithAggregatesInput = InformationScalarWhereWithAggregatesInput = tslib_1.__decorate([
     TypeGraphQL.InputType("InformationScalarWhereWithAggregatesInput", {})
 ], InformationScalarWhereWithAggregatesInput);

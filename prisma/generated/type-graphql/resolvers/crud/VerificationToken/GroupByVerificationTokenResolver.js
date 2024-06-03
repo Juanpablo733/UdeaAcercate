@@ -7,7 +7,7 @@ const GroupByVerificationTokenArgs_1 = require("./args/GroupByVerificationTokenA
 const VerificationToken_1 = require("../../../models/VerificationToken");
 const VerificationTokenGroupBy_1 = require("../../outputs/VerificationTokenGroupBy");
 const helpers_1 = require("../../../helpers");
-let GroupByVerificationTokenResolver = exports.GroupByVerificationTokenResolver = class GroupByVerificationTokenResolver {
+let GroupByVerificationTokenResolver = class GroupByVerificationTokenResolver {
     async groupByVerificationToken(ctx, info, args) {
         const { _count, _avg, _sum, _min, _max } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).verificationToken.groupBy({
@@ -16,6 +16,7 @@ let GroupByVerificationTokenResolver = exports.GroupByVerificationTokenResolver 
         });
     }
 };
+exports.GroupByVerificationTokenResolver = GroupByVerificationTokenResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [VerificationTokenGroupBy_1.VerificationTokenGroupBy], {
         nullable: false

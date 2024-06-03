@@ -4,8 +4,9 @@ exports.CreateOneCommentArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const CommentCreateInput_1 = require("../../../inputs/CommentCreateInput");
-let CreateOneCommentArgs = exports.CreateOneCommentArgs = class CreateOneCommentArgs {
+let CreateOneCommentArgs = class CreateOneCommentArgs {
 };
+exports.CreateOneCommentArgs = CreateOneCommentArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => CommentCreateInput_1.CommentCreateInput, {
         nullable: false

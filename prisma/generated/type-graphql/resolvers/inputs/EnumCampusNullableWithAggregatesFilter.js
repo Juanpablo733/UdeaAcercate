@@ -7,8 +7,9 @@ const NestedEnumCampusNullableFilter_1 = require("../inputs/NestedEnumCampusNull
 const NestedEnumCampusNullableWithAggregatesFilter_1 = require("../inputs/NestedEnumCampusNullableWithAggregatesFilter");
 const NestedIntNullableFilter_1 = require("../inputs/NestedIntNullableFilter");
 const Campus_1 = require("../../enums/Campus");
-let EnumCampusNullableWithAggregatesFilter = exports.EnumCampusNullableWithAggregatesFilter = class EnumCampusNullableWithAggregatesFilter {
+let EnumCampusNullableWithAggregatesFilter = class EnumCampusNullableWithAggregatesFilter {
 };
+exports.EnumCampusNullableWithAggregatesFilter = EnumCampusNullableWithAggregatesFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => Campus_1.Campus, {
         nullable: true

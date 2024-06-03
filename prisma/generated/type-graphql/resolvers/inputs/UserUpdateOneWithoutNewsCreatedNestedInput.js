@@ -9,8 +9,9 @@ const UserUpdateToOneWithWhereWithoutNewsCreatedInput_1 = require("../inputs/Use
 const UserUpsertWithoutNewsCreatedInput_1 = require("../inputs/UserUpsertWithoutNewsCreatedInput");
 const UserWhereInput_1 = require("../inputs/UserWhereInput");
 const UserWhereUniqueInput_1 = require("../inputs/UserWhereUniqueInput");
-let UserUpdateOneWithoutNewsCreatedNestedInput = exports.UserUpdateOneWithoutNewsCreatedNestedInput = class UserUpdateOneWithoutNewsCreatedNestedInput {
+let UserUpdateOneWithoutNewsCreatedNestedInput = class UserUpdateOneWithoutNewsCreatedNestedInput {
 };
+exports.UserUpdateOneWithoutNewsCreatedNestedInput = UserUpdateOneWithoutNewsCreatedNestedInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => UserCreateWithoutNewsCreatedInput_1.UserCreateWithoutNewsCreatedInput, {
         nullable: true

@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.StringFieldUpdateOperationsInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let StringFieldUpdateOperationsInput = exports.StringFieldUpdateOperationsInput = class StringFieldUpdateOperationsInput {
+let StringFieldUpdateOperationsInput = class StringFieldUpdateOperationsInput {
 };
+exports.StringFieldUpdateOperationsInput = StringFieldUpdateOperationsInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

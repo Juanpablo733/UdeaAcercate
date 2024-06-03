@@ -8,8 +8,9 @@ const NullableEnumUserTypeFieldUpdateOperationsInput_1 = require("../inputs/Null
 const NullableStringFieldUpdateOperationsInput_1 = require("../inputs/NullableStringFieldUpdateOperationsInput");
 const ProfileUpdatesocialLinksInput_1 = require("../inputs/ProfileUpdatesocialLinksInput");
 const UserUpdateOneRequiredWithoutProfileNestedInput_1 = require("../inputs/UserUpdateOneRequiredWithoutProfileNestedInput");
-let ProfileUpdateInput = exports.ProfileUpdateInput = class ProfileUpdateInput {
+let ProfileUpdateInput = class ProfileUpdateInput {
 };
+exports.ProfileUpdateInput = ProfileUpdateInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput_1.NullableStringFieldUpdateOperationsInput, {
         nullable: true

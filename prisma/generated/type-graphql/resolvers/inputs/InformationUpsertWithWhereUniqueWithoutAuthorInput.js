@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const InformationCreateWithoutAuthorInput_1 = require("../inputs/InformationCreateWithoutAuthorInput");
 const InformationUpdateWithoutAuthorInput_1 = require("../inputs/InformationUpdateWithoutAuthorInput");
 const InformationWhereUniqueInput_1 = require("../inputs/InformationWhereUniqueInput");
-let InformationUpsertWithWhereUniqueWithoutAuthorInput = exports.InformationUpsertWithWhereUniqueWithoutAuthorInput = class InformationUpsertWithWhereUniqueWithoutAuthorInput {
+let InformationUpsertWithWhereUniqueWithoutAuthorInput = class InformationUpsertWithWhereUniqueWithoutAuthorInput {
 };
+exports.InformationUpsertWithWhereUniqueWithoutAuthorInput = InformationUpsertWithWhereUniqueWithoutAuthorInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => InformationWhereUniqueInput_1.InformationWhereUniqueInput, {
         nullable: false

@@ -7,7 +7,7 @@ const GroupByProfileArgs_1 = require("./args/GroupByProfileArgs");
 const Profile_1 = require("../../../models/Profile");
 const ProfileGroupBy_1 = require("../../outputs/ProfileGroupBy");
 const helpers_1 = require("../../../helpers");
-let GroupByProfileResolver = exports.GroupByProfileResolver = class GroupByProfileResolver {
+let GroupByProfileResolver = class GroupByProfileResolver {
     async groupByProfile(ctx, info, args) {
         const { _count, _avg, _sum, _min, _max } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).profile.groupBy({
@@ -16,6 +16,7 @@ let GroupByProfileResolver = exports.GroupByProfileResolver = class GroupByProfi
         });
     }
 };
+exports.GroupByProfileResolver = GroupByProfileResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [ProfileGroupBy_1.ProfileGroupBy], {
         nullable: false

@@ -7,8 +7,9 @@ const NullableEnumCampusFieldUpdateOperationsInput_1 = require("../inputs/Nullab
 const NullableEnumUserTypeFieldUpdateOperationsInput_1 = require("../inputs/NullableEnumUserTypeFieldUpdateOperationsInput");
 const NullableStringFieldUpdateOperationsInput_1 = require("../inputs/NullableStringFieldUpdateOperationsInput");
 const ProfileUpdatesocialLinksInput_1 = require("../inputs/ProfileUpdatesocialLinksInput");
-let ProfileUpdateManyMutationInput = exports.ProfileUpdateManyMutationInput = class ProfileUpdateManyMutationInput {
+let ProfileUpdateManyMutationInput = class ProfileUpdateManyMutationInput {
 };
+exports.ProfileUpdateManyMutationInput = ProfileUpdateManyMutationInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput_1.NullableStringFieldUpdateOperationsInput, {
         nullable: true

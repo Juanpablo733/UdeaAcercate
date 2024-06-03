@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const UserUpdateWithoutEventsCreatedInput_1 = require("../inputs/UserUpdateWithoutEventsCreatedInput");
 const UserWhereInput_1 = require("../inputs/UserWhereInput");
-let UserUpdateToOneWithWhereWithoutEventsCreatedInput = exports.UserUpdateToOneWithWhereWithoutEventsCreatedInput = class UserUpdateToOneWithWhereWithoutEventsCreatedInput {
+let UserUpdateToOneWithWhereWithoutEventsCreatedInput = class UserUpdateToOneWithWhereWithoutEventsCreatedInput {
 };
+exports.UserUpdateToOneWithWhereWithoutEventsCreatedInput = UserUpdateToOneWithWhereWithoutEventsCreatedInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => UserWhereInput_1.UserWhereInput, {
         nullable: true

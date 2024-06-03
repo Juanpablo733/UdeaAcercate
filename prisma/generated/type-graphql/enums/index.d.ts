@@ -9,6 +9,7 @@ export { InformationScalarFieldEnum } from "./InformationScalarFieldEnum";
 export { NullsOrder } from "./NullsOrder";
 export { ProfileScalarFieldEnum } from "./ProfileScalarFieldEnum";
 export { QueryMode } from "./QueryMode";
+export { ReportScalarFieldEnum } from "./ReportScalarFieldEnum";
 export { RoleScalarFieldEnum } from "./RoleScalarFieldEnum";
 export { RoleTag } from "./RoleTag";
 export { Sentiment } from "./Sentiment";

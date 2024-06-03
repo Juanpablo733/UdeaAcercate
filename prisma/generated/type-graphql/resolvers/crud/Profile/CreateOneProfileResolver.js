@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const CreateOneProfileArgs_1 = require("./args/CreateOneProfileArgs");
 const Profile_1 = require("../../../models/Profile");
 const helpers_1 = require("../../../helpers");
-let CreateOneProfileResolver = exports.CreateOneProfileResolver = class CreateOneProfileResolver {
+let CreateOneProfileResolver = class CreateOneProfileResolver {
     async createOneProfile(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).profile.create({
@@ -15,6 +15,7 @@ let CreateOneProfileResolver = exports.CreateOneProfileResolver = class CreateOn
         });
     }
 };
+exports.CreateOneProfileResolver = CreateOneProfileResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Profile_1.Profile, {
         nullable: false

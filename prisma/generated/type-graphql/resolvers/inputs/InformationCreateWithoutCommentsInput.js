@@ -7,8 +7,9 @@ const EventCreateNestedOneWithoutInfoInput_1 = require("../inputs/EventCreateNes
 const InformationCreatehashtagsInput_1 = require("../inputs/InformationCreatehashtagsInput");
 const UserCreateNestedOneWithoutNewsCreatedInput_1 = require("../inputs/UserCreateNestedOneWithoutNewsCreatedInput");
 const Tag_1 = require("../../enums/Tag");
-let InformationCreateWithoutCommentsInput = exports.InformationCreateWithoutCommentsInput = class InformationCreateWithoutCommentsInput {
+let InformationCreateWithoutCommentsInput = class InformationCreateWithoutCommentsInput {
 };
+exports.InformationCreateWithoutCommentsInput = InformationCreateWithoutCommentsInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

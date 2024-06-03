@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const InformationCreatehashtagsInput_1 = require("../inputs/InformationCreatehashtagsInput");
 const Tag_1 = require("../../enums/Tag");
-let InformationCreateManyInput = exports.InformationCreateManyInput = class InformationCreateManyInput {
+let InformationCreateManyInput = class InformationCreateManyInput {
 };
+exports.InformationCreateManyInput = InformationCreateManyInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

@@ -4,8 +4,9 @@ exports.FindUniqueVerificationTokenArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const VerificationTokenWhereUniqueInput_1 = require("../../../inputs/VerificationTokenWhereUniqueInput");
-let FindUniqueVerificationTokenArgs = exports.FindUniqueVerificationTokenArgs = class FindUniqueVerificationTokenArgs {
+let FindUniqueVerificationTokenArgs = class FindUniqueVerificationTokenArgs {
 };
+exports.FindUniqueVerificationTokenArgs = FindUniqueVerificationTokenArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => VerificationTokenWhereUniqueInput_1.VerificationTokenWhereUniqueInput, {
         nullable: false

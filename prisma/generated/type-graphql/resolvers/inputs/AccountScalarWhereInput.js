@@ -1,5 +1,4 @@
 "use strict";
-var AccountScalarWhereInput_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountScalarWhereInput = void 0;
 const tslib_1 = require("tslib");
@@ -7,22 +6,23 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const IntNullableFilter_1 = require("../inputs/IntNullableFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
 const StringNullableFilter_1 = require("../inputs/StringNullableFilter");
-let AccountScalarWhereInput = exports.AccountScalarWhereInput = AccountScalarWhereInput_1 = class AccountScalarWhereInput {
+let AccountScalarWhereInput = class AccountScalarWhereInput {
 };
+exports.AccountScalarWhereInput = AccountScalarWhereInput;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [AccountScalarWhereInput_1], {
+    TypeGraphQL.Field(_type => [AccountScalarWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], AccountScalarWhereInput.prototype, "AND", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [AccountScalarWhereInput_1], {
+    TypeGraphQL.Field(_type => [AccountScalarWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], AccountScalarWhereInput.prototype, "OR", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [AccountScalarWhereInput_1], {
+    TypeGraphQL.Field(_type => [AccountScalarWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
@@ -99,6 +99,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", StringNullableFilter_1.StringNullableFilter)
 ], AccountScalarWhereInput.prototype, "session_state", void 0);
-exports.AccountScalarWhereInput = AccountScalarWhereInput = AccountScalarWhereInput_1 = tslib_1.__decorate([
+exports.AccountScalarWhereInput = AccountScalarWhereInput = tslib_1.__decorate([
     TypeGraphQL.InputType("AccountScalarWhereInput", {})
 ], AccountScalarWhereInput);

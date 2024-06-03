@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const DeleteOneAttendeeArgs_1 = require("./args/DeleteOneAttendeeArgs");
 const Attendee_1 = require("../../../models/Attendee");
 const helpers_1 = require("../../../helpers");
-let DeleteOneAttendeeResolver = exports.DeleteOneAttendeeResolver = class DeleteOneAttendeeResolver {
+let DeleteOneAttendeeResolver = class DeleteOneAttendeeResolver {
     async deleteOneAttendee(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).attendee.delete({
@@ -15,6 +15,7 @@ let DeleteOneAttendeeResolver = exports.DeleteOneAttendeeResolver = class Delete
         });
     }
 };
+exports.DeleteOneAttendeeResolver = DeleteOneAttendeeResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Attendee_1.Attendee, {
         nullable: true

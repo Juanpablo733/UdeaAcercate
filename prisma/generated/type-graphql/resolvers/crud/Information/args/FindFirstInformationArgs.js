@@ -7,8 +7,9 @@ const InformationOrderByWithRelationInput_1 = require("../../../inputs/Informati
 const InformationWhereInput_1 = require("../../../inputs/InformationWhereInput");
 const InformationWhereUniqueInput_1 = require("../../../inputs/InformationWhereUniqueInput");
 const InformationScalarFieldEnum_1 = require("../../../../enums/InformationScalarFieldEnum");
-let FindFirstInformationArgs = exports.FindFirstInformationArgs = class FindFirstInformationArgs {
+let FindFirstInformationArgs = class FindFirstInformationArgs {
 };
+exports.FindFirstInformationArgs = FindFirstInformationArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => InformationWhereInput_1.InformationWhereInput, {
         nullable: true

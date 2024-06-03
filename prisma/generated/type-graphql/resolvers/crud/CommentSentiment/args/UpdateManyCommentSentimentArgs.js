@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const CommentSentimentUpdateManyMutationInput_1 = require("../../../inputs/CommentSentimentUpdateManyMutationInput");
 const CommentSentimentWhereInput_1 = require("../../../inputs/CommentSentimentWhereInput");
-let UpdateManyCommentSentimentArgs = exports.UpdateManyCommentSentimentArgs = class UpdateManyCommentSentimentArgs {
+let UpdateManyCommentSentimentArgs = class UpdateManyCommentSentimentArgs {
 };
+exports.UpdateManyCommentSentimentArgs = UpdateManyCommentSentimentArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => CommentSentimentUpdateManyMutationInput_1.CommentSentimentUpdateManyMutationInput, {
         nullable: false

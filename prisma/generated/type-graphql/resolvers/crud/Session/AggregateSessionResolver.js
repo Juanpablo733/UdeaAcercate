@@ -7,7 +7,7 @@ const AggregateSessionArgs_1 = require("./args/AggregateSessionArgs");
 const Session_1 = require("../../../models/Session");
 const AggregateSession_1 = require("../../outputs/AggregateSession");
 const helpers_1 = require("../../../helpers");
-let AggregateSessionResolver = exports.AggregateSessionResolver = class AggregateSessionResolver {
+let AggregateSessionResolver = class AggregateSessionResolver {
     async aggregateSession(ctx, info, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).session.aggregate({
             ...args,
@@ -15,6 +15,7 @@ let AggregateSessionResolver = exports.AggregateSessionResolver = class Aggregat
         });
     }
 };
+exports.AggregateSessionResolver = AggregateSessionResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateSession_1.AggregateSession, {
         nullable: false

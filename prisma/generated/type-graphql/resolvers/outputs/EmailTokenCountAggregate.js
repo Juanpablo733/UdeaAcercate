@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.EmailTokenCountAggregate = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let EmailTokenCountAggregate = exports.EmailTokenCountAggregate = class EmailTokenCountAggregate {
+let EmailTokenCountAggregate = class EmailTokenCountAggregate {
 };
+exports.EmailTokenCountAggregate = EmailTokenCountAggregate;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, {
         nullable: false

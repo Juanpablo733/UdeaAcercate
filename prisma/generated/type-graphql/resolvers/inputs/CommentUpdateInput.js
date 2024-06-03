@@ -7,8 +7,9 @@ const DateTimeFieldUpdateOperationsInput_1 = require("../inputs/DateTimeFieldUpd
 const InformationUpdateOneRequiredWithoutCommentsNestedInput_1 = require("../inputs/InformationUpdateOneRequiredWithoutCommentsNestedInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
 const UserUpdateOneRequiredWithoutCommentsNestedInput_1 = require("../inputs/UserUpdateOneRequiredWithoutCommentsNestedInput");
-let CommentUpdateInput = exports.CommentUpdateInput = class CommentUpdateInput {
+let CommentUpdateInput = class CommentUpdateInput {
 };
+exports.CommentUpdateInput = CommentUpdateInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, {
         nullable: true

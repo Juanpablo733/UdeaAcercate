@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const FindFirstInformationOrThrowArgs_1 = require("./args/FindFirstInformationOrThrowArgs");
 const Information_1 = require("../../../models/Information");
 const helpers_1 = require("../../../helpers");
-let FindFirstInformationOrThrowResolver = exports.FindFirstInformationOrThrowResolver = class FindFirstInformationOrThrowResolver {
+let FindFirstInformationOrThrowResolver = class FindFirstInformationOrThrowResolver {
     async findFirstInformationOrThrow(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).information.findFirstOrThrow({
@@ -15,6 +15,7 @@ let FindFirstInformationOrThrowResolver = exports.FindFirstInformationOrThrowRes
         });
     }
 };
+exports.FindFirstInformationOrThrowResolver = FindFirstInformationOrThrowResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => Information_1.Information, {
         nullable: true

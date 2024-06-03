@@ -11,8 +11,9 @@ const InformationUpdatehashtagsInput_1 = require("../inputs/InformationUpdatehas
 const NullableStringFieldUpdateOperationsInput_1 = require("../inputs/NullableStringFieldUpdateOperationsInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
 const UserUpdateOneWithoutNewsCreatedNestedInput_1 = require("../inputs/UserUpdateOneWithoutNewsCreatedNestedInput");
-let InformationUpdateWithoutCommentsInput = exports.InformationUpdateWithoutCommentsInput = class InformationUpdateWithoutCommentsInput {
+let InformationUpdateWithoutCommentsInput = class InformationUpdateWithoutCommentsInput {
 };
+exports.InformationUpdateWithoutCommentsInput = InformationUpdateWithoutCommentsInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, {
         nullable: true

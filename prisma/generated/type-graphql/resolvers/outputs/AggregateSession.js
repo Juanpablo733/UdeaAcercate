@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const SessionCountAggregate_1 = require("../outputs/SessionCountAggregate");
 const SessionMaxAggregate_1 = require("../outputs/SessionMaxAggregate");
 const SessionMinAggregate_1 = require("../outputs/SessionMinAggregate");
-let AggregateSession = exports.AggregateSession = class AggregateSession {
+let AggregateSession = class AggregateSession {
 };
+exports.AggregateSession = AggregateSession;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SessionCountAggregate_1.SessionCountAggregate, {
         nullable: true

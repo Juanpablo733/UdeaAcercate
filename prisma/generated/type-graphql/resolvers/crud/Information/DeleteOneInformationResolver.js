@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const DeleteOneInformationArgs_1 = require("./args/DeleteOneInformationArgs");
 const Information_1 = require("../../../models/Information");
 const helpers_1 = require("../../../helpers");
-let DeleteOneInformationResolver = exports.DeleteOneInformationResolver = class DeleteOneInformationResolver {
+let DeleteOneInformationResolver = class DeleteOneInformationResolver {
     async deleteOneInformation(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).information.delete({
@@ -15,6 +15,7 @@ let DeleteOneInformationResolver = exports.DeleteOneInformationResolver = class 
         });
     }
 };
+exports.DeleteOneInformationResolver = DeleteOneInformationResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Information_1.Information, {
         nullable: true

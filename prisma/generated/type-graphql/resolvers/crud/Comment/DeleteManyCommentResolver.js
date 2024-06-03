@@ -7,7 +7,7 @@ const DeleteManyCommentArgs_1 = require("./args/DeleteManyCommentArgs");
 const Comment_1 = require("../../../models/Comment");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const helpers_1 = require("../../../helpers");
-let DeleteManyCommentResolver = exports.DeleteManyCommentResolver = class DeleteManyCommentResolver {
+let DeleteManyCommentResolver = class DeleteManyCommentResolver {
     async deleteManyComment(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).comment.deleteMany({
@@ -16,6 +16,7 @@ let DeleteManyCommentResolver = exports.DeleteManyCommentResolver = class Delete
         });
     }
 };
+exports.DeleteManyCommentResolver = DeleteManyCommentResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, {
         nullable: false

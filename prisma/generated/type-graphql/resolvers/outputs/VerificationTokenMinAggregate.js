@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.VerificationTokenMinAggregate = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let VerificationTokenMinAggregate = exports.VerificationTokenMinAggregate = class VerificationTokenMinAggregate {
+let VerificationTokenMinAggregate = class VerificationTokenMinAggregate {
 };
+exports.VerificationTokenMinAggregate = VerificationTokenMinAggregate;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

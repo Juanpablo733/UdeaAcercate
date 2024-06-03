@@ -208,6 +208,13 @@ exports.Prisma.RoleScalarFieldEnum = {
   role: 'role'
 };
 
+exports.Prisma.ReportScalarFieldEnum = {
+  userId: 'userId',
+  eventId: 'eventId',
+  reason: 'reason',
+  dateTime: 'dateTime'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -272,7 +279,8 @@ exports.Prisma.ModelName = {
   Attendee: 'Attendee',
   Comment: 'Comment',
   CommentSentiment: 'CommentSentiment',
-  Role: 'Role'
+  Role: 'Role',
+  Report: 'Report'
 };
 
 /**

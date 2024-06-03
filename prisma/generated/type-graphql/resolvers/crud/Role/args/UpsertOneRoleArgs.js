@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const RoleCreateInput_1 = require("../../../inputs/RoleCreateInput");
 const RoleUpdateInput_1 = require("../../../inputs/RoleUpdateInput");
 const RoleWhereUniqueInput_1 = require("../../../inputs/RoleWhereUniqueInput");
-let UpsertOneRoleArgs = exports.UpsertOneRoleArgs = class UpsertOneRoleArgs {
+let UpsertOneRoleArgs = class UpsertOneRoleArgs {
 };
+exports.UpsertOneRoleArgs = UpsertOneRoleArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => RoleWhereUniqueInput_1.RoleWhereUniqueInput, {
         nullable: false

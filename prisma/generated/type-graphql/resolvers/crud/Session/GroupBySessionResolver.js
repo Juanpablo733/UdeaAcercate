@@ -7,7 +7,7 @@ const GroupBySessionArgs_1 = require("./args/GroupBySessionArgs");
 const Session_1 = require("../../../models/Session");
 const SessionGroupBy_1 = require("../../outputs/SessionGroupBy");
 const helpers_1 = require("../../../helpers");
-let GroupBySessionResolver = exports.GroupBySessionResolver = class GroupBySessionResolver {
+let GroupBySessionResolver = class GroupBySessionResolver {
     async groupBySession(ctx, info, args) {
         const { _count, _avg, _sum, _min, _max } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).session.groupBy({
@@ -16,6 +16,7 @@ let GroupBySessionResolver = exports.GroupBySessionResolver = class GroupBySessi
         });
     }
 };
+exports.GroupBySessionResolver = GroupBySessionResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [SessionGroupBy_1.SessionGroupBy], {
         nullable: false

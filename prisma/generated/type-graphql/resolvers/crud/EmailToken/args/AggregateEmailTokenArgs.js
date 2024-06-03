@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const EmailTokenOrderByWithRelationInput_1 = require("../../../inputs/EmailTokenOrderByWithRelationInput");
 const EmailTokenWhereInput_1 = require("../../../inputs/EmailTokenWhereInput");
 const EmailTokenWhereUniqueInput_1 = require("../../../inputs/EmailTokenWhereUniqueInput");
-let AggregateEmailTokenArgs = exports.AggregateEmailTokenArgs = class AggregateEmailTokenArgs {
+let AggregateEmailTokenArgs = class AggregateEmailTokenArgs {
 };
+exports.AggregateEmailTokenArgs = AggregateEmailTokenArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => EmailTokenWhereInput_1.EmailTokenWhereInput, {
         nullable: true

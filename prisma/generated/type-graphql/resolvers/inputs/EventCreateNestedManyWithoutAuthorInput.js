@@ -7,8 +7,9 @@ const EventCreateManyAuthorInputEnvelope_1 = require("../inputs/EventCreateManyA
 const EventCreateOrConnectWithoutAuthorInput_1 = require("../inputs/EventCreateOrConnectWithoutAuthorInput");
 const EventCreateWithoutAuthorInput_1 = require("../inputs/EventCreateWithoutAuthorInput");
 const EventWhereUniqueInput_1 = require("../inputs/EventWhereUniqueInput");
-let EventCreateNestedManyWithoutAuthorInput = exports.EventCreateNestedManyWithoutAuthorInput = class EventCreateNestedManyWithoutAuthorInput {
+let EventCreateNestedManyWithoutAuthorInput = class EventCreateNestedManyWithoutAuthorInput {
 };
+exports.EventCreateNestedManyWithoutAuthorInput = EventCreateNestedManyWithoutAuthorInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => [EventCreateWithoutAuthorInput_1.EventCreateWithoutAuthorInput], {
         nullable: true

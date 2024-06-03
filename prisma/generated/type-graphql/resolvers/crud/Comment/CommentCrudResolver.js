@@ -22,7 +22,7 @@ const Comment_1 = require("../../../models/Comment");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const AggregateComment_1 = require("../../outputs/AggregateComment");
 const CommentGroupBy_1 = require("../../outputs/CommentGroupBy");
-let CommentCrudResolver = exports.CommentCrudResolver = class CommentCrudResolver {
+let CommentCrudResolver = class CommentCrudResolver {
     async aggregateComment(ctx, info, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).comment.aggregate({
             ...args,
@@ -121,6 +121,7 @@ let CommentCrudResolver = exports.CommentCrudResolver = class CommentCrudResolve
         });
     }
 };
+exports.CommentCrudResolver = CommentCrudResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateComment_1.AggregateComment, {
         nullable: false

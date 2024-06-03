@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const InformationCreateWithoutCommentsInput_1 = require("../inputs/InformationCreateWithoutCommentsInput");
 const InformationUpdateWithoutCommentsInput_1 = require("../inputs/InformationUpdateWithoutCommentsInput");
 const InformationWhereInput_1 = require("../inputs/InformationWhereInput");
-let InformationUpsertWithoutCommentsInput = exports.InformationUpsertWithoutCommentsInput = class InformationUpsertWithoutCommentsInput {
+let InformationUpsertWithoutCommentsInput = class InformationUpsertWithoutCommentsInput {
 };
+exports.InformationUpsertWithoutCommentsInput = InformationUpsertWithoutCommentsInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => InformationUpdateWithoutCommentsInput_1.InformationUpdateWithoutCommentsInput, {
         nullable: false

@@ -14,8 +14,9 @@ const NullableStringFieldUpdateOperationsInput_1 = require("../inputs/NullableSt
 const ProfileUpdateOneWithoutUserNestedInput_1 = require("../inputs/ProfileUpdateOneWithoutUserNestedInput");
 const SessionUpdateManyWithoutUserNestedInput_1 = require("../inputs/SessionUpdateManyWithoutUserNestedInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
-let UserUpdateInput = exports.UserUpdateInput = class UserUpdateInput {
+let UserUpdateInput = class UserUpdateInput {
 };
+exports.UserUpdateInput = UserUpdateInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, {
         nullable: true

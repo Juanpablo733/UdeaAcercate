@@ -4,8 +4,9 @@ exports.FindUniqueCommentOrThrowArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const CommentWhereUniqueInput_1 = require("../../../inputs/CommentWhereUniqueInput");
-let FindUniqueCommentOrThrowArgs = exports.FindUniqueCommentOrThrowArgs = class FindUniqueCommentOrThrowArgs {
+let FindUniqueCommentOrThrowArgs = class FindUniqueCommentOrThrowArgs {
 };
+exports.FindUniqueCommentOrThrowArgs = FindUniqueCommentOrThrowArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => CommentWhereUniqueInput_1.CommentWhereUniqueInput, {
         nullable: false

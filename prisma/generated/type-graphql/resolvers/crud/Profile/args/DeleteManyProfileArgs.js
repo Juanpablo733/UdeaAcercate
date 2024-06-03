@@ -4,8 +4,9 @@ exports.DeleteManyProfileArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const ProfileWhereInput_1 = require("../../../inputs/ProfileWhereInput");
-let DeleteManyProfileArgs = exports.DeleteManyProfileArgs = class DeleteManyProfileArgs {
+let DeleteManyProfileArgs = class DeleteManyProfileArgs {
 };
+exports.DeleteManyProfileArgs = DeleteManyProfileArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ProfileWhereInput_1.ProfileWhereInput, {
         nullable: true

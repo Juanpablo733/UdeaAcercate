@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const NestedEnumSentimentFilter_1 = require("../inputs/NestedEnumSentimentFilter");
 const Sentiment_1 = require("../../enums/Sentiment");
-let EnumSentimentFilter = exports.EnumSentimentFilter = class EnumSentimentFilter {
+let EnumSentimentFilter = class EnumSentimentFilter {
 };
+exports.EnumSentimentFilter = EnumSentimentFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => Sentiment_1.Sentiment, {
         nullable: true

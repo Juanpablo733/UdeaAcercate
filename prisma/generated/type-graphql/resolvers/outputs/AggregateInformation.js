@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const InformationCountAggregate_1 = require("../outputs/InformationCountAggregate");
 const InformationMaxAggregate_1 = require("../outputs/InformationMaxAggregate");
 const InformationMinAggregate_1 = require("../outputs/InformationMinAggregate");
-let AggregateInformation = exports.AggregateInformation = class AggregateInformation {
+let AggregateInformation = class AggregateInformation {
 };
+exports.AggregateInformation = AggregateInformation;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => InformationCountAggregate_1.InformationCountAggregate, {
         nullable: true

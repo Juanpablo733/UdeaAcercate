@@ -1,6 +1,6 @@
-import { gql } from 'graphql-tag';
+    import { gql } from 'graphql-tag';
 
-const informationTypeDefs = gql`
+    const informationTypeDefs = gql`
     type Information {
         title: String
         description: String
@@ -16,7 +16,7 @@ const informationTypeDefs = gql`
         hashtags:    [String]
     }
     type Mutation{
-        createInformation(title: String!, description: String!, date: DateTime!, 
+        createInfo(title: String!, description: String!, date: DateTime!, 
                 image: String!, tag: String!, authorId: String!): Information
         deleteInformationByOwner(infoId: String!, ownerId: String!): Boolean
     }

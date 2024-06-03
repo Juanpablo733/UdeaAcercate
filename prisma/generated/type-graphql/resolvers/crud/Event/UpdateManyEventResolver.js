@@ -7,7 +7,7 @@ const UpdateManyEventArgs_1 = require("./args/UpdateManyEventArgs");
 const Event_1 = require("../../../models/Event");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const helpers_1 = require("../../../helpers");
-let UpdateManyEventResolver = exports.UpdateManyEventResolver = class UpdateManyEventResolver {
+let UpdateManyEventResolver = class UpdateManyEventResolver {
     async updateManyEvent(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).event.updateMany({
@@ -16,6 +16,7 @@ let UpdateManyEventResolver = exports.UpdateManyEventResolver = class UpdateMany
         });
     }
 };
+exports.UpdateManyEventResolver = UpdateManyEventResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, {
         nullable: false

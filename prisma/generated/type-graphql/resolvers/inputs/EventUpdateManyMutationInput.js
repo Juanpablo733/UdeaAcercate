@@ -4,8 +4,9 @@ exports.EventUpdateManyMutationInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
-let EventUpdateManyMutationInput = exports.EventUpdateManyMutationInput = class EventUpdateManyMutationInput {
+let EventUpdateManyMutationInput = class EventUpdateManyMutationInput {
 };
+exports.EventUpdateManyMutationInput = EventUpdateManyMutationInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, {
         nullable: true

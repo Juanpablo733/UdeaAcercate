@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountMaxAggregate = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let AccountMaxAggregate = exports.AccountMaxAggregate = class AccountMaxAggregate {
+let AccountMaxAggregate = class AccountMaxAggregate {
 };
+exports.AccountMaxAggregate = AccountMaxAggregate;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

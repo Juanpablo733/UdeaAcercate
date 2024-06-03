@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const CreateOneAccountArgs_1 = require("./args/CreateOneAccountArgs");
 const Account_1 = require("../../../models/Account");
 const helpers_1 = require("../../../helpers");
-let CreateOneAccountResolver = exports.CreateOneAccountResolver = class CreateOneAccountResolver {
+let CreateOneAccountResolver = class CreateOneAccountResolver {
     async createOneAccount(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).account.create({
@@ -15,6 +15,7 @@ let CreateOneAccountResolver = exports.CreateOneAccountResolver = class CreateOn
         });
     }
 };
+exports.CreateOneAccountResolver = CreateOneAccountResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Account_1.Account, {
         nullable: false

@@ -7,8 +7,9 @@ const AttendeeUpdateManyWithoutEventNestedInput_1 = require("../inputs/AttendeeU
 const InformationUpdateOneRequiredWithoutEventNestedInput_1 = require("../inputs/InformationUpdateOneRequiredWithoutEventNestedInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
 const UserUpdateOneRequiredWithoutEventsCreatedNestedInput_1 = require("../inputs/UserUpdateOneRequiredWithoutEventsCreatedNestedInput");
-let EventUpdateInput = exports.EventUpdateInput = class EventUpdateInput {
+let EventUpdateInput = class EventUpdateInput {
 };
+exports.EventUpdateInput = EventUpdateInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, {
         nullable: true

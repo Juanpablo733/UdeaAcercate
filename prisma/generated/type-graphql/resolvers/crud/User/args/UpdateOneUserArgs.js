@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const UserUpdateInput_1 = require("../../../inputs/UserUpdateInput");
 const UserWhereUniqueInput_1 = require("../../../inputs/UserWhereUniqueInput");
-let UpdateOneUserArgs = exports.UpdateOneUserArgs = class UpdateOneUserArgs {
+let UpdateOneUserArgs = class UpdateOneUserArgs {
 };
+exports.UpdateOneUserArgs = UpdateOneUserArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => UserUpdateInput_1.UserUpdateInput, {
         nullable: false

@@ -1,5 +1,4 @@
 "use strict";
-var InformationWhereInput_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InformationWhereInput = void 0;
 const tslib_1 = require("tslib");
@@ -13,22 +12,23 @@ const StringFilter_1 = require("../inputs/StringFilter");
 const StringNullableFilter_1 = require("../inputs/StringNullableFilter");
 const StringNullableListFilter_1 = require("../inputs/StringNullableListFilter");
 const UserNullableRelationFilter_1 = require("../inputs/UserNullableRelationFilter");
-let InformationWhereInput = exports.InformationWhereInput = InformationWhereInput_1 = class InformationWhereInput {
+let InformationWhereInput = class InformationWhereInput {
 };
+exports.InformationWhereInput = InformationWhereInput;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [InformationWhereInput_1], {
+    TypeGraphQL.Field(_type => [InformationWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], InformationWhereInput.prototype, "AND", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [InformationWhereInput_1], {
+    TypeGraphQL.Field(_type => [InformationWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], InformationWhereInput.prototype, "OR", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [InformationWhereInput_1], {
+    TypeGraphQL.Field(_type => [InformationWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
@@ -105,6 +105,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", EventNullableRelationFilter_1.EventNullableRelationFilter)
 ], InformationWhereInput.prototype, "event", void 0);
-exports.InformationWhereInput = InformationWhereInput = InformationWhereInput_1 = tslib_1.__decorate([
+exports.InformationWhereInput = InformationWhereInput = tslib_1.__decorate([
     TypeGraphQL.InputType("InformationWhereInput", {})
 ], InformationWhereInput);

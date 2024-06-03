@@ -7,8 +7,9 @@ const NestedIntNullableFilter_1 = require("../inputs/NestedIntNullableFilter");
 const NestedStringNullableFilter_1 = require("../inputs/NestedStringNullableFilter");
 const NestedStringNullableWithAggregatesFilter_1 = require("../inputs/NestedStringNullableWithAggregatesFilter");
 const QueryMode_1 = require("../../enums/QueryMode");
-let StringNullableWithAggregatesFilter = exports.StringNullableWithAggregatesFilter = class StringNullableWithAggregatesFilter {
+let StringNullableWithAggregatesFilter = class StringNullableWithAggregatesFilter {
 };
+exports.StringNullableWithAggregatesFilter = StringNullableWithAggregatesFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

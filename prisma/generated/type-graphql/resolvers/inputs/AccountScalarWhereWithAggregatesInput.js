@@ -1,5 +1,4 @@
 "use strict";
-var AccountScalarWhereWithAggregatesInput_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountScalarWhereWithAggregatesInput = void 0;
 const tslib_1 = require("tslib");
@@ -7,22 +6,23 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const IntNullableWithAggregatesFilter_1 = require("../inputs/IntNullableWithAggregatesFilter");
 const StringNullableWithAggregatesFilter_1 = require("../inputs/StringNullableWithAggregatesFilter");
 const StringWithAggregatesFilter_1 = require("../inputs/StringWithAggregatesFilter");
-let AccountScalarWhereWithAggregatesInput = exports.AccountScalarWhereWithAggregatesInput = AccountScalarWhereWithAggregatesInput_1 = class AccountScalarWhereWithAggregatesInput {
+let AccountScalarWhereWithAggregatesInput = class AccountScalarWhereWithAggregatesInput {
 };
+exports.AccountScalarWhereWithAggregatesInput = AccountScalarWhereWithAggregatesInput;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [AccountScalarWhereWithAggregatesInput_1], {
+    TypeGraphQL.Field(_type => [AccountScalarWhereWithAggregatesInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], AccountScalarWhereWithAggregatesInput.prototype, "AND", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [AccountScalarWhereWithAggregatesInput_1], {
+    TypeGraphQL.Field(_type => [AccountScalarWhereWithAggregatesInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], AccountScalarWhereWithAggregatesInput.prototype, "OR", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [AccountScalarWhereWithAggregatesInput_1], {
+    TypeGraphQL.Field(_type => [AccountScalarWhereWithAggregatesInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
@@ -99,6 +99,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", StringNullableWithAggregatesFilter_1.StringNullableWithAggregatesFilter)
 ], AccountScalarWhereWithAggregatesInput.prototype, "session_state", void 0);
-exports.AccountScalarWhereWithAggregatesInput = AccountScalarWhereWithAggregatesInput = AccountScalarWhereWithAggregatesInput_1 = tslib_1.__decorate([
+exports.AccountScalarWhereWithAggregatesInput = AccountScalarWhereWithAggregatesInput = tslib_1.__decorate([
     TypeGraphQL.InputType("AccountScalarWhereWithAggregatesInput", {})
 ], AccountScalarWhereWithAggregatesInput);

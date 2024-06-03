@@ -7,8 +7,9 @@ const CommentOrderByWithRelationInput_1 = require("../../../inputs/CommentOrderB
 const CommentWhereInput_1 = require("../../../inputs/CommentWhereInput");
 const CommentWhereUniqueInput_1 = require("../../../inputs/CommentWhereUniqueInput");
 const CommentScalarFieldEnum_1 = require("../../../../enums/CommentScalarFieldEnum");
-let FindManyCommentArgs = exports.FindManyCommentArgs = class FindManyCommentArgs {
+let FindManyCommentArgs = class FindManyCommentArgs {
 };
+exports.FindManyCommentArgs = FindManyCommentArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => CommentWhereInput_1.CommentWhereInput, {
         nullable: true

@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const CreateOneRoleArgs_1 = require("./args/CreateOneRoleArgs");
 const Role_1 = require("../../../models/Role");
 const helpers_1 = require("../../../helpers");
-let CreateOneRoleResolver = exports.CreateOneRoleResolver = class CreateOneRoleResolver {
+let CreateOneRoleResolver = class CreateOneRoleResolver {
     async createOneRole(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).role.create({
@@ -15,6 +15,7 @@ let CreateOneRoleResolver = exports.CreateOneRoleResolver = class CreateOneRoleR
         });
     }
 };
+exports.CreateOneRoleResolver = CreateOneRoleResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Role_1.Role, {
         nullable: false

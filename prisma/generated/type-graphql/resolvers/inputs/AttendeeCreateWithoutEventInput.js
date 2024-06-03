@@ -4,8 +4,9 @@ exports.AttendeeCreateWithoutEventInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const UserCreateNestedOneWithoutAttendeesInput_1 = require("../inputs/UserCreateNestedOneWithoutAttendeesInput");
-let AttendeeCreateWithoutEventInput = exports.AttendeeCreateWithoutEventInput = class AttendeeCreateWithoutEventInput {
+let AttendeeCreateWithoutEventInput = class AttendeeCreateWithoutEventInput {
 };
+exports.AttendeeCreateWithoutEventInput = AttendeeCreateWithoutEventInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => Date, {
         nullable: true

@@ -4,8 +4,9 @@ exports.FindUniqueAttendeeArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AttendeeWhereUniqueInput_1 = require("../../../inputs/AttendeeWhereUniqueInput");
-let FindUniqueAttendeeArgs = exports.FindUniqueAttendeeArgs = class FindUniqueAttendeeArgs {
+let FindUniqueAttendeeArgs = class FindUniqueAttendeeArgs {
 };
+exports.FindUniqueAttendeeArgs = FindUniqueAttendeeArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AttendeeWhereUniqueInput_1.AttendeeWhereUniqueInput, {
         nullable: false

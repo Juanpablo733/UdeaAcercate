@@ -4,8 +4,9 @@ exports.DeleteOneEventArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const EventWhereUniqueInput_1 = require("../../../inputs/EventWhereUniqueInput");
-let DeleteOneEventArgs = exports.DeleteOneEventArgs = class DeleteOneEventArgs {
+let DeleteOneEventArgs = class DeleteOneEventArgs {
 };
+exports.DeleteOneEventArgs = DeleteOneEventArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => EventWhereUniqueInput_1.EventWhereUniqueInput, {
         nullable: false

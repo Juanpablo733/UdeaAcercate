@@ -7,8 +7,9 @@ const ProfileCreatesocialLinksInput_1 = require("../inputs/ProfileCreatesocialLi
 const UserCreateNestedOneWithoutProfileInput_1 = require("../inputs/UserCreateNestedOneWithoutProfileInput");
 const Campus_1 = require("../../enums/Campus");
 const UserType_1 = require("../../enums/UserType");
-let ProfileCreateInput = exports.ProfileCreateInput = class ProfileCreateInput {
+let ProfileCreateInput = class ProfileCreateInput {
 };
+exports.ProfileCreateInput = ProfileCreateInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

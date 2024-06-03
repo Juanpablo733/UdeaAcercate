@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserCountAggregate = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let UserCountAggregate = exports.UserCountAggregate = class UserCountAggregate {
+let UserCountAggregate = class UserCountAggregate {
 };
+exports.UserCountAggregate = UserCountAggregate;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, {
         nullable: false

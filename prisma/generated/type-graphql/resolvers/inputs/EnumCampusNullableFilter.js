@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const NestedEnumCampusNullableFilter_1 = require("../inputs/NestedEnumCampusNullableFilter");
 const Campus_1 = require("../../enums/Campus");
-let EnumCampusNullableFilter = exports.EnumCampusNullableFilter = class EnumCampusNullableFilter {
+let EnumCampusNullableFilter = class EnumCampusNullableFilter {
 };
+exports.EnumCampusNullableFilter = EnumCampusNullableFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => Campus_1.Campus, {
         nullable: true

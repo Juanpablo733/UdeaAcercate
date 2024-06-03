@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const ProfileOrderByWithRelationInput_1 = require("../../../inputs/ProfileOrderByWithRelationInput");
 const ProfileWhereInput_1 = require("../../../inputs/ProfileWhereInput");
 const ProfileWhereUniqueInput_1 = require("../../../inputs/ProfileWhereUniqueInput");
-let AggregateProfileArgs = exports.AggregateProfileArgs = class AggregateProfileArgs {
+let AggregateProfileArgs = class AggregateProfileArgs {
 };
+exports.AggregateProfileArgs = AggregateProfileArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ProfileWhereInput_1.ProfileWhereInput, {
         nullable: true
