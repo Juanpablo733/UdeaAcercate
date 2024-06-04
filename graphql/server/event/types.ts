@@ -14,6 +14,7 @@ const eventTypeDefs = gql`
         eventsCreated(userId:String!): [Event]
         eventsAttending(userId:String!): [Event]
         event(id:String!): Event
+        officialEvents: [Event]
     }
     type Mutation {
         createEvent(title: String!, description: String!, place: String!, 
