@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SessionCountAggregate = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let SessionCountAggregate = exports.SessionCountAggregate = class SessionCountAggregate {
+let SessionCountAggregate = class SessionCountAggregate {
 };
+exports.SessionCountAggregate = SessionCountAggregate;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, {
         nullable: false

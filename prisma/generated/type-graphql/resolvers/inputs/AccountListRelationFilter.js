@@ -4,8 +4,9 @@ exports.AccountListRelationFilter = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AccountWhereInput_1 = require("../inputs/AccountWhereInput");
-let AccountListRelationFilter = exports.AccountListRelationFilter = class AccountListRelationFilter {
+let AccountListRelationFilter = class AccountListRelationFilter {
 };
+exports.AccountListRelationFilter = AccountListRelationFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AccountWhereInput_1.AccountWhereInput, {
         nullable: true

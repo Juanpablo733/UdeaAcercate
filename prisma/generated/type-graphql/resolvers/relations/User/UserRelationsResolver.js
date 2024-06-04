@@ -7,6 +7,7 @@ const Account_1 = require("../../../models/Account");
 const Attendee_1 = require("../../../models/Attendee");
 const Comment_1 = require("../../../models/Comment");
 const Event_1 = require("../../../models/Event");
+const Information_1 = require("../../../models/Information");
 const Profile_1 = require("../../../models/Profile");
 const Session_1 = require("../../../models/Session");
 const User_1 = require("../../../models/User");
@@ -14,10 +15,11 @@ const UserAccountsArgs_1 = require("./args/UserAccountsArgs");
 const UserAttendeesArgs_1 = require("./args/UserAttendeesArgs");
 const UserCommentsArgs_1 = require("./args/UserCommentsArgs");
 const UserEventsCreatedArgs_1 = require("./args/UserEventsCreatedArgs");
+const UserNewsCreatedArgs_1 = require("./args/UserNewsCreatedArgs");
 const UserProfileArgs_1 = require("./args/UserProfileArgs");
 const UserSessionsArgs_1 = require("./args/UserSessionsArgs");
 const helpers_1 = require("../../../helpers");
-let UserRelationsResolver = exports.UserRelationsResolver = class UserRelationsResolver {
+let UserRelationsResolver = class UserRelationsResolver {
     async profile(user, ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).user.findUniqueOrThrow({
@@ -84,7 +86,19 @@ let UserRelationsResolver = exports.UserRelationsResolver = class UserRelationsR
             ...(_count && (0, helpers_1.transformCountFieldIntoSelectRelationsCount)(_count)),
         });
     }
+    async newsCreated(user, ctx, info, args) {
+        const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
+        return (0, helpers_1.getPrismaFromContext)(ctx).user.findUniqueOrThrow({
+            where: {
+                id: user.id,
+            },
+        }).newsCreated({
+            ...args,
+            ...(_count && (0, helpers_1.transformCountFieldIntoSelectRelationsCount)(_count)),
+        });
+    }
 };
+exports.UserRelationsResolver = UserRelationsResolver;
 tslib_1.__decorate([
     TypeGraphQL.FieldResolver(_type => Profile_1.Profile, {
         nullable: true
@@ -157,6 +171,18 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:paramtypes", [User_1.User, Object, Object, UserSessionsArgs_1.UserSessionsArgs]),
     tslib_1.__metadata("design:returntype", Promise)
 ], UserRelationsResolver.prototype, "sessions", null);
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => [Information_1.Information], {
+        nullable: false
+    }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__param(3, TypeGraphQL.Args()),
+    tslib_1.__metadata("design:type", Function),
+    tslib_1.__metadata("design:paramtypes", [User_1.User, Object, Object, UserNewsCreatedArgs_1.UserNewsCreatedArgs]),
+    tslib_1.__metadata("design:returntype", Promise)
+], UserRelationsResolver.prototype, "newsCreated", null);
 exports.UserRelationsResolver = UserRelationsResolver = tslib_1.__decorate([
     TypeGraphQL.Resolver(_of => User_1.User)
 ], UserRelationsResolver);

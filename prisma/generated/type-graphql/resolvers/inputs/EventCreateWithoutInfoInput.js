@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AttendeeCreateNestedManyWithoutEventInput_1 = require("../inputs/AttendeeCreateNestedManyWithoutEventInput");
 const UserCreateNestedOneWithoutEventsCreatedInput_1 = require("../inputs/UserCreateNestedOneWithoutEventsCreatedInput");
-let EventCreateWithoutInfoInput = exports.EventCreateWithoutInfoInput = class EventCreateWithoutInfoInput {
+let EventCreateWithoutInfoInput = class EventCreateWithoutInfoInput {
 };
+exports.EventCreateWithoutInfoInput = EventCreateWithoutInfoInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

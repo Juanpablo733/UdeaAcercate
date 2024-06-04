@@ -1,11 +1,11 @@
 "use strict";
-var NestedStringNullableFilter_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NestedStringNullableFilter = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let NestedStringNullableFilter = exports.NestedStringNullableFilter = NestedStringNullableFilter_1 = class NestedStringNullableFilter {
+let NestedStringNullableFilter = class NestedStringNullableFilter {
 };
+exports.NestedStringNullableFilter = NestedStringNullableFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true
@@ -67,11 +67,11 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], NestedStringNullableFilter.prototype, "endsWith", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => NestedStringNullableFilter_1, {
+    TypeGraphQL.Field(_type => NestedStringNullableFilter, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", NestedStringNullableFilter)
 ], NestedStringNullableFilter.prototype, "not", void 0);
-exports.NestedStringNullableFilter = NestedStringNullableFilter = NestedStringNullableFilter_1 = tslib_1.__decorate([
+exports.NestedStringNullableFilter = NestedStringNullableFilter = tslib_1.__decorate([
     TypeGraphQL.InputType("NestedStringNullableFilter", {})
 ], NestedStringNullableFilter);

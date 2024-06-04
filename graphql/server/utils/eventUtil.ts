@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 
 
+
 export async function deleteEvent(db: PrismaClient, eventId: string) {
     await db.event.delete({
         where: {

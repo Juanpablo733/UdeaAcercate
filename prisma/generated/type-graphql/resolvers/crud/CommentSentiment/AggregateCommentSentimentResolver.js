@@ -7,7 +7,7 @@ const AggregateCommentSentimentArgs_1 = require("./args/AggregateCommentSentimen
 const CommentSentiment_1 = require("../../../models/CommentSentiment");
 const AggregateCommentSentiment_1 = require("../../outputs/AggregateCommentSentiment");
 const helpers_1 = require("../../../helpers");
-let AggregateCommentSentimentResolver = exports.AggregateCommentSentimentResolver = class AggregateCommentSentimentResolver {
+let AggregateCommentSentimentResolver = class AggregateCommentSentimentResolver {
     async aggregateCommentSentiment(ctx, info, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).commentSentiment.aggregate({
             ...args,
@@ -15,6 +15,7 @@ let AggregateCommentSentimentResolver = exports.AggregateCommentSentimentResolve
         });
     }
 };
+exports.AggregateCommentSentimentResolver = AggregateCommentSentimentResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateCommentSentiment_1.AggregateCommentSentiment, {
         nullable: false

@@ -7,7 +7,7 @@ const AggregateVerificationTokenArgs_1 = require("./args/AggregateVerificationTo
 const VerificationToken_1 = require("../../../models/VerificationToken");
 const AggregateVerificationToken_1 = require("../../outputs/AggregateVerificationToken");
 const helpers_1 = require("../../../helpers");
-let AggregateVerificationTokenResolver = exports.AggregateVerificationTokenResolver = class AggregateVerificationTokenResolver {
+let AggregateVerificationTokenResolver = class AggregateVerificationTokenResolver {
     async aggregateVerificationToken(ctx, info, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).verificationToken.aggregate({
             ...args,
@@ -15,6 +15,7 @@ let AggregateVerificationTokenResolver = exports.AggregateVerificationTokenResol
         });
     }
 };
+exports.AggregateVerificationTokenResolver = AggregateVerificationTokenResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateVerificationToken_1.AggregateVerificationToken, {
         nullable: false

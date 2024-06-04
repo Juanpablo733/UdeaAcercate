@@ -4,8 +4,9 @@ exports.FindUniqueEmailTokenOrThrowArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const EmailTokenWhereUniqueInput_1 = require("../../../inputs/EmailTokenWhereUniqueInput");
-let FindUniqueEmailTokenOrThrowArgs = exports.FindUniqueEmailTokenOrThrowArgs = class FindUniqueEmailTokenOrThrowArgs {
+let FindUniqueEmailTokenOrThrowArgs = class FindUniqueEmailTokenOrThrowArgs {
 };
+exports.FindUniqueEmailTokenOrThrowArgs = FindUniqueEmailTokenOrThrowArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => EmailTokenWhereUniqueInput_1.EmailTokenWhereUniqueInput, {
         nullable: false

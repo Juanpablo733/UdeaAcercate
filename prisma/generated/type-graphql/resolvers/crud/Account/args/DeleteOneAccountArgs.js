@@ -4,8 +4,9 @@ exports.DeleteOneAccountArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AccountWhereUniqueInput_1 = require("../../../inputs/AccountWhereUniqueInput");
-let DeleteOneAccountArgs = exports.DeleteOneAccountArgs = class DeleteOneAccountArgs {
+let DeleteOneAccountArgs = class DeleteOneAccountArgs {
 };
+exports.DeleteOneAccountArgs = DeleteOneAccountArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AccountWhereUniqueInput_1.AccountWhereUniqueInput, {
         nullable: false

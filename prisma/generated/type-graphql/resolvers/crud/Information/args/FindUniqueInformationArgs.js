@@ -4,8 +4,9 @@ exports.FindUniqueInformationArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const InformationWhereUniqueInput_1 = require("../../../inputs/InformationWhereUniqueInput");
-let FindUniqueInformationArgs = exports.FindUniqueInformationArgs = class FindUniqueInformationArgs {
+let FindUniqueInformationArgs = class FindUniqueInformationArgs {
 };
+exports.FindUniqueInformationArgs = FindUniqueInformationArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => InformationWhereUniqueInput_1.InformationWhereUniqueInput, {
         nullable: false

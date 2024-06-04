@@ -4,8 +4,9 @@ exports.CreateOneAccountArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AccountCreateInput_1 = require("../../../inputs/AccountCreateInput");
-let CreateOneAccountArgs = exports.CreateOneAccountArgs = class CreateOneAccountArgs {
+let CreateOneAccountArgs = class CreateOneAccountArgs {
 };
+exports.CreateOneAccountArgs = CreateOneAccountArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AccountCreateInput_1.AccountCreateInput, {
         nullable: false

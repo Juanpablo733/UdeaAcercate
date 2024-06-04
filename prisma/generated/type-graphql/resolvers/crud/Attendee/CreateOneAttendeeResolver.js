@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const CreateOneAttendeeArgs_1 = require("./args/CreateOneAttendeeArgs");
 const Attendee_1 = require("../../../models/Attendee");
 const helpers_1 = require("../../../helpers");
-let CreateOneAttendeeResolver = exports.CreateOneAttendeeResolver = class CreateOneAttendeeResolver {
+let CreateOneAttendeeResolver = class CreateOneAttendeeResolver {
     async createOneAttendee(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).attendee.create({
@@ -15,6 +15,7 @@ let CreateOneAttendeeResolver = exports.CreateOneAttendeeResolver = class Create
         });
     }
 };
+exports.CreateOneAttendeeResolver = CreateOneAttendeeResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Attendee_1.Attendee, {
         nullable: false

@@ -8,8 +8,9 @@ const UserCreateWithoutSessionsInput_1 = require("../inputs/UserCreateWithoutSes
 const UserUpdateToOneWithWhereWithoutSessionsInput_1 = require("../inputs/UserUpdateToOneWithWhereWithoutSessionsInput");
 const UserUpsertWithoutSessionsInput_1 = require("../inputs/UserUpsertWithoutSessionsInput");
 const UserWhereUniqueInput_1 = require("../inputs/UserWhereUniqueInput");
-let UserUpdateOneRequiredWithoutSessionsNestedInput = exports.UserUpdateOneRequiredWithoutSessionsNestedInput = class UserUpdateOneRequiredWithoutSessionsNestedInput {
+let UserUpdateOneRequiredWithoutSessionsNestedInput = class UserUpdateOneRequiredWithoutSessionsNestedInput {
 };
+exports.UserUpdateOneRequiredWithoutSessionsNestedInput = UserUpdateOneRequiredWithoutSessionsNestedInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => UserCreateWithoutSessionsInput_1.UserCreateWithoutSessionsInput, {
         nullable: true

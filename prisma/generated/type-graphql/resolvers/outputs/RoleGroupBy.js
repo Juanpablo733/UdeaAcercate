@@ -7,8 +7,9 @@ const RoleCountAggregate_1 = require("../outputs/RoleCountAggregate");
 const RoleMaxAggregate_1 = require("../outputs/RoleMaxAggregate");
 const RoleMinAggregate_1 = require("../outputs/RoleMinAggregate");
 const RoleTag_1 = require("../../enums/RoleTag");
-let RoleGroupBy = exports.RoleGroupBy = class RoleGroupBy {
+let RoleGroupBy = class RoleGroupBy {
 };
+exports.RoleGroupBy = RoleGroupBy;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: false

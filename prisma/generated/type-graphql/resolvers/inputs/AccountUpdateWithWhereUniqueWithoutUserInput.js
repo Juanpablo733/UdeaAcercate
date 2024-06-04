@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AccountUpdateWithoutUserInput_1 = require("../inputs/AccountUpdateWithoutUserInput");
 const AccountWhereUniqueInput_1 = require("../inputs/AccountWhereUniqueInput");
-let AccountUpdateWithWhereUniqueWithoutUserInput = exports.AccountUpdateWithWhereUniqueWithoutUserInput = class AccountUpdateWithWhereUniqueWithoutUserInput {
+let AccountUpdateWithWhereUniqueWithoutUserInput = class AccountUpdateWithWhereUniqueWithoutUserInput {
 };
+exports.AccountUpdateWithWhereUniqueWithoutUserInput = AccountUpdateWithWhereUniqueWithoutUserInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AccountWhereUniqueInput_1.AccountWhereUniqueInput, {
         nullable: false

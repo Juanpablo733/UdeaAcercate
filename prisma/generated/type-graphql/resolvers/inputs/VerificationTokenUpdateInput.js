@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const DateTimeFieldUpdateOperationsInput_1 = require("../inputs/DateTimeFieldUpdateOperationsInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
-let VerificationTokenUpdateInput = exports.VerificationTokenUpdateInput = class VerificationTokenUpdateInput {
+let VerificationTokenUpdateInput = class VerificationTokenUpdateInput {
 };
+exports.VerificationTokenUpdateInput = VerificationTokenUpdateInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, {
         nullable: true

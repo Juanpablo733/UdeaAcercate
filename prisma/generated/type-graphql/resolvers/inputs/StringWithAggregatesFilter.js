@@ -7,8 +7,9 @@ const NestedIntFilter_1 = require("../inputs/NestedIntFilter");
 const NestedStringFilter_1 = require("../inputs/NestedStringFilter");
 const NestedStringWithAggregatesFilter_1 = require("../inputs/NestedStringWithAggregatesFilter");
 const QueryMode_1 = require("../../enums/QueryMode");
-let StringWithAggregatesFilter = exports.StringWithAggregatesFilter = class StringWithAggregatesFilter {
+let StringWithAggregatesFilter = class StringWithAggregatesFilter {
 };
+exports.StringWithAggregatesFilter = StringWithAggregatesFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

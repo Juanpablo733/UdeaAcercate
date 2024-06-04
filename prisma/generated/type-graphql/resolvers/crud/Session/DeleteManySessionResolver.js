@@ -7,7 +7,7 @@ const DeleteManySessionArgs_1 = require("./args/DeleteManySessionArgs");
 const Session_1 = require("../../../models/Session");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const helpers_1 = require("../../../helpers");
-let DeleteManySessionResolver = exports.DeleteManySessionResolver = class DeleteManySessionResolver {
+let DeleteManySessionResolver = class DeleteManySessionResolver {
     async deleteManySession(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).session.deleteMany({
@@ -16,6 +16,7 @@ let DeleteManySessionResolver = exports.DeleteManySessionResolver = class Delete
         });
     }
 };
+exports.DeleteManySessionResolver = DeleteManySessionResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, {
         nullable: false

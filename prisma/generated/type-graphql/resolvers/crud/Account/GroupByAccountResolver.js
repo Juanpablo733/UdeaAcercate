@@ -7,7 +7,7 @@ const GroupByAccountArgs_1 = require("./args/GroupByAccountArgs");
 const Account_1 = require("../../../models/Account");
 const AccountGroupBy_1 = require("../../outputs/AccountGroupBy");
 const helpers_1 = require("../../../helpers");
-let GroupByAccountResolver = exports.GroupByAccountResolver = class GroupByAccountResolver {
+let GroupByAccountResolver = class GroupByAccountResolver {
     async groupByAccount(ctx, info, args) {
         const { _count, _avg, _sum, _min, _max } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).account.groupBy({
@@ -16,6 +16,7 @@ let GroupByAccountResolver = exports.GroupByAccountResolver = class GroupByAccou
         });
     }
 };
+exports.GroupByAccountResolver = GroupByAccountResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [AccountGroupBy_1.AccountGroupBy], {
         nullable: false

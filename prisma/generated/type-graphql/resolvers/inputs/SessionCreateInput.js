@@ -4,8 +4,9 @@ exports.SessionCreateInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const UserCreateNestedOneWithoutSessionsInput_1 = require("../inputs/UserCreateNestedOneWithoutSessionsInput");
-let SessionCreateInput = exports.SessionCreateInput = class SessionCreateInput {
+let SessionCreateInput = class SessionCreateInput {
 };
+exports.SessionCreateInput = SessionCreateInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

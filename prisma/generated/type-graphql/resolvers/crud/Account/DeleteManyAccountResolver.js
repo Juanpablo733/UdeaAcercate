@@ -7,7 +7,7 @@ const DeleteManyAccountArgs_1 = require("./args/DeleteManyAccountArgs");
 const Account_1 = require("../../../models/Account");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const helpers_1 = require("../../../helpers");
-let DeleteManyAccountResolver = exports.DeleteManyAccountResolver = class DeleteManyAccountResolver {
+let DeleteManyAccountResolver = class DeleteManyAccountResolver {
     async deleteManyAccount(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).account.deleteMany({
@@ -16,6 +16,7 @@ let DeleteManyAccountResolver = exports.DeleteManyAccountResolver = class Delete
         });
     }
 };
+exports.DeleteManyAccountResolver = DeleteManyAccountResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, {
         nullable: false

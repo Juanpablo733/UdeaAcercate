@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const VerificationTokenUpdateManyMutationInput_1 = require("../../../inputs/VerificationTokenUpdateManyMutationInput");
 const VerificationTokenWhereInput_1 = require("../../../inputs/VerificationTokenWhereInput");
-let UpdateManyVerificationTokenArgs = exports.UpdateManyVerificationTokenArgs = class UpdateManyVerificationTokenArgs {
+let UpdateManyVerificationTokenArgs = class UpdateManyVerificationTokenArgs {
 };
+exports.UpdateManyVerificationTokenArgs = UpdateManyVerificationTokenArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => VerificationTokenUpdateManyMutationInput_1.VerificationTokenUpdateManyMutationInput, {
         nullable: false

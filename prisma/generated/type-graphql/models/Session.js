@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Session = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let Session = exports.Session = class Session {
+let Session = class Session {
 };
+exports.Session = Session;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: false

@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const ProfileUpdateInput_1 = require("../../../inputs/ProfileUpdateInput");
 const ProfileWhereUniqueInput_1 = require("../../../inputs/ProfileWhereUniqueInput");
-let UpdateOneProfileArgs = exports.UpdateOneProfileArgs = class UpdateOneProfileArgs {
+let UpdateOneProfileArgs = class UpdateOneProfileArgs {
 };
+exports.UpdateOneProfileArgs = UpdateOneProfileArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ProfileUpdateInput_1.ProfileUpdateInput, {
         nullable: false

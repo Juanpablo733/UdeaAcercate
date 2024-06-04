@@ -4,8 +4,9 @@ exports.AccountCreateInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const UserCreateNestedOneWithoutAccountsInput_1 = require("../inputs/UserCreateNestedOneWithoutAccountsInput");
-let AccountCreateInput = exports.AccountCreateInput = class AccountCreateInput {
+let AccountCreateInput = class AccountCreateInput {
 };
+exports.AccountCreateInput = AccountCreateInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

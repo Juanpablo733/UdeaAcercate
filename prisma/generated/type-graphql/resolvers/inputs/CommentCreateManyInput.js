@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentCreateManyInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let CommentCreateManyInput = exports.CommentCreateManyInput = class CommentCreateManyInput {
+let CommentCreateManyInput = class CommentCreateManyInput {
 };
+exports.CommentCreateManyInput = CommentCreateManyInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

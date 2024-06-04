@@ -7,7 +7,7 @@ const AggregateUserArgs_1 = require("./args/AggregateUserArgs");
 const User_1 = require("../../../models/User");
 const AggregateUser_1 = require("../../outputs/AggregateUser");
 const helpers_1 = require("../../../helpers");
-let AggregateUserResolver = exports.AggregateUserResolver = class AggregateUserResolver {
+let AggregateUserResolver = class AggregateUserResolver {
     async aggregateUser(ctx, info, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).user.aggregate({
             ...args,
@@ -15,6 +15,7 @@ let AggregateUserResolver = exports.AggregateUserResolver = class AggregateUserR
         });
     }
 };
+exports.AggregateUserResolver = AggregateUserResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateUser_1.AggregateUser, {
         nullable: false

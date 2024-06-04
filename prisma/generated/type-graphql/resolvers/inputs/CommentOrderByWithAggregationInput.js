@@ -7,8 +7,9 @@ const CommentCountOrderByAggregateInput_1 = require("../inputs/CommentCountOrder
 const CommentMaxOrderByAggregateInput_1 = require("../inputs/CommentMaxOrderByAggregateInput");
 const CommentMinOrderByAggregateInput_1 = require("../inputs/CommentMinOrderByAggregateInput");
 const SortOrder_1 = require("../../enums/SortOrder");
-let CommentOrderByWithAggregationInput = exports.CommentOrderByWithAggregationInput = class CommentOrderByWithAggregationInput {
+let CommentOrderByWithAggregationInput = class CommentOrderByWithAggregationInput {
 };
+exports.CommentOrderByWithAggregationInput = CommentOrderByWithAggregationInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
         nullable: true

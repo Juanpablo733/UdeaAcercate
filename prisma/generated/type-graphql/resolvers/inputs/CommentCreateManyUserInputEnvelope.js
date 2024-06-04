@@ -4,8 +4,9 @@ exports.CommentCreateManyUserInputEnvelope = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const CommentCreateManyUserInput_1 = require("../inputs/CommentCreateManyUserInput");
-let CommentCreateManyUserInputEnvelope = exports.CommentCreateManyUserInputEnvelope = class CommentCreateManyUserInputEnvelope {
+let CommentCreateManyUserInputEnvelope = class CommentCreateManyUserInputEnvelope {
 };
+exports.CommentCreateManyUserInputEnvelope = CommentCreateManyUserInputEnvelope;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => [CommentCreateManyUserInput_1.CommentCreateManyUserInput], {
         nullable: false

@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const FindManyEmailTokenArgs_1 = require("./args/FindManyEmailTokenArgs");
 const EmailToken_1 = require("../../../models/EmailToken");
 const helpers_1 = require("../../../helpers");
-let FindManyEmailTokenResolver = exports.FindManyEmailTokenResolver = class FindManyEmailTokenResolver {
+let FindManyEmailTokenResolver = class FindManyEmailTokenResolver {
     async emailTokens(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).emailToken.findMany({
@@ -15,6 +15,7 @@ let FindManyEmailTokenResolver = exports.FindManyEmailTokenResolver = class Find
         });
     }
 };
+exports.FindManyEmailTokenResolver = FindManyEmailTokenResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [EmailToken_1.EmailToken], {
         nullable: false

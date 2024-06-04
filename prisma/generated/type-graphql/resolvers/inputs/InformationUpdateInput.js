@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.InformationUpdateInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
+const BoolFieldUpdateOperationsInput_1 = require("../inputs/BoolFieldUpdateOperationsInput");
 const CommentUpdateManyWithoutInfoNestedInput_1 = require("../inputs/CommentUpdateManyWithoutInfoNestedInput");
 const DateTimeFieldUpdateOperationsInput_1 = require("../inputs/DateTimeFieldUpdateOperationsInput");
 const EnumTagFieldUpdateOperationsInput_1 = require("../inputs/EnumTagFieldUpdateOperationsInput");
@@ -10,8 +11,10 @@ const EventUpdateOneWithoutInfoNestedInput_1 = require("../inputs/EventUpdateOne
 const InformationUpdatehashtagsInput_1 = require("../inputs/InformationUpdatehashtagsInput");
 const NullableStringFieldUpdateOperationsInput_1 = require("../inputs/NullableStringFieldUpdateOperationsInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
-let InformationUpdateInput = exports.InformationUpdateInput = class InformationUpdateInput {
+const UserUpdateOneWithoutNewsCreatedNestedInput_1 = require("../inputs/UserUpdateOneWithoutNewsCreatedNestedInput");
+let InformationUpdateInput = class InformationUpdateInput {
 };
+exports.InformationUpdateInput = InformationUpdateInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, {
         nullable: true
@@ -54,6 +57,18 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", InformationUpdatehashtagsInput_1.InformationUpdatehashtagsInput)
 ], InformationUpdateInput.prototype, "hashtags", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => BoolFieldUpdateOperationsInput_1.BoolFieldUpdateOperationsInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", BoolFieldUpdateOperationsInput_1.BoolFieldUpdateOperationsInput)
+], InformationUpdateInput.prototype, "official", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => UserUpdateOneWithoutNewsCreatedNestedInput_1.UserUpdateOneWithoutNewsCreatedNestedInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", UserUpdateOneWithoutNewsCreatedNestedInput_1.UserUpdateOneWithoutNewsCreatedNestedInput)
+], InformationUpdateInput.prototype, "author", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => CommentUpdateManyWithoutInfoNestedInput_1.CommentUpdateManyWithoutInfoNestedInput, {
         nullable: true

@@ -7,8 +7,9 @@ const SessionOrderByWithAggregationInput_1 = require("../../../inputs/SessionOrd
 const SessionScalarWhereWithAggregatesInput_1 = require("../../../inputs/SessionScalarWhereWithAggregatesInput");
 const SessionWhereInput_1 = require("../../../inputs/SessionWhereInput");
 const SessionScalarFieldEnum_1 = require("../../../../enums/SessionScalarFieldEnum");
-let GroupBySessionArgs = exports.GroupBySessionArgs = class GroupBySessionArgs {
+let GroupBySessionArgs = class GroupBySessionArgs {
 };
+exports.GroupBySessionArgs = GroupBySessionArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SessionWhereInput_1.SessionWhereInput, {
         nullable: true

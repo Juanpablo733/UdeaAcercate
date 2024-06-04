@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const EnumRoleTagFilter_1 = require("../inputs/EnumRoleTagFilter");
 const RoleWhereInput_1 = require("../inputs/RoleWhereInput");
-let RoleWhereUniqueInput = exports.RoleWhereUniqueInput = class RoleWhereUniqueInput {
+let RoleWhereUniqueInput = class RoleWhereUniqueInput {
 };
+exports.RoleWhereUniqueInput = RoleWhereUniqueInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

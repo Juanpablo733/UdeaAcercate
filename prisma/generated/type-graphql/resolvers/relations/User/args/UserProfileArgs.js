@@ -4,8 +4,9 @@ exports.UserProfileArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const ProfileWhereInput_1 = require("../../../inputs/ProfileWhereInput");
-let UserProfileArgs = exports.UserProfileArgs = class UserProfileArgs {
+let UserProfileArgs = class UserProfileArgs {
 };
+exports.UserProfileArgs = UserProfileArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ProfileWhereInput_1.ProfileWhereInput, {
         nullable: true

@@ -7,8 +7,9 @@ const EmailTokenCountOrderByAggregateInput_1 = require("../inputs/EmailTokenCoun
 const EmailTokenMaxOrderByAggregateInput_1 = require("../inputs/EmailTokenMaxOrderByAggregateInput");
 const EmailTokenMinOrderByAggregateInput_1 = require("../inputs/EmailTokenMinOrderByAggregateInput");
 const SortOrder_1 = require("../../enums/SortOrder");
-let EmailTokenOrderByWithAggregationInput = exports.EmailTokenOrderByWithAggregationInput = class EmailTokenOrderByWithAggregationInput {
+let EmailTokenOrderByWithAggregationInput = class EmailTokenOrderByWithAggregationInput {
 };
+exports.EmailTokenOrderByWithAggregationInput = EmailTokenOrderByWithAggregationInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
         nullable: true

@@ -7,7 +7,7 @@ const CreateManySessionArgs_1 = require("./args/CreateManySessionArgs");
 const Session_1 = require("../../../models/Session");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const helpers_1 = require("../../../helpers");
-let CreateManySessionResolver = exports.CreateManySessionResolver = class CreateManySessionResolver {
+let CreateManySessionResolver = class CreateManySessionResolver {
     async createManySession(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).session.createMany({
@@ -16,6 +16,7 @@ let CreateManySessionResolver = exports.CreateManySessionResolver = class Create
         });
     }
 };
+exports.CreateManySessionResolver = CreateManySessionResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, {
         nullable: false

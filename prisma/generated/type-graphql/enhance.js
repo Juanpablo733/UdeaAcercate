@@ -22,7 +22,8 @@ const crudResolversMap = {
     Attendee: crudResolvers.AttendeeCrudResolver,
     Comment: crudResolvers.CommentCrudResolver,
     CommentSentiment: crudResolvers.CommentSentimentCrudResolver,
-    Role: crudResolvers.RoleCrudResolver
+    Role: crudResolvers.RoleCrudResolver,
+    Report: crudResolvers.ReportCrudResolver
 };
 const actionResolversMap = {
     Account: {
@@ -216,6 +217,22 @@ const actionResolversMap = {
         updateManyRole: actionResolvers.UpdateManyRoleResolver,
         updateOneRole: actionResolvers.UpdateOneRoleResolver,
         upsertOneRole: actionResolvers.UpsertOneRoleResolver
+    },
+    Report: {
+        aggregateReport: actionResolvers.AggregateReportResolver,
+        createManyReport: actionResolvers.CreateManyReportResolver,
+        createOneReport: actionResolvers.CreateOneReportResolver,
+        deleteManyReport: actionResolvers.DeleteManyReportResolver,
+        deleteOneReport: actionResolvers.DeleteOneReportResolver,
+        findFirstReport: actionResolvers.FindFirstReportResolver,
+        findFirstReportOrThrow: actionResolvers.FindFirstReportOrThrowResolver,
+        reports: actionResolvers.FindManyReportResolver,
+        report: actionResolvers.FindUniqueReportResolver,
+        getReport: actionResolvers.FindUniqueReportOrThrowResolver,
+        groupByReport: actionResolvers.GroupByReportResolver,
+        updateManyReport: actionResolvers.UpdateManyReportResolver,
+        updateOneReport: actionResolvers.UpdateOneReportResolver,
+        upsertOneReport: actionResolvers.UpsertOneReportResolver
     }
 };
 const crudResolversInfo = {
@@ -230,7 +247,8 @@ const crudResolversInfo = {
     Attendee: ["aggregateAttendee", "createManyAttendee", "createOneAttendee", "deleteManyAttendee", "deleteOneAttendee", "findFirstAttendee", "findFirstAttendeeOrThrow", "attendees", "attendee", "getAttendee", "groupByAttendee", "updateManyAttendee", "updateOneAttendee", "upsertOneAttendee"],
     Comment: ["aggregateComment", "createManyComment", "createOneComment", "deleteManyComment", "deleteOneComment", "findFirstComment", "findFirstCommentOrThrow", "comments", "comment", "getComment", "groupByComment", "updateManyComment", "updateOneComment", "upsertOneComment"],
     CommentSentiment: ["aggregateCommentSentiment", "createManyCommentSentiment", "createOneCommentSentiment", "deleteManyCommentSentiment", "deleteOneCommentSentiment", "findFirstCommentSentiment", "findFirstCommentSentimentOrThrow", "commentSentiments", "commentSentiment", "getCommentSentiment", "groupByCommentSentiment", "updateManyCommentSentiment", "updateOneCommentSentiment", "upsertOneCommentSentiment"],
-    Role: ["aggregateRole", "createManyRole", "createOneRole", "deleteManyRole", "deleteOneRole", "findFirstRole", "findFirstRoleOrThrow", "roles", "role", "getRole", "groupByRole", "updateManyRole", "updateOneRole", "upsertOneRole"]
+    Role: ["aggregateRole", "createManyRole", "createOneRole", "deleteManyRole", "deleteOneRole", "findFirstRole", "findFirstRoleOrThrow", "roles", "role", "getRole", "groupByRole", "updateManyRole", "updateOneRole", "upsertOneRole"],
+    Report: ["aggregateReport", "createManyReport", "createOneReport", "deleteManyReport", "deleteOneReport", "findFirstReport", "findFirstReportOrThrow", "reports", "report", "getReport", "groupByReport", "updateManyReport", "updateOneReport", "upsertOneReport"]
 };
 const argsInfo = {
     AggregateAccountArgs: ["where", "orderBy", "cursor", "take", "skip"],
@@ -400,7 +418,21 @@ const argsInfo = {
     GroupByRoleArgs: ["where", "orderBy", "by", "having", "take", "skip"],
     UpdateManyRoleArgs: ["data", "where"],
     UpdateOneRoleArgs: ["data", "where"],
-    UpsertOneRoleArgs: ["where", "create", "update"]
+    UpsertOneRoleArgs: ["where", "create", "update"],
+    AggregateReportArgs: ["where", "orderBy", "cursor", "take", "skip"],
+    CreateManyReportArgs: ["data", "skipDuplicates"],
+    CreateOneReportArgs: ["data"],
+    DeleteManyReportArgs: ["where"],
+    DeleteOneReportArgs: ["where"],
+    FindFirstReportArgs: ["where", "orderBy", "cursor", "take", "skip", "distinct"],
+    FindFirstReportOrThrowArgs: ["where", "orderBy", "cursor", "take", "skip", "distinct"],
+    FindManyReportArgs: ["where", "orderBy", "cursor", "take", "skip", "distinct"],
+    FindUniqueReportArgs: ["where"],
+    FindUniqueReportOrThrowArgs: ["where"],
+    GroupByReportArgs: ["where", "orderBy", "by", "having", "take", "skip"],
+    UpdateManyReportArgs: ["data", "where"],
+    UpdateOneReportArgs: ["data", "where"],
+    UpsertOneReportArgs: ["where", "create", "update"]
 };
 function applyResolversEnhanceMap(resolversEnhanceMap) {
     const mutationOperationPrefixes = [
@@ -418,15 +450,15 @@ function applyResolversEnhanceMap(resolversEnhanceMap) {
             const isWriteOperation = mutationOperationPrefixes.some(prefix => resolverActionName.startsWith(prefix));
             const operationKindDecorators = isWriteOperation ? resolverActionsConfig._mutation : resolverActionsConfig._query;
             const mainDecorators = [
-                ...allActionsDecorators !== null && allActionsDecorators !== void 0 ? allActionsDecorators : [],
-                ...operationKindDecorators !== null && operationKindDecorators !== void 0 ? operationKindDecorators : [],
+                ...allActionsDecorators ?? [],
+                ...operationKindDecorators ?? [],
             ];
             let decorators;
             if (typeof maybeDecoratorsOrFn === "function") {
                 decorators = maybeDecoratorsOrFn(mainDecorators);
             }
             else {
-                decorators = [...mainDecorators, ...maybeDecoratorsOrFn !== null && maybeDecoratorsOrFn !== void 0 ? maybeDecoratorsOrFn : []];
+                decorators = [...mainDecorators, ...maybeDecoratorsOrFn ?? []];
             }
             const actionTarget = actionResolversConfig[resolverActionName].prototype;
             tslib.__decorate(decorators, crudTarget, resolverActionName, null);
@@ -458,20 +490,19 @@ const relationResolversMap = {
 const relationResolversInfo = {
     Account: ["user"],
     Session: ["user"],
-    User: ["profile", "eventsCreated", "attendees", "comments", "accounts", "sessions"],
+    User: ["profile", "eventsCreated", "attendees", "comments", "accounts", "sessions", "newsCreated"],
     Profile: ["user"],
     Event: ["author", "info", "attendees"],
-    Information: ["comments", "event"],
+    Information: ["author", "comments", "event"],
     Attendee: ["user", "event"],
     Comment: ["user", "info"]
 };
 function applyRelationResolversEnhanceMap(relationResolversEnhanceMap) {
-    var _a;
     for (const relationResolversEnhanceMapKey of Object.keys(relationResolversEnhanceMap)) {
         const modelName = relationResolversEnhanceMapKey;
         const relationResolverTarget = relationResolversMap[modelName].prototype;
         const relationResolverActionsConfig = relationResolversEnhanceMap[modelName];
-        const allActionsDecorators = (_a = relationResolverActionsConfig._all) !== null && _a !== void 0 ? _a : [];
+        const allActionsDecorators = relationResolverActionsConfig._all ?? [];
         const relationResolverActionNames = relationResolversInfo[modelName];
         for (const relationResolverActionName of relationResolverActionNames) {
             const maybeDecoratorsOrFn = relationResolverActionsConfig[relationResolverActionName];
@@ -480,7 +511,7 @@ function applyRelationResolversEnhanceMap(relationResolversEnhanceMap) {
                 decorators = maybeDecoratorsOrFn(allActionsDecorators);
             }
             else {
-                decorators = [...allActionsDecorators, ...maybeDecoratorsOrFn !== null && maybeDecoratorsOrFn !== void 0 ? maybeDecoratorsOrFn : []];
+                decorators = [...allActionsDecorators, ...maybeDecoratorsOrFn ?? []];
             }
             tslib.__decorate(decorators, relationResolverTarget, relationResolverActionName, null);
         }
@@ -488,12 +519,11 @@ function applyRelationResolversEnhanceMap(relationResolversEnhanceMap) {
 }
 exports.applyRelationResolversEnhanceMap = applyRelationResolversEnhanceMap;
 function applyTypeClassEnhanceConfig(enhanceConfig, typeClass, typePrototype, typeFieldNames) {
-    var _a;
     if (enhanceConfig.class) {
         tslib.__decorate(enhanceConfig.class, typeClass);
     }
     if (enhanceConfig.fields) {
-        const allFieldsDecorators = (_a = enhanceConfig.fields._all) !== null && _a !== void 0 ? _a : [];
+        const allFieldsDecorators = enhanceConfig.fields._all ?? [];
         for (const typeFieldName of typeFieldNames) {
             const maybeDecoratorsOrFn = enhanceConfig.fields[typeFieldName];
             let decorators;
@@ -501,7 +531,7 @@ function applyTypeClassEnhanceConfig(enhanceConfig, typeClass, typePrototype, ty
                 decorators = maybeDecoratorsOrFn(allFieldsDecorators);
             }
             else {
-                decorators = [...allFieldsDecorators, ...maybeDecoratorsOrFn !== null && maybeDecoratorsOrFn !== void 0 ? maybeDecoratorsOrFn : []];
+                decorators = [...allFieldsDecorators, ...maybeDecoratorsOrFn ?? []];
             }
             tslib.__decorate(decorators, typePrototype, typeFieldName, void 0);
         }
@@ -515,11 +545,12 @@ const modelsInfo = {
     EmailToken: ["identifier", "token", "expires"],
     Profile: ["faculty", "career", "type", "campus", "userId", "description", "hobbies", "socialLinks"],
     Event: ["id", "authorId", "infoId", "place"],
-    Information: ["id", "title", "description", "date", "image", "tag", "hashtags"],
+    Information: ["id", "authorId", "title", "description", "date", "image", "tag", "hashtags", "official"],
     Attendee: ["userId", "eventId", "dateTime"],
     Comment: ["id", "text", "dateTime", "userId", "infoId"],
     CommentSentiment: ["id", "sentiment", "confidence", "commentTag", "dateTime"],
-    Role: ["userId", "role"]
+    Role: ["userId", "role"],
+    Report: ["userId", "eventId", "reason", "dateTime"]
 };
 function applyModelsEnhanceMap(modelsEnhanceMap) {
     for (const modelsEnhanceMapKey of Object.keys(modelsEnhanceMap)) {
@@ -547,7 +578,7 @@ const outputsInfo = {
     AggregateEvent: ["_count", "_min", "_max"],
     EventGroupBy: ["id", "authorId", "infoId", "place", "_count", "_min", "_max"],
     AggregateInformation: ["_count", "_min", "_max"],
-    InformationGroupBy: ["id", "title", "description", "date", "image", "tag", "hashtags", "_count", "_min", "_max"],
+    InformationGroupBy: ["id", "authorId", "title", "description", "date", "image", "tag", "hashtags", "official", "_count", "_min", "_max"],
     AggregateAttendee: ["_count", "_min", "_max"],
     AttendeeGroupBy: ["userId", "eventId", "dateTime", "_count", "_min", "_max"],
     AggregateComment: ["_count", "_min", "_max"],
@@ -556,6 +587,8 @@ const outputsInfo = {
     CommentSentimentGroupBy: ["id", "sentiment", "confidence", "commentTag", "dateTime", "_count", "_avg", "_sum", "_min", "_max"],
     AggregateRole: ["_count", "_min", "_max"],
     RoleGroupBy: ["userId", "role", "_count", "_min", "_max"],
+    AggregateReport: ["_count", "_min", "_max"],
+    ReportGroupBy: ["userId", "eventId", "reason", "dateTime", "_count", "_min", "_max"],
     AffectedRowsOutput: ["count"],
     AccountCountAggregate: ["id", "userId", "type", "provider", "providerAccountId", "refresh_token", "access_token", "expires_at", "token_type", "scope", "id_token", "session_state", "_all"],
     AccountAvgAggregate: ["expires_at"],
@@ -565,7 +598,7 @@ const outputsInfo = {
     SessionCountAggregate: ["id", "sessionToken", "userId", "expires", "_all"],
     SessionMinAggregate: ["id", "sessionToken", "userId", "expires"],
     SessionMaxAggregate: ["id", "sessionToken", "userId", "expires"],
-    UserCount: ["eventsCreated", "attendees", "comments", "accounts", "sessions"],
+    UserCount: ["eventsCreated", "attendees", "comments", "accounts", "sessions", "newsCreated"],
     UserCountAggregate: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "_all"],
     UserMinAggregate: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image"],
     UserMaxAggregate: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image"],
@@ -583,9 +616,9 @@ const outputsInfo = {
     EventMinAggregate: ["id", "authorId", "infoId", "place"],
     EventMaxAggregate: ["id", "authorId", "infoId", "place"],
     InformationCount: ["comments"],
-    InformationCountAggregate: ["id", "title", "description", "date", "image", "tag", "hashtags", "_all"],
-    InformationMinAggregate: ["id", "title", "description", "date", "image", "tag"],
-    InformationMaxAggregate: ["id", "title", "description", "date", "image", "tag"],
+    InformationCountAggregate: ["id", "authorId", "title", "description", "date", "image", "tag", "hashtags", "official", "_all"],
+    InformationMinAggregate: ["id", "authorId", "title", "description", "date", "image", "tag", "official"],
+    InformationMaxAggregate: ["id", "authorId", "title", "description", "date", "image", "tag", "official"],
     AttendeeCountAggregate: ["userId", "eventId", "dateTime", "_all"],
     AttendeeMinAggregate: ["userId", "eventId", "dateTime"],
     AttendeeMaxAggregate: ["userId", "eventId", "dateTime"],
@@ -599,7 +632,23 @@ const outputsInfo = {
     CommentSentimentMaxAggregate: ["id", "sentiment", "confidence", "commentTag", "dateTime"],
     RoleCountAggregate: ["userId", "role", "_all"],
     RoleMinAggregate: ["userId", "role"],
-    RoleMaxAggregate: ["userId", "role"]
+    RoleMaxAggregate: ["userId", "role"],
+    ReportCountAggregate: ["userId", "eventId", "reason", "dateTime", "_all"],
+    ReportMinAggregate: ["userId", "eventId", "reason", "dateTime"],
+    ReportMaxAggregate: ["userId", "eventId", "reason", "dateTime"],
+    CreateManyAccountAndReturnOutputType: ["id", "userId", "type", "provider", "providerAccountId", "refresh_token", "access_token", "expires_at", "token_type", "scope", "id_token", "session_state", "user"],
+    CreateManySessionAndReturnOutputType: ["id", "sessionToken", "userId", "expires", "user"],
+    CreateManyUserAndReturnOutputType: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image"],
+    CreateManyVerificationTokenAndReturnOutputType: ["identifier", "token", "expires"],
+    CreateManyEmailTokenAndReturnOutputType: ["identifier", "token", "expires"],
+    CreateManyProfileAndReturnOutputType: ["faculty", "career", "type", "campus", "userId", "description", "hobbies", "socialLinks", "user"],
+    CreateManyEventAndReturnOutputType: ["id", "authorId", "infoId", "place", "author", "info"],
+    CreateManyInformationAndReturnOutputType: ["id", "authorId", "title", "description", "date", "image", "tag", "hashtags", "official", "author"],
+    CreateManyAttendeeAndReturnOutputType: ["userId", "eventId", "dateTime", "user", "event"],
+    CreateManyCommentAndReturnOutputType: ["id", "text", "dateTime", "userId", "infoId", "user", "info"],
+    CreateManyCommentSentimentAndReturnOutputType: ["id", "sentiment", "confidence", "commentTag", "dateTime"],
+    CreateManyRoleAndReturnOutputType: ["userId", "role"],
+    CreateManyReportAndReturnOutputType: ["userId", "eventId", "reason", "dateTime"]
 };
 function applyOutputTypesEnhanceMap(outputTypesEnhanceMap) {
     for (const outputTypeEnhanceMapKey of Object.keys(outputTypesEnhanceMap)) {
@@ -622,9 +671,9 @@ const inputsInfo = {
     SessionWhereUniqueInput: ["id", "sessionToken", "AND", "OR", "NOT", "userId", "expires", "user"],
     SessionOrderByWithAggregationInput: ["id", "sessionToken", "userId", "expires", "_count", "_max", "_min"],
     SessionScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "sessionToken", "userId", "expires"],
-    UserWhereInput: ["AND", "OR", "NOT", "id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "comments", "accounts", "sessions"],
-    UserOrderByWithRelationInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "comments", "accounts", "sessions"],
-    UserWhereUniqueInput: ["id", "email", "AND", "OR", "NOT", "name", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "comments", "accounts", "sessions"],
+    UserWhereInput: ["AND", "OR", "NOT", "id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "comments", "accounts", "sessions", "newsCreated"],
+    UserOrderByWithRelationInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "comments", "accounts", "sessions", "newsCreated"],
+    UserWhereUniqueInput: ["id", "email", "AND", "OR", "NOT", "name", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "comments", "accounts", "sessions", "newsCreated"],
     UserOrderByWithAggregationInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "_count", "_max", "_min"],
     UserScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image"],
     VerificationTokenWhereInput: ["AND", "OR", "NOT", "identifier", "token", "expires"],
@@ -647,11 +696,11 @@ const inputsInfo = {
     EventWhereUniqueInput: ["id", "infoId", "AND", "OR", "NOT", "authorId", "place", "author", "info", "attendees"],
     EventOrderByWithAggregationInput: ["id", "authorId", "infoId", "place", "_count", "_max", "_min"],
     EventScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "authorId", "infoId", "place"],
-    InformationWhereInput: ["AND", "OR", "NOT", "id", "title", "description", "date", "image", "tag", "hashtags", "comments", "event"],
-    InformationOrderByWithRelationInput: ["id", "title", "description", "date", "image", "tag", "hashtags", "comments", "event"],
-    InformationWhereUniqueInput: ["id", "AND", "OR", "NOT", "title", "description", "date", "image", "tag", "hashtags", "comments", "event"],
-    InformationOrderByWithAggregationInput: ["id", "title", "description", "date", "image", "tag", "hashtags", "_count", "_max", "_min"],
-    InformationScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "title", "description", "date", "image", "tag", "hashtags"],
+    InformationWhereInput: ["AND", "OR", "NOT", "id", "authorId", "title", "description", "date", "image", "tag", "hashtags", "official", "author", "comments", "event"],
+    InformationOrderByWithRelationInput: ["id", "authorId", "title", "description", "date", "image", "tag", "hashtags", "official", "author", "comments", "event"],
+    InformationWhereUniqueInput: ["id", "AND", "OR", "NOT", "authorId", "title", "description", "date", "image", "tag", "hashtags", "official", "author", "comments", "event"],
+    InformationOrderByWithAggregationInput: ["id", "authorId", "title", "description", "date", "image", "tag", "hashtags", "official", "_count", "_max", "_min"],
+    InformationScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "authorId", "title", "description", "date", "image", "tag", "hashtags", "official"],
     AttendeeWhereInput: ["AND", "OR", "NOT", "userId", "eventId", "dateTime", "user", "event"],
     AttendeeOrderByWithRelationInput: ["userId", "eventId", "dateTime", "user", "event"],
     AttendeeWhereUniqueInput: ["userId_eventId", "AND", "OR", "NOT", "userId", "eventId", "dateTime", "user", "event"],
@@ -672,6 +721,11 @@ const inputsInfo = {
     RoleWhereUniqueInput: ["userId", "AND", "OR", "NOT", "role"],
     RoleOrderByWithAggregationInput: ["userId", "role", "_count", "_max", "_min"],
     RoleScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "userId", "role"],
+    ReportWhereInput: ["AND", "OR", "NOT", "userId", "eventId", "reason", "dateTime"],
+    ReportOrderByWithRelationInput: ["userId", "eventId", "reason", "dateTime"],
+    ReportWhereUniqueInput: ["userId_eventId", "AND", "OR", "NOT", "userId", "eventId", "reason", "dateTime"],
+    ReportOrderByWithAggregationInput: ["userId", "eventId", "reason", "dateTime", "_count", "_max", "_min"],
+    ReportScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "userId", "eventId", "reason", "dateTime"],
     AccountCreateInput: ["id", "type", "provider", "providerAccountId", "refresh_token", "access_token", "expires_at", "token_type", "scope", "id_token", "session_state", "user"],
     AccountUpdateInput: ["id", "type", "provider", "providerAccountId", "refresh_token", "access_token", "expires_at", "token_type", "scope", "id_token", "session_state", "user"],
     AccountCreateManyInput: ["id", "userId", "type", "provider", "providerAccountId", "refresh_token", "access_token", "expires_at", "token_type", "scope", "id_token", "session_state"],
@@ -680,8 +734,8 @@ const inputsInfo = {
     SessionUpdateInput: ["id", "sessionToken", "expires", "user"],
     SessionCreateManyInput: ["id", "sessionToken", "userId", "expires"],
     SessionUpdateManyMutationInput: ["id", "sessionToken", "expires"],
-    UserCreateInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "comments", "accounts", "sessions"],
-    UserUpdateInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "comments", "accounts", "sessions"],
+    UserCreateInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "comments", "accounts", "sessions", "newsCreated"],
+    UserUpdateInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "comments", "accounts", "sessions", "newsCreated"],
     UserCreateManyInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image"],
     UserUpdateManyMutationInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image"],
     VerificationTokenCreateInput: ["identifier", "token", "expires"],
@@ -700,10 +754,10 @@ const inputsInfo = {
     EventUpdateInput: ["id", "place", "author", "info", "attendees"],
     EventCreateManyInput: ["id", "authorId", "infoId", "place"],
     EventUpdateManyMutationInput: ["id", "place"],
-    InformationCreateInput: ["id", "title", "description", "date", "image", "tag", "hashtags", "comments", "event"],
-    InformationUpdateInput: ["id", "title", "description", "date", "image", "tag", "hashtags", "comments", "event"],
-    InformationCreateManyInput: ["id", "title", "description", "date", "image", "tag", "hashtags"],
-    InformationUpdateManyMutationInput: ["id", "title", "description", "date", "image", "tag", "hashtags"],
+    InformationCreateInput: ["id", "title", "description", "date", "image", "tag", "hashtags", "official", "author", "comments", "event"],
+    InformationUpdateInput: ["id", "title", "description", "date", "image", "tag", "hashtags", "official", "author", "comments", "event"],
+    InformationCreateManyInput: ["id", "authorId", "title", "description", "date", "image", "tag", "hashtags", "official"],
+    InformationUpdateManyMutationInput: ["id", "title", "description", "date", "image", "tag", "hashtags", "official"],
     AttendeeCreateInput: ["dateTime", "user", "event"],
     AttendeeUpdateInput: ["dateTime", "user", "event"],
     AttendeeCreateManyInput: ["userId", "eventId", "dateTime"],
@@ -720,6 +774,10 @@ const inputsInfo = {
     RoleUpdateInput: ["userId", "role"],
     RoleCreateManyInput: ["userId", "role"],
     RoleUpdateManyMutationInput: ["userId", "role"],
+    ReportCreateInput: ["userId", "eventId", "reason", "dateTime"],
+    ReportUpdateInput: ["userId", "eventId", "reason", "dateTime"],
+    ReportCreateManyInput: ["userId", "eventId", "reason", "dateTime"],
+    ReportUpdateManyMutationInput: ["userId", "eventId", "reason", "dateTime"],
     StringFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "mode", "not"],
     StringNullableFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "mode", "not"],
     IntNullableFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not"],
@@ -746,11 +804,13 @@ const inputsInfo = {
     CommentListRelationFilter: ["every", "some", "none"],
     AccountListRelationFilter: ["every", "some", "none"],
     SessionListRelationFilter: ["every", "some", "none"],
+    InformationListRelationFilter: ["every", "some", "none"],
     EventOrderByRelationAggregateInput: ["_count"],
     AttendeeOrderByRelationAggregateInput: ["_count"],
     CommentOrderByRelationAggregateInput: ["_count"],
     AccountOrderByRelationAggregateInput: ["_count"],
     SessionOrderByRelationAggregateInput: ["_count"],
+    InformationOrderByRelationAggregateInput: ["_count"],
     UserCountOrderByAggregateInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image"],
     UserMaxOrderByAggregateInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image"],
     UserMinOrderByAggregateInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image"],
@@ -775,11 +835,14 @@ const inputsInfo = {
     EventMaxOrderByAggregateInput: ["id", "authorId", "infoId", "place"],
     EventMinOrderByAggregateInput: ["id", "authorId", "infoId", "place"],
     EnumTagFilter: ["equals", "in", "notIn", "not"],
+    BoolFilter: ["equals", "not"],
+    UserNullableRelationFilter: ["is", "isNot"],
     EventNullableRelationFilter: ["is", "isNot"],
-    InformationCountOrderByAggregateInput: ["id", "title", "description", "date", "image", "tag", "hashtags"],
-    InformationMaxOrderByAggregateInput: ["id", "title", "description", "date", "image", "tag"],
-    InformationMinOrderByAggregateInput: ["id", "title", "description", "date", "image", "tag"],
+    InformationCountOrderByAggregateInput: ["id", "authorId", "title", "description", "date", "image", "tag", "hashtags", "official"],
+    InformationMaxOrderByAggregateInput: ["id", "authorId", "title", "description", "date", "image", "tag", "official"],
+    InformationMinOrderByAggregateInput: ["id", "authorId", "title", "description", "date", "image", "tag", "official"],
     EnumTagWithAggregatesFilter: ["equals", "in", "notIn", "not", "_count", "_min", "_max"],
+    BoolWithAggregatesFilter: ["equals", "not", "_count", "_min", "_max"],
     EventRelationFilter: ["is", "isNot"],
     AttendeeUserIdEventIdCompoundUniqueInput: ["userId", "eventId"],
     AttendeeCountOrderByAggregateInput: ["userId", "eventId", "dateTime"],
@@ -802,6 +865,10 @@ const inputsInfo = {
     RoleMaxOrderByAggregateInput: ["userId", "role"],
     RoleMinOrderByAggregateInput: ["userId", "role"],
     EnumRoleTagWithAggregatesFilter: ["equals", "in", "notIn", "not", "_count", "_min", "_max"],
+    ReportUserIdEventIdCompoundUniqueInput: ["userId", "eventId"],
+    ReportCountOrderByAggregateInput: ["userId", "eventId", "reason", "dateTime"],
+    ReportMaxOrderByAggregateInput: ["userId", "eventId", "reason", "dateTime"],
+    ReportMinOrderByAggregateInput: ["userId", "eventId", "reason", "dateTime"],
     UserCreateNestedOneWithoutAccountsInput: ["create", "connectOrCreate", "connect"],
     StringFieldUpdateOperationsInput: ["set"],
     NullableStringFieldUpdateOperationsInput: ["set"],
@@ -816,6 +883,7 @@ const inputsInfo = {
     CommentCreateNestedManyWithoutUserInput: ["create", "connectOrCreate", "createMany", "connect"],
     AccountCreateNestedManyWithoutUserInput: ["create", "connectOrCreate", "createMany", "connect"],
     SessionCreateNestedManyWithoutUserInput: ["create", "connectOrCreate", "createMany", "connect"],
+    InformationCreateNestedManyWithoutAuthorInput: ["create", "connectOrCreate", "createMany", "connect"],
     NullableDateTimeFieldUpdateOperationsInput: ["set"],
     ProfileUpdateOneWithoutUserNestedInput: ["create", "connectOrCreate", "upsert", "disconnect", "delete", "connect", "update"],
     EventUpdateManyWithoutAuthorNestedInput: ["create", "connectOrCreate", "upsert", "createMany", "set", "disconnect", "delete", "connect", "update", "updateMany", "deleteMany"],
@@ -823,6 +891,7 @@ const inputsInfo = {
     CommentUpdateManyWithoutUserNestedInput: ["create", "connectOrCreate", "upsert", "createMany", "set", "disconnect", "delete", "connect", "update", "updateMany", "deleteMany"],
     AccountUpdateManyWithoutUserNestedInput: ["create", "connectOrCreate", "upsert", "createMany", "set", "disconnect", "delete", "connect", "update", "updateMany", "deleteMany"],
     SessionUpdateManyWithoutUserNestedInput: ["create", "connectOrCreate", "upsert", "createMany", "set", "disconnect", "delete", "connect", "update", "updateMany", "deleteMany"],
+    InformationUpdateManyWithoutAuthorNestedInput: ["create", "connectOrCreate", "upsert", "createMany", "set", "disconnect", "delete", "connect", "update", "updateMany", "deleteMany"],
     ProfileCreatesocialLinksInput: ["set"],
     UserCreateNestedOneWithoutProfileInput: ["create", "connectOrCreate", "connect"],
     NullableEnumUserTypeFieldUpdateOperationsInput: ["set"],
@@ -836,10 +905,13 @@ const inputsInfo = {
     InformationUpdateOneRequiredWithoutEventNestedInput: ["create", "connectOrCreate", "upsert", "connect", "update"],
     AttendeeUpdateManyWithoutEventNestedInput: ["create", "connectOrCreate", "upsert", "createMany", "set", "disconnect", "delete", "connect", "update", "updateMany", "deleteMany"],
     InformationCreatehashtagsInput: ["set"],
+    UserCreateNestedOneWithoutNewsCreatedInput: ["create", "connectOrCreate", "connect"],
     CommentCreateNestedManyWithoutInfoInput: ["create", "connectOrCreate", "createMany", "connect"],
     EventCreateNestedOneWithoutInfoInput: ["create", "connectOrCreate", "connect"],
     EnumTagFieldUpdateOperationsInput: ["set"],
     InformationUpdatehashtagsInput: ["set", "push"],
+    BoolFieldUpdateOperationsInput: ["set"],
+    UserUpdateOneWithoutNewsCreatedNestedInput: ["create", "connectOrCreate", "upsert", "disconnect", "delete", "connect", "update"],
     CommentUpdateManyWithoutInfoNestedInput: ["create", "connectOrCreate", "upsert", "createMany", "set", "disconnect", "delete", "connect", "update", "updateMany", "deleteMany"],
     EventUpdateOneWithoutInfoNestedInput: ["create", "connectOrCreate", "upsert", "disconnect", "delete", "connect", "update"],
     UserCreateNestedOneWithoutAttendeesInput: ["create", "connectOrCreate", "connect"],
@@ -870,23 +942,25 @@ const inputsInfo = {
     NestedEnumUserTypeNullableWithAggregatesFilter: ["equals", "in", "notIn", "not", "_count", "_min", "_max"],
     NestedEnumCampusNullableWithAggregatesFilter: ["equals", "in", "notIn", "not", "_count", "_min", "_max"],
     NestedEnumTagFilter: ["equals", "in", "notIn", "not"],
+    NestedBoolFilter: ["equals", "not"],
     NestedEnumTagWithAggregatesFilter: ["equals", "in", "notIn", "not", "_count", "_min", "_max"],
+    NestedBoolWithAggregatesFilter: ["equals", "not", "_count", "_min", "_max"],
     NestedEnumSentimentFilter: ["equals", "in", "notIn", "not"],
     NestedFloatFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not"],
     NestedEnumSentimentWithAggregatesFilter: ["equals", "in", "notIn", "not", "_count", "_min", "_max"],
     NestedFloatWithAggregatesFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not", "_count", "_avg", "_sum", "_min", "_max"],
     NestedEnumRoleTagFilter: ["equals", "in", "notIn", "not"],
     NestedEnumRoleTagWithAggregatesFilter: ["equals", "in", "notIn", "not", "_count", "_min", "_max"],
-    UserCreateWithoutAccountsInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "comments", "sessions"],
+    UserCreateWithoutAccountsInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "comments", "sessions", "newsCreated"],
     UserCreateOrConnectWithoutAccountsInput: ["where", "create"],
     UserUpsertWithoutAccountsInput: ["update", "create", "where"],
     UserUpdateToOneWithWhereWithoutAccountsInput: ["where", "data"],
-    UserUpdateWithoutAccountsInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "comments", "sessions"],
-    UserCreateWithoutSessionsInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "comments", "accounts"],
+    UserUpdateWithoutAccountsInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "comments", "sessions", "newsCreated"],
+    UserCreateWithoutSessionsInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "comments", "accounts", "newsCreated"],
     UserCreateOrConnectWithoutSessionsInput: ["where", "create"],
     UserUpsertWithoutSessionsInput: ["update", "create", "where"],
     UserUpdateToOneWithWhereWithoutSessionsInput: ["where", "data"],
-    UserUpdateWithoutSessionsInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "comments", "accounts"],
+    UserUpdateWithoutSessionsInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "comments", "accounts", "newsCreated"],
     ProfileCreateWithoutUserInput: ["faculty", "career", "type", "campus", "description", "hobbies", "socialLinks"],
     ProfileCreateOrConnectWithoutUserInput: ["where", "create"],
     EventCreateWithoutAuthorInput: ["id", "place", "info", "attendees"],
@@ -904,6 +978,9 @@ const inputsInfo = {
     SessionCreateWithoutUserInput: ["id", "sessionToken", "expires"],
     SessionCreateOrConnectWithoutUserInput: ["where", "create"],
     SessionCreateManyUserInputEnvelope: ["data", "skipDuplicates"],
+    InformationCreateWithoutAuthorInput: ["id", "title", "description", "date", "image", "tag", "hashtags", "official", "comments", "event"],
+    InformationCreateOrConnectWithoutAuthorInput: ["where", "create"],
+    InformationCreateManyAuthorInputEnvelope: ["data", "skipDuplicates"],
     ProfileUpsertWithoutUserInput: ["update", "create", "where"],
     ProfileUpdateToOneWithWhereWithoutUserInput: ["where", "data"],
     ProfileUpdateWithoutUserInput: ["faculty", "career", "type", "campus", "description", "hobbies", "socialLinks"],
@@ -927,68 +1004,79 @@ const inputsInfo = {
     SessionUpdateWithWhereUniqueWithoutUserInput: ["where", "data"],
     SessionUpdateManyWithWhereWithoutUserInput: ["where", "data"],
     SessionScalarWhereInput: ["AND", "OR", "NOT", "id", "sessionToken", "userId", "expires"],
-    UserCreateWithoutProfileInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "eventsCreated", "attendees", "comments", "accounts", "sessions"],
+    InformationUpsertWithWhereUniqueWithoutAuthorInput: ["where", "update", "create"],
+    InformationUpdateWithWhereUniqueWithoutAuthorInput: ["where", "data"],
+    InformationUpdateManyWithWhereWithoutAuthorInput: ["where", "data"],
+    InformationScalarWhereInput: ["AND", "OR", "NOT", "id", "authorId", "title", "description", "date", "image", "tag", "hashtags", "official"],
+    UserCreateWithoutProfileInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "eventsCreated", "attendees", "comments", "accounts", "sessions", "newsCreated"],
     UserCreateOrConnectWithoutProfileInput: ["where", "create"],
     UserUpsertWithoutProfileInput: ["update", "create", "where"],
     UserUpdateToOneWithWhereWithoutProfileInput: ["where", "data"],
-    UserUpdateWithoutProfileInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "eventsCreated", "attendees", "comments", "accounts", "sessions"],
-    UserCreateWithoutEventsCreatedInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "attendees", "comments", "accounts", "sessions"],
+    UserUpdateWithoutProfileInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "eventsCreated", "attendees", "comments", "accounts", "sessions", "newsCreated"],
+    UserCreateWithoutEventsCreatedInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "attendees", "comments", "accounts", "sessions", "newsCreated"],
     UserCreateOrConnectWithoutEventsCreatedInput: ["where", "create"],
-    InformationCreateWithoutEventInput: ["id", "title", "description", "date", "image", "tag", "hashtags", "comments"],
+    InformationCreateWithoutEventInput: ["id", "title", "description", "date", "image", "tag", "hashtags", "official", "author", "comments"],
     InformationCreateOrConnectWithoutEventInput: ["where", "create"],
     AttendeeCreateWithoutEventInput: ["dateTime", "user"],
     AttendeeCreateOrConnectWithoutEventInput: ["where", "create"],
     AttendeeCreateManyEventInputEnvelope: ["data", "skipDuplicates"],
     UserUpsertWithoutEventsCreatedInput: ["update", "create", "where"],
     UserUpdateToOneWithWhereWithoutEventsCreatedInput: ["where", "data"],
-    UserUpdateWithoutEventsCreatedInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "attendees", "comments", "accounts", "sessions"],
+    UserUpdateWithoutEventsCreatedInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "attendees", "comments", "accounts", "sessions", "newsCreated"],
     InformationUpsertWithoutEventInput: ["update", "create", "where"],
     InformationUpdateToOneWithWhereWithoutEventInput: ["where", "data"],
-    InformationUpdateWithoutEventInput: ["id", "title", "description", "date", "image", "tag", "hashtags", "comments"],
+    InformationUpdateWithoutEventInput: ["id", "title", "description", "date", "image", "tag", "hashtags", "official", "author", "comments"],
     AttendeeUpsertWithWhereUniqueWithoutEventInput: ["where", "update", "create"],
     AttendeeUpdateWithWhereUniqueWithoutEventInput: ["where", "data"],
     AttendeeUpdateManyWithWhereWithoutEventInput: ["where", "data"],
+    UserCreateWithoutNewsCreatedInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "comments", "accounts", "sessions"],
+    UserCreateOrConnectWithoutNewsCreatedInput: ["where", "create"],
     CommentCreateWithoutInfoInput: ["id", "text", "dateTime", "user"],
     CommentCreateOrConnectWithoutInfoInput: ["where", "create"],
     CommentCreateManyInfoInputEnvelope: ["data", "skipDuplicates"],
     EventCreateWithoutInfoInput: ["id", "place", "author", "attendees"],
     EventCreateOrConnectWithoutInfoInput: ["where", "create"],
+    UserUpsertWithoutNewsCreatedInput: ["update", "create", "where"],
+    UserUpdateToOneWithWhereWithoutNewsCreatedInput: ["where", "data"],
+    UserUpdateWithoutNewsCreatedInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "comments", "accounts", "sessions"],
     CommentUpsertWithWhereUniqueWithoutInfoInput: ["where", "update", "create"],
     CommentUpdateWithWhereUniqueWithoutInfoInput: ["where", "data"],
     CommentUpdateManyWithWhereWithoutInfoInput: ["where", "data"],
     EventUpsertWithoutInfoInput: ["update", "create", "where"],
     EventUpdateToOneWithWhereWithoutInfoInput: ["where", "data"],
     EventUpdateWithoutInfoInput: ["id", "place", "author", "attendees"],
-    UserCreateWithoutAttendeesInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "comments", "accounts", "sessions"],
+    UserCreateWithoutAttendeesInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "comments", "accounts", "sessions", "newsCreated"],
     UserCreateOrConnectWithoutAttendeesInput: ["where", "create"],
     EventCreateWithoutAttendeesInput: ["id", "place", "author", "info"],
     EventCreateOrConnectWithoutAttendeesInput: ["where", "create"],
     UserUpsertWithoutAttendeesInput: ["update", "create", "where"],
     UserUpdateToOneWithWhereWithoutAttendeesInput: ["where", "data"],
-    UserUpdateWithoutAttendeesInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "comments", "accounts", "sessions"],
+    UserUpdateWithoutAttendeesInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "comments", "accounts", "sessions", "newsCreated"],
     EventUpsertWithoutAttendeesInput: ["update", "create", "where"],
     EventUpdateToOneWithWhereWithoutAttendeesInput: ["where", "data"],
     EventUpdateWithoutAttendeesInput: ["id", "place", "author", "info"],
-    UserCreateWithoutCommentsInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "accounts", "sessions"],
+    UserCreateWithoutCommentsInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "accounts", "sessions", "newsCreated"],
     UserCreateOrConnectWithoutCommentsInput: ["where", "create"],
-    InformationCreateWithoutCommentsInput: ["id", "title", "description", "date", "image", "tag", "hashtags", "event"],
+    InformationCreateWithoutCommentsInput: ["id", "title", "description", "date", "image", "tag", "hashtags", "official", "author", "event"],
     InformationCreateOrConnectWithoutCommentsInput: ["where", "create"],
     UserUpsertWithoutCommentsInput: ["update", "create", "where"],
     UserUpdateToOneWithWhereWithoutCommentsInput: ["where", "data"],
-    UserUpdateWithoutCommentsInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "accounts", "sessions"],
+    UserUpdateWithoutCommentsInput: ["id", "name", "email", "emailVerified", "createdAt", "updatedAt", "image", "profile", "eventsCreated", "attendees", "accounts", "sessions", "newsCreated"],
     InformationUpsertWithoutCommentsInput: ["update", "create", "where"],
     InformationUpdateToOneWithWhereWithoutCommentsInput: ["where", "data"],
-    InformationUpdateWithoutCommentsInput: ["id", "title", "description", "date", "image", "tag", "hashtags", "event"],
+    InformationUpdateWithoutCommentsInput: ["id", "title", "description", "date", "image", "tag", "hashtags", "official", "author", "event"],
     EventCreateManyAuthorInput: ["id", "infoId", "place"],
     AttendeeCreateManyUserInput: ["eventId", "dateTime"],
     CommentCreateManyUserInput: ["id", "text", "dateTime", "infoId"],
     AccountCreateManyUserInput: ["id", "type", "provider", "providerAccountId", "refresh_token", "access_token", "expires_at", "token_type", "scope", "id_token", "session_state"],
     SessionCreateManyUserInput: ["id", "sessionToken", "expires"],
+    InformationCreateManyAuthorInput: ["id", "title", "description", "date", "image", "tag", "hashtags", "official"],
     EventUpdateWithoutAuthorInput: ["id", "place", "info", "attendees"],
     AttendeeUpdateWithoutUserInput: ["dateTime", "event"],
     CommentUpdateWithoutUserInput: ["id", "text", "dateTime", "info"],
     AccountUpdateWithoutUserInput: ["id", "type", "provider", "providerAccountId", "refresh_token", "access_token", "expires_at", "token_type", "scope", "id_token", "session_state"],
     SessionUpdateWithoutUserInput: ["id", "sessionToken", "expires"],
+    InformationUpdateWithoutAuthorInput: ["id", "title", "description", "date", "image", "tag", "hashtags", "official", "comments", "event"],
     AttendeeCreateManyEventInput: ["userId", "dateTime"],
     AttendeeUpdateWithoutEventInput: ["dateTime", "user"],
     CommentCreateManyInfoInput: ["id", "text", "dateTime", "userId"],

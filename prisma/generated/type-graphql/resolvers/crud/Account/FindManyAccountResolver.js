@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const FindManyAccountArgs_1 = require("./args/FindManyAccountArgs");
 const Account_1 = require("../../../models/Account");
 const helpers_1 = require("../../../helpers");
-let FindManyAccountResolver = exports.FindManyAccountResolver = class FindManyAccountResolver {
+let FindManyAccountResolver = class FindManyAccountResolver {
     async accounts(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).account.findMany({
@@ -15,6 +15,7 @@ let FindManyAccountResolver = exports.FindManyAccountResolver = class FindManyAc
         });
     }
 };
+exports.FindManyAccountResolver = FindManyAccountResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [Account_1.Account], {
         nullable: false

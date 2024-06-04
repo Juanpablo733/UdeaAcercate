@@ -171,12 +171,14 @@ exports.Prisma.EventScalarFieldEnum = {
 
 exports.Prisma.InformationScalarFieldEnum = {
   id: 'id',
+  authorId: 'authorId',
   title: 'title',
   description: 'description',
   date: 'date',
   image: 'image',
   tag: 'tag',
-  hashtags: 'hashtags'
+  hashtags: 'hashtags',
+  official: 'official'
 };
 
 exports.Prisma.AttendeeScalarFieldEnum = {
@@ -204,6 +206,13 @@ exports.Prisma.CommentSentimentScalarFieldEnum = {
 exports.Prisma.RoleScalarFieldEnum = {
   userId: 'userId',
   role: 'role'
+};
+
+exports.Prisma.ReportScalarFieldEnum = {
+  userId: 'userId',
+  eventId: 'eventId',
+  reason: 'reason',
+  dateTime: 'dateTime'
 };
 
 exports.Prisma.SortOrder = {
@@ -270,7 +279,8 @@ exports.Prisma.ModelName = {
   Attendee: 'Attendee',
   Comment: 'Comment',
   CommentSentiment: 'CommentSentiment',
-  Role: 'Role'
+  Role: 'Role',
+  Report: 'Report'
 };
 
 /**

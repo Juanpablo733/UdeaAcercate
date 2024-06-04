@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.EmailToken = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let EmailToken = exports.EmailToken = class EmailToken {
+let EmailToken = class EmailToken {
 };
+exports.EmailToken = EmailToken;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: false

@@ -1,5 +1,4 @@
 "use strict";
-var CommentSentimentScalarWhereWithAggregatesInput_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentSentimentScalarWhereWithAggregatesInput = void 0;
 const tslib_1 = require("tslib");
@@ -9,22 +8,23 @@ const EnumSentimentWithAggregatesFilter_1 = require("../inputs/EnumSentimentWith
 const EnumTagWithAggregatesFilter_1 = require("../inputs/EnumTagWithAggregatesFilter");
 const FloatWithAggregatesFilter_1 = require("../inputs/FloatWithAggregatesFilter");
 const StringWithAggregatesFilter_1 = require("../inputs/StringWithAggregatesFilter");
-let CommentSentimentScalarWhereWithAggregatesInput = exports.CommentSentimentScalarWhereWithAggregatesInput = CommentSentimentScalarWhereWithAggregatesInput_1 = class CommentSentimentScalarWhereWithAggregatesInput {
+let CommentSentimentScalarWhereWithAggregatesInput = class CommentSentimentScalarWhereWithAggregatesInput {
 };
+exports.CommentSentimentScalarWhereWithAggregatesInput = CommentSentimentScalarWhereWithAggregatesInput;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [CommentSentimentScalarWhereWithAggregatesInput_1], {
+    TypeGraphQL.Field(_type => [CommentSentimentScalarWhereWithAggregatesInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], CommentSentimentScalarWhereWithAggregatesInput.prototype, "AND", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [CommentSentimentScalarWhereWithAggregatesInput_1], {
+    TypeGraphQL.Field(_type => [CommentSentimentScalarWhereWithAggregatesInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], CommentSentimentScalarWhereWithAggregatesInput.prototype, "OR", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [CommentSentimentScalarWhereWithAggregatesInput_1], {
+    TypeGraphQL.Field(_type => [CommentSentimentScalarWhereWithAggregatesInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
@@ -59,6 +59,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", DateTimeWithAggregatesFilter_1.DateTimeWithAggregatesFilter)
 ], CommentSentimentScalarWhereWithAggregatesInput.prototype, "dateTime", void 0);
-exports.CommentSentimentScalarWhereWithAggregatesInput = CommentSentimentScalarWhereWithAggregatesInput = CommentSentimentScalarWhereWithAggregatesInput_1 = tslib_1.__decorate([
+exports.CommentSentimentScalarWhereWithAggregatesInput = CommentSentimentScalarWhereWithAggregatesInput = tslib_1.__decorate([
     TypeGraphQL.InputType("CommentSentimentScalarWhereWithAggregatesInput", {})
 ], CommentSentimentScalarWhereWithAggregatesInput);

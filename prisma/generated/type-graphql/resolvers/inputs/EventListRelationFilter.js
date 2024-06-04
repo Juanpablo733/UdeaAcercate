@@ -4,8 +4,9 @@ exports.EventListRelationFilter = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const EventWhereInput_1 = require("../inputs/EventWhereInput");
-let EventListRelationFilter = exports.EventListRelationFilter = class EventListRelationFilter {
+let EventListRelationFilter = class EventListRelationFilter {
 };
+exports.EventListRelationFilter = EventListRelationFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => EventWhereInput_1.EventWhereInput, {
         nullable: true

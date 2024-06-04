@@ -4,8 +4,9 @@ exports.FindUniqueProfileOrThrowArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const ProfileWhereUniqueInput_1 = require("../../../inputs/ProfileWhereUniqueInput");
-let FindUniqueProfileOrThrowArgs = exports.FindUniqueProfileOrThrowArgs = class FindUniqueProfileOrThrowArgs {
+let FindUniqueProfileOrThrowArgs = class FindUniqueProfileOrThrowArgs {
 };
+exports.FindUniqueProfileOrThrowArgs = FindUniqueProfileOrThrowArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ProfileWhereUniqueInput_1.ProfileWhereUniqueInput, {
         nullable: false

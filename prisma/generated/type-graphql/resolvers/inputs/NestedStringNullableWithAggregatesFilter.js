@@ -1,13 +1,13 @@
 "use strict";
-var NestedStringNullableWithAggregatesFilter_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NestedStringNullableWithAggregatesFilter = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const NestedIntNullableFilter_1 = require("../inputs/NestedIntNullableFilter");
 const NestedStringNullableFilter_1 = require("../inputs/NestedStringNullableFilter");
-let NestedStringNullableWithAggregatesFilter = exports.NestedStringNullableWithAggregatesFilter = NestedStringNullableWithAggregatesFilter_1 = class NestedStringNullableWithAggregatesFilter {
+let NestedStringNullableWithAggregatesFilter = class NestedStringNullableWithAggregatesFilter {
 };
+exports.NestedStringNullableWithAggregatesFilter = NestedStringNullableWithAggregatesFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true
@@ -69,7 +69,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], NestedStringNullableWithAggregatesFilter.prototype, "endsWith", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => NestedStringNullableWithAggregatesFilter_1, {
+    TypeGraphQL.Field(_type => NestedStringNullableWithAggregatesFilter, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", NestedStringNullableWithAggregatesFilter)
@@ -92,6 +92,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", NestedStringNullableFilter_1.NestedStringNullableFilter)
 ], NestedStringNullableWithAggregatesFilter.prototype, "_max", void 0);
-exports.NestedStringNullableWithAggregatesFilter = NestedStringNullableWithAggregatesFilter = NestedStringNullableWithAggregatesFilter_1 = tslib_1.__decorate([
+exports.NestedStringNullableWithAggregatesFilter = NestedStringNullableWithAggregatesFilter = tslib_1.__decorate([
     TypeGraphQL.InputType("NestedStringNullableWithAggregatesFilter", {})
 ], NestedStringNullableWithAggregatesFilter);

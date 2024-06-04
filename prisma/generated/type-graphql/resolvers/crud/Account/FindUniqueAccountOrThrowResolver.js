@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const FindUniqueAccountOrThrowArgs_1 = require("./args/FindUniqueAccountOrThrowArgs");
 const Account_1 = require("../../../models/Account");
 const helpers_1 = require("../../../helpers");
-let FindUniqueAccountOrThrowResolver = exports.FindUniqueAccountOrThrowResolver = class FindUniqueAccountOrThrowResolver {
+let FindUniqueAccountOrThrowResolver = class FindUniqueAccountOrThrowResolver {
     async getAccount(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).account.findUniqueOrThrow({
@@ -15,6 +15,7 @@ let FindUniqueAccountOrThrowResolver = exports.FindUniqueAccountOrThrowResolver 
         });
     }
 };
+exports.FindUniqueAccountOrThrowResolver = FindUniqueAccountOrThrowResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => Account_1.Account, {
         nullable: true

@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const UserCountAggregate_1 = require("../outputs/UserCountAggregate");
 const UserMaxAggregate_1 = require("../outputs/UserMaxAggregate");
 const UserMinAggregate_1 = require("../outputs/UserMinAggregate");
-let UserGroupBy = exports.UserGroupBy = class UserGroupBy {
+let UserGroupBy = class UserGroupBy {
 };
+exports.UserGroupBy = UserGroupBy;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: false

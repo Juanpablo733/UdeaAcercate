@@ -8,8 +8,9 @@ const InformationCreateWithoutCommentsInput_1 = require("../inputs/InformationCr
 const InformationUpdateToOneWithWhereWithoutCommentsInput_1 = require("../inputs/InformationUpdateToOneWithWhereWithoutCommentsInput");
 const InformationUpsertWithoutCommentsInput_1 = require("../inputs/InformationUpsertWithoutCommentsInput");
 const InformationWhereUniqueInput_1 = require("../inputs/InformationWhereUniqueInput");
-let InformationUpdateOneRequiredWithoutCommentsNestedInput = exports.InformationUpdateOneRequiredWithoutCommentsNestedInput = class InformationUpdateOneRequiredWithoutCommentsNestedInput {
+let InformationUpdateOneRequiredWithoutCommentsNestedInput = class InformationUpdateOneRequiredWithoutCommentsNestedInput {
 };
+exports.InformationUpdateOneRequiredWithoutCommentsNestedInput = InformationUpdateOneRequiredWithoutCommentsNestedInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => InformationCreateWithoutCommentsInput_1.InformationCreateWithoutCommentsInput, {
         nullable: true

@@ -1,11 +1,11 @@
 "use strict";
-var NestedStringFilter_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NestedStringFilter = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let NestedStringFilter = exports.NestedStringFilter = NestedStringFilter_1 = class NestedStringFilter {
+let NestedStringFilter = class NestedStringFilter {
 };
+exports.NestedStringFilter = NestedStringFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true
@@ -67,11 +67,11 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], NestedStringFilter.prototype, "endsWith", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => NestedStringFilter_1, {
+    TypeGraphQL.Field(_type => NestedStringFilter, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", NestedStringFilter)
 ], NestedStringFilter.prototype, "not", void 0);
-exports.NestedStringFilter = NestedStringFilter = NestedStringFilter_1 = tslib_1.__decorate([
+exports.NestedStringFilter = NestedStringFilter = tslib_1.__decorate([
     TypeGraphQL.InputType("NestedStringFilter", {})
 ], NestedStringFilter);

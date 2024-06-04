@@ -1,5 +1,4 @@
 "use strict";
-var UserScalarWhereWithAggregatesInput_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserScalarWhereWithAggregatesInput = void 0;
 const tslib_1 = require("tslib");
@@ -8,22 +7,23 @@ const DateTimeNullableWithAggregatesFilter_1 = require("../inputs/DateTimeNullab
 const DateTimeWithAggregatesFilter_1 = require("../inputs/DateTimeWithAggregatesFilter");
 const StringNullableWithAggregatesFilter_1 = require("../inputs/StringNullableWithAggregatesFilter");
 const StringWithAggregatesFilter_1 = require("../inputs/StringWithAggregatesFilter");
-let UserScalarWhereWithAggregatesInput = exports.UserScalarWhereWithAggregatesInput = UserScalarWhereWithAggregatesInput_1 = class UserScalarWhereWithAggregatesInput {
+let UserScalarWhereWithAggregatesInput = class UserScalarWhereWithAggregatesInput {
 };
+exports.UserScalarWhereWithAggregatesInput = UserScalarWhereWithAggregatesInput;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput_1], {
+    TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], UserScalarWhereWithAggregatesInput.prototype, "AND", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput_1], {
+    TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], UserScalarWhereWithAggregatesInput.prototype, "OR", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput_1], {
+    TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
@@ -70,6 +70,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", StringNullableWithAggregatesFilter_1.StringNullableWithAggregatesFilter)
 ], UserScalarWhereWithAggregatesInput.prototype, "image", void 0);
-exports.UserScalarWhereWithAggregatesInput = UserScalarWhereWithAggregatesInput = UserScalarWhereWithAggregatesInput_1 = tslib_1.__decorate([
+exports.UserScalarWhereWithAggregatesInput = UserScalarWhereWithAggregatesInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserScalarWhereWithAggregatesInput", {})
 ], UserScalarWhereWithAggregatesInput);

@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const SortOrderInput_1 = require("../inputs/SortOrderInput");
 const UserOrderByWithRelationInput_1 = require("../inputs/UserOrderByWithRelationInput");
 const SortOrder_1 = require("../../enums/SortOrder");
-let AccountOrderByWithRelationInput = exports.AccountOrderByWithRelationInput = class AccountOrderByWithRelationInput {
+let AccountOrderByWithRelationInput = class AccountOrderByWithRelationInput {
 };
+exports.AccountOrderByWithRelationInput = AccountOrderByWithRelationInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
         nullable: true

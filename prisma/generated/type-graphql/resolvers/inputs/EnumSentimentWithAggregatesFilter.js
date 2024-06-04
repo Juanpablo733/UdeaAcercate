@@ -7,8 +7,9 @@ const NestedEnumSentimentFilter_1 = require("../inputs/NestedEnumSentimentFilter
 const NestedEnumSentimentWithAggregatesFilter_1 = require("../inputs/NestedEnumSentimentWithAggregatesFilter");
 const NestedIntFilter_1 = require("../inputs/NestedIntFilter");
 const Sentiment_1 = require("../../enums/Sentiment");
-let EnumSentimentWithAggregatesFilter = exports.EnumSentimentWithAggregatesFilter = class EnumSentimentWithAggregatesFilter {
+let EnumSentimentWithAggregatesFilter = class EnumSentimentWithAggregatesFilter {
 };
+exports.EnumSentimentWithAggregatesFilter = EnumSentimentWithAggregatesFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => Sentiment_1.Sentiment, {
         nullable: true

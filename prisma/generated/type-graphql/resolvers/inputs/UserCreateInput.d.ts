@@ -2,6 +2,7 @@ import { AccountCreateNestedManyWithoutUserInput } from "../inputs/AccountCreate
 import { AttendeeCreateNestedManyWithoutUserInput } from "../inputs/AttendeeCreateNestedManyWithoutUserInput";
 import { CommentCreateNestedManyWithoutUserInput } from "../inputs/CommentCreateNestedManyWithoutUserInput";
 import { EventCreateNestedManyWithoutAuthorInput } from "../inputs/EventCreateNestedManyWithoutAuthorInput";
+import { InformationCreateNestedManyWithoutAuthorInput } from "../inputs/InformationCreateNestedManyWithoutAuthorInput";
 import { ProfileCreateNestedOneWithoutUserInput } from "../inputs/ProfileCreateNestedOneWithoutUserInput";
 import { SessionCreateNestedManyWithoutUserInput } from "../inputs/SessionCreateNestedManyWithoutUserInput";
 export declare class UserCreateInput {
@@ -18,4 +19,5 @@ export declare class UserCreateInput {
     comments?: CommentCreateNestedManyWithoutUserInput | undefined;
     accounts?: AccountCreateNestedManyWithoutUserInput | undefined;
     sessions?: SessionCreateNestedManyWithoutUserInput | undefined;
+    newsCreated?: InformationCreateNestedManyWithoutAuthorInput | undefined;
 }

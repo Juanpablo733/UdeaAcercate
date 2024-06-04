@@ -7,8 +7,9 @@ const SessionOrderByWithRelationInput_1 = require("../../../inputs/SessionOrderB
 const SessionWhereInput_1 = require("../../../inputs/SessionWhereInput");
 const SessionWhereUniqueInput_1 = require("../../../inputs/SessionWhereUniqueInput");
 const SessionScalarFieldEnum_1 = require("../../../../enums/SessionScalarFieldEnum");
-let FindFirstSessionArgs = exports.FindFirstSessionArgs = class FindFirstSessionArgs {
+let FindFirstSessionArgs = class FindFirstSessionArgs {
 };
+exports.FindFirstSessionArgs = FindFirstSessionArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SessionWhereInput_1.SessionWhereInput, {
         nullable: true

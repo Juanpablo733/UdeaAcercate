@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const EnumRoleTagFieldUpdateOperationsInput_1 = require("../inputs/EnumRoleTagFieldUpdateOperationsInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
-let RoleUpdateInput = exports.RoleUpdateInput = class RoleUpdateInput {
+let RoleUpdateInput = class RoleUpdateInput {
 };
+exports.RoleUpdateInput = RoleUpdateInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, {
         nullable: true

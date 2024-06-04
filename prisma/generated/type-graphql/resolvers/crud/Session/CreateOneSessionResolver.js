@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const CreateOneSessionArgs_1 = require("./args/CreateOneSessionArgs");
 const Session_1 = require("../../../models/Session");
 const helpers_1 = require("../../../helpers");
-let CreateOneSessionResolver = exports.CreateOneSessionResolver = class CreateOneSessionResolver {
+let CreateOneSessionResolver = class CreateOneSessionResolver {
     async createOneSession(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).session.create({
@@ -15,6 +15,7 @@ let CreateOneSessionResolver = exports.CreateOneSessionResolver = class CreateOn
         });
     }
 };
+exports.CreateOneSessionResolver = CreateOneSessionResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Session_1.Session, {
         nullable: false

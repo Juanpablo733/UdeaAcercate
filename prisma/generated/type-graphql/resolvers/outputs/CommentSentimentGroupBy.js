@@ -10,8 +10,9 @@ const CommentSentimentMinAggregate_1 = require("../outputs/CommentSentimentMinAg
 const CommentSentimentSumAggregate_1 = require("../outputs/CommentSentimentSumAggregate");
 const Sentiment_1 = require("../../enums/Sentiment");
 const Tag_1 = require("../../enums/Tag");
-let CommentSentimentGroupBy = exports.CommentSentimentGroupBy = class CommentSentimentGroupBy {
+let CommentSentimentGroupBy = class CommentSentimentGroupBy {
 };
+exports.CommentSentimentGroupBy = CommentSentimentGroupBy;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: false

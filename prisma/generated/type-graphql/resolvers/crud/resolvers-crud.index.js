@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VerificationTokenCrudResolver = exports.UserCrudResolver = exports.SessionCrudResolver = exports.RoleCrudResolver = exports.ProfileCrudResolver = exports.InformationCrudResolver = exports.EventCrudResolver = exports.EmailTokenCrudResolver = exports.CommentSentimentCrudResolver = exports.CommentCrudResolver = exports.AttendeeCrudResolver = exports.AccountCrudResolver = void 0;
+exports.VerificationTokenCrudResolver = exports.UserCrudResolver = exports.SessionCrudResolver = exports.RoleCrudResolver = exports.ReportCrudResolver = exports.ProfileCrudResolver = exports.InformationCrudResolver = exports.EventCrudResolver = exports.EmailTokenCrudResolver = exports.CommentSentimentCrudResolver = exports.CommentCrudResolver = exports.AttendeeCrudResolver = exports.AccountCrudResolver = void 0;
 var AccountCrudResolver_1 = require("./Account/AccountCrudResolver");
 Object.defineProperty(exports, "AccountCrudResolver", { enumerable: true, get: function () { return AccountCrudResolver_1.AccountCrudResolver; } });
 var AttendeeCrudResolver_1 = require("./Attendee/AttendeeCrudResolver");
@@ -17,6 +17,8 @@ var InformationCrudResolver_1 = require("./Information/InformationCrudResolver")
 Object.defineProperty(exports, "InformationCrudResolver", { enumerable: true, get: function () { return InformationCrudResolver_1.InformationCrudResolver; } });
 var ProfileCrudResolver_1 = require("./Profile/ProfileCrudResolver");
 Object.defineProperty(exports, "ProfileCrudResolver", { enumerable: true, get: function () { return ProfileCrudResolver_1.ProfileCrudResolver; } });
+var ReportCrudResolver_1 = require("./Report/ReportCrudResolver");
+Object.defineProperty(exports, "ReportCrudResolver", { enumerable: true, get: function () { return ReportCrudResolver_1.ReportCrudResolver; } });
 var RoleCrudResolver_1 = require("./Role/RoleCrudResolver");
 Object.defineProperty(exports, "RoleCrudResolver", { enumerable: true, get: function () { return RoleCrudResolver_1.RoleCrudResolver; } });
 var SessionCrudResolver_1 = require("./Session/SessionCrudResolver");

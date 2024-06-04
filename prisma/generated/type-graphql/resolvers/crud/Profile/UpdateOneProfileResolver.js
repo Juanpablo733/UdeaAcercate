@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const UpdateOneProfileArgs_1 = require("./args/UpdateOneProfileArgs");
 const Profile_1 = require("../../../models/Profile");
 const helpers_1 = require("../../../helpers");
-let UpdateOneProfileResolver = exports.UpdateOneProfileResolver = class UpdateOneProfileResolver {
+let UpdateOneProfileResolver = class UpdateOneProfileResolver {
     async updateOneProfile(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).profile.update({
@@ -15,6 +15,7 @@ let UpdateOneProfileResolver = exports.UpdateOneProfileResolver = class UpdateOn
         });
     }
 };
+exports.UpdateOneProfileResolver = UpdateOneProfileResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Profile_1.Profile, {
         nullable: true

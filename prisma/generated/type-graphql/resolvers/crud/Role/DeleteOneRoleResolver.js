@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const DeleteOneRoleArgs_1 = require("./args/DeleteOneRoleArgs");
 const Role_1 = require("../../../models/Role");
 const helpers_1 = require("../../../helpers");
-let DeleteOneRoleResolver = exports.DeleteOneRoleResolver = class DeleteOneRoleResolver {
+let DeleteOneRoleResolver = class DeleteOneRoleResolver {
     async deleteOneRole(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).role.delete({
@@ -15,6 +15,7 @@ let DeleteOneRoleResolver = exports.DeleteOneRoleResolver = class DeleteOneRoleR
         });
     }
 };
+exports.DeleteOneRoleResolver = DeleteOneRoleResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Role_1.Role, {
         nullable: true

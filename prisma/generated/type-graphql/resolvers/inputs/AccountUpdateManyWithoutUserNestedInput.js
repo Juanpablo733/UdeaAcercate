@@ -11,8 +11,9 @@ const AccountUpdateManyWithWhereWithoutUserInput_1 = require("../inputs/AccountU
 const AccountUpdateWithWhereUniqueWithoutUserInput_1 = require("../inputs/AccountUpdateWithWhereUniqueWithoutUserInput");
 const AccountUpsertWithWhereUniqueWithoutUserInput_1 = require("../inputs/AccountUpsertWithWhereUniqueWithoutUserInput");
 const AccountWhereUniqueInput_1 = require("../inputs/AccountWhereUniqueInput");
-let AccountUpdateManyWithoutUserNestedInput = exports.AccountUpdateManyWithoutUserNestedInput = class AccountUpdateManyWithoutUserNestedInput {
+let AccountUpdateManyWithoutUserNestedInput = class AccountUpdateManyWithoutUserNestedInput {
 };
+exports.AccountUpdateManyWithoutUserNestedInput = AccountUpdateManyWithoutUserNestedInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => [AccountCreateWithoutUserInput_1.AccountCreateWithoutUserInput], {
         nullable: true

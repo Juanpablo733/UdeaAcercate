@@ -1,7 +1,7 @@
 import { Resolver } from "@/types";
 import { saveCommentSentiment } from "../utils/commentUtil";
 import { getCommentSentimentCount, getConfidenceAverage } from "../utils/commentSentimentUtil";
-import { GenerateAndSaveSentiment } from "@/util/chatgpt";
+import { AddCommentToQueue, GenerateAndSaveSentiment } from "@/util/chatgpt";
 
 const sentimentResolvers: Resolver = {
     Query: {
@@ -25,6 +25,7 @@ const sentimentResolvers: Resolver = {
             const info = await db.information.findUnique({ where: { id: comment.infoId } })
             if (comment) {
                 console.log(comment)
+                AddCommentToQueue({id: args.commentId, tag:info.tag, comment:comment.text})
                 const responseJSON = await GenerateAndSaveSentiment(comment.text)
                 await saveCommentSentiment(args.commentId, info.tag, JSON.parse(responseJSON))
                 return true

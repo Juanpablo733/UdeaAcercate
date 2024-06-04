@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const EventCreateWithoutInfoInput_1 = require("../inputs/EventCreateWithoutInfoInput");
 const EventWhereUniqueInput_1 = require("../inputs/EventWhereUniqueInput");
-let EventCreateOrConnectWithoutInfoInput = exports.EventCreateOrConnectWithoutInfoInput = class EventCreateOrConnectWithoutInfoInput {
+let EventCreateOrConnectWithoutInfoInput = class EventCreateOrConnectWithoutInfoInput {
 };
+exports.EventCreateOrConnectWithoutInfoInput = EventCreateOrConnectWithoutInfoInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => EventWhereUniqueInput_1.EventWhereUniqueInput, {
         nullable: false

@@ -7,7 +7,7 @@ const CreateManyEmailTokenArgs_1 = require("./args/CreateManyEmailTokenArgs");
 const EmailToken_1 = require("../../../models/EmailToken");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const helpers_1 = require("../../../helpers");
-let CreateManyEmailTokenResolver = exports.CreateManyEmailTokenResolver = class CreateManyEmailTokenResolver {
+let CreateManyEmailTokenResolver = class CreateManyEmailTokenResolver {
     async createManyEmailToken(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).emailToken.createMany({
@@ -16,6 +16,7 @@ let CreateManyEmailTokenResolver = exports.CreateManyEmailTokenResolver = class 
         });
     }
 };
+exports.CreateManyEmailTokenResolver = CreateManyEmailTokenResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, {
         nullable: false

@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.EventMinAggregate = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let EventMinAggregate = exports.EventMinAggregate = class EventMinAggregate {
+let EventMinAggregate = class EventMinAggregate {
 };
+exports.EventMinAggregate = EventMinAggregate;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

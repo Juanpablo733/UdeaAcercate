@@ -4,8 +4,9 @@ exports.DeleteManyCommentArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const CommentWhereInput_1 = require("../../../inputs/CommentWhereInput");
-let DeleteManyCommentArgs = exports.DeleteManyCommentArgs = class DeleteManyCommentArgs {
+let DeleteManyCommentArgs = class DeleteManyCommentArgs {
 };
+exports.DeleteManyCommentArgs = DeleteManyCommentArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => CommentWhereInput_1.CommentWhereInput, {
         nullable: true

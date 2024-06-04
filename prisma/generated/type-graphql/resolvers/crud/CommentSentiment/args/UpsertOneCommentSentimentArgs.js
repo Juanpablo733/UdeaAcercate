@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const CommentSentimentCreateInput_1 = require("../../../inputs/CommentSentimentCreateInput");
 const CommentSentimentUpdateInput_1 = require("../../../inputs/CommentSentimentUpdateInput");
 const CommentSentimentWhereUniqueInput_1 = require("../../../inputs/CommentSentimentWhereUniqueInput");
-let UpsertOneCommentSentimentArgs = exports.UpsertOneCommentSentimentArgs = class UpsertOneCommentSentimentArgs {
+let UpsertOneCommentSentimentArgs = class UpsertOneCommentSentimentArgs {
 };
+exports.UpsertOneCommentSentimentArgs = UpsertOneCommentSentimentArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => CommentSentimentWhereUniqueInput_1.CommentSentimentWhereUniqueInput, {
         nullable: false

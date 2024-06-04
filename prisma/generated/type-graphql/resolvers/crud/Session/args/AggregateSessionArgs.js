@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const SessionOrderByWithRelationInput_1 = require("../../../inputs/SessionOrderByWithRelationInput");
 const SessionWhereInput_1 = require("../../../inputs/SessionWhereInput");
 const SessionWhereUniqueInput_1 = require("../../../inputs/SessionWhereUniqueInput");
-let AggregateSessionArgs = exports.AggregateSessionArgs = class AggregateSessionArgs {
+let AggregateSessionArgs = class AggregateSessionArgs {
 };
+exports.AggregateSessionArgs = AggregateSessionArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SessionWhereInput_1.SessionWhereInput, {
         nullable: true

@@ -4,8 +4,9 @@ exports.DeleteManyRoleArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const RoleWhereInput_1 = require("../../../inputs/RoleWhereInput");
-let DeleteManyRoleArgs = exports.DeleteManyRoleArgs = class DeleteManyRoleArgs {
+let DeleteManyRoleArgs = class DeleteManyRoleArgs {
 };
+exports.DeleteManyRoleArgs = DeleteManyRoleArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => RoleWhereInput_1.RoleWhereInput, {
         nullable: true

@@ -7,7 +7,7 @@ const GroupByAttendeeArgs_1 = require("./args/GroupByAttendeeArgs");
 const Attendee_1 = require("../../../models/Attendee");
 const AttendeeGroupBy_1 = require("../../outputs/AttendeeGroupBy");
 const helpers_1 = require("../../../helpers");
-let GroupByAttendeeResolver = exports.GroupByAttendeeResolver = class GroupByAttendeeResolver {
+let GroupByAttendeeResolver = class GroupByAttendeeResolver {
     async groupByAttendee(ctx, info, args) {
         const { _count, _avg, _sum, _min, _max } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).attendee.groupBy({
@@ -16,6 +16,7 @@ let GroupByAttendeeResolver = exports.GroupByAttendeeResolver = class GroupByAtt
         });
     }
 };
+exports.GroupByAttendeeResolver = GroupByAttendeeResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [AttendeeGroupBy_1.AttendeeGroupBy], {
         nullable: false

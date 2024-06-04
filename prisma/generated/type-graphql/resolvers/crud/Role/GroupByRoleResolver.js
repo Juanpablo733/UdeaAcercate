@@ -7,7 +7,7 @@ const GroupByRoleArgs_1 = require("./args/GroupByRoleArgs");
 const Role_1 = require("../../../models/Role");
 const RoleGroupBy_1 = require("../../outputs/RoleGroupBy");
 const helpers_1 = require("../../../helpers");
-let GroupByRoleResolver = exports.GroupByRoleResolver = class GroupByRoleResolver {
+let GroupByRoleResolver = class GroupByRoleResolver {
     async groupByRole(ctx, info, args) {
         const { _count, _avg, _sum, _min, _max } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).role.groupBy({
@@ -16,6 +16,7 @@ let GroupByRoleResolver = exports.GroupByRoleResolver = class GroupByRoleResolve
         });
     }
 };
+exports.GroupByRoleResolver = GroupByRoleResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [RoleGroupBy_1.RoleGroupBy], {
         nullable: false

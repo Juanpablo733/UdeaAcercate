@@ -7,13 +7,15 @@ const AttendeeUpdateManyWithoutUserNestedInput_1 = require("../inputs/AttendeeUp
 const CommentUpdateManyWithoutUserNestedInput_1 = require("../inputs/CommentUpdateManyWithoutUserNestedInput");
 const DateTimeFieldUpdateOperationsInput_1 = require("../inputs/DateTimeFieldUpdateOperationsInput");
 const EventUpdateManyWithoutAuthorNestedInput_1 = require("../inputs/EventUpdateManyWithoutAuthorNestedInput");
+const InformationUpdateManyWithoutAuthorNestedInput_1 = require("../inputs/InformationUpdateManyWithoutAuthorNestedInput");
 const NullableDateTimeFieldUpdateOperationsInput_1 = require("../inputs/NullableDateTimeFieldUpdateOperationsInput");
 const NullableStringFieldUpdateOperationsInput_1 = require("../inputs/NullableStringFieldUpdateOperationsInput");
 const ProfileUpdateOneWithoutUserNestedInput_1 = require("../inputs/ProfileUpdateOneWithoutUserNestedInput");
 const SessionUpdateManyWithoutUserNestedInput_1 = require("../inputs/SessionUpdateManyWithoutUserNestedInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
-let UserUpdateWithoutAccountsInput = exports.UserUpdateWithoutAccountsInput = class UserUpdateWithoutAccountsInput {
+let UserUpdateWithoutAccountsInput = class UserUpdateWithoutAccountsInput {
 };
+exports.UserUpdateWithoutAccountsInput = UserUpdateWithoutAccountsInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, {
         nullable: true
@@ -86,6 +88,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", SessionUpdateManyWithoutUserNestedInput_1.SessionUpdateManyWithoutUserNestedInput)
 ], UserUpdateWithoutAccountsInput.prototype, "sessions", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => InformationUpdateManyWithoutAuthorNestedInput_1.InformationUpdateManyWithoutAuthorNestedInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", InformationUpdateManyWithoutAuthorNestedInput_1.InformationUpdateManyWithoutAuthorNestedInput)
+], UserUpdateWithoutAccountsInput.prototype, "newsCreated", void 0);
 exports.UserUpdateWithoutAccountsInput = UserUpdateWithoutAccountsInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserUpdateWithoutAccountsInput", {})
 ], UserUpdateWithoutAccountsInput);

@@ -4,8 +4,9 @@ exports.DateTimeFilter = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const NestedDateTimeFilter_1 = require("../inputs/NestedDateTimeFilter");
-let DateTimeFilter = exports.DateTimeFilter = class DateTimeFilter {
+let DateTimeFilter = class DateTimeFilter {
 };
+exports.DateTimeFilter = DateTimeFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => Date, {
         nullable: true

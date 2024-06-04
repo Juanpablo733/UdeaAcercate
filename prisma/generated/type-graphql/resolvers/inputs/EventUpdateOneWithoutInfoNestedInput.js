@@ -9,8 +9,9 @@ const EventUpdateToOneWithWhereWithoutInfoInput_1 = require("../inputs/EventUpda
 const EventUpsertWithoutInfoInput_1 = require("../inputs/EventUpsertWithoutInfoInput");
 const EventWhereInput_1 = require("../inputs/EventWhereInput");
 const EventWhereUniqueInput_1 = require("../inputs/EventWhereUniqueInput");
-let EventUpdateOneWithoutInfoNestedInput = exports.EventUpdateOneWithoutInfoNestedInput = class EventUpdateOneWithoutInfoNestedInput {
+let EventUpdateOneWithoutInfoNestedInput = class EventUpdateOneWithoutInfoNestedInput {
 };
+exports.EventUpdateOneWithoutInfoNestedInput = EventUpdateOneWithoutInfoNestedInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => EventCreateWithoutInfoInput_1.EventCreateWithoutInfoInput, {
         nullable: true

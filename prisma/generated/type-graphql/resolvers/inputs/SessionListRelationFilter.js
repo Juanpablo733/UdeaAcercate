@@ -4,8 +4,9 @@ exports.SessionListRelationFilter = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const SessionWhereInput_1 = require("../inputs/SessionWhereInput");
-let SessionListRelationFilter = exports.SessionListRelationFilter = class SessionListRelationFilter {
+let SessionListRelationFilter = class SessionListRelationFilter {
 };
+exports.SessionListRelationFilter = SessionListRelationFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SessionWhereInput_1.SessionWhereInput, {
         nullable: true

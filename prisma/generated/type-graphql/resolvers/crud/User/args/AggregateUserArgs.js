@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const UserOrderByWithRelationInput_1 = require("../../../inputs/UserOrderByWithRelationInput");
 const UserWhereInput_1 = require("../../../inputs/UserWhereInput");
 const UserWhereUniqueInput_1 = require("../../../inputs/UserWhereUniqueInput");
-let AggregateUserArgs = exports.AggregateUserArgs = class AggregateUserArgs {
+let AggregateUserArgs = class AggregateUserArgs {
 };
+exports.AggregateUserArgs = AggregateUserArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => UserWhereInput_1.UserWhereInput, {
         nullable: true

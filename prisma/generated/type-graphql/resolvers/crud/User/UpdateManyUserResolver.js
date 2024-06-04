@@ -7,7 +7,7 @@ const UpdateManyUserArgs_1 = require("./args/UpdateManyUserArgs");
 const User_1 = require("../../../models/User");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const helpers_1 = require("../../../helpers");
-let UpdateManyUserResolver = exports.UpdateManyUserResolver = class UpdateManyUserResolver {
+let UpdateManyUserResolver = class UpdateManyUserResolver {
     async updateManyUser(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).user.updateMany({
@@ -16,6 +16,7 @@ let UpdateManyUserResolver = exports.UpdateManyUserResolver = class UpdateManyUs
         });
     }
 };
+exports.UpdateManyUserResolver = UpdateManyUserResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, {
         nullable: false

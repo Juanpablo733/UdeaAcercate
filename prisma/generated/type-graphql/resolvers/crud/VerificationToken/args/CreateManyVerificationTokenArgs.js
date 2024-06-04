@@ -4,8 +4,9 @@ exports.CreateManyVerificationTokenArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const VerificationTokenCreateManyInput_1 = require("../../../inputs/VerificationTokenCreateManyInput");
-let CreateManyVerificationTokenArgs = exports.CreateManyVerificationTokenArgs = class CreateManyVerificationTokenArgs {
+let CreateManyVerificationTokenArgs = class CreateManyVerificationTokenArgs {
 };
+exports.CreateManyVerificationTokenArgs = CreateManyVerificationTokenArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => [VerificationTokenCreateManyInput_1.VerificationTokenCreateManyInput], {
         nullable: false

@@ -6,10 +6,12 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AccountCreateNestedManyWithoutUserInput_1 = require("../inputs/AccountCreateNestedManyWithoutUserInput");
 const CommentCreateNestedManyWithoutUserInput_1 = require("../inputs/CommentCreateNestedManyWithoutUserInput");
 const EventCreateNestedManyWithoutAuthorInput_1 = require("../inputs/EventCreateNestedManyWithoutAuthorInput");
+const InformationCreateNestedManyWithoutAuthorInput_1 = require("../inputs/InformationCreateNestedManyWithoutAuthorInput");
 const ProfileCreateNestedOneWithoutUserInput_1 = require("../inputs/ProfileCreateNestedOneWithoutUserInput");
 const SessionCreateNestedManyWithoutUserInput_1 = require("../inputs/SessionCreateNestedManyWithoutUserInput");
-let UserCreateWithoutAttendeesInput = exports.UserCreateWithoutAttendeesInput = class UserCreateWithoutAttendeesInput {
+let UserCreateWithoutAttendeesInput = class UserCreateWithoutAttendeesInput {
 };
+exports.UserCreateWithoutAttendeesInput = UserCreateWithoutAttendeesInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true
@@ -82,6 +84,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", SessionCreateNestedManyWithoutUserInput_1.SessionCreateNestedManyWithoutUserInput)
 ], UserCreateWithoutAttendeesInput.prototype, "sessions", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => InformationCreateNestedManyWithoutAuthorInput_1.InformationCreateNestedManyWithoutAuthorInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", InformationCreateNestedManyWithoutAuthorInput_1.InformationCreateNestedManyWithoutAuthorInput)
+], UserCreateWithoutAttendeesInput.prototype, "newsCreated", void 0);
 exports.UserCreateWithoutAttendeesInput = UserCreateWithoutAttendeesInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserCreateWithoutAttendeesInput", {})
 ], UserCreateWithoutAttendeesInput);

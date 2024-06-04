@@ -7,12 +7,14 @@ const AccountOrderByRelationAggregateInput_1 = require("../inputs/AccountOrderBy
 const AttendeeOrderByRelationAggregateInput_1 = require("../inputs/AttendeeOrderByRelationAggregateInput");
 const CommentOrderByRelationAggregateInput_1 = require("../inputs/CommentOrderByRelationAggregateInput");
 const EventOrderByRelationAggregateInput_1 = require("../inputs/EventOrderByRelationAggregateInput");
+const InformationOrderByRelationAggregateInput_1 = require("../inputs/InformationOrderByRelationAggregateInput");
 const ProfileOrderByWithRelationInput_1 = require("../inputs/ProfileOrderByWithRelationInput");
 const SessionOrderByRelationAggregateInput_1 = require("../inputs/SessionOrderByRelationAggregateInput");
 const SortOrderInput_1 = require("../inputs/SortOrderInput");
 const SortOrder_1 = require("../../enums/SortOrder");
-let UserOrderByWithRelationInput = exports.UserOrderByWithRelationInput = class UserOrderByWithRelationInput {
+let UserOrderByWithRelationInput = class UserOrderByWithRelationInput {
 };
+exports.UserOrderByWithRelationInput = UserOrderByWithRelationInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
         nullable: true
@@ -91,6 +93,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", SessionOrderByRelationAggregateInput_1.SessionOrderByRelationAggregateInput)
 ], UserOrderByWithRelationInput.prototype, "sessions", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => InformationOrderByRelationAggregateInput_1.InformationOrderByRelationAggregateInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", InformationOrderByRelationAggregateInput_1.InformationOrderByRelationAggregateInput)
+], UserOrderByWithRelationInput.prototype, "newsCreated", void 0);
 exports.UserOrderByWithRelationInput = UserOrderByWithRelationInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserOrderByWithRelationInput", {})
 ], UserOrderByWithRelationInput);

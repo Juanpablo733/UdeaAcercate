@@ -8,8 +8,9 @@ const DateTimeFilter_1 = require("../inputs/DateTimeFilter");
 const EnumSentimentFilter_1 = require("../inputs/EnumSentimentFilter");
 const EnumTagFilter_1 = require("../inputs/EnumTagFilter");
 const FloatFilter_1 = require("../inputs/FloatFilter");
-let CommentSentimentWhereUniqueInput = exports.CommentSentimentWhereUniqueInput = class CommentSentimentWhereUniqueInput {
+let CommentSentimentWhereUniqueInput = class CommentSentimentWhereUniqueInput {
 };
+exports.CommentSentimentWhereUniqueInput = CommentSentimentWhereUniqueInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

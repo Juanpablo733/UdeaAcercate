@@ -22,7 +22,7 @@ const Session_1 = require("../../../models/Session");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const AggregateSession_1 = require("../../outputs/AggregateSession");
 const SessionGroupBy_1 = require("../../outputs/SessionGroupBy");
-let SessionCrudResolver = exports.SessionCrudResolver = class SessionCrudResolver {
+let SessionCrudResolver = class SessionCrudResolver {
     async aggregateSession(ctx, info, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).session.aggregate({
             ...args,
@@ -121,6 +121,7 @@ let SessionCrudResolver = exports.SessionCrudResolver = class SessionCrudResolve
         });
     }
 };
+exports.SessionCrudResolver = SessionCrudResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateSession_1.AggregateSession, {
         nullable: false

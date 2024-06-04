@@ -7,8 +7,9 @@ const EmailTokenOrderByWithAggregationInput_1 = require("../../../inputs/EmailTo
 const EmailTokenScalarWhereWithAggregatesInput_1 = require("../../../inputs/EmailTokenScalarWhereWithAggregatesInput");
 const EmailTokenWhereInput_1 = require("../../../inputs/EmailTokenWhereInput");
 const EmailTokenScalarFieldEnum_1 = require("../../../../enums/EmailTokenScalarFieldEnum");
-let GroupByEmailTokenArgs = exports.GroupByEmailTokenArgs = class GroupByEmailTokenArgs {
+let GroupByEmailTokenArgs = class GroupByEmailTokenArgs {
 };
+exports.GroupByEmailTokenArgs = GroupByEmailTokenArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => EmailTokenWhereInput_1.EmailTokenWhereInput, {
         nullable: true

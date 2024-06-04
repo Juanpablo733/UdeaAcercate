@@ -22,7 +22,7 @@ const Profile_1 = require("../../../models/Profile");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const AggregateProfile_1 = require("../../outputs/AggregateProfile");
 const ProfileGroupBy_1 = require("../../outputs/ProfileGroupBy");
-let ProfileCrudResolver = exports.ProfileCrudResolver = class ProfileCrudResolver {
+let ProfileCrudResolver = class ProfileCrudResolver {
     async aggregateProfile(ctx, info, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).profile.aggregate({
             ...args,
@@ -121,6 +121,7 @@ let ProfileCrudResolver = exports.ProfileCrudResolver = class ProfileCrudResolve
         });
     }
 };
+exports.ProfileCrudResolver = ProfileCrudResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateProfile_1.AggregateProfile, {
         nullable: false

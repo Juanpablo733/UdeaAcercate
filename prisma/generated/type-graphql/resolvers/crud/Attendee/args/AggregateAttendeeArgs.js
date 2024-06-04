@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AttendeeOrderByWithRelationInput_1 = require("../../../inputs/AttendeeOrderByWithRelationInput");
 const AttendeeWhereInput_1 = require("../../../inputs/AttendeeWhereInput");
 const AttendeeWhereUniqueInput_1 = require("../../../inputs/AttendeeWhereUniqueInput");
-let AggregateAttendeeArgs = exports.AggregateAttendeeArgs = class AggregateAttendeeArgs {
+let AggregateAttendeeArgs = class AggregateAttendeeArgs {
 };
+exports.AggregateAttendeeArgs = AggregateAttendeeArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AttendeeWhereInput_1.AttendeeWhereInput, {
         nullable: true

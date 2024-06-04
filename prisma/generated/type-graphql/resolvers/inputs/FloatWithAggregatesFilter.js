@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const NestedFloatFilter_1 = require("../inputs/NestedFloatFilter");
 const NestedFloatWithAggregatesFilter_1 = require("../inputs/NestedFloatWithAggregatesFilter");
 const NestedIntFilter_1 = require("../inputs/NestedIntFilter");
-let FloatWithAggregatesFilter = exports.FloatWithAggregatesFilter = class FloatWithAggregatesFilter {
+let FloatWithAggregatesFilter = class FloatWithAggregatesFilter {
 };
+exports.FloatWithAggregatesFilter = FloatWithAggregatesFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Float, {
         nullable: true

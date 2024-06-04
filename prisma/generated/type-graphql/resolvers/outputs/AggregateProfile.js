@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const ProfileCountAggregate_1 = require("../outputs/ProfileCountAggregate");
 const ProfileMaxAggregate_1 = require("../outputs/ProfileMaxAggregate");
 const ProfileMinAggregate_1 = require("../outputs/ProfileMinAggregate");
-let AggregateProfile = exports.AggregateProfile = class AggregateProfile {
+let AggregateProfile = class AggregateProfile {
 };
+exports.AggregateProfile = AggregateProfile;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ProfileCountAggregate_1.ProfileCountAggregate, {
         nullable: true

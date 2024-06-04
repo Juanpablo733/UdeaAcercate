@@ -7,8 +7,9 @@ const ProfileOrderByWithAggregationInput_1 = require("../../../inputs/ProfileOrd
 const ProfileScalarWhereWithAggregatesInput_1 = require("../../../inputs/ProfileScalarWhereWithAggregatesInput");
 const ProfileWhereInput_1 = require("../../../inputs/ProfileWhereInput");
 const ProfileScalarFieldEnum_1 = require("../../../../enums/ProfileScalarFieldEnum");
-let GroupByProfileArgs = exports.GroupByProfileArgs = class GroupByProfileArgs {
+let GroupByProfileArgs = class GroupByProfileArgs {
 };
+exports.GroupByProfileArgs = GroupByProfileArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ProfileWhereInput_1.ProfileWhereInput, {
         nullable: true

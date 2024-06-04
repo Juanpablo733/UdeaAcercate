@@ -7,8 +7,9 @@ const InformationOrderByWithAggregationInput_1 = require("../../../inputs/Inform
 const InformationScalarWhereWithAggregatesInput_1 = require("../../../inputs/InformationScalarWhereWithAggregatesInput");
 const InformationWhereInput_1 = require("../../../inputs/InformationWhereInput");
 const InformationScalarFieldEnum_1 = require("../../../../enums/InformationScalarFieldEnum");
-let GroupByInformationArgs = exports.GroupByInformationArgs = class GroupByInformationArgs {
+let GroupByInformationArgs = class GroupByInformationArgs {
 };
+exports.GroupByInformationArgs = GroupByInformationArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => InformationWhereInput_1.InformationWhereInput, {
         nullable: true

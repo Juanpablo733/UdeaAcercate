@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const Profile_1 = require("../../../models/Profile");
 const User_1 = require("../../../models/User");
 const helpers_1 = require("../../../helpers");
-let ProfileRelationsResolver = exports.ProfileRelationsResolver = class ProfileRelationsResolver {
+let ProfileRelationsResolver = class ProfileRelationsResolver {
     async user(profile, ctx, info) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).profile.findUniqueOrThrow({
@@ -18,6 +18,7 @@ let ProfileRelationsResolver = exports.ProfileRelationsResolver = class ProfileR
         });
     }
 };
+exports.ProfileRelationsResolver = ProfileRelationsResolver;
 tslib_1.__decorate([
     TypeGraphQL.FieldResolver(_type => User_1.User, {
         nullable: false

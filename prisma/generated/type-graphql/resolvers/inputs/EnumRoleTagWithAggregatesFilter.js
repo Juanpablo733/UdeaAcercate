@@ -7,8 +7,9 @@ const NestedEnumRoleTagFilter_1 = require("../inputs/NestedEnumRoleTagFilter");
 const NestedEnumRoleTagWithAggregatesFilter_1 = require("../inputs/NestedEnumRoleTagWithAggregatesFilter");
 const NestedIntFilter_1 = require("../inputs/NestedIntFilter");
 const RoleTag_1 = require("../../enums/RoleTag");
-let EnumRoleTagWithAggregatesFilter = exports.EnumRoleTagWithAggregatesFilter = class EnumRoleTagWithAggregatesFilter {
+let EnumRoleTagWithAggregatesFilter = class EnumRoleTagWithAggregatesFilter {
 };
+exports.EnumRoleTagWithAggregatesFilter = EnumRoleTagWithAggregatesFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => RoleTag_1.RoleTag, {
         nullable: true

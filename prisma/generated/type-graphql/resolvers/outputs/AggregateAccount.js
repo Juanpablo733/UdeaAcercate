@@ -8,8 +8,9 @@ const AccountCountAggregate_1 = require("../outputs/AccountCountAggregate");
 const AccountMaxAggregate_1 = require("../outputs/AccountMaxAggregate");
 const AccountMinAggregate_1 = require("../outputs/AccountMinAggregate");
 const AccountSumAggregate_1 = require("../outputs/AccountSumAggregate");
-let AggregateAccount = exports.AggregateAccount = class AggregateAccount {
+let AggregateAccount = class AggregateAccount {
 };
+exports.AggregateAccount = AggregateAccount;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AccountCountAggregate_1.AccountCountAggregate, {
         nullable: true

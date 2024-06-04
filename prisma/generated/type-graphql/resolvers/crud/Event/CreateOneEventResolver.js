@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const CreateOneEventArgs_1 = require("./args/CreateOneEventArgs");
 const Event_1 = require("../../../models/Event");
 const helpers_1 = require("../../../helpers");
-let CreateOneEventResolver = exports.CreateOneEventResolver = class CreateOneEventResolver {
+let CreateOneEventResolver = class CreateOneEventResolver {
     async createOneEvent(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).event.create({
@@ -15,6 +15,7 @@ let CreateOneEventResolver = exports.CreateOneEventResolver = class CreateOneEve
         });
     }
 };
+exports.CreateOneEventResolver = CreateOneEventResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Event_1.Event, {
         nullable: false

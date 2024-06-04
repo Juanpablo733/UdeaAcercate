@@ -7,8 +7,9 @@ const CommentSentimentOrderByWithRelationInput_1 = require("../../../inputs/Comm
 const CommentSentimentWhereInput_1 = require("../../../inputs/CommentSentimentWhereInput");
 const CommentSentimentWhereUniqueInput_1 = require("../../../inputs/CommentSentimentWhereUniqueInput");
 const CommentSentimentScalarFieldEnum_1 = require("../../../../enums/CommentSentimentScalarFieldEnum");
-let FindFirstCommentSentimentArgs = exports.FindFirstCommentSentimentArgs = class FindFirstCommentSentimentArgs {
+let FindFirstCommentSentimentArgs = class FindFirstCommentSentimentArgs {
 };
+exports.FindFirstCommentSentimentArgs = FindFirstCommentSentimentArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => CommentSentimentWhereInput_1.CommentSentimentWhereInput, {
         nullable: true

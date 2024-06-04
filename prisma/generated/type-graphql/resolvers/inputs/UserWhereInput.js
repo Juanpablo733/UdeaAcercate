@@ -1,5 +1,4 @@
 "use strict";
-var UserWhereInput_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserWhereInput = void 0;
 const tslib_1 = require("tslib");
@@ -10,26 +9,28 @@ const CommentListRelationFilter_1 = require("../inputs/CommentListRelationFilter
 const DateTimeFilter_1 = require("../inputs/DateTimeFilter");
 const DateTimeNullableFilter_1 = require("../inputs/DateTimeNullableFilter");
 const EventListRelationFilter_1 = require("../inputs/EventListRelationFilter");
+const InformationListRelationFilter_1 = require("../inputs/InformationListRelationFilter");
 const ProfileNullableRelationFilter_1 = require("../inputs/ProfileNullableRelationFilter");
 const SessionListRelationFilter_1 = require("../inputs/SessionListRelationFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
 const StringNullableFilter_1 = require("../inputs/StringNullableFilter");
-let UserWhereInput = exports.UserWhereInput = UserWhereInput_1 = class UserWhereInput {
+let UserWhereInput = class UserWhereInput {
 };
+exports.UserWhereInput = UserWhereInput;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [UserWhereInput_1], {
+    TypeGraphQL.Field(_type => [UserWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], UserWhereInput.prototype, "AND", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [UserWhereInput_1], {
+    TypeGraphQL.Field(_type => [UserWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], UserWhereInput.prototype, "OR", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [UserWhereInput_1], {
+    TypeGraphQL.Field(_type => [UserWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
@@ -112,6 +113,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", SessionListRelationFilter_1.SessionListRelationFilter)
 ], UserWhereInput.prototype, "sessions", void 0);
-exports.UserWhereInput = UserWhereInput = UserWhereInput_1 = tslib_1.__decorate([
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => InformationListRelationFilter_1.InformationListRelationFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", InformationListRelationFilter_1.InformationListRelationFilter)
+], UserWhereInput.prototype, "newsCreated", void 0);
+exports.UserWhereInput = UserWhereInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserWhereInput", {})
 ], UserWhereInput);

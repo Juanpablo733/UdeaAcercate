@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const FindUniqueCommentSentimentArgs_1 = require("./args/FindUniqueCommentSentimentArgs");
 const CommentSentiment_1 = require("../../../models/CommentSentiment");
 const helpers_1 = require("../../../helpers");
-let FindUniqueCommentSentimentResolver = exports.FindUniqueCommentSentimentResolver = class FindUniqueCommentSentimentResolver {
+let FindUniqueCommentSentimentResolver = class FindUniqueCommentSentimentResolver {
     async commentSentiment(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).commentSentiment.findUnique({
@@ -15,6 +15,7 @@ let FindUniqueCommentSentimentResolver = exports.FindUniqueCommentSentimentResol
         });
     }
 };
+exports.FindUniqueCommentSentimentResolver = FindUniqueCommentSentimentResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => CommentSentiment_1.CommentSentiment, {
         nullable: true

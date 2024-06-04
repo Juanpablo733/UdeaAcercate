@@ -8,8 +8,9 @@ const EnumSentimentFieldUpdateOperationsInput_1 = require("../inputs/EnumSentime
 const EnumTagFieldUpdateOperationsInput_1 = require("../inputs/EnumTagFieldUpdateOperationsInput");
 const FloatFieldUpdateOperationsInput_1 = require("../inputs/FloatFieldUpdateOperationsInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
-let CommentSentimentUpdateInput = exports.CommentSentimentUpdateInput = class CommentSentimentUpdateInput {
+let CommentSentimentUpdateInput = class CommentSentimentUpdateInput {
 };
+exports.CommentSentimentUpdateInput = CommentSentimentUpdateInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, {
         nullable: true

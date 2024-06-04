@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const InformationUpdateWithoutCommentsInput_1 = require("../inputs/InformationUpdateWithoutCommentsInput");
 const InformationWhereInput_1 = require("../inputs/InformationWhereInput");
-let InformationUpdateToOneWithWhereWithoutCommentsInput = exports.InformationUpdateToOneWithWhereWithoutCommentsInput = class InformationUpdateToOneWithWhereWithoutCommentsInput {
+let InformationUpdateToOneWithWhereWithoutCommentsInput = class InformationUpdateToOneWithWhereWithoutCommentsInput {
 };
+exports.InformationUpdateToOneWithWhereWithoutCommentsInput = InformationUpdateToOneWithWhereWithoutCommentsInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => InformationWhereInput_1.InformationWhereInput, {
         nullable: true

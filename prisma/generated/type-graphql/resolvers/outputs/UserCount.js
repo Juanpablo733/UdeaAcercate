@@ -7,8 +7,9 @@ const UserCountAccountsArgs_1 = require("./args/UserCountAccountsArgs");
 const UserCountAttendeesArgs_1 = require("./args/UserCountAttendeesArgs");
 const UserCountCommentsArgs_1 = require("./args/UserCountCommentsArgs");
 const UserCountEventsCreatedArgs_1 = require("./args/UserCountEventsCreatedArgs");
+const UserCountNewsCreatedArgs_1 = require("./args/UserCountNewsCreatedArgs");
 const UserCountSessionsArgs_1 = require("./args/UserCountSessionsArgs");
-let UserCount = exports.UserCount = class UserCount {
+let UserCount = class UserCount {
     getEventsCreated(root, args) {
         return root.eventsCreated;
     }
@@ -24,7 +25,11 @@ let UserCount = exports.UserCount = class UserCount {
     getSessions(root, args) {
         return root.sessions;
     }
+    getNewsCreated(root, args) {
+        return root.newsCreated;
+    }
 };
+exports.UserCount = UserCount;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, {
         name: "eventsCreated",
@@ -80,6 +85,17 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:paramtypes", [UserCount, UserCountSessionsArgs_1.UserCountSessionsArgs]),
     tslib_1.__metadata("design:returntype", Number)
 ], UserCount.prototype, "getSessions", null);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+        name: "newsCreated",
+        nullable: false
+    }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Args()),
+    tslib_1.__metadata("design:type", Function),
+    tslib_1.__metadata("design:paramtypes", [UserCount, UserCountNewsCreatedArgs_1.UserCountNewsCreatedArgs]),
+    tslib_1.__metadata("design:returntype", Number)
+], UserCount.prototype, "getNewsCreated", null);
 exports.UserCount = UserCount = tslib_1.__decorate([
     TypeGraphQL.ObjectType("UserCount", {})
 ], UserCount);

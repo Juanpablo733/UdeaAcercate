@@ -7,7 +7,7 @@ const AggregateAccountArgs_1 = require("./args/AggregateAccountArgs");
 const Account_1 = require("../../../models/Account");
 const AggregateAccount_1 = require("../../outputs/AggregateAccount");
 const helpers_1 = require("../../../helpers");
-let AggregateAccountResolver = exports.AggregateAccountResolver = class AggregateAccountResolver {
+let AggregateAccountResolver = class AggregateAccountResolver {
     async aggregateAccount(ctx, info, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).account.aggregate({
             ...args,
@@ -15,6 +15,7 @@ let AggregateAccountResolver = exports.AggregateAccountResolver = class Aggregat
         });
     }
 };
+exports.AggregateAccountResolver = AggregateAccountResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateAccount_1.AggregateAccount, {
         nullable: false

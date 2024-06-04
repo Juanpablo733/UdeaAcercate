@@ -11,8 +11,9 @@ const CommentUpdateManyWithWhereWithoutUserInput_1 = require("../inputs/CommentU
 const CommentUpdateWithWhereUniqueWithoutUserInput_1 = require("../inputs/CommentUpdateWithWhereUniqueWithoutUserInput");
 const CommentUpsertWithWhereUniqueWithoutUserInput_1 = require("../inputs/CommentUpsertWithWhereUniqueWithoutUserInput");
 const CommentWhereUniqueInput_1 = require("../inputs/CommentWhereUniqueInput");
-let CommentUpdateManyWithoutUserNestedInput = exports.CommentUpdateManyWithoutUserNestedInput = class CommentUpdateManyWithoutUserNestedInput {
+let CommentUpdateManyWithoutUserNestedInput = class CommentUpdateManyWithoutUserNestedInput {
 };
+exports.CommentUpdateManyWithoutUserNestedInput = CommentUpdateManyWithoutUserNestedInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => [CommentCreateWithoutUserInput_1.CommentCreateWithoutUserInput], {
         nullable: true

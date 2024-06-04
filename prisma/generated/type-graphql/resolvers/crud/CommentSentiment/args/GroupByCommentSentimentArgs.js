@@ -7,8 +7,9 @@ const CommentSentimentOrderByWithAggregationInput_1 = require("../../../inputs/C
 const CommentSentimentScalarWhereWithAggregatesInput_1 = require("../../../inputs/CommentSentimentScalarWhereWithAggregatesInput");
 const CommentSentimentWhereInput_1 = require("../../../inputs/CommentSentimentWhereInput");
 const CommentSentimentScalarFieldEnum_1 = require("../../../../enums/CommentSentimentScalarFieldEnum");
-let GroupByCommentSentimentArgs = exports.GroupByCommentSentimentArgs = class GroupByCommentSentimentArgs {
+let GroupByCommentSentimentArgs = class GroupByCommentSentimentArgs {
 };
+exports.GroupByCommentSentimentArgs = GroupByCommentSentimentArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => CommentSentimentWhereInput_1.CommentSentimentWhereInput, {
         nullable: true

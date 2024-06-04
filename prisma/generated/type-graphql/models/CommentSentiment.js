@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const Sentiment_1 = require("../enums/Sentiment");
 const Tag_1 = require("../enums/Tag");
-let CommentSentiment = exports.CommentSentiment = class CommentSentiment {
+let CommentSentiment = class CommentSentiment {
 };
+exports.CommentSentiment = CommentSentiment;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: false

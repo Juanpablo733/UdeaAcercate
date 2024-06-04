@@ -4,8 +4,9 @@ exports.RoleMinAggregate = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const RoleTag_1 = require("../../enums/RoleTag");
-let RoleMinAggregate = exports.RoleMinAggregate = class RoleMinAggregate {
+let RoleMinAggregate = class RoleMinAggregate {
 };
+exports.RoleMinAggregate = RoleMinAggregate;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

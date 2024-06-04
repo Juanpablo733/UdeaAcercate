@@ -4,8 +4,9 @@ exports.EnumSentimentFieldUpdateOperationsInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const Sentiment_1 = require("../../enums/Sentiment");
-let EnumSentimentFieldUpdateOperationsInput = exports.EnumSentimentFieldUpdateOperationsInput = class EnumSentimentFieldUpdateOperationsInput {
+let EnumSentimentFieldUpdateOperationsInput = class EnumSentimentFieldUpdateOperationsInput {
 };
+exports.EnumSentimentFieldUpdateOperationsInput = EnumSentimentFieldUpdateOperationsInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => Sentiment_1.Sentiment, {
         nullable: true

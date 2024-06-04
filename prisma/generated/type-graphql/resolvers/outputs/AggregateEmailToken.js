@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const EmailTokenCountAggregate_1 = require("../outputs/EmailTokenCountAggregate");
 const EmailTokenMaxAggregate_1 = require("../outputs/EmailTokenMaxAggregate");
 const EmailTokenMinAggregate_1 = require("../outputs/EmailTokenMinAggregate");
-let AggregateEmailToken = exports.AggregateEmailToken = class AggregateEmailToken {
+let AggregateEmailToken = class AggregateEmailToken {
 };
+exports.AggregateEmailToken = AggregateEmailToken;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => EmailTokenCountAggregate_1.EmailTokenCountAggregate, {
         nullable: true

@@ -1,5 +1,4 @@
 "use strict";
-var AccountWhereInput_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountWhereInput = void 0;
 const tslib_1 = require("tslib");
@@ -8,22 +7,23 @@ const IntNullableFilter_1 = require("../inputs/IntNullableFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
 const StringNullableFilter_1 = require("../inputs/StringNullableFilter");
 const UserRelationFilter_1 = require("../inputs/UserRelationFilter");
-let AccountWhereInput = exports.AccountWhereInput = AccountWhereInput_1 = class AccountWhereInput {
+let AccountWhereInput = class AccountWhereInput {
 };
+exports.AccountWhereInput = AccountWhereInput;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [AccountWhereInput_1], {
+    TypeGraphQL.Field(_type => [AccountWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], AccountWhereInput.prototype, "AND", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [AccountWhereInput_1], {
+    TypeGraphQL.Field(_type => [AccountWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], AccountWhereInput.prototype, "OR", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [AccountWhereInput_1], {
+    TypeGraphQL.Field(_type => [AccountWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
@@ -106,6 +106,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", UserRelationFilter_1.UserRelationFilter)
 ], AccountWhereInput.prototype, "user", void 0);
-exports.AccountWhereInput = AccountWhereInput = AccountWhereInput_1 = tslib_1.__decorate([
+exports.AccountWhereInput = AccountWhereInput = tslib_1.__decorate([
     TypeGraphQL.InputType("AccountWhereInput", {})
 ], AccountWhereInput);

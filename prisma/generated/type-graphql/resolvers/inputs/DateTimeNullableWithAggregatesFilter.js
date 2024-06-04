@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const NestedDateTimeNullableFilter_1 = require("../inputs/NestedDateTimeNullableFilter");
 const NestedDateTimeNullableWithAggregatesFilter_1 = require("../inputs/NestedDateTimeNullableWithAggregatesFilter");
 const NestedIntNullableFilter_1 = require("../inputs/NestedIntNullableFilter");
-let DateTimeNullableWithAggregatesFilter = exports.DateTimeNullableWithAggregatesFilter = class DateTimeNullableWithAggregatesFilter {
+let DateTimeNullableWithAggregatesFilter = class DateTimeNullableWithAggregatesFilter {
 };
+exports.DateTimeNullableWithAggregatesFilter = DateTimeNullableWithAggregatesFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => Date, {
         nullable: true

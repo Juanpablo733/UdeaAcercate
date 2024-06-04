@@ -7,8 +7,9 @@ const AccountOrderByWithAggregationInput_1 = require("../../../inputs/AccountOrd
 const AccountScalarWhereWithAggregatesInput_1 = require("../../../inputs/AccountScalarWhereWithAggregatesInput");
 const AccountWhereInput_1 = require("../../../inputs/AccountWhereInput");
 const AccountScalarFieldEnum_1 = require("../../../../enums/AccountScalarFieldEnum");
-let GroupByAccountArgs = exports.GroupByAccountArgs = class GroupByAccountArgs {
+let GroupByAccountArgs = class GroupByAccountArgs {
 };
+exports.GroupByAccountArgs = GroupByAccountArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AccountWhereInput_1.AccountWhereInput, {
         nullable: true

@@ -7,8 +7,9 @@ const SessionCountOrderByAggregateInput_1 = require("../inputs/SessionCountOrder
 const SessionMaxOrderByAggregateInput_1 = require("../inputs/SessionMaxOrderByAggregateInput");
 const SessionMinOrderByAggregateInput_1 = require("../inputs/SessionMinOrderByAggregateInput");
 const SortOrder_1 = require("../../enums/SortOrder");
-let SessionOrderByWithAggregationInput = exports.SessionOrderByWithAggregationInput = class SessionOrderByWithAggregationInput {
+let SessionOrderByWithAggregationInput = class SessionOrderByWithAggregationInput {
 };
+exports.SessionOrderByWithAggregationInput = SessionOrderByWithAggregationInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
         nullable: true

@@ -1,5 +1,4 @@
 "use strict";
-var NestedEnumSentimentWithAggregatesFilter_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NestedEnumSentimentWithAggregatesFilter = void 0;
 const tslib_1 = require("tslib");
@@ -7,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const NestedEnumSentimentFilter_1 = require("../inputs/NestedEnumSentimentFilter");
 const NestedIntFilter_1 = require("../inputs/NestedIntFilter");
 const Sentiment_1 = require("../../enums/Sentiment");
-let NestedEnumSentimentWithAggregatesFilter = exports.NestedEnumSentimentWithAggregatesFilter = NestedEnumSentimentWithAggregatesFilter_1 = class NestedEnumSentimentWithAggregatesFilter {
+let NestedEnumSentimentWithAggregatesFilter = class NestedEnumSentimentWithAggregatesFilter {
 };
+exports.NestedEnumSentimentWithAggregatesFilter = NestedEnumSentimentWithAggregatesFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => Sentiment_1.Sentiment, {
         nullable: true
@@ -28,7 +28,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Array)
 ], NestedEnumSentimentWithAggregatesFilter.prototype, "notIn", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => NestedEnumSentimentWithAggregatesFilter_1, {
+    TypeGraphQL.Field(_type => NestedEnumSentimentWithAggregatesFilter, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", NestedEnumSentimentWithAggregatesFilter)
@@ -51,6 +51,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", NestedEnumSentimentFilter_1.NestedEnumSentimentFilter)
 ], NestedEnumSentimentWithAggregatesFilter.prototype, "_max", void 0);
-exports.NestedEnumSentimentWithAggregatesFilter = NestedEnumSentimentWithAggregatesFilter = NestedEnumSentimentWithAggregatesFilter_1 = tslib_1.__decorate([
+exports.NestedEnumSentimentWithAggregatesFilter = NestedEnumSentimentWithAggregatesFilter = tslib_1.__decorate([
     TypeGraphQL.InputType("NestedEnumSentimentWithAggregatesFilter", {})
 ], NestedEnumSentimentWithAggregatesFilter);

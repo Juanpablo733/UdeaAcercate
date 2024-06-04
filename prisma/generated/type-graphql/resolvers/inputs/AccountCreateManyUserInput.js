@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountCreateManyUserInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let AccountCreateManyUserInput = exports.AccountCreateManyUserInput = class AccountCreateManyUserInput {
+let AccountCreateManyUserInput = class AccountCreateManyUserInput {
 };
+exports.AccountCreateManyUserInput = AccountCreateManyUserInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

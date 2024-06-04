@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const CreateOneInformationArgs_1 = require("./args/CreateOneInformationArgs");
 const Information_1 = require("../../../models/Information");
 const helpers_1 = require("../../../helpers");
-let CreateOneInformationResolver = exports.CreateOneInformationResolver = class CreateOneInformationResolver {
+let CreateOneInformationResolver = class CreateOneInformationResolver {
     async createOneInformation(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).information.create({
@@ -15,6 +15,7 @@ let CreateOneInformationResolver = exports.CreateOneInformationResolver = class 
         });
     }
 };
+exports.CreateOneInformationResolver = CreateOneInformationResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Information_1.Information, {
         nullable: false

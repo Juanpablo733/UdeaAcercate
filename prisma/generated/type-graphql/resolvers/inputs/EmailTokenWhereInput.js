@@ -1,27 +1,27 @@
 "use strict";
-var EmailTokenWhereInput_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EmailTokenWhereInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const DateTimeFilter_1 = require("../inputs/DateTimeFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
-let EmailTokenWhereInput = exports.EmailTokenWhereInput = EmailTokenWhereInput_1 = class EmailTokenWhereInput {
+let EmailTokenWhereInput = class EmailTokenWhereInput {
 };
+exports.EmailTokenWhereInput = EmailTokenWhereInput;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [EmailTokenWhereInput_1], {
+    TypeGraphQL.Field(_type => [EmailTokenWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], EmailTokenWhereInput.prototype, "AND", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [EmailTokenWhereInput_1], {
+    TypeGraphQL.Field(_type => [EmailTokenWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], EmailTokenWhereInput.prototype, "OR", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [EmailTokenWhereInput_1], {
+    TypeGraphQL.Field(_type => [EmailTokenWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
@@ -44,6 +44,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", DateTimeFilter_1.DateTimeFilter)
 ], EmailTokenWhereInput.prototype, "expires", void 0);
-exports.EmailTokenWhereInput = EmailTokenWhereInput = EmailTokenWhereInput_1 = tslib_1.__decorate([
+exports.EmailTokenWhereInput = EmailTokenWhereInput = tslib_1.__decorate([
     TypeGraphQL.InputType("EmailTokenWhereInput", {})
 ], EmailTokenWhereInput);

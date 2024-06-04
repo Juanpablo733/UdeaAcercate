@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const VerificationTokenCreateInput_1 = require("../../../inputs/VerificationTokenCreateInput");
 const VerificationTokenUpdateInput_1 = require("../../../inputs/VerificationTokenUpdateInput");
 const VerificationTokenWhereUniqueInput_1 = require("../../../inputs/VerificationTokenWhereUniqueInput");
-let UpsertOneVerificationTokenArgs = exports.UpsertOneVerificationTokenArgs = class UpsertOneVerificationTokenArgs {
+let UpsertOneVerificationTokenArgs = class UpsertOneVerificationTokenArgs {
 };
+exports.UpsertOneVerificationTokenArgs = UpsertOneVerificationTokenArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => VerificationTokenWhereUniqueInput_1.VerificationTokenWhereUniqueInput, {
         nullable: false

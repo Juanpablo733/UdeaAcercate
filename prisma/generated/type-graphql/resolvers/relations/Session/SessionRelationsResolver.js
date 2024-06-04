@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const Session_1 = require("../../../models/Session");
 const User_1 = require("../../../models/User");
 const helpers_1 = require("../../../helpers");
-let SessionRelationsResolver = exports.SessionRelationsResolver = class SessionRelationsResolver {
+let SessionRelationsResolver = class SessionRelationsResolver {
     async user(session, ctx, info) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).session.findUniqueOrThrow({
@@ -18,6 +18,7 @@ let SessionRelationsResolver = exports.SessionRelationsResolver = class SessionR
         });
     }
 };
+exports.SessionRelationsResolver = SessionRelationsResolver;
 tslib_1.__decorate([
     TypeGraphQL.FieldResolver(_type => User_1.User, {
         nullable: false

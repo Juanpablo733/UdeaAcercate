@@ -7,8 +7,9 @@ const SessionCreateManyUserInputEnvelope_1 = require("../inputs/SessionCreateMan
 const SessionCreateOrConnectWithoutUserInput_1 = require("../inputs/SessionCreateOrConnectWithoutUserInput");
 const SessionCreateWithoutUserInput_1 = require("../inputs/SessionCreateWithoutUserInput");
 const SessionWhereUniqueInput_1 = require("../inputs/SessionWhereUniqueInput");
-let SessionCreateNestedManyWithoutUserInput = exports.SessionCreateNestedManyWithoutUserInput = class SessionCreateNestedManyWithoutUserInput {
+let SessionCreateNestedManyWithoutUserInput = class SessionCreateNestedManyWithoutUserInput {
 };
+exports.SessionCreateNestedManyWithoutUserInput = SessionCreateNestedManyWithoutUserInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => [SessionCreateWithoutUserInput_1.SessionCreateWithoutUserInput], {
         nullable: true

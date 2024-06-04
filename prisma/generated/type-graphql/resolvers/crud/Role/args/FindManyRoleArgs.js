@@ -7,8 +7,9 @@ const RoleOrderByWithRelationInput_1 = require("../../../inputs/RoleOrderByWithR
 const RoleWhereInput_1 = require("../../../inputs/RoleWhereInput");
 const RoleWhereUniqueInput_1 = require("../../../inputs/RoleWhereUniqueInput");
 const RoleScalarFieldEnum_1 = require("../../../../enums/RoleScalarFieldEnum");
-let FindManyRoleArgs = exports.FindManyRoleArgs = class FindManyRoleArgs {
+let FindManyRoleArgs = class FindManyRoleArgs {
 };
+exports.FindManyRoleArgs = FindManyRoleArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => RoleWhereInput_1.RoleWhereInput, {
         nullable: true

@@ -9,8 +9,9 @@ const DateTimeFilter_1 = require("../inputs/DateTimeFilter");
 const EventRelationFilter_1 = require("../inputs/EventRelationFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
 const UserRelationFilter_1 = require("../inputs/UserRelationFilter");
-let AttendeeWhereUniqueInput = exports.AttendeeWhereUniqueInput = class AttendeeWhereUniqueInput {
+let AttendeeWhereUniqueInput = class AttendeeWhereUniqueInput {
 };
+exports.AttendeeWhereUniqueInput = AttendeeWhereUniqueInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AttendeeUserIdEventIdCompoundUniqueInput_1.AttendeeUserIdEventIdCompoundUniqueInput, {
         nullable: true

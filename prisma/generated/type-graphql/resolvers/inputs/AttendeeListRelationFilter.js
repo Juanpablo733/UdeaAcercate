@@ -4,8 +4,9 @@ exports.AttendeeListRelationFilter = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AttendeeWhereInput_1 = require("../inputs/AttendeeWhereInput");
-let AttendeeListRelationFilter = exports.AttendeeListRelationFilter = class AttendeeListRelationFilter {
+let AttendeeListRelationFilter = class AttendeeListRelationFilter {
 };
+exports.AttendeeListRelationFilter = AttendeeListRelationFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AttendeeWhereInput_1.AttendeeWhereInput, {
         nullable: true

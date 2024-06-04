@@ -4,8 +4,9 @@ exports.DeleteOneUserArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const UserWhereUniqueInput_1 = require("../../../inputs/UserWhereUniqueInput");
-let DeleteOneUserArgs = exports.DeleteOneUserArgs = class DeleteOneUserArgs {
+let DeleteOneUserArgs = class DeleteOneUserArgs {
 };
+exports.DeleteOneUserArgs = DeleteOneUserArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => UserWhereUniqueInput_1.UserWhereUniqueInput, {
         nullable: false

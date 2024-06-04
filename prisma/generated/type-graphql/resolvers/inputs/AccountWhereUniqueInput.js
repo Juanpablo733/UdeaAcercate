@@ -9,8 +9,9 @@ const IntNullableFilter_1 = require("../inputs/IntNullableFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
 const StringNullableFilter_1 = require("../inputs/StringNullableFilter");
 const UserRelationFilter_1 = require("../inputs/UserRelationFilter");
-let AccountWhereUniqueInput = exports.AccountWhereUniqueInput = class AccountWhereUniqueInput {
+let AccountWhereUniqueInput = class AccountWhereUniqueInput {
 };
+exports.AccountWhereUniqueInput = AccountWhereUniqueInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

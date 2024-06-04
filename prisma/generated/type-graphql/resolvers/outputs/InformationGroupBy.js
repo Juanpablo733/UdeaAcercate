@@ -7,14 +7,21 @@ const InformationCountAggregate_1 = require("../outputs/InformationCountAggregat
 const InformationMaxAggregate_1 = require("../outputs/InformationMaxAggregate");
 const InformationMinAggregate_1 = require("../outputs/InformationMinAggregate");
 const Tag_1 = require("../../enums/Tag");
-let InformationGroupBy = exports.InformationGroupBy = class InformationGroupBy {
+let InformationGroupBy = class InformationGroupBy {
 };
+exports.InformationGroupBy = InformationGroupBy;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: false
     }),
     tslib_1.__metadata("design:type", String)
 ], InformationGroupBy.prototype, "id", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
+], InformationGroupBy.prototype, "authorId", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: false
@@ -51,6 +58,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", Array)
 ], InformationGroupBy.prototype, "hashtags", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Boolean, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", Boolean)
+], InformationGroupBy.prototype, "official", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => InformationCountAggregate_1.InformationCountAggregate, {
         nullable: true

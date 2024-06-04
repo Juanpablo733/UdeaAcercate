@@ -2,6 +2,7 @@ import { AccountOrderByRelationAggregateInput } from "../inputs/AccountOrderByRe
 import { AttendeeOrderByRelationAggregateInput } from "../inputs/AttendeeOrderByRelationAggregateInput";
 import { CommentOrderByRelationAggregateInput } from "../inputs/CommentOrderByRelationAggregateInput";
 import { EventOrderByRelationAggregateInput } from "../inputs/EventOrderByRelationAggregateInput";
+import { InformationOrderByRelationAggregateInput } from "../inputs/InformationOrderByRelationAggregateInput";
 import { ProfileOrderByWithRelationInput } from "../inputs/ProfileOrderByWithRelationInput";
 import { SessionOrderByRelationAggregateInput } from "../inputs/SessionOrderByRelationAggregateInput";
 import { SortOrderInput } from "../inputs/SortOrderInput";
@@ -19,4 +20,5 @@ export declare class UserOrderByWithRelationInput {
     comments?: CommentOrderByRelationAggregateInput | undefined;
     accounts?: AccountOrderByRelationAggregateInput | undefined;
     sessions?: SessionOrderByRelationAggregateInput | undefined;
+    newsCreated?: InformationOrderByRelationAggregateInput | undefined;
 }

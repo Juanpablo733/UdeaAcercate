@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AccountScalarWhereInput_1 = require("../inputs/AccountScalarWhereInput");
 const AccountUpdateManyMutationInput_1 = require("../inputs/AccountUpdateManyMutationInput");
-let AccountUpdateManyWithWhereWithoutUserInput = exports.AccountUpdateManyWithWhereWithoutUserInput = class AccountUpdateManyWithWhereWithoutUserInput {
+let AccountUpdateManyWithWhereWithoutUserInput = class AccountUpdateManyWithWhereWithoutUserInput {
 };
+exports.AccountUpdateManyWithWhereWithoutUserInput = AccountUpdateManyWithWhereWithoutUserInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AccountScalarWhereInput_1.AccountScalarWhereInput, {
         nullable: false

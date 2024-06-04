@@ -4,8 +4,9 @@ exports.CreateManyCommentSentimentArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const CommentSentimentCreateManyInput_1 = require("../../../inputs/CommentSentimentCreateManyInput");
-let CreateManyCommentSentimentArgs = exports.CreateManyCommentSentimentArgs = class CreateManyCommentSentimentArgs {
+let CreateManyCommentSentimentArgs = class CreateManyCommentSentimentArgs {
 };
+exports.CreateManyCommentSentimentArgs = CreateManyCommentSentimentArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => [CommentSentimentCreateManyInput_1.CommentSentimentCreateManyInput], {
         nullable: false

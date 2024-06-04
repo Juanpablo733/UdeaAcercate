@@ -7,8 +7,9 @@ const AccountOrderByWithRelationInput_1 = require("../../../inputs/AccountOrderB
 const AccountWhereInput_1 = require("../../../inputs/AccountWhereInput");
 const AccountWhereUniqueInput_1 = require("../../../inputs/AccountWhereUniqueInput");
 const AccountScalarFieldEnum_1 = require("../../../../enums/AccountScalarFieldEnum");
-let FindFirstAccountArgs = exports.FindFirstAccountArgs = class FindFirstAccountArgs {
+let FindFirstAccountArgs = class FindFirstAccountArgs {
 };
+exports.FindFirstAccountArgs = FindFirstAccountArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AccountWhereInput_1.AccountWhereInput, {
         nullable: true

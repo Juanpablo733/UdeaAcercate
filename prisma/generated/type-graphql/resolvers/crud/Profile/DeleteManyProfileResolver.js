@@ -7,7 +7,7 @@ const DeleteManyProfileArgs_1 = require("./args/DeleteManyProfileArgs");
 const Profile_1 = require("../../../models/Profile");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const helpers_1 = require("../../../helpers");
-let DeleteManyProfileResolver = exports.DeleteManyProfileResolver = class DeleteManyProfileResolver {
+let DeleteManyProfileResolver = class DeleteManyProfileResolver {
     async deleteManyProfile(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).profile.deleteMany({
@@ -16,6 +16,7 @@ let DeleteManyProfileResolver = exports.DeleteManyProfileResolver = class Delete
         });
     }
 };
+exports.DeleteManyProfileResolver = DeleteManyProfileResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, {
         nullable: false

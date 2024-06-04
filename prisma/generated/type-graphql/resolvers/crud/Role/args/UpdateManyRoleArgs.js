@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const RoleUpdateManyMutationInput_1 = require("../../../inputs/RoleUpdateManyMutationInput");
 const RoleWhereInput_1 = require("../../../inputs/RoleWhereInput");
-let UpdateManyRoleArgs = exports.UpdateManyRoleArgs = class UpdateManyRoleArgs {
+let UpdateManyRoleArgs = class UpdateManyRoleArgs {
 };
+exports.UpdateManyRoleArgs = UpdateManyRoleArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => RoleUpdateManyMutationInput_1.RoleUpdateManyMutationInput, {
         nullable: false

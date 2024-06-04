@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const VerificationTokenCountAggregate_1 = require("../outputs/VerificationTokenCountAggregate");
 const VerificationTokenMaxAggregate_1 = require("../outputs/VerificationTokenMaxAggregate");
 const VerificationTokenMinAggregate_1 = require("../outputs/VerificationTokenMinAggregate");
-let VerificationTokenGroupBy = exports.VerificationTokenGroupBy = class VerificationTokenGroupBy {
+let VerificationTokenGroupBy = class VerificationTokenGroupBy {
 };
+exports.VerificationTokenGroupBy = VerificationTokenGroupBy;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: false

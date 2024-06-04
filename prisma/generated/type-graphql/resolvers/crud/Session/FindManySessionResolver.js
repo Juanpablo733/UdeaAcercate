@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const FindManySessionArgs_1 = require("./args/FindManySessionArgs");
 const Session_1 = require("../../../models/Session");
 const helpers_1 = require("../../../helpers");
-let FindManySessionResolver = exports.FindManySessionResolver = class FindManySessionResolver {
+let FindManySessionResolver = class FindManySessionResolver {
     async sessions(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).session.findMany({
@@ -15,6 +15,7 @@ let FindManySessionResolver = exports.FindManySessionResolver = class FindManySe
         });
     }
 };
+exports.FindManySessionResolver = FindManySessionResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [Session_1.Session], {
         nullable: false

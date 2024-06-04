@@ -1,5 +1,4 @@
 "use strict";
-var AttendeeWhereInput_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AttendeeWhereInput = void 0;
 const tslib_1 = require("tslib");
@@ -8,22 +7,23 @@ const DateTimeFilter_1 = require("../inputs/DateTimeFilter");
 const EventRelationFilter_1 = require("../inputs/EventRelationFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
 const UserRelationFilter_1 = require("../inputs/UserRelationFilter");
-let AttendeeWhereInput = exports.AttendeeWhereInput = AttendeeWhereInput_1 = class AttendeeWhereInput {
+let AttendeeWhereInput = class AttendeeWhereInput {
 };
+exports.AttendeeWhereInput = AttendeeWhereInput;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [AttendeeWhereInput_1], {
+    TypeGraphQL.Field(_type => [AttendeeWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], AttendeeWhereInput.prototype, "AND", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [AttendeeWhereInput_1], {
+    TypeGraphQL.Field(_type => [AttendeeWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], AttendeeWhereInput.prototype, "OR", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [AttendeeWhereInput_1], {
+    TypeGraphQL.Field(_type => [AttendeeWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
@@ -58,6 +58,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", EventRelationFilter_1.EventRelationFilter)
 ], AttendeeWhereInput.prototype, "event", void 0);
-exports.AttendeeWhereInput = AttendeeWhereInput = AttendeeWhereInput_1 = tslib_1.__decorate([
+exports.AttendeeWhereInput = AttendeeWhereInput = tslib_1.__decorate([
     TypeGraphQL.InputType("AttendeeWhereInput", {})
 ], AttendeeWhereInput);

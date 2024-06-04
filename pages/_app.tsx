@@ -13,12 +13,12 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
 
   return (
     <>
-    <ApolloProvider client={client}>
-      <SessionProvider session={session}>
+      <ApolloProvider client={client}>
+        <SessionProvider session={session}>
           <Component {...pageProps} />
-      </SessionProvider>
-      <ToastContainer/>
-    </ApolloProvider>    
+        </SessionProvider>
+        <ToastContainer />
+      </ApolloProvider>
     </>
   )
 }

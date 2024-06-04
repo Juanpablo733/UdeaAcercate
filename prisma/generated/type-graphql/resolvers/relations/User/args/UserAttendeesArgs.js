@@ -7,8 +7,9 @@ const AttendeeOrderByWithRelationInput_1 = require("../../../inputs/AttendeeOrde
 const AttendeeWhereInput_1 = require("../../../inputs/AttendeeWhereInput");
 const AttendeeWhereUniqueInput_1 = require("../../../inputs/AttendeeWhereUniqueInput");
 const AttendeeScalarFieldEnum_1 = require("../../../../enums/AttendeeScalarFieldEnum");
-let UserAttendeesArgs = exports.UserAttendeesArgs = class UserAttendeesArgs {
+let UserAttendeesArgs = class UserAttendeesArgs {
 };
+exports.UserAttendeesArgs = UserAttendeesArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AttendeeWhereInput_1.AttendeeWhereInput, {
         nullable: true

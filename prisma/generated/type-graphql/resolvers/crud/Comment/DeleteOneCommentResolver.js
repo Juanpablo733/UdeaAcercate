@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const DeleteOneCommentArgs_1 = require("./args/DeleteOneCommentArgs");
 const Comment_1 = require("../../../models/Comment");
 const helpers_1 = require("../../../helpers");
-let DeleteOneCommentResolver = exports.DeleteOneCommentResolver = class DeleteOneCommentResolver {
+let DeleteOneCommentResolver = class DeleteOneCommentResolver {
     async deleteOneComment(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).comment.delete({
@@ -15,6 +15,7 @@ let DeleteOneCommentResolver = exports.DeleteOneCommentResolver = class DeleteOn
         });
     }
 };
+exports.DeleteOneCommentResolver = DeleteOneCommentResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Comment_1.Comment, {
         nullable: true

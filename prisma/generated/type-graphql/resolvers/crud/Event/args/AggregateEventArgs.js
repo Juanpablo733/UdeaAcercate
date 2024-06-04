@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const EventOrderByWithRelationInput_1 = require("../../../inputs/EventOrderByWithRelationInput");
 const EventWhereInput_1 = require("../../../inputs/EventWhereInput");
 const EventWhereUniqueInput_1 = require("../../../inputs/EventWhereUniqueInput");
-let AggregateEventArgs = exports.AggregateEventArgs = class AggregateEventArgs {
+let AggregateEventArgs = class AggregateEventArgs {
 };
+exports.AggregateEventArgs = AggregateEventArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => EventWhereInput_1.EventWhereInput, {
         nullable: true

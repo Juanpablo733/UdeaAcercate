@@ -8,12 +8,14 @@ const AttendeeUpdateManyWithoutUserNestedInput_1 = require("../inputs/AttendeeUp
 const CommentUpdateManyWithoutUserNestedInput_1 = require("../inputs/CommentUpdateManyWithoutUserNestedInput");
 const DateTimeFieldUpdateOperationsInput_1 = require("../inputs/DateTimeFieldUpdateOperationsInput");
 const EventUpdateManyWithoutAuthorNestedInput_1 = require("../inputs/EventUpdateManyWithoutAuthorNestedInput");
+const InformationUpdateManyWithoutAuthorNestedInput_1 = require("../inputs/InformationUpdateManyWithoutAuthorNestedInput");
 const NullableDateTimeFieldUpdateOperationsInput_1 = require("../inputs/NullableDateTimeFieldUpdateOperationsInput");
 const NullableStringFieldUpdateOperationsInput_1 = require("../inputs/NullableStringFieldUpdateOperationsInput");
 const ProfileUpdateOneWithoutUserNestedInput_1 = require("../inputs/ProfileUpdateOneWithoutUserNestedInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
-let UserUpdateWithoutSessionsInput = exports.UserUpdateWithoutSessionsInput = class UserUpdateWithoutSessionsInput {
+let UserUpdateWithoutSessionsInput = class UserUpdateWithoutSessionsInput {
 };
+exports.UserUpdateWithoutSessionsInput = UserUpdateWithoutSessionsInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, {
         nullable: true
@@ -86,6 +88,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", AccountUpdateManyWithoutUserNestedInput_1.AccountUpdateManyWithoutUserNestedInput)
 ], UserUpdateWithoutSessionsInput.prototype, "accounts", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => InformationUpdateManyWithoutAuthorNestedInput_1.InformationUpdateManyWithoutAuthorNestedInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", InformationUpdateManyWithoutAuthorNestedInput_1.InformationUpdateManyWithoutAuthorNestedInput)
+], UserUpdateWithoutSessionsInput.prototype, "newsCreated", void 0);
 exports.UserUpdateWithoutSessionsInput = UserUpdateWithoutSessionsInput = tslib_1.__decorate([
     TypeGraphQL.InputType("UserUpdateWithoutSessionsInput", {})
 ], UserUpdateWithoutSessionsInput);

@@ -7,7 +7,7 @@ const DeleteManyVerificationTokenArgs_1 = require("./args/DeleteManyVerification
 const VerificationToken_1 = require("../../../models/VerificationToken");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const helpers_1 = require("../../../helpers");
-let DeleteManyVerificationTokenResolver = exports.DeleteManyVerificationTokenResolver = class DeleteManyVerificationTokenResolver {
+let DeleteManyVerificationTokenResolver = class DeleteManyVerificationTokenResolver {
     async deleteManyVerificationToken(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).verificationToken.deleteMany({
@@ -16,6 +16,7 @@ let DeleteManyVerificationTokenResolver = exports.DeleteManyVerificationTokenRes
         });
     }
 };
+exports.DeleteManyVerificationTokenResolver = DeleteManyVerificationTokenResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, {
         nullable: false

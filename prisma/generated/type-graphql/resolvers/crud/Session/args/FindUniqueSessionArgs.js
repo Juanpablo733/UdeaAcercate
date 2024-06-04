@@ -4,8 +4,9 @@ exports.FindUniqueSessionArgs = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const SessionWhereUniqueInput_1 = require("../../../inputs/SessionWhereUniqueInput");
-let FindUniqueSessionArgs = exports.FindUniqueSessionArgs = class FindUniqueSessionArgs {
+let FindUniqueSessionArgs = class FindUniqueSessionArgs {
 };
+exports.FindUniqueSessionArgs = FindUniqueSessionArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SessionWhereUniqueInput_1.SessionWhereUniqueInput, {
         nullable: false

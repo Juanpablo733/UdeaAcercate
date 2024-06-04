@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const Campus_1 = require("../enums/Campus");
 const UserType_1 = require("../enums/UserType");
-let Profile = exports.Profile = class Profile {
+let Profile = class Profile {
 };
+exports.Profile = Profile;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true

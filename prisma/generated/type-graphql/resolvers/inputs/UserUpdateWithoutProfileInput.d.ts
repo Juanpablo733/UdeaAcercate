@@ -3,6 +3,7 @@ import { AttendeeUpdateManyWithoutUserNestedInput } from "../inputs/AttendeeUpda
 import { CommentUpdateManyWithoutUserNestedInput } from "../inputs/CommentUpdateManyWithoutUserNestedInput";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
 import { EventUpdateManyWithoutAuthorNestedInput } from "../inputs/EventUpdateManyWithoutAuthorNestedInput";
+import { InformationUpdateManyWithoutAuthorNestedInput } from "../inputs/InformationUpdateManyWithoutAuthorNestedInput";
 import { NullableDateTimeFieldUpdateOperationsInput } from "../inputs/NullableDateTimeFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { SessionUpdateManyWithoutUserNestedInput } from "../inputs/SessionUpdateManyWithoutUserNestedInput";
@@ -20,4 +21,5 @@ export declare class UserUpdateWithoutProfileInput {
     comments?: CommentUpdateManyWithoutUserNestedInput | undefined;
     accounts?: AccountUpdateManyWithoutUserNestedInput | undefined;
     sessions?: SessionUpdateManyWithoutUserNestedInput | undefined;
+    newsCreated?: InformationUpdateManyWithoutAuthorNestedInput | undefined;
 }

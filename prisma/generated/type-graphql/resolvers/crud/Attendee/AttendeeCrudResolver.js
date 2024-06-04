@@ -22,7 +22,7 @@ const Attendee_1 = require("../../../models/Attendee");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const AggregateAttendee_1 = require("../../outputs/AggregateAttendee");
 const AttendeeGroupBy_1 = require("../../outputs/AttendeeGroupBy");
-let AttendeeCrudResolver = exports.AttendeeCrudResolver = class AttendeeCrudResolver {
+let AttendeeCrudResolver = class AttendeeCrudResolver {
     async aggregateAttendee(ctx, info, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).attendee.aggregate({
             ...args,
@@ -121,6 +121,7 @@ let AttendeeCrudResolver = exports.AttendeeCrudResolver = class AttendeeCrudReso
         });
     }
 };
+exports.AttendeeCrudResolver = AttendeeCrudResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateAttendee_1.AggregateAttendee, {
         nullable: false

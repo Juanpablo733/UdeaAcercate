@@ -7,7 +7,7 @@ const GroupByEventArgs_1 = require("./args/GroupByEventArgs");
 const Event_1 = require("../../../models/Event");
 const EventGroupBy_1 = require("../../outputs/EventGroupBy");
 const helpers_1 = require("../../../helpers");
-let GroupByEventResolver = exports.GroupByEventResolver = class GroupByEventResolver {
+let GroupByEventResolver = class GroupByEventResolver {
     async groupByEvent(ctx, info, args) {
         const { _count, _avg, _sum, _min, _max } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).event.groupBy({
@@ -16,6 +16,7 @@ let GroupByEventResolver = exports.GroupByEventResolver = class GroupByEventReso
         });
     }
 };
+exports.GroupByEventResolver = GroupByEventResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [EventGroupBy_1.EventGroupBy], {
         nullable: false

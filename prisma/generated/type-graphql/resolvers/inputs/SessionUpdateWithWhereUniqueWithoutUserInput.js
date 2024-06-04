@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const SessionUpdateWithoutUserInput_1 = require("../inputs/SessionUpdateWithoutUserInput");
 const SessionWhereUniqueInput_1 = require("../inputs/SessionWhereUniqueInput");
-let SessionUpdateWithWhereUniqueWithoutUserInput = exports.SessionUpdateWithWhereUniqueWithoutUserInput = class SessionUpdateWithWhereUniqueWithoutUserInput {
+let SessionUpdateWithWhereUniqueWithoutUserInput = class SessionUpdateWithWhereUniqueWithoutUserInput {
 };
+exports.SessionUpdateWithWhereUniqueWithoutUserInput = SessionUpdateWithWhereUniqueWithoutUserInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SessionWhereUniqueInput_1.SessionWhereUniqueInput, {
         nullable: false

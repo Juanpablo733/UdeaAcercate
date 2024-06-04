@@ -7,8 +7,9 @@ const CommentOrderByWithAggregationInput_1 = require("../../../inputs/CommentOrd
 const CommentScalarWhereWithAggregatesInput_1 = require("../../../inputs/CommentScalarWhereWithAggregatesInput");
 const CommentWhereInput_1 = require("../../../inputs/CommentWhereInput");
 const CommentScalarFieldEnum_1 = require("../../../../enums/CommentScalarFieldEnum");
-let GroupByCommentArgs = exports.GroupByCommentArgs = class GroupByCommentArgs {
+let GroupByCommentArgs = class GroupByCommentArgs {
 };
+exports.GroupByCommentArgs = GroupByCommentArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => CommentWhereInput_1.CommentWhereInput, {
         nullable: true

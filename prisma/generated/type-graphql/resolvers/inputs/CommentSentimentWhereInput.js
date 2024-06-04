@@ -1,5 +1,4 @@
 "use strict";
-var CommentSentimentWhereInput_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentSentimentWhereInput = void 0;
 const tslib_1 = require("tslib");
@@ -9,22 +8,23 @@ const EnumSentimentFilter_1 = require("../inputs/EnumSentimentFilter");
 const EnumTagFilter_1 = require("../inputs/EnumTagFilter");
 const FloatFilter_1 = require("../inputs/FloatFilter");
 const StringFilter_1 = require("../inputs/StringFilter");
-let CommentSentimentWhereInput = exports.CommentSentimentWhereInput = CommentSentimentWhereInput_1 = class CommentSentimentWhereInput {
+let CommentSentimentWhereInput = class CommentSentimentWhereInput {
 };
+exports.CommentSentimentWhereInput = CommentSentimentWhereInput;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [CommentSentimentWhereInput_1], {
+    TypeGraphQL.Field(_type => [CommentSentimentWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], CommentSentimentWhereInput.prototype, "AND", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [CommentSentimentWhereInput_1], {
+    TypeGraphQL.Field(_type => [CommentSentimentWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
 ], CommentSentimentWhereInput.prototype, "OR", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [CommentSentimentWhereInput_1], {
+    TypeGraphQL.Field(_type => [CommentSentimentWhereInput], {
         nullable: true
     }),
     tslib_1.__metadata("design:type", Array)
@@ -59,6 +59,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", DateTimeFilter_1.DateTimeFilter)
 ], CommentSentimentWhereInput.prototype, "dateTime", void 0);
-exports.CommentSentimentWhereInput = CommentSentimentWhereInput = CommentSentimentWhereInput_1 = tslib_1.__decorate([
+exports.CommentSentimentWhereInput = CommentSentimentWhereInput = tslib_1.__decorate([
     TypeGraphQL.InputType("CommentSentimentWhereInput", {})
 ], CommentSentimentWhereInput);

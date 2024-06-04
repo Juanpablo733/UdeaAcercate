@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const CommentScalarWhereInput_1 = require("../inputs/CommentScalarWhereInput");
 const CommentUpdateManyMutationInput_1 = require("../inputs/CommentUpdateManyMutationInput");
-let CommentUpdateManyWithWhereWithoutInfoInput = exports.CommentUpdateManyWithWhereWithoutInfoInput = class CommentUpdateManyWithWhereWithoutInfoInput {
+let CommentUpdateManyWithWhereWithoutInfoInput = class CommentUpdateManyWithWhereWithoutInfoInput {
 };
+exports.CommentUpdateManyWithWhereWithoutInfoInput = CommentUpdateManyWithWhereWithoutInfoInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => CommentScalarWhereInput_1.CommentScalarWhereInput, {
         nullable: false

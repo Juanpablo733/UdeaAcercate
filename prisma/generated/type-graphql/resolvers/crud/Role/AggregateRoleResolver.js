@@ -7,7 +7,7 @@ const AggregateRoleArgs_1 = require("./args/AggregateRoleArgs");
 const Role_1 = require("../../../models/Role");
 const AggregateRole_1 = require("../../outputs/AggregateRole");
 const helpers_1 = require("../../../helpers");
-let AggregateRoleResolver = exports.AggregateRoleResolver = class AggregateRoleResolver {
+let AggregateRoleResolver = class AggregateRoleResolver {
     async aggregateRole(ctx, info, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).role.aggregate({
             ...args,
@@ -15,6 +15,7 @@ let AggregateRoleResolver = exports.AggregateRoleResolver = class AggregateRoleR
         });
     }
 };
+exports.AggregateRoleResolver = AggregateRoleResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateRole_1.AggregateRole, {
         nullable: false

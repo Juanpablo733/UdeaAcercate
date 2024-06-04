@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const FindManyInformationArgs_1 = require("./args/FindManyInformationArgs");
 const Information_1 = require("../../../models/Information");
 const helpers_1 = require("../../../helpers");
-let FindManyInformationResolver = exports.FindManyInformationResolver = class FindManyInformationResolver {
+let FindManyInformationResolver = class FindManyInformationResolver {
     async findManyInformation(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).information.findMany({
@@ -15,6 +15,7 @@ let FindManyInformationResolver = exports.FindManyInformationResolver = class Fi
         });
     }
 };
+exports.FindManyInformationResolver = FindManyInformationResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [Information_1.Information], {
         nullable: false

@@ -5,14 +5,21 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const Tag_1 = require("../enums/Tag");
 const InformationCount_1 = require("../resolvers/outputs/InformationCount");
-let Information = exports.Information = class Information {
+let Information = class Information {
 };
+exports.Information = Information;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: false
     }),
     tslib_1.__metadata("design:type", String)
 ], Information.prototype, "id", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
+], Information.prototype, "authorId", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: false
@@ -49,6 +56,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", Array)
 ], Information.prototype, "hashtags", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Boolean, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", Boolean)
+], Information.prototype, "official", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => InformationCount_1.InformationCount, {
         nullable: true

@@ -11,8 +11,9 @@ const AttendeeUpdateManyWithWhereWithoutUserInput_1 = require("../inputs/Attende
 const AttendeeUpdateWithWhereUniqueWithoutUserInput_1 = require("../inputs/AttendeeUpdateWithWhereUniqueWithoutUserInput");
 const AttendeeUpsertWithWhereUniqueWithoutUserInput_1 = require("../inputs/AttendeeUpsertWithWhereUniqueWithoutUserInput");
 const AttendeeWhereUniqueInput_1 = require("../inputs/AttendeeWhereUniqueInput");
-let AttendeeUpdateManyWithoutUserNestedInput = exports.AttendeeUpdateManyWithoutUserNestedInput = class AttendeeUpdateManyWithoutUserNestedInput {
+let AttendeeUpdateManyWithoutUserNestedInput = class AttendeeUpdateManyWithoutUserNestedInput {
 };
+exports.AttendeeUpdateManyWithoutUserNestedInput = AttendeeUpdateManyWithoutUserNestedInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => [AttendeeCreateWithoutUserInput_1.AttendeeCreateWithoutUserInput], {
         nullable: true

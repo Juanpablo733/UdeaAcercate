@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const CommentUpdateWithoutInfoInput_1 = require("../inputs/CommentUpdateWithoutInfoInput");
 const CommentWhereUniqueInput_1 = require("../inputs/CommentWhereUniqueInput");
-let CommentUpdateWithWhereUniqueWithoutInfoInput = exports.CommentUpdateWithWhereUniqueWithoutInfoInput = class CommentUpdateWithWhereUniqueWithoutInfoInput {
+let CommentUpdateWithWhereUniqueWithoutInfoInput = class CommentUpdateWithWhereUniqueWithoutInfoInput {
 };
+exports.CommentUpdateWithWhereUniqueWithoutInfoInput = CommentUpdateWithWhereUniqueWithoutInfoInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => CommentWhereUniqueInput_1.CommentWhereUniqueInput, {
         nullable: false

@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.InformationWhereUniqueInput = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
+const BoolFilter_1 = require("../inputs/BoolFilter");
 const CommentListRelationFilter_1 = require("../inputs/CommentListRelationFilter");
 const DateTimeFilter_1 = require("../inputs/DateTimeFilter");
 const EnumTagFilter_1 = require("../inputs/EnumTagFilter");
@@ -11,8 +12,10 @@ const InformationWhereInput_1 = require("../inputs/InformationWhereInput");
 const StringFilter_1 = require("../inputs/StringFilter");
 const StringNullableFilter_1 = require("../inputs/StringNullableFilter");
 const StringNullableListFilter_1 = require("../inputs/StringNullableListFilter");
-let InformationWhereUniqueInput = exports.InformationWhereUniqueInput = class InformationWhereUniqueInput {
+const UserNullableRelationFilter_1 = require("../inputs/UserNullableRelationFilter");
+let InformationWhereUniqueInput = class InformationWhereUniqueInput {
 };
+exports.InformationWhereUniqueInput = InformationWhereUniqueInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true
@@ -37,6 +40,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", Array)
 ], InformationWhereUniqueInput.prototype, "NOT", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringNullableFilter_1.StringNullableFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", StringNullableFilter_1.StringNullableFilter)
+], InformationWhereUniqueInput.prototype, "authorId", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => StringFilter_1.StringFilter, {
         nullable: true
@@ -73,6 +82,18 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", StringNullableListFilter_1.StringNullableListFilter)
 ], InformationWhereUniqueInput.prototype, "hashtags", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => BoolFilter_1.BoolFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", BoolFilter_1.BoolFilter)
+], InformationWhereUniqueInput.prototype, "official", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => UserNullableRelationFilter_1.UserNullableRelationFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", UserNullableRelationFilter_1.UserNullableRelationFilter)
+], InformationWhereUniqueInput.prototype, "author", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => CommentListRelationFilter_1.CommentListRelationFilter, {
         nullable: true

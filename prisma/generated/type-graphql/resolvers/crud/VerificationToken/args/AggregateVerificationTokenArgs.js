@@ -6,8 +6,9 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const VerificationTokenOrderByWithRelationInput_1 = require("../../../inputs/VerificationTokenOrderByWithRelationInput");
 const VerificationTokenWhereInput_1 = require("../../../inputs/VerificationTokenWhereInput");
 const VerificationTokenWhereUniqueInput_1 = require("../../../inputs/VerificationTokenWhereUniqueInput");
-let AggregateVerificationTokenArgs = exports.AggregateVerificationTokenArgs = class AggregateVerificationTokenArgs {
+let AggregateVerificationTokenArgs = class AggregateVerificationTokenArgs {
 };
+exports.AggregateVerificationTokenArgs = AggregateVerificationTokenArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => VerificationTokenWhereInput_1.VerificationTokenWhereInput, {
         nullable: true

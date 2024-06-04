@@ -1,11 +1,11 @@
 "use strict";
-var NestedIntFilter_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NestedIntFilter = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
-let NestedIntFilter = exports.NestedIntFilter = NestedIntFilter_1 = class NestedIntFilter {
+let NestedIntFilter = class NestedIntFilter {
 };
+exports.NestedIntFilter = NestedIntFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, {
         nullable: true
@@ -49,11 +49,11 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Number)
 ], NestedIntFilter.prototype, "gte", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => NestedIntFilter_1, {
+    TypeGraphQL.Field(_type => NestedIntFilter, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", NestedIntFilter)
 ], NestedIntFilter.prototype, "not", void 0);
-exports.NestedIntFilter = NestedIntFilter = NestedIntFilter_1 = tslib_1.__decorate([
+exports.NestedIntFilter = NestedIntFilter = tslib_1.__decorate([
     TypeGraphQL.InputType("NestedIntFilter", {})
 ], NestedIntFilter);

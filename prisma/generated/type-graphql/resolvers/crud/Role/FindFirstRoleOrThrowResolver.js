@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const FindFirstRoleOrThrowArgs_1 = require("./args/FindFirstRoleOrThrowArgs");
 const Role_1 = require("../../../models/Role");
 const helpers_1 = require("../../../helpers");
-let FindFirstRoleOrThrowResolver = exports.FindFirstRoleOrThrowResolver = class FindFirstRoleOrThrowResolver {
+let FindFirstRoleOrThrowResolver = class FindFirstRoleOrThrowResolver {
     async findFirstRoleOrThrow(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).role.findFirstOrThrow({
@@ -15,6 +15,7 @@ let FindFirstRoleOrThrowResolver = exports.FindFirstRoleOrThrowResolver = class 
         });
     }
 };
+exports.FindFirstRoleOrThrowResolver = FindFirstRoleOrThrowResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => Role_1.Role, {
         nullable: true

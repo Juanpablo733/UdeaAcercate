@@ -4,8 +4,9 @@ exports.ProfileNullableRelationFilter = void 0;
 const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const ProfileWhereInput_1 = require("../inputs/ProfileWhereInput");
-let ProfileNullableRelationFilter = exports.ProfileNullableRelationFilter = class ProfileNullableRelationFilter {
+let ProfileNullableRelationFilter = class ProfileNullableRelationFilter {
 };
+exports.ProfileNullableRelationFilter = ProfileNullableRelationFilter;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => ProfileWhereInput_1.ProfileWhereInput, {
         nullable: true

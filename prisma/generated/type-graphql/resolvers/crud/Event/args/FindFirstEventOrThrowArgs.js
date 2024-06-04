@@ -7,8 +7,9 @@ const EventOrderByWithRelationInput_1 = require("../../../inputs/EventOrderByWit
 const EventWhereInput_1 = require("../../../inputs/EventWhereInput");
 const EventWhereUniqueInput_1 = require("../../../inputs/EventWhereUniqueInput");
 const EventScalarFieldEnum_1 = require("../../../../enums/EventScalarFieldEnum");
-let FindFirstEventOrThrowArgs = exports.FindFirstEventOrThrowArgs = class FindFirstEventOrThrowArgs {
+let FindFirstEventOrThrowArgs = class FindFirstEventOrThrowArgs {
 };
+exports.FindFirstEventOrThrowArgs = FindFirstEventOrThrowArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => EventWhereInput_1.EventWhereInput, {
         nullable: true

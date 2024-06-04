@@ -7,8 +7,9 @@ const EventOrderByWithAggregationInput_1 = require("../../../inputs/EventOrderBy
 const EventScalarWhereWithAggregatesInput_1 = require("../../../inputs/EventScalarWhereWithAggregatesInput");
 const EventWhereInput_1 = require("../../../inputs/EventWhereInput");
 const EventScalarFieldEnum_1 = require("../../../../enums/EventScalarFieldEnum");
-let GroupByEventArgs = exports.GroupByEventArgs = class GroupByEventArgs {
+let GroupByEventArgs = class GroupByEventArgs {
 };
+exports.GroupByEventArgs = GroupByEventArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => EventWhereInput_1.EventWhereInput, {
         nullable: true

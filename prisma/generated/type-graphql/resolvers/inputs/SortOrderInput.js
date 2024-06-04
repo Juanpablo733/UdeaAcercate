@@ -5,8 +5,9 @@ const tslib_1 = require("tslib");
 const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const NullsOrder_1 = require("../../enums/NullsOrder");
 const SortOrder_1 = require("../../enums/SortOrder");
-let SortOrderInput = exports.SortOrderInput = class SortOrderInput {
+let SortOrderInput = class SortOrderInput {
 };
+exports.SortOrderInput = SortOrderInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
         nullable: false

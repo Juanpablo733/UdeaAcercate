@@ -7,8 +7,9 @@ const UserOrderByWithRelationInput_1 = require("../../../inputs/UserOrderByWithR
 const UserWhereInput_1 = require("../../../inputs/UserWhereInput");
 const UserWhereUniqueInput_1 = require("../../../inputs/UserWhereUniqueInput");
 const UserScalarFieldEnum_1 = require("../../../../enums/UserScalarFieldEnum");
-let FindFirstUserOrThrowArgs = exports.FindFirstUserOrThrowArgs = class FindFirstUserOrThrowArgs {
+let FindFirstUserOrThrowArgs = class FindFirstUserOrThrowArgs {
 };
+exports.FindFirstUserOrThrowArgs = FindFirstUserOrThrowArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => UserWhereInput_1.UserWhereInput, {
         nullable: true

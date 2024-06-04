@@ -6,7 +6,7 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const UpdateOneCommentArgs_1 = require("./args/UpdateOneCommentArgs");
 const Comment_1 = require("../../../models/Comment");
 const helpers_1 = require("../../../helpers");
-let UpdateOneCommentResolver = exports.UpdateOneCommentResolver = class UpdateOneCommentResolver {
+let UpdateOneCommentResolver = class UpdateOneCommentResolver {
     async updateOneComment(ctx, info, args) {
         const { _count } = (0, helpers_1.transformInfoIntoPrismaArgs)(info);
         return (0, helpers_1.getPrismaFromContext)(ctx).comment.update({
@@ -15,6 +15,7 @@ let UpdateOneCommentResolver = exports.UpdateOneCommentResolver = class UpdateOn
         });
     }
 };
+exports.UpdateOneCommentResolver = UpdateOneCommentResolver;
 tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Comment_1.Comment, {
         nullable: true

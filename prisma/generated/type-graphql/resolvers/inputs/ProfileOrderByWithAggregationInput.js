@@ -8,8 +8,9 @@ const ProfileMaxOrderByAggregateInput_1 = require("../inputs/ProfileMaxOrderByAg
 const ProfileMinOrderByAggregateInput_1 = require("../inputs/ProfileMinOrderByAggregateInput");
 const SortOrderInput_1 = require("../inputs/SortOrderInput");
 const SortOrder_1 = require("../../enums/SortOrder");
-let ProfileOrderByWithAggregationInput = exports.ProfileOrderByWithAggregationInput = class ProfileOrderByWithAggregationInput {
+let ProfileOrderByWithAggregationInput = class ProfileOrderByWithAggregationInput {
 };
+exports.ProfileOrderByWithAggregationInput = ProfileOrderByWithAggregationInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SortOrderInput_1.SortOrderInput, {
         nullable: true

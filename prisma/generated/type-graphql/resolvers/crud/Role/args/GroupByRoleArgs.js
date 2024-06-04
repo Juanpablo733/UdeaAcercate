@@ -7,8 +7,9 @@ const RoleOrderByWithAggregationInput_1 = require("../../../inputs/RoleOrderByWi
 const RoleScalarWhereWithAggregatesInput_1 = require("../../../inputs/RoleScalarWhereWithAggregatesInput");
 const RoleWhereInput_1 = require("../../../inputs/RoleWhereInput");
 const RoleScalarFieldEnum_1 = require("../../../../enums/RoleScalarFieldEnum");
-let GroupByRoleArgs = exports.GroupByRoleArgs = class GroupByRoleArgs {
+let GroupByRoleArgs = class GroupByRoleArgs {
 };
+exports.GroupByRoleArgs = GroupByRoleArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => RoleWhereInput_1.RoleWhereInput, {
         nullable: true

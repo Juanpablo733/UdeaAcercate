@@ -2,6 +2,7 @@ import { Account } from "../models/Account";
 import { Attendee } from "../models/Attendee";
 import { Comment } from "../models/Comment";
 import { Event } from "../models/Event";
+import { Information } from "../models/Information";
 import { Profile } from "../models/Profile";
 import { Session } from "../models/Session";
 import { UserCount } from "../resolvers/outputs/UserCount";
@@ -19,5 +20,6 @@ export declare class User {
     comments?: Comment[];
     accounts?: Account[];
     sessions?: Session[];
+    newsCreated?: Information[];
     _count?: UserCount | null;
 }

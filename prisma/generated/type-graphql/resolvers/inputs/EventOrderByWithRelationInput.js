@@ -7,8 +7,9 @@ const AttendeeOrderByRelationAggregateInput_1 = require("../inputs/AttendeeOrder
 const InformationOrderByWithRelationInput_1 = require("../inputs/InformationOrderByWithRelationInput");
 const UserOrderByWithRelationInput_1 = require("../inputs/UserOrderByWithRelationInput");
 const SortOrder_1 = require("../../enums/SortOrder");
-let EventOrderByWithRelationInput = exports.EventOrderByWithRelationInput = class EventOrderByWithRelationInput {
+let EventOrderByWithRelationInput = class EventOrderByWithRelationInput {
 };
+exports.EventOrderByWithRelationInput = EventOrderByWithRelationInput;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
         nullable: true

@@ -9,6 +9,7 @@ tslib_1.__exportStar(require("./EmailToken/args"), exports);
 tslib_1.__exportStar(require("./Event/args"), exports);
 tslib_1.__exportStar(require("./Information/args"), exports);
 tslib_1.__exportStar(require("./Profile/args"), exports);
+tslib_1.__exportStar(require("./Report/args"), exports);
 tslib_1.__exportStar(require("./Role/args"), exports);
 tslib_1.__exportStar(require("./Session/args"), exports);
 tslib_1.__exportStar(require("./User/args"), exports);

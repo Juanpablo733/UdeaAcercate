@@ -7,8 +7,9 @@ const EmailTokenOrderByWithRelationInput_1 = require("../../../inputs/EmailToken
 const EmailTokenWhereInput_1 = require("../../../inputs/EmailTokenWhereInput");
 const EmailTokenWhereUniqueInput_1 = require("../../../inputs/EmailTokenWhereUniqueInput");
 const EmailTokenScalarFieldEnum_1 = require("../../../../enums/EmailTokenScalarFieldEnum");
-let FindManyEmailTokenArgs = exports.FindManyEmailTokenArgs = class FindManyEmailTokenArgs {
+let FindManyEmailTokenArgs = class FindManyEmailTokenArgs {
 };
+exports.FindManyEmailTokenArgs = FindManyEmailTokenArgs;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => EmailTokenWhereInput_1.EmailTokenWhereInput, {
         nullable: true

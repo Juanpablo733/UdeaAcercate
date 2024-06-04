@@ -22,7 +22,7 @@ const Event_1 = require("../../../models/Event");
 const AffectedRowsOutput_1 = require("../../outputs/AffectedRowsOutput");
 const AggregateEvent_1 = require("../../outputs/AggregateEvent");
 const EventGroupBy_1 = require("../../outputs/EventGroupBy");
-let EventCrudResolver = exports.EventCrudResolver = class EventCrudResolver {
+let EventCrudResolver = class EventCrudResolver {
     async aggregateEvent(ctx, info, args) {
         return (0, helpers_1.getPrismaFromContext)(ctx).event.aggregate({
             ...args,
@@ -121,6 +121,7 @@ let EventCrudResolver = exports.EventCrudResolver = class EventCrudResolver {
         });
     }
 };
+exports.EventCrudResolver = EventCrudResolver;
 tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateEvent_1.AggregateEvent, {
         nullable: false
