@@ -22,6 +22,32 @@ export const DELETE_EVENT_BY_OWNER = gql`
         deleteEventByOwner(eventId: $eventId, ownerId: $ownerId)
     }
 `
+export const GET_OFFICIAL_EVENTS_PREVIEW = gql`
+    query OfficialEvents {
+        officialEvents {
+            id
+            place
+            attendeesCount
+            author {
+                id
+                name
+                image
+            }
+            info {
+                title
+                image
+                date
+                minutes
+                hours
+                day
+                month
+                year
+                tag
+                official
+            }
+        }
+    }
+` 
 export const GET_EVENTS_PREVIEW = gql`  
     query Events($sessionUserId: String!, $tag: String, $hashtags: [String]) {
         events(sessionUserId: $sessionUserId, tag: $tag, hashtags: $hashtags) {
@@ -43,6 +69,7 @@ export const GET_EVENTS_PREVIEW = gql`
                 month
                 year
                 tag
+                official
             }
         }
     }

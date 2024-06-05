@@ -6,6 +6,7 @@ import { commentTypeDefs } from './comment/types';
 import { attendeeTypeDefs } from './attendee/types';
 import { sentimentTypeDefs } from './sentiment/types';
 import { reportTypeDefs } from './report/types';
+import { roleTypeDefs } from './role/types';
 
 const typeDefs = gql`
     scalar DateTime
@@ -54,6 +55,7 @@ const customTypeDefs = [
     commentTypeDefs,
     attendeeTypeDefs,
     sentimentTypeDefs,
-    reportTypeDefs
+    reportTypeDefs,
+    roleTypeDefs
 ]
 export { customTypeDefs }

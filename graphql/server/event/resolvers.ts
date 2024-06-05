@@ -103,6 +103,16 @@ const eventResolvers: Resolver = {
                 }
             });
         },
+        officialEvents: async (parent, args, context) => {
+            const { db } = context
+            return await db.event.findMany({
+                where: {
+                    info: {
+                        official: true
+                    }
+                }
+            })
+        }
     },
     Mutation: {
         createEvent: async (parent, args, context) => {

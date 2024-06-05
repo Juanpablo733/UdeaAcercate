@@ -1,6 +1,6 @@
-    import { gql } from 'graphql-tag';
+import { gql } from 'graphql-tag';
 
-    const informationTypeDefs = gql`
+const informationTypeDefs = gql`
     type Information {
         title: String
         description: String
@@ -12,6 +12,7 @@
         year:       String
         image:       String
         tag:         String
+        official:   Boolean
         comments:    [Comment]
         hashtags:    [String]
     }
