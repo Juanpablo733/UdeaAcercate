@@ -70,7 +70,7 @@ const Perfil = () => {
         <title>Perfil | UdeAcercate</title>
         <div className="Yellow-little gap-15 flex flex-col min-h-screen">
           <main className="flex flex-col sm:flex-row mt-16 gap-8">
-            <section className="flex flex-col sm:hidden debug bg-[var(--green-hard)] items-center justify-center pb-4">
+            <section className="flex flex-col sm:hidden bg-[var(--green-hard)] items-center justify-center pb-4">
               <div className="flex items-center gap-4">
                 <Image
                   src={user?.image!}
@@ -90,11 +90,11 @@ const Perfil = () => {
               </div>
               <div className="flex gap-4 text-white">
                 <div className="flex flex-col items-center">
-                  <span className="font-bold text-3xl">1</span>
+                  <span className="font-bold text-3xl">{eventsCreatedData.eventsCreated.length}</span>
                   <span>Eventos organizados</span>
                 </div>
                 <div className="flex flex-col items-center">
-                  <span className="font-bold text-3xl">2</span>
+                  <span className="font-bold text-3xl">{eventsAttendingData.eventsAttending.length}</span>
                   <span>Eventos a asistir</span>
                 </div>
               </div>
@@ -144,15 +144,15 @@ const Perfil = () => {
                 </button>
               </div>
             </section>
-            <div className="flex sm:hidden debug items-center justify-center">
+            <div className="flex sm:hidden items-center justify-center gap-4">
               <button onClick={setProfileType}>
-                <CgProfile />
+                <CgProfile size={24}/>
               </button>
               <button onClick={setAttendingType}>
-                <LuCalendarRange />
+                <LuCalendarRange size={24}/>
               </button>
               <button onClick={setCreatedType}>
-                <LuCalendarCheck />
+                <LuCalendarCheck size={24}/>
               </button>
             </div>
             <section className="w-full">

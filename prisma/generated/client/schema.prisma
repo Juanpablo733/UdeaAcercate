@@ -185,8 +185,10 @@ model Role {
 }
 
 model Report {
-  userId   String   @unique
-  eventId  String   @unique
+  userId   String
+  eventId  String
   reason   String
   dateTime DateTime @default(now())
+
+  @@id([userId, eventId])
 }
