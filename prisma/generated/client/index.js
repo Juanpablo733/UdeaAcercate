@@ -21,7 +21,7 @@ const {
   warnOnce,
   defineDmmfProperty,
   Public,
-  detectRuntime,
+  getRuntime
 } = require('./runtime/library.js')
 
 
@@ -31,12 +31,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.10.2
- * Query Engine version: 5a9203d0590c951969e85a7d07215503f4672eb9
+ * Prisma Client JS version: 5.15.0
+ * Query Engine version: 12e25d8d06f6ea5a0252864dd9a03b1bb51f3022
  */
 Prisma.prismaVersion = {
-  client: "5.10.2",
-  engine: "5a9203d0590c951969e85a7d07215503f4672eb9"
+  client: "5.15.0",
+  engine: "12e25d8d06f6ea5a0252864dd9a03b1bb51f3022"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -274,7 +274,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Jose\\Desktop\\Jose\\UdeA\\8 Semestre\\Proyecto Integrador 1\\Repositorio\\Nuevo Repo\\UdeaAcercate\\prisma\\generated\\client",
+      "value": "C:\\Users\\santi\\OneDrive\\Escritorio\\UDEA\\udea10\\nueva-version-PI2\\UdeaAcercate\\prisma\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -291,16 +291,16 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../..",
-  "clientVersion": "5.10.2",
-  "engineVersion": "5a9203d0590c951969e85a7d07215503f4672eb9",
+  "clientVersion": "5.15.0",
+  "engineVersion": "12e25d8d06f6ea5a0252864dd9a03b1bb51f3022",
   "datasourceNames": [
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -309,8 +309,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\r\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\r\n\r\ngenerator client {\r\n  provider = \"prisma-client-js\"\r\n  output   = \"./generated/client\"\r\n}\r\n\r\ngenerator typegraphql {\r\n  provider           = \"typegraphql-prisma\"\r\n  output             = \"../prisma/generated/type-graphql\"\r\n  emitTranspiledCode = true\r\n}\r\n\r\ndatasource db {\r\n  provider  = \"postgresql\"\r\n  url       = env(\"DATABASE_URL\")\r\n  directUrl = env(\"DIRECT_URL\")\r\n}\r\n\r\nenum Sentiment {\r\n  Positive\r\n  Neutral\r\n  Negative\r\n}\r\n\r\nenum Tag {\r\n  Deportivo\r\n  Academico\r\n  Cultural\r\n}\r\n\r\nenum UserType {\r\n  Estudiante\r\n  Profesor\r\n  Administrativo\r\n  Egresado\r\n  Jubilado\r\n}\r\n\r\nenum Campus {\r\n  Ciudad_Universitaria\r\n  Antigua_Escuela_de_Derecho\r\n  Edificio_Suramericana_del_Centro\r\n  Sede_Posgrados_Universidad_de_Antioquia\r\n  Paraninfo\r\n  Liceo_Francisco_Restrepo_Molina\r\n  Seccional_Oriente\r\n  Seccional_Occidente_de_la_Universidad_de_Antioquia\r\n  Seccional_Bajo_Cauca\r\n  Sede_Sonson_de_la_Universidad_de_Antioquia\r\n}\r\n\r\nenum RoleTag {\r\n  User\r\n  Admin\r\n}\r\n\r\nmodel Account {\r\n  id                String  @id @default(cuid())\r\n  userId            String\r\n  type              String\r\n  provider          String\r\n  providerAccountId String\r\n  refresh_token     String? @db.Text\r\n  access_token      String? @db.Text\r\n  expires_at        Int?\r\n  token_type        String?\r\n  scope             String?\r\n  id_token          String? @db.Text\r\n  session_state     String?\r\n\r\n  user User @relation(fields: [userId], references: [id], onDelete: Cascade)\r\n\r\n  @@unique([provider, providerAccountId])\r\n}\r\n\r\nmodel Session {\r\n  id           String   @id @default(cuid())\r\n  sessionToken String   @unique\r\n  userId       String\r\n  expires      DateTime\r\n  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)\r\n}\r\n\r\nmodel User {\r\n  id            String        @id @default(cuid())\r\n  name          String?\r\n  email         String?       @unique\r\n  emailVerified DateTime?\r\n  createdAt     DateTime      @default(now())\r\n  updatedAt     DateTime      @updatedAt\r\n  image         String?\r\n  profile       Profile?\r\n  eventsCreated Event[]\r\n  attendees     Attendee[]\r\n  comments      Comment[]\r\n  accounts      Account[]\r\n  sessions      Session[]\r\n  newsCreated   Information[]\r\n}\r\n\r\nmodel VerificationToken {\r\n  identifier String\r\n  token      String   @unique\r\n  expires    DateTime\r\n\r\n  @@unique([identifier, token])\r\n}\r\n\r\nmodel EmailToken {\r\n  identifier String   @unique\r\n  token      String\r\n  expires    DateTime\r\n}\r\n\r\nmodel Profile {\r\n  faculty     String?\r\n  career      String?\r\n  type        UserType?\r\n  campus      Campus?\r\n  userId      String    @unique\r\n  user        User      @relation(fields: [userId], references: [id])\r\n  description String?\r\n  hobbies     String?\r\n  socialLinks String[]\r\n}\r\n\r\nmodel Event {\r\n  id        String      @id @default(cuid())\r\n  author    User        @relation(fields: [authorId], references: [id])\r\n  authorId  String\r\n  info      Information @relation(fields: [infoId], references: [id])\r\n  infoId    String      @unique\r\n  place     String\r\n  attendees Attendee[]\r\n}\r\n\r\nmodel Information {\r\n  id          String    @id @default(cuid())\r\n  author      User?     @relation(fields: [authorId], references: [id])\r\n  authorId    String?   @default(cuid())\r\n  title       String\r\n  description String\r\n  date        DateTime\r\n  image       String?\r\n  tag         Tag\r\n  hashtags    String[]\r\n  official    Boolean   @default(false)\r\n  comments    Comment[]\r\n  event       Event?\r\n}\r\n\r\nmodel Attendee {\r\n  user     User     @relation(fields: [userId], references: [id])\r\n  userId   String\r\n  event    Event    @relation(fields: [eventId], references: [id])\r\n  eventId  String\r\n  dateTime DateTime @default(now())\r\n\r\n  @@id([userId, eventId])\r\n}\r\n\r\nmodel Comment {\r\n  id       String      @id @default(cuid())\r\n  text     String\r\n  dateTime DateTime    @default(now())\r\n  user     User        @relation(fields: [userId], references: [id])\r\n  userId   String\r\n  info     Information @relation(fields: [infoId], references: [id])\r\n  infoId   String\r\n}\r\n\r\nmodel CommentSentiment {\r\n  id         String    @unique\r\n  sentiment  Sentiment\r\n  confidence Float\r\n  commentTag Tag\r\n  dateTime   DateTime  @default(now())\r\n}\r\n\r\nmodel Role {\r\n  userId String  @unique\r\n  role   RoleTag\r\n}\r\n\r\nmodel Report {\r\n  userId   String   \r\n  eventId  String   \r\n  reason   String\r\n  dateTime DateTime @default(now())\r\n  @@id([userId, eventId])\r\n}\r\n",
-  "inlineSchemaHash": "c70052996062b9d08623284d5f8c5df4580db7dd9f58788948a34333387495c8",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/client\"\n}\n\ngenerator typegraphql {\n  provider           = \"typegraphql-prisma\"\n  output             = \"../prisma/generated/type-graphql\"\n  emitTranspiledCode = true\n}\n\ndatasource db {\n  provider  = \"postgresql\"\n  url       = env(\"DATABASE_URL\")\n  directUrl = env(\"DIRECT_URL\")\n}\n\nenum Sentiment {\n  Positive\n  Neutral\n  Negative\n}\n\nenum Tag {\n  Deportivo\n  Academico\n  Cultural\n}\n\nenum UserType {\n  Estudiante\n  Profesor\n  Administrativo\n  Egresado\n  Jubilado\n}\n\nenum Campus {\n  Ciudad_Universitaria\n  Antigua_Escuela_de_Derecho\n  Edificio_Suramericana_del_Centro\n  Sede_Posgrados_Universidad_de_Antioquia\n  Paraninfo\n  Liceo_Francisco_Restrepo_Molina\n  Seccional_Oriente\n  Seccional_Occidente_de_la_Universidad_de_Antioquia\n  Seccional_Bajo_Cauca\n  Sede_Sonson_de_la_Universidad_de_Antioquia\n}\n\nenum RoleTag {\n  User\n  Admin\n}\n\nmodel Account {\n  id                String  @id @default(cuid())\n  userId            String\n  type              String\n  provider          String\n  providerAccountId String\n  refresh_token     String? @db.Text\n  access_token      String? @db.Text\n  expires_at        Int?\n  token_type        String?\n  scope             String?\n  id_token          String? @db.Text\n  session_state     String?\n\n  user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@unique([provider, providerAccountId])\n}\n\nmodel Session {\n  id           String   @id @default(cuid())\n  sessionToken String   @unique\n  userId       String\n  expires      DateTime\n  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n}\n\nmodel User {\n  id            String        @id @default(cuid())\n  name          String?\n  email         String?       @unique\n  emailVerified DateTime?\n  createdAt     DateTime      @default(now())\n  updatedAt     DateTime      @updatedAt\n  image         String?\n  profile       Profile?\n  eventsCreated Event[]\n  attendees     Attendee[]\n  comments      Comment[]\n  accounts      Account[]\n  sessions      Session[]\n  newsCreated   Information[]\n}\n\nmodel VerificationToken {\n  identifier String\n  token      String   @unique\n  expires    DateTime\n\n  @@unique([identifier, token])\n}\n\nmodel EmailToken {\n  identifier String   @unique\n  token      String\n  expires    DateTime\n}\n\nmodel Profile {\n  faculty     String?\n  career      String?\n  type        UserType?\n  campus      Campus?\n  userId      String    @unique\n  user        User      @relation(fields: [userId], references: [id])\n  description String?\n  hobbies     String?\n  socialLinks String[]\n}\n\nmodel Event {\n  id        String      @id @default(cuid())\n  author    User        @relation(fields: [authorId], references: [id])\n  authorId  String\n  info      Information @relation(fields: [infoId], references: [id])\n  infoId    String      @unique\n  place     String\n  attendees Attendee[]\n}\n\nmodel Information {\n  id          String    @id @default(cuid())\n  author      User?     @relation(fields: [authorId], references: [id])\n  authorId    String?   @default(cuid())\n  title       String\n  description String\n  date        DateTime\n  image       String?\n  tag         Tag\n  hashtags    String[]\n  official    Boolean   @default(false)\n  comments    Comment[]\n  event       Event?\n}\n\nmodel Attendee {\n  user     User     @relation(fields: [userId], references: [id])\n  userId   String\n  event    Event    @relation(fields: [eventId], references: [id])\n  eventId  String\n  dateTime DateTime @default(now())\n\n  @@id([userId, eventId])\n}\n\nmodel Comment {\n  id       String      @id @default(cuid())\n  text     String\n  dateTime DateTime    @default(now())\n  user     User        @relation(fields: [userId], references: [id])\n  userId   String\n  info     Information @relation(fields: [infoId], references: [id])\n  infoId   String\n}\n\nmodel CommentSentiment {\n  id         String    @unique\n  sentiment  Sentiment\n  confidence Float\n  commentTag Tag\n  dateTime   DateTime  @default(now())\n}\n\nmodel Role {\n  userId String  @unique\n  role   RoleTag\n}\n\nmodel Report {\n  userId   String\n  eventId  String\n  reason   String\n  dateTime DateTime @default(now())\n\n  @@id([userId, eventId])\n}\n",
+  "inlineSchemaHash": "9868e9de452d09496323e970ee3588e5649f82ce8a53e6290a7bf20140258fa3",
   "copyEngine": true
 }
 
