@@ -6,8 +6,6 @@ import { startServerAndCreateNextHandler } from '@as-integrations/next';
 import prisma from '@/config/prisma';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-// const prisma = new PrismaClient()
-
 const server = new ApolloServer({
     resolvers: customResolvers,
     typeDefs: customTypeDefs,

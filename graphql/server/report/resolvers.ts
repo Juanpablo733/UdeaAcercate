@@ -20,11 +20,9 @@ const reportResolvers: Resolver = {
             const eventId = args.eventId;
             const savedReport = await db.report.findUnique({
                 where: {
-                    userId: userId,
-                    eventId: eventId
+                    userId_eventId: { userId, eventId }
                 }
             })
-            console.log(savedReport)
             if (savedReport != undefined)
                 return true
             return false
