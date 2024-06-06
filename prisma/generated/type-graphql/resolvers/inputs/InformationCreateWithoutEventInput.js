@@ -30,7 +30,7 @@ tslib_1.__decorate([
 ], InformationCreateWithoutEventInput.prototype, "description", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => Date, {
-        nullable: false
+        nullable: true
     }),
     tslib_1.__metadata("design:type", Date)
 ], InformationCreateWithoutEventInput.prototype, "date", void 0);

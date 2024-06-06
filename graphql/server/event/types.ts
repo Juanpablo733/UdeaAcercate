@@ -20,6 +20,7 @@ const eventTypeDefs = gql`
         createEvent(title: String!, description: String!, place: String!, 
             date: DateTime!, image: String!, tag: String!, authorId: String!): Event
         deleteEventByOwner(eventId: String!, ownerId: String!): Boolean
+        deleteEventByAdmin(eventId: String!, adminId: String!): Boolean
     }
 `
 

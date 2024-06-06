@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface TypesProps {
-    type: "Deportivo" | "Cultural" | "Academico";
+    type: "Deportivo" | "Cultural" | "Academico" | "Noticia";
 }
 // interface TypesProps {
 //     type: any;

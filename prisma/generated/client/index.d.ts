@@ -113,7 +113,8 @@ export type Campus = (typeof Campus)[keyof typeof Campus]
 export const Tag: {
   Deportivo: 'Deportivo',
   Academico: 'Academico',
-  Cultural: 'Cultural'
+  Cultural: 'Cultural',
+  Noticia: 'Noticia'
 };
 
 export type Tag = (typeof Tag)[keyof typeof Tag]
@@ -16250,7 +16251,7 @@ export namespace Prisma {
     id?: string
     title: string
     description: string
-    date: Date | string
+    date?: Date | string
     image?: string | null
     tag: $Enums.Tag
     hashtags?: InformationCreatehashtagsInput | string[]
@@ -16265,7 +16266,7 @@ export namespace Prisma {
     authorId?: string | null
     title: string
     description: string
-    date: Date | string
+    date?: Date | string
     image?: string | null
     tag: $Enums.Tag
     hashtags?: InformationCreatehashtagsInput | string[]
@@ -16307,7 +16308,7 @@ export namespace Prisma {
     authorId?: string | null
     title: string
     description: string
-    date: Date | string
+    date?: Date | string
     image?: string | null
     tag: $Enums.Tag
     hashtags?: InformationCreatehashtagsInput | string[]
@@ -18517,7 +18518,7 @@ export namespace Prisma {
     id?: string
     title: string
     description: string
-    date: Date | string
+    date?: Date | string
     image?: string | null
     tag: $Enums.Tag
     hashtags?: InformationCreatehashtagsInput | string[]
@@ -18530,7 +18531,7 @@ export namespace Prisma {
     id?: string
     title: string
     description: string
-    date: Date | string
+    date?: Date | string
     image?: string | null
     tag: $Enums.Tag
     hashtags?: InformationCreatehashtagsInput | string[]
@@ -18870,7 +18871,7 @@ export namespace Prisma {
     id?: string
     title: string
     description: string
-    date: Date | string
+    date?: Date | string
     image?: string | null
     tag: $Enums.Tag
     hashtags?: InformationCreatehashtagsInput | string[]
@@ -18884,7 +18885,7 @@ export namespace Prisma {
     authorId?: string | null
     title: string
     description: string
-    date: Date | string
+    date?: Date | string
     image?: string | null
     tag: $Enums.Tag
     hashtags?: InformationCreatehashtagsInput | string[]
@@ -19342,7 +19343,7 @@ export namespace Prisma {
     id?: string
     title: string
     description: string
-    date: Date | string
+    date?: Date | string
     image?: string | null
     tag: $Enums.Tag
     hashtags?: InformationCreatehashtagsInput | string[]
@@ -19356,7 +19357,7 @@ export namespace Prisma {
     authorId?: string | null
     title: string
     description: string
-    date: Date | string
+    date?: Date | string
     image?: string | null
     tag: $Enums.Tag
     hashtags?: InformationCreatehashtagsInput | string[]
@@ -19491,7 +19492,7 @@ export namespace Prisma {
     id?: string
     title: string
     description: string
-    date: Date | string
+    date?: Date | string
     image?: string | null
     tag: $Enums.Tag
     hashtags?: InformationCreatehashtagsInput | string[]

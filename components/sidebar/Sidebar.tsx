@@ -49,12 +49,12 @@ const Sidebar = ({onHandleToggleMenu}) => {
               Noticias
             </Link>
           </li>
-          <li className='hover:scale-95' >
+          {/* <li className='hover:scale-95' >
             <Link href="/chat" className='sidebar-item'>
               <PiChatCircleTextLight className='h-8 w-8 text-white' />
               Chat
             </Link>
-          </li>
+          </li> */}
           <li className='hover:scale-95' >
             <Link href="/oficial" className='sidebar-item'>
               <IoIosStarOutline className='h-8 w-8 text-white' />

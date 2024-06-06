@@ -71,7 +71,7 @@ const Perfil = () => {
         <div className="Yellow-little gap-15 flex flex-col min-h-screen">
           <main className="flex flex-col sm:flex-row mt-16 gap-8">
             <section className="flex flex-col sm:hidden bg-[var(--green-hard)] items-center justify-center pb-4">
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 p-4">
                 <Image
                   src={user?.image!}
                   alt={"avatar-image"}
@@ -80,8 +80,8 @@ const Perfil = () => {
                   className=" rounded-full"
                 />
                 <div className="flex flex-col">
-                  <span className="text-lg text-center font-extrabold text-white">
-                    {profile.user?.name}
+                  <span className="text-lg text-left font-extrabold text-white ">
+                    {profile?.user?.name}
                   </span>
                   <span className="text-base font-semibold text-white">
                     {profile?.career}
@@ -90,11 +90,11 @@ const Perfil = () => {
               </div>
               <div className="flex gap-4 text-white">
                 <div className="flex flex-col items-center">
-                  <span className="font-bold text-3xl">{eventsCreatedData.eventsCreated.length}</span>
+                  <span className="font-bold text-3xl">{eventsCreatedData?.eventsCreated.length}</span>
                   <span>Eventos organizados</span>
                 </div>
                 <div className="flex flex-col items-center">
-                  <span className="font-bold text-3xl">{eventsAttendingData.eventsAttending.length}</span>
+                  <span className="font-bold text-3xl">{eventsAttendingData?.eventsAttending.length}</span>
                   <span>Eventos a asistir</span>
                 </div>
               </div>

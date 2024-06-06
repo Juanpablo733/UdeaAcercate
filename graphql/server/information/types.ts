@@ -17,8 +17,8 @@ const informationTypeDefs = gql`
         hashtags:    [String]
     }
     type Mutation{
-        createInfo(title: String!, description: String!, date: DateTime!, 
-                image: String!, tag: String!, authorId: String!): Information
+        createInfo(title: String!, description: String!, 
+                image: String!, authorId: String!): Information
         deleteInformationByOwner(infoId: String!, ownerId: String!): Boolean
     }
 `

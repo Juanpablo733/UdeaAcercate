@@ -7,7 +7,7 @@ export declare class CreateManyInformationAndReturnOutputType {
     description: string;
     date: Date;
     image: string | null;
-    tag: "Deportivo" | "Academico" | "Cultural";
+    tag: "Deportivo" | "Academico" | "Cultural" | "Noticia";
     hashtags: string[] | null;
     official: boolean;
     author: User | null;

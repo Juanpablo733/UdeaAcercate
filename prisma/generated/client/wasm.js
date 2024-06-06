@@ -265,7 +265,8 @@ exports.Campus = exports.$Enums.Campus = {
 exports.Tag = exports.$Enums.Tag = {
   Deportivo: 'Deportivo',
   Academico: 'Academico',
-  Cultural: 'Cultural'
+  Cultural: 'Cultural',
+  Noticia: 'Noticia'
 };
 
 exports.Sentiment = exports.$Enums.Sentiment = {

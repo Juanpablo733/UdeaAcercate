@@ -8,6 +8,7 @@ var Tag;
     Tag["Deportivo"] = "Deportivo";
     Tag["Academico"] = "Academico";
     Tag["Cultural"] = "Cultural";
+    Tag["Noticia"] = "Noticia";
 })(Tag || (exports.Tag = Tag = {}));
 TypeGraphQL.registerEnumType(Tag, {
     name: "Tag",
