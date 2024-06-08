@@ -7,13 +7,15 @@ import { GET_PROFILE } from '@/graphql/client/profile'
 import { useQuery } from "@apollo/client";
 import { Profile } from "@/prisma/generated/type-graphql";
 import { Navbar } from "@/components/navbar/Navbar";
+import { useIsAdminUser } from "@/hooks/useIsAdminUser";
 
 
 const PrivateLayout = ({ children }: PropsWithChildren) => {
- 
+
     const { loading: loadingUser, session, status, userData } = useUserData();
     const notVerified = userData?.user?.emailVerified === null || userData?.user?.emailVerified === undefined
     const userId = userData?.user.id
+    const { data: roleData, loading: loadingRole } = useIsAdminUser(userId)
     const { data: profileData, loading: loadingPerfil, error } = useQuery<{ profile: Profile }>(
         GET_PROFILE,
         {
@@ -34,18 +36,20 @@ const PrivateLayout = ({ children }: PropsWithChildren) => {
         }
     }, [loadingPerfil, profileData])
 
-    if (loadingUser) return (<Loading />)
-
-    if (status === "loading") return (<Loading />)
-
-    if (loadingPerfil) return (<Loading />)
-
+    if (loadingUser || loadingRole ||
+        loadingRole || status === "loading")
+        return (<Loading />)
+    console.log("Role:",roleData)
     if (!session) {
         signIn('google', { callbackUrl: '/home' });
     } else {
         return (
             <div>
-                <Navbar/>
+                <Navbar 
+                session={session}
+                userId={userId}
+                isUserAdmin={roleData?.isUserAdmin}
+                />
                 {children}
             </div>
         )

@@ -1,23 +1,23 @@
-import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React, { useState } from "react";
-import { signOut } from "next-auth/react";
 import Link from "next/link";
-import { useUserData } from "@/hooks/useUserData";
 import { MdDehaze } from "react-icons/md";
 import { Sidebar } from "../sidebar/Sidebar";
+import { Session } from "next-auth";
 
-const Navbar = () => {
+interface NavbarProps{
+  session: Session,
+  userId: string,
+  isUserAdmin: boolean
+}
+
+const Navbar = ({userId, isUserAdmin, session}:NavbarProps) => {
   const [showMenu, setShowMenu] = useState(false);
 
   const handleToggleMenu = () => {
     setShowMenu(!showMenu);
   };
-  const { loading: loadingUser, session, status, userData } = useUserData();
-  const userId = userData?.user.id;
-  const CloseSession = () => {
-    signOut({ callbackUrl: "/" });
-  };
+
   return (
     <div className="w-full h-16 bg-[#026937] flex items-center justify-between px-4 fixed z-10">
       <button className="text-white font-bold" onClick={handleToggleMenu}>
@@ -26,7 +26,11 @@ const Navbar = () => {
       {showMenu && (
         <div className="h-full fixed top-0 left-0 w-full bg-black/40" onClick={handleToggleMenu}>
           <div className="absolute top-0 left-0">
-            <Sidebar onHandleToggleMenu={handleToggleMenu} />
+            <Sidebar
+              onHandleToggleMenu={handleToggleMenu}
+              userId={userId}
+              isAdminUser={isUserAdmin}
+            />
           </div>
         </div>
       )}
