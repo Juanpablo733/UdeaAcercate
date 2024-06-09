@@ -8,7 +8,7 @@ export declare class InformationGroupBy {
     description: string;
     date: Date;
     image: string | null;
-    tag: "Deportivo" | "Academico" | "Cultural";
+    tag: "Deportivo" | "Academico" | "Cultural" | "Noticia";
     hashtags: string[] | null;
     official: boolean;
     _count: InformationCountAggregate | null;

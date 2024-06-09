@@ -1,5 +1,6 @@
 import { Resolver } from "@/types";
-import { findHashtags, isAdmin } from "../utils/infoUtil";
+import { findHashtags } from "../utils/infoUtil";
+import { isAdminUser } from "../utils/roleUtil";
 
 const informationResolvers: Resolver = {
     Query: {},
@@ -7,24 +8,23 @@ const informationResolvers: Resolver = {
         createInfo: async (parent, args, context) => {
             const { db } = context;
             const authorId = args.authorId
-            const isAdminUser = await isAdmin(db, authorId)
-            if (!isAdminUser) {
+            const isAdmin = await isAdminUser(db, authorId)
+            if (!isAdmin) {
                 console.log("No tienes permisos para crear noticias")
                 return null
             }
-            const { title, description, place, date, image, tag } = args;
+            const { title, description, image, } = args;
             const hashtags: string[] = findHashtags(description);
-            const newDate = new Date(date);
             
             const newInfo = await db.information.create({
                 data: {
                     title: title,
                     description: description,
-                    date: newDate,
-                    tag: tag,
                     image: image,
                     hashtags: hashtags,
-                    authorId: authorId
+                    tag: "Noticia",
+                    authorId: authorId,
+                    official: true
                 }
             })
             return newInfo;

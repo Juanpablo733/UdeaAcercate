@@ -117,6 +117,7 @@ export const GET_EVENTS_ATTENDING = gql`
                 month
                 year
                 tag
+                official
             }
         }
     }
@@ -142,6 +143,7 @@ export const GET_EVENTS_CREATED = gql`
                 month
                 year
                 tag
+                official
             }
         }
     }

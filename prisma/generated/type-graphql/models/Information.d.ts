@@ -10,7 +10,7 @@ export declare class Information {
     description: string;
     date: Date;
     image?: string | null;
-    tag: "Deportivo" | "Academico" | "Cultural";
+    tag: "Deportivo" | "Academico" | "Cultural" | "Noticia";
     hashtags: string[];
     official: boolean;
     comments?: Comment[];

@@ -5,9 +5,9 @@ export declare class InformationCreateWithoutAuthorInput {
     id?: string | undefined;
     title: string;
     description: string;
-    date: Date;
+    date?: Date | undefined;
     image?: string | undefined;
-    tag: "Deportivo" | "Academico" | "Cultural";
+    tag: "Deportivo" | "Academico" | "Cultural" | "Noticia";
     hashtags?: InformationCreatehashtagsInput | undefined;
     official?: boolean | undefined;
     comments?: CommentCreateNestedManyWithoutInfoInput | undefined;

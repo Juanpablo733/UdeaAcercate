@@ -9,15 +9,10 @@ export const findHashtags = (text: String) => {
     return hashtags;
 }
 
-export async function isAdmin(db: PrismaClient, authorId: String): Promise<Boolean> {
-    const role = await db.role.findUnique({
-        where: {
-            userId: authorId
+export async function deleteInfo(db: PrismaClient, infoId: string){
+    return await db.information.delete({
+        where:{
+            id: infoId
         }
     })
-    if (!role)
-        return false
-    if (role.role != "Admin")
-        return false
-    return true
 }

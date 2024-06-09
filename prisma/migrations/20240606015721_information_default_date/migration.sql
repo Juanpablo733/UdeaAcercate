@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Information" ALTER COLUMN "date" SET DEFAULT CURRENT_TIMESTAMP;

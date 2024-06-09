@@ -8,7 +8,7 @@ const nextConfig = {
         hostname: 'lh3.googleusercontent.com',
       },
     ],
-    domains: ['res.cloudinary.com', 'lh3.googleusercontent.com']
+    domains: ['res.cloudinary.com', 'lh3.googleusercontent.com', 'www.udea.edu.co']
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {

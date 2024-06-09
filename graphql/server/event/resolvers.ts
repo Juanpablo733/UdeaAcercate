@@ -1,9 +1,11 @@
 import { Resolver } from "@/types";
 import { findUser } from "../utils/userUtil";
-import { deleteEvent, findEvent } from "../utils/eventUtil";
+import { deleteEvent, deleteEventAndRelations, findEvent } from "../utils/eventUtil";
 import { deleteAllAttendeesFromEvent } from "../utils/attendeeUtil";
 import { deleteAllCommentsFromEvent } from "../utils/commentUtil";
 import { findHashtags } from "../utils/infoUtil";
+import { isAdminUser } from "../utils/roleUtil";
+import { Event } from '../../../prisma/generated/client/index';
 
 const eventResolvers: Resolver = {
     Event: {
@@ -121,6 +123,7 @@ const eventResolvers: Resolver = {
             const hashtags: string[] = findHashtags(description);
             const newDate = new Date(date);
             console.log(newDate.toString())
+            const isAdmin = await isAdminUser(db, authorId)
             const newInfo = await db.information.create({
                 data: {
                     title: title,
@@ -129,6 +132,7 @@ const eventResolvers: Resolver = {
                     tag: tag,
                     image: image,
                     hashtags: hashtags,
+                    official: isAdmin
                 }
             })
             const newEvent = await db.event.create({
@@ -154,15 +158,21 @@ const eventResolvers: Resolver = {
 
             const eventToDelete = await findEvent(db, args.eventId)
             if (eventToDelete.authorId === args.ownerId) {
-                await deleteAllAttendeesFromEvent(db, args.eventId);
-                await deleteAllCommentsFromEvent(db, args.eventId);
-                if (eventToDelete !== null) {
-                    await deleteEvent(db, args.eventId);
-                    deleted = true
-                }
+                await deleteEventAndRelations(db, args.eventId)
+                deleted = true
             }
             return deleted
         },
+        deleteEventByAdmin: async (parent, args, context) => {
+            const { db } = context
+            var deleted: Boolean = false;
+            const isAdmin = await isAdminUser(db, args.adminId)
+            if (isAdmin){
+                await deleteEventAndRelations(db, args.eventId)
+                deleted = true
+            }
+            return deleted
+        }
     }
 }
 

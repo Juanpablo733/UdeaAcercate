@@ -113,7 +113,7 @@ export function EventInteractionsChart({ startDate, endDate }: { startDate: stri
     const ticks = calculateTicks(interactionsArray)
     const onExport = ExportCsv(interactionsArray)
     return (
-        <>
+        <div className='flex flex-col gap-4 p-4 items-center'>
             <Chart
                 title="Interacciones por tipo de evento"
                 dataSource={interactionsArray}
@@ -152,7 +152,7 @@ export function EventInteractionsChart({ startDate, endDate }: { startDate: stri
                 onClick={onExport}>
                 Exportar CSV
             </button>
-        </>
+        </div>
     );
 }
 

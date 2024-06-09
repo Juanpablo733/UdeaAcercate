@@ -5,6 +5,6 @@ export declare class InformationMinAggregate {
     description: string | null;
     date: Date | null;
     image: string | null;
-    tag: "Deportivo" | "Academico" | "Cultural" | null;
+    tag: "Deportivo" | "Academico" | "Cultural" | "Noticia" | null;
     official: boolean | null;
 }
