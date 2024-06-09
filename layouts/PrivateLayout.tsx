@@ -39,7 +39,6 @@ const PrivateLayout = ({ children }: PropsWithChildren) => {
     if (loadingUser || loadingRole ||
         loadingRole || status === "loading")
         return (<Loading />)
-    console.log("Role:",roleData)
     if (!session) {
         signIn('google', { callbackUrl: '/home' });
     } else {
