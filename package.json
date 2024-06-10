@@ -47,6 +47,7 @@
     "graphql-fields": "^2.0.3",
     "graphql-scalars": "^1.22.3",
     "graphql-tag": "^2.12.6",
+    "just-debounce-it": "^3.2.0",
     "micro": "^9.3.4",
     "micro-cors": "^0.1.1",
     "next": "13.4.19",
