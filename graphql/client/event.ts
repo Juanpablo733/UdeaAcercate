@@ -28,7 +28,6 @@ export const DELETE_EVENT_BY_OWNER = gql`
     }
 `
 
-
 export const GET_OFFICIAL_EVENTS_PREVIEW = gql`
     query OfficialEvents {
         officialEvents {
