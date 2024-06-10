@@ -50,6 +50,7 @@ export default function ReportEventModal({ open, setOpen, onAccept, reason, setR
                             </div>
                             {reportReasons.map(reasonItem =>
                                 <div className="flex w-full gap-2 self-center"
+                                    key={reasonItem}
                                     onClick={() => setReason(reasonItem)}
                                 >
                                     <input
