@@ -1,14 +1,22 @@
 import { RoleTable } from '@/components/tables/RoleTable'
 import PrivateLayout from '@/layouts/PrivateLayout'
+import Link from 'next/link'
 import React, { useState } from 'react'
+import { MdKeyboardBackspace } from 'react-icons/md'
 
 const Roles = () => {
   const [email, setEmail] = useState("")
   console.log("Email:", email)
-
+  const handleBackPage = () => {
+    console.log('hola');
+    
+  } 
   return (
     <PrivateLayout>
       <section className="container px-4 mx-auto pt-20">
+        <Link href='/admin/tablero' className='hover:scale-125'>
+          <MdKeyboardBackspace className='h-6 w-6 text-black' />
+        </Link>
         <div className="sm:flex sm:items-center sm:justify-between">
           <div className="flex items-center gap-x-3">
             <h2 className="text-lg font-medium text-gray-800 dark:text-white">

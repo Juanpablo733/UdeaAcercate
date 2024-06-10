@@ -5,10 +5,17 @@ import { toast } from "react-toastify";
 import { DELETE_EVENT_BY_OWNER, GET_EVENTS_ATTENDING, GET_EVENTS_CREATED, GET_EVENTS_PREVIEW } from "@/graphql/client/event";
 import { useMutation } from "@apollo/client";
 
+// import { v2 as cloudinary } from "cloudinary";
+// cloudinary.config({ 
+//   cloud_name: 'duha3yo9m', 
+//   api_key: '188879924249237', 
+//   api_secret: 'r1GNKCCsW03NUGitpoV0E7q9yPM' 
+// });
+
 interface DeleteButtonProps{
     idAutor: string, 
     sessionUserId: string, 
-    eventId: string
+    eventId: string,
 }
 
 export default function DeleteEventButton({idAutor, sessionUserId, eventId}: DeleteButtonProps ) {
@@ -17,6 +24,9 @@ export default function DeleteEventButton({idAutor, sessionUserId, eventId}: Del
         { variables: { ownerId: sessionUserId, eventId: eventId } });
     const executeDeleteEvent = async () => {
         try {
+            // const result = await cloudinary.uploader.destroy('iecmd03sw24bypyssyao');
+            // console.log(result);
+            
             const resultado = await deleteEvent(
                 { refetchQueries: [GET_EVENTS_PREVIEW, GET_EVENTS_CREATED, GET_EVENTS_ATTENDING] }
             );

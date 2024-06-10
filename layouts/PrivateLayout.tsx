@@ -43,13 +43,15 @@ const PrivateLayout = ({ children }: PropsWithChildren) => {
         signIn('google', { callbackUrl: '/home' });
     } else {
         return (
-            <div>
+            <div className="flex flex-col">
                 <Navbar 
                 session={session}
                 userId={userId}
                 isUserAdmin={roleData?.isUserAdmin}
                 />
-                {children}
+                <main>
+                    {children}
+                </main>
             </div>
         )
     }

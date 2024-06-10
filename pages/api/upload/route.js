@@ -35,3 +35,24 @@ export async function POST(request) {
     return NextResponse.json("Error interno del servidor", { status: 500 });
   }
 }
+
+export async function DELETE(request) {
+  try {
+    console.log('entra acá almenos');
+    const { imageId } = await request.json();
+    if (!imageId) {
+      return NextResponse.json({ error: "No se ha proporcionado un ID de imagen" }, { status: 400 });
+    }
+
+    const response = await cloudinary.uploader.destroy(imageId);
+
+    if (response.result !== "ok") {
+      throw new Error(`Error al eliminar la imagen: ${response.result}`);
+    }
+
+    return NextResponse.json({ message: "Imagen eliminada con éxito" });
+  } catch (error) {
+    console.error("Error en el servidor:", error);
+    return NextResponse.json("Error interno del servidor", { status: 500 });
+  }
+}
