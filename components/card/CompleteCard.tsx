@@ -14,7 +14,7 @@ import { toast } from 'react-toastify'
 
 interface completeCardProps {
     id: string,
-    asistentes: number,
+    asistentes?: number,
     idAutor: string,
     nombre: string,
     imagenAutor: string,
