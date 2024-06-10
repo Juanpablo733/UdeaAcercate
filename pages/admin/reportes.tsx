@@ -7,6 +7,9 @@ import { MdKeyboardBackspace } from 'react-icons/md'
 const Reportes = () => {
   return (
     <PrivateLayout isAdminPage={true}>
+      <title>
+        Reportes | UdeAcercate
+      </title>
       <section className="container px-4 mx-auto pt-20">
         <Link href='/admin/tablero' className='hover:scale-125'>
           <MdKeyboardBackspace className='h-6 w-6 text-black' />
@@ -18,7 +21,7 @@ const Reportes = () => {
             </h2>
           </div>
         </div>
-        <ReportTable/>
+        <ReportTable />
       </section>
     </PrivateLayout>
   )

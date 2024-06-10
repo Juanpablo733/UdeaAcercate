@@ -1,5 +1,6 @@
 import CompleteCard from '@/components/card/CompleteCard'
 import CardModal from '@/components/modals/CardModal'
+import ReportDetailsModal from '@/components/modals/ReportDetailsModal'
 import { Loading } from '@/components/ui/Loading'
 import { DELETE_EVENT_BY_ADMIN, GET_FULL_EVENT_BY_ID } from '@/graphql/client/event'
 import { GET_REPORTED_EVENTS } from '@/graphql/client/report'
@@ -20,11 +21,12 @@ interface ReportRowProps {
 
 export const ReportRow = ({ eventId, eventTitle, authorId, authorName, sessionUserId, reportCount }: ReportRowProps) => {
     const [open, setOpen] = useState<boolean>(false);
+    const [openDetail, setOpenDetail] = useState<boolean>(false);
     const { data: eventData, loading, error } = useQuery(GET_FULL_EVENT_BY_ID,
         { variables: { eventId } }
     )
     const [deleteEvent] = useMutation(DELETE_EVENT_BY_ADMIN,
-        { variables: {eventId, adminId: sessionUserId} }
+        { variables: { eventId, adminId: sessionUserId } }
     )
     if (loading)
         return (<></>)
@@ -94,9 +96,19 @@ export const ReportRow = ({ eventId, eventTitle, authorId, authorName, sessionUs
             </td>
             <td className="px-4 py-4 text-sm whitespace-nowrap">
                 <div>
-                    <h4 className="text-gray-700 dark:text-gray-200">
+                    <h2 className="text-gray-700 dark:text-gray-200">
                         {reportCount}
-                    </h4>
+                    </h2>
+                    <button
+                        onClick={() => setOpenDetail(true)}
+                    >Detalle</button>
+                    <ReportDetailsModal
+                        open={openDetail}
+                        setOpen={setOpenDetail}
+                        eventId={eventId}
+                    >
+
+                    </ReportDetailsModal>
                 </div>
             </td>
             <td className="px-4 py-4 text-sm whitespace-nowrap">

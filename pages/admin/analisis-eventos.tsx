@@ -11,6 +11,9 @@ const AnalisisEventos = () => {
     return (
         <PrivateLayout isAdminPage={true}>
             {/* <div className="w-full flex flex-row justify-center items-center pt-16"> */}
+            <title>
+                Analítica | UdeAcercate
+            </title>
             <div className="container px-4 mx-auto pt-20">
                 <Link href='/admin/tablero' className='hover:scale-125'>
                     <MdKeyboardBackspace className='h-6 w-6 text-black' />
