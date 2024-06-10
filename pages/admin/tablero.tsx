@@ -14,7 +14,6 @@ export default function Tablero() {
                     className='InfoProfile justify-center gap-6'
                     href={"/admin/roles"}
                 >
-
                     <span className='text-xl font-extrabold text-[var(--green-hard)]'>
 
                         Usuarios

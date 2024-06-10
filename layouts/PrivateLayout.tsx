@@ -39,12 +39,15 @@ const PrivateLayout = ({ children, isAdminPage }: PrivateLayoutProps) => {
                 router.push('/crearPerfil');
             }
         }
-    }, [loadingPerfil, profileData])
+        if(isAdminPage && !isAdmin){
+            router.push('/home');
+        }
+    }, [loadingPerfil, profileData, isAdminPage, isAdmin])
 
     if (loadingUser || loadingRole ||
         loadingRole || status === "loading")
         return (<Loading />)
-    if (!session || (isAdminPage && !isAdmin)) {
+    if (!session) {
         signIn('google', { callbackUrl: '/home' });
     } else {
         return (
