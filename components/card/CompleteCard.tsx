@@ -27,7 +27,6 @@ interface completeCardProps {
     year: string,
 }
 
-
 // const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEvento, sessionUserId }: completeCardProps) => {
 const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEvento, sessionUserId, day, hours, minutes, month, year }: completeCardProps) => {
     const [comentario, setComentario] = useState('');
@@ -135,11 +134,14 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
                     </div>
 
                 </div>
+                {/* delete button */}
                 <div className='p-2 flex justify-start'>
                     <DeleteEventButton
                         idAutor={idAutor}
                         sessionUserId={sessionUserId}
-                        eventId={id} />
+                        eventId={id}
+                        // imagenEvento={imagenEvento}
+                        />
                 </div>
             </div>
             {/* lado derecho */}
