@@ -32,7 +32,6 @@ const Home = () => {
         }
       }, [eventsData]);
 
-    console.log("[Home] tag:", tag)
     if (loadingUser || status === "loading") return (<Loading />)
     if (loadingAll) return (<Loading />)
     if (session && errorAll) {
@@ -51,7 +50,7 @@ const Home = () => {
         
       };
     return (
-        <PrivateLayout>
+        <PrivateLayout isAdminPage={false}>
             <title>
                 Home | UdeAcercate
             </title>

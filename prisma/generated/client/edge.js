@@ -274,7 +274,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/juanpablobedoya/Desktop/UdeAcercate/UdeaAcercate/prisma/generated/client",
+      "value": "C:\\Users\\Jose\\Desktop\\Jose\\UdeA\\8 Semestre\\Proyecto Integrador 1\\Repositorio\\Nuevo Repo\\UdeaAcercate\\prisma\\generated\\client",
       "fromEnvVar": null
     },
     "config": {

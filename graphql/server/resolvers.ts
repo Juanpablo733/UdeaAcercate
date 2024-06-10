@@ -29,6 +29,13 @@ const resolvers: Resolver = {
             });
             return user;
         },
+        userById: async (parent, args, context) => {
+            return await context.db.user.findUnique({
+                where:{
+                    id: args.id
+                }
+            })
+        },
         interactionsPerEventType: async (parent, args, context) => {
             const { db } = context;
             return await getInteractionsByEventTags(db, new Date(args.startDate), new Date(args.endDate))

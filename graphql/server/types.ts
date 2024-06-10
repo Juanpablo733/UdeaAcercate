@@ -38,6 +38,7 @@ const typeDefs = gql`
         test(bool:Boolean!): Boolean
         users: [User]
         user(email:String!): User
+        userById(id:String!):User
         interactionsPerEventType(startDate:DateTime!, endDate:DateTime!): InteractionsPerEventType
     }
     

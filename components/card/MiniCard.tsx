@@ -14,7 +14,7 @@ interface MiniCardProps {
 const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
     const [open, setOpen] = useState<boolean>(false);
     const date = new Date(data.info.date)
-    const day = date.getDay().toString().padStart(2, '0')
+    const day = date.getDate().toString().padStart(2, '0')
     const month = (date.getMonth() + 1).toString().padStart(2, '0')
     const year = date.getFullYear().toString()
     const hours = date.getHours().toString().padStart(2, '0')
@@ -87,7 +87,7 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
                                 asistentes={data.attendeesCount}
                                 imagenAutor={data.author.image}
                                 idAutor={data.author.id}
-                                imagenEvento={data.info.image}
+                                imagenEvento={image}
                                 sessionUserId={sessionUserId}
                                 minutes={minutes}
                                 day={day}
