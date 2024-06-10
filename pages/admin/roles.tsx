@@ -12,7 +12,7 @@ const Roles = () => {
     
   } 
   return (
-    <PrivateLayout>
+    <PrivateLayout isAdminPage={true}>
       <section className="container px-4 mx-auto pt-20">
         <Link href='/admin/tablero' className='hover:scale-125'>
           <MdKeyboardBackspace className='h-6 w-6 text-black' />

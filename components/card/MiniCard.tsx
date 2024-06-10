@@ -87,7 +87,7 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
                                 asistentes={data.attendeesCount}
                                 imagenAutor={data.author.image}
                                 idAutor={data.author.id}
-                                imagenEvento={data.info.image}
+                                imagenEvento={image}
                                 sessionUserId={sessionUserId}
                                 minutes={minutes}
                                 day={day}

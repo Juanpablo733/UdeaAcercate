@@ -9,7 +9,7 @@ const AnalisisEventos = () => {
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
     return (
-        <PrivateLayout>
+        <PrivateLayout isAdminPage={true}>
             {/* <div className="w-full flex flex-row justify-center items-center pt-16"> */}
             <div className="container px-4 mx-auto pt-20">
                 <Link href='/admin/tablero' className='hover:scale-125'>

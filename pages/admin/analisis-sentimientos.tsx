@@ -10,7 +10,7 @@ import { MdKeyboardBackspace } from 'react-icons/md'
 export default function AnalisisSentimientos() {
     
     return (
-        <PrivateLayout>
+        <PrivateLayout isAdminPage={true}>
             <title>
                 Analítica | UdeAcercate
             </title>

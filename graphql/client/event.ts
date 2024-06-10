@@ -17,11 +17,18 @@ mutation Mutation($title: String!, $description: String!, $place: String!, $date
     }
   }
 `
+export const DELETE_EVENT_BY_ADMIN = gql`
+    mutation DeleteEventByAdmin($eventId: String!, $adminId: String!) {
+        deleteEventByAdmin(eventId: $eventId, adminId: $adminId)
+    }
+`
 export const DELETE_EVENT_BY_OWNER = gql`
     mutation DeleteEventByOwner($eventId: String!, $ownerId: String!) {
         deleteEventByOwner(eventId: $eventId, ownerId: $ownerId)
     }
 `
+
+
 export const GET_OFFICIAL_EVENTS_PREVIEW = gql`
     query OfficialEvents {
         officialEvents {
@@ -47,7 +54,7 @@ export const GET_OFFICIAL_EVENTS_PREVIEW = gql`
             }
         }
     }
-` 
+`
 export const GET_EVENTS_PREVIEW = gql`  
     query Events($sessionUserId: String!, $tag: String, $hashtags: [String]) {
         events(sessionUserId: $sessionUserId, tag: $tag, hashtags: $hashtags) {
@@ -74,6 +81,45 @@ export const GET_EVENTS_PREVIEW = gql`
         }
     }
 `
+export const GET_FULL_EVENT_BY_ID = gql`
+    query Event($eventId: String!) {
+        event(id: $eventId) {
+            id
+            author {
+                id
+                image
+                name
+            }
+            info {
+                title
+                description
+                date
+                minutes
+                hours
+                day
+                month
+                year
+                image
+                tag
+                official
+                comments {
+                    id
+                    text
+                    dateTime
+                    user {
+                        id
+                        image
+                        name
+                    }
+                }
+                hashtags
+            }
+            place
+            attendeesCount
+        }
+    }
+`
+
 export const GET_EVENT_BY_ID = gql`
     query Event($eventId: String!) {
         event(id: $eventId) {

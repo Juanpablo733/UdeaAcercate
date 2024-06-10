@@ -12,6 +12,11 @@ export async function deleteEventAndRelations(db: PrismaClient, eventId: string)
         await deleteEvent(db, eventId);
         await deleteInfo(db, eventToDelete.infoId)
     }
+    await db.report.deleteMany({
+        where:{
+            eventId: eventId
+        }
+    })
 }
 
 export async function deleteEvent(db: PrismaClient, eventId: string) {

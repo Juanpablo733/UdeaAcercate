@@ -50,7 +50,7 @@ const Home = () => {
         
       };
     return (
-        <PrivateLayout>
+        <PrivateLayout isAdminPage={false}>
             <title>
                 Home | UdeAcercate
             </title>
