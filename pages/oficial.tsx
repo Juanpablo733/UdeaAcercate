@@ -49,7 +49,7 @@ const Oficial = () => {
       
     };
   return (
-      <PrivateLayout>
+      <PrivateLayout isAdminPage={false}>
           <title>
               oficial | UdeAcercate
           </title>
