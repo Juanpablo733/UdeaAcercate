@@ -4,6 +4,7 @@ export async function getReportedEvents(db: PrismaClient){
     const allReportCount = await getAllReportCount(db)
     const eventIds = allReportCount.map(report => report.eventId)
     const eventsInfo = await getEventsInfo(db, eventIds)
+    console.log(eventsInfo)
     const reportedEvents = fillReportedEventsArray(eventIds, eventsInfo, allReportCount)
     return reportedEvents
 }

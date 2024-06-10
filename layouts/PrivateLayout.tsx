@@ -1,5 +1,5 @@
 import { useSession, signIn } from "next-auth/react";
-import React, { PropsWithChildren, useEffect } from "react";
+import React, { PropsWithChildren, ReactNode, useEffect } from "react";
 import { useUserData } from '@/hooks/useUserData';
 import { Loading } from "@/components/ui/Loading";
 import router, { useRouter } from 'next/router';
@@ -9,13 +9,18 @@ import { Profile } from "@/prisma/generated/type-graphql";
 import { Navbar } from "@/components/navbar/Navbar";
 import { useIsAdminUser } from "@/hooks/useIsAdminUser";
 
+interface PrivateLayoutProps { 
+    children: ReactNode, 
+    isAdminPage: boolean 
+}
 
-const PrivateLayout = ({ children }: PropsWithChildren) => {
+const PrivateLayout = ({ children, isAdminPage }: PrivateLayoutProps) => {
 
     const { loading: loadingUser, session, status, userData } = useUserData();
     const notVerified = userData?.user?.emailVerified === null || userData?.user?.emailVerified === undefined
     const userId = userData?.user.id
     const { data: roleData, loading: loadingRole } = useIsAdminUser(userId)
+    const isAdmin = roleData?.isUserAdmin
     const { data: profileData, loading: loadingPerfil, error } = useQuery<{ profile: Profile }>(
         GET_PROFILE,
         {
@@ -39,15 +44,15 @@ const PrivateLayout = ({ children }: PropsWithChildren) => {
     if (loadingUser || loadingRole ||
         loadingRole || status === "loading")
         return (<Loading />)
-    if (!session) {
+    if (!session || (isAdminPage && !isAdmin)) {
         signIn('google', { callbackUrl: '/home' });
     } else {
         return (
             <div className="flex flex-col">
-                <Navbar 
-                session={session}
-                userId={userId}
-                isUserAdmin={roleData?.isUserAdmin}
+                <Navbar
+                    session={session}
+                    userId={userId}
+                    isUserAdmin={isAdmin}
                 />
                 <main>
                     {children}

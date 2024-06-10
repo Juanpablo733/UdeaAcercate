@@ -1,13 +1,19 @@
 import gql from "graphql-tag";
 
 export const REPORT_EVENT = gql`
-    mutation ReportEvent($userId: String!, $eventId: String!) {
-        reportEvent(userId: $userId, eventId: $eventId) {
+    mutation ReportEvent($userId: String!, $eventId: String!, $reason: String) {
+        reportEvent(userId: $userId, eventId: $eventId, reason: $reason) {
             userId
             eventId
             reason
             dateTime
         }
+    }
+`
+
+export const DELETE_REPORT = gql`
+    mutation DeleteReport($userId: String!, $eventId: String!) {
+        deleteReport(userId: $userId, eventId: $eventId)
     }
 `
 

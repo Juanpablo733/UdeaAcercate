@@ -8,7 +8,7 @@ import { Attendee, Comment } from "@/prisma/generated/type-graphql"
 import { CommentContainer } from './CommentContainer'
 import { ADD_ATTENDEE, FIND_ATTENDEE, QUIT_ATTENDEE } from '@/graphql/client/attendee'
 import { CREATE_COMMENT } from '@/graphql/client/comment'
-import DeleteEventButton from '../buttons/DeleteEventButton';
+import DeleteOrReportEventButton from '../buttons/DeleteOrReportEventButton';
 import { CLASIFFY_COMMENT_SENTIMENT } from '@/graphql/client/commentSentiment'
 import { toast } from 'react-toastify'
 
@@ -136,7 +136,7 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
                 </div>
                 {/* delete button */}
                 <div className='p-2 flex justify-start'>
-                    <DeleteEventButton
+                    <DeleteOrReportEventButton
                         idAutor={idAutor}
                         sessionUserId={sessionUserId}
                         eventId={id}

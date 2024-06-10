@@ -66,7 +66,7 @@ const Perfil = () => {
   console.log("user: ", user);
   return (
     <>
-      <PrivateLayout>
+      <PrivateLayout isAdminPage={false}>
         <title>Perfil | UdeAcercate</title>
         <div className="Yellow-little gap-15 flex flex-col min-h-screen">
           <main className="flex flex-col sm:flex-row mt-16 gap-8">

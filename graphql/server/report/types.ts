@@ -16,6 +16,7 @@ const reportTypeDefs = gql`
     }
     type Mutation{
         reportEvent(userId: String!, eventId: String!, reason: String): Report
+        deleteReport(userId: String!, eventId: String!): Boolean
     }
     type Query{
         getReportedEvents:[ReportedEvent]
