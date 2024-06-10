@@ -274,7 +274,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\santi\\OneDrive\\Escritorio\\UDEA\\udea10\\nueva-version-PI2\\UdeaAcercate\\prisma\\generated\\client",
+      "value": "/Users/juanpablobedoya/Desktop/UdeAcercate/UdeaAcercate/prisma/generated/client",
       "fromEnvVar": null
     },
     "config": {
@@ -283,7 +283,7 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "darwin-arm64",
         "native": true
       }
     ],
