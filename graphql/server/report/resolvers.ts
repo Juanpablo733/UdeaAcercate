@@ -47,6 +47,22 @@ const reportResolvers: Resolver = {
                     reason: args.reason ?? 'No compartida'
                 }
             })
+        },
+        deleteReport: async (parent, args, context) => {
+            const { db } = context
+            const userId = args.userId
+            const eventId = args.eventId
+            try {
+                await db.report.delete({
+                    where: {
+                        userId_eventId: { userId, eventId }
+                    }
+                })
+                return true
+            } catch (error) {
+                console.log(error)
+                return false
+            }
         }
     },
 }
