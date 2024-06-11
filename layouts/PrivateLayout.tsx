@@ -9,9 +9,9 @@ import { Profile } from "@/prisma/generated/type-graphql";
 import { Navbar } from "@/components/navbar/Navbar";
 import { useIsAdminUser } from "@/hooks/useIsAdminUser";
 
-interface PrivateLayoutProps { 
-    children: ReactNode, 
-    isAdminPage: boolean 
+interface PrivateLayoutProps {
+    children: ReactNode,
+    isAdminPage: boolean
 }
 
 const PrivateLayout = ({ children, isAdminPage }: PrivateLayoutProps) => {
@@ -39,10 +39,7 @@ const PrivateLayout = ({ children, isAdminPage }: PrivateLayoutProps) => {
                 router.push('/crearPerfil');
             }
         }
-        if(isAdminPage && !isAdmin){
-            router.push('/home');
-        }
-    }, [loadingPerfil, profileData, isAdminPage, isAdmin])
+    }, [loadingPerfil, status, profileData, loadingUser, notVerified])
 
     if (loadingUser || loadingRole ||
         loadingRole || status === "loading")
@@ -50,6 +47,9 @@ const PrivateLayout = ({ children, isAdminPage }: PrivateLayoutProps) => {
     if (!session) {
         signIn('google', { callbackUrl: '/home' });
     } else {
+        if (isAdminPage && !isAdmin) {
+            router.push('/home');
+        }
         return (
             <div className="flex flex-col">
                 <Navbar
