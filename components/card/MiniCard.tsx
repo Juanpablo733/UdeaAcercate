@@ -21,6 +21,8 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
     const hours = date.getHours().toString().padStart(2, '0')
     const minutes = date.getMinutes().toString().padStart(2, '0')
     const image = data.info.image == '' ? '/evento1.png' : data.info.image
+    // console.log('url? ', image);
+    
     return (
         // <div className='w-full max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl '>
         <div className='hover:scale-105 transition-transform duration-300 w-full min-w-[360px] max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pb-4 px-4 bg-white gap-4 flex flex-col shadow-xl '>
@@ -50,7 +52,23 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
                     <span className="text-sm font-semibold">{data.info.title}</span>
                     {/* <div className="relative h-48 w-96"> */}
                     <div className="relative h-48 w-80">
-                        <Image className="rounded-lg" src={image} alt={'evento1'} layout="fill" objectFit="cover" />
+                        {
+                            image.includes('.mp4') ? 
+                            <video
+                                // className="rounded-lg min-w-[280px] sm:min-w-[480px]"
+                                // width={360}
+                                className="rounded-lg"
+                                controls
+                                muted
+                            >
+                                <source
+                                type="video/mp4"
+                                src={image}
+                                />
+                            </video>
+                            :
+                            <Image className="rounded-lg" src={image} alt={'evento1'} layout="fill" objectFit="cover" />
+                        }
                     </div>
                 </div>
 

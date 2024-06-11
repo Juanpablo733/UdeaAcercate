@@ -111,11 +111,28 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
             <div className='flex flex-col h-full md:w-[60%] pr-2'>
                 {/* <div className='w-[100%] h-[50%] rounded-lg debug'> */}
                 <div className='w-[100%] rounded-lg'>
-                    <Image className='rounded-lg'
-                        width={1000}
-                        height={0}
-                        src={image}
-                        alt={'Imagen de evento'} />
+                    {
+                        image.includes('.mp4') ? 
+                        <video
+                            // className="rounded-lg min-w-[280px] sm:min-w-[480px]"
+                            // width={360}
+                            className="rounded-lg"
+                            controls
+                            muted
+                        >
+                            <source
+                            type="video/mp4"
+                            src={image}
+                            />
+                        </video> :
+                        <Image className='rounded-lg'
+                            width={1000}
+                            height={0}
+                            src={image}
+                            alt={'Imagen de evento'} 
+                        />
+
+                    }
                 </div>
                 <div className='flex justify-between p-2'>
                     <div className='flex gap-2 items-center'>
