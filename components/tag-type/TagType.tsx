@@ -22,7 +22,7 @@ const TYPES = {
     },
     Noticia: {
         label: "Noticia",
-        color: "var(--blue-dark)",
+        color: "var(--violet-oficial)",
     },
 };
 

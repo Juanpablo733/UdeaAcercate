@@ -6,6 +6,7 @@ import CardModal from "../modals/CardModal";
 import CompleteCard from "./CompleteCard";
 import Link from "next/link";
 import { ExtendedEvent } from "@/graphql/client/event";
+import { IoIosStarOutline } from "react-icons/io";
 interface MiniCardProps {
     data: ExtendedEvent,
     sessionUserId: string
@@ -27,7 +28,12 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
             {/* <div className='flex justify-between items-center'> */}
             <header className='flex justify-between items-center gap-4 w-full'>
                 <div className='flex gap-1 h-max w-full'>
+                    {
+                    data.info.official ?
+                    <IoIosStarOutline className='h-8 w-8 ' />                 
+                    : 
                     <MdOutlineLabel className="h-8 w-8" />
+                }
                     <TagType type={data.info.tag} />
                 </div>
                 <Link href={`/perfil/${data.author.id}`} className="w-3/5">
