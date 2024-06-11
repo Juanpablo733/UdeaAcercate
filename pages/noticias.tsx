@@ -44,6 +44,8 @@ const Noticias = () => {
         return <p>error {errorAll.message}</p>
     }
     const handleSearch = (searchTerm) => {
+        console.log('entra?');
+        
         if (!noticeData || loadingAll || !noticeData.notices) return;
 
         const filteredList = noticeData.notices.filter((event) =>
@@ -82,7 +84,7 @@ const Noticias = () => {
                 </div>
                 <div className='CardsGrid px-2 sm:px-4 py-4'>
                     {
-                        noticeData?.notices.map((item) => {
+                        dataFiltrada?.notices.map((item) => {
                             return (
                                 <CardNotice
                                     key={item.id}
