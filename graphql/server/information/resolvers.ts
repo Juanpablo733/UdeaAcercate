@@ -2,8 +2,10 @@ import { Resolver } from "@/types";
 import { findHashtags } from "../utils/infoUtil";
 import { isAdminUser } from "../utils/roleUtil";
 import InfoProfile from '../../../components/profile/InfoProfile';
+import { findUser } from "../utils/userUtil";
 
 const informationResolvers: Resolver = {
+
     Query: {
         notices: async (parent, args, context) => {
             return await context.db.information.findMany({
@@ -81,6 +83,9 @@ const informationResolvers: Resolver = {
         year: async (parent) => {
             const date = new Date(parent.date)
             return date.getUTCFullYear()
+        },
+        author: async (parent, args, context) => {
+            return findUser(context.db, parent.authorId);
         },
     },
 }

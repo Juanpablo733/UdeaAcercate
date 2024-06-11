@@ -28,6 +28,11 @@ export const GET_ALL_NOTICE_PREVIEWS = gql`
             image
             tag
             official
+            author {
+                id
+                name
+                image
+            }
         }
     }
 `

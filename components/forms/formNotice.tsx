@@ -5,7 +5,7 @@ import { useUserData } from '@/hooks/useUserData';
 import Image from 'next/image';
 import { toast } from 'react-toastify';
 import { MdImage } from 'react-icons/md';
-import { CREATE_INFORMATION } from '@/graphql/client/information';
+import { CREATE_INFORMATION, GET_ALL_NOTICE_PREVIEWS } from '@/graphql/client/information';
 
 
 interface FormInterface {
@@ -35,7 +35,8 @@ const FormNotice = ({ setModalOpen }: FormInterface) => {
                     description,
                     image: usrImage,
                     authorId: userId,
-                }
+                },
+                refetchQueries:[GET_ALL_NOTICE_PREVIEWS]
             });
             toast.success('Noticia creado satisfactoriamente!');
             setModalOpen(false)

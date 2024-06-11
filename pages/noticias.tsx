@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { MdAddCircleOutline, MdExpandMore, MdOutlineSearch } from "react-icons/md";
-import { ExtendedEvent, GET_OFFICIAL_EVENTS_PREVIEW } from "@/graphql/client/event"
+import { ExtendedEvent } from "@/graphql/client/event"
 import { useQuery } from "@apollo/client"
 import { MiniCardContainer } from '@/components/card/MiniCardContainer';
 import { Loading } from '@/components/ui/Loading';
@@ -9,8 +9,10 @@ import CreateEventModal from '@/components/modals/CreateEventModal';
 import PrivateLayout from '@/layouts/PrivateLayout';
 import SearchBar from '@/components/searchbar/SearchBar';
 import FormNotice from '@/components/forms/formNotice';
-import CardNotice from '@/components/card/CardNotice';
+import {CardNotice} from '@/components/card/CardNotice';
 import { useIsAdminUser } from '@/hooks/useIsAdminUser';
+import { GET_ALL_NOTICE_PREVIEWS } from '@/graphql/client/information';
+import { Information } from '@/prisma/generated/type-graphql';
 
 
 const Noticias = () => {
@@ -18,21 +20,21 @@ const Noticias = () => {
     const userId = userData?.user.id
     const { data: roleData, loading: loadingRole } = useIsAdminUser(userId)
     const isAdmin = roleData?.isUserAdmin
-    const [dataFiltrada, setDataFiltrada] = useState<{ officialEvents: ExtendedEvent[] }>();
+    const [dataFiltrada, setDataFiltrada] = useState<{ notices: Information[] }>();
     const [openCreateEvent, setOpenCreateEvent] = useState<boolean>(false);
     const [tag, setTag] = useState('');
     const [hashtags, setHashtags] = useState([]);
-    const { data: eventsData, loading: loadingAll, error: errorAll } = useQuery<{ officialEvents: ExtendedEvent[] }>(GET_OFFICIAL_EVENTS_PREVIEW, {
+    const { data: noticeData, loading: loadingAll, error: errorAll } = useQuery<{ notices: Information[] }>(GET_ALL_NOTICE_PREVIEWS, {
         fetchPolicy: 'no-cache',
         variables: { sessionUserId: userId, tag, hashtags }
     })
-    console.log(eventsData)
+    console.log("noticias",noticeData)
 
     useEffect(() => {
-        if (eventsData && eventsData.officialEvents) {
-            setDataFiltrada({ officialEvents: eventsData.officialEvents });
+        if (noticeData && noticeData.notices) {
+            setDataFiltrada({ notices: noticeData.notices });
         }
-    }, [eventsData]);
+    }, [noticeData]);
 
     console.log("[Home] tag:", tag)
     if (loadingUser || status === "loading") return (<Loading />)
@@ -42,12 +44,12 @@ const Noticias = () => {
         return <p>error {errorAll.message}</p>
     }
     const handleSearch = (searchTerm) => {
-        if (!eventsData || loadingAll || !eventsData.officialEvents) return;
+        if (!noticeData || loadingAll || !noticeData.notices) return;
 
-        const filteredList = eventsData.officialEvents.filter((event) =>
-            event.info.title.toLowerCase().includes(searchTerm.toLowerCase())
+        const filteredList = noticeData.notices.filter((event) =>
+            event.title.toLowerCase().includes(searchTerm.toLowerCase())
         );
-        setDataFiltrada({ officialEvents: filteredList });
+        setDataFiltrada({ notices: filteredList });
         console.log('data filtrada: ', dataFiltrada);
         console.log('filteredList: ', filteredList);
 
@@ -77,6 +79,18 @@ const Noticias = () => {
                             : <></>
                     }
                     <SearchBar onSearch={handleSearch} />
+                </div>
+                <div className='CardsGrid px-2 sm:px-4 py-4'>
+                    {
+                        noticeData?.notices.map((item) => {
+                            return (
+                                <CardNotice
+                                    key={item.id}
+                                    data={item}
+                                />
+                            );
+                        })
+                    }
                 </div>
             </div>
         </PrivateLayout>
