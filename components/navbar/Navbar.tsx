@@ -1,28 +1,36 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { MdDehaze } from "react-icons/md";
 import { Sidebar } from "../sidebar/Sidebar";
 import { Session } from "next-auth";
 
-interface NavbarProps{
+interface NavbarProps {
   session: Session,
   userId: string,
   isUserAdmin: boolean
 }
 
-const Navbar = ({userId, isUserAdmin, session}:NavbarProps) => {
-  const [showMenu, setShowMenu] = useState(false);
+//TODO agregar fuente de texto Roboto
 
+const Navbar = ({ userId, isUserAdmin, session }: NavbarProps) => {
+  const [showMenu, setShowMenu] = useState(false);
+  const [userName, setUserName] = useState("");
   const handleToggleMenu = () => {
     setShowMenu(!showMenu);
   };
+  useEffect(() => {
+    const userNameArray = session.user.name.toLowerCase().split(" ");
+    const newUserName = []
+    userNameArray.forEach(value => newUserName.push(value.replace(value[0], value[0].toLocaleUpperCase())));
+    setUserName(newUserName.join(" "))
+  }, [])
 
   return (
-    <div className="w-full h-16 bg-[#026937] flex items-center justify-between px-4 fixed z-10">
-      <button className="text-white font-bold" onClick={handleToggleMenu}>
+    <div className="w-full h-20 flex items-center justify-between px-[72px] fixed z-10" style={{ "background": "linear-gradient(90deg, #35944B, #036937, #026937)" }}>
+      {/* <button className="text-white font-bold" onClick={handleToggleMenu}>
         <MdDehaze className="h-8 w-8 text-white" />
-      </button>
+      </button> */}
       {showMenu && (
         <div className="h-full fixed top-0 left-0 w-full bg-black/40" onClick={handleToggleMenu}>
           <div className="absolute top-0 left-0">
@@ -41,13 +49,13 @@ const Navbar = ({userId, isUserAdmin, session}:NavbarProps) => {
         </div>
       </Link>
       <Link href={`/perfil/${userId}`}>
-        <div className="gap-4 items-center justify-center hidden sm:flex">
-          <span className=" text-white font-bold">{session?.user?.name}</span>
+        <div className="gap-[12px] items-center justify-center hidden sm:flex">
+          <span className=" text-white font-bold">{userName}</span>
           <Image
             src={session?.user?.image!}
             alt={"avatar-image"}
-            height={50}
-            width={50}
+            height={40}
+            width={40}
             className="rounded-full"
           />
         </div>

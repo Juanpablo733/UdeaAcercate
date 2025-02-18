@@ -274,7 +274,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Jose\\Desktop\\Jose\\UdeA\\8 Semestre\\Proyecto Integrador 1\\Repositorio\\Nuevo Repo\\UdeaAcercate\\prisma\\generated\\client",
+      "value": "C:\\Users\\Innovati\\Desktop\\Jose\\UdeAcercate\\UdeaAcercate\\prisma\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -283,7 +283,7 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "darwin-arm64",
+        "value": "windows",
         "native": true
       }
     ],
@@ -291,8 +291,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../..",
   "clientVersion": "5.15.0",
