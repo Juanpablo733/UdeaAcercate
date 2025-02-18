@@ -181,5 +181,5 @@ label{
 }
 
 .sidebar-item {
-  @apply flex gap-4 text-white font-bold items-center;
+  @apply flex gap-4 text-white items-center text-2xl font-normal;
 }
