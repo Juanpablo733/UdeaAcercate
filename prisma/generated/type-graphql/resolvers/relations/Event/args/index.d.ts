@@ -1,1 +1,0 @@
-export { EventAttendeesArgs } from "./EventAttendeesArgs";
