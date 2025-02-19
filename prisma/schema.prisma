@@ -13,15 +13,22 @@ generator typegraphql {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
+}
+
+enum Sentiment {
+  Positive
+  Neutral
+  Negative
 }
 
 enum Tag {
   Deportivo
   Academico
   Cultural
+  Noticia
 }
 
 enum UserType {
@@ -29,6 +36,7 @@ enum UserType {
   Profesor
   Administrativo
   Egresado
+  Jubilado
 }
 
 enum Campus {
@@ -42,6 +50,11 @@ enum Campus {
   Seccional_Occidente_de_la_Universidad_de_Antioquia
   Seccional_Bajo_Cauca
   Sede_Sonson_de_la_Universidad_de_Antioquia
+}
+
+enum RoleTag {
+  User
+  Admin
 }
 
 model Account {
@@ -72,12 +85,12 @@ model Session {
 }
 
 model User {
-  id            String     @id @default(cuid())
+  id            String        @id @default(cuid())
   name          String?
-  email         String?    @unique
+  email         String?       @unique
   emailVerified DateTime?
-  createdAt     DateTime   @default(now())
-  updatedAt     DateTime   @updatedAt
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
   image         String?
   profile       Profile?
   eventsCreated Event[]
@@ -85,6 +98,7 @@ model User {
   comments      Comment[]
   accounts      Account[]
   sessions      Session[]
+  newsCreated   Information[]
 }
 
 model VerificationToken {
@@ -96,8 +110,8 @@ model VerificationToken {
 }
 
 model EmailToken {
-  identifier String @unique
-  token      String   
+  identifier String   @unique
+  token      String
   expires    DateTime
 }
 
@@ -114,35 +128,67 @@ model Profile {
 }
 
 model Event {
-  id          String     @id @default(cuid())
+  id        String      @id @default(cuid())
+  author    User        @relation(fields: [authorId], references: [id])
+  authorId  String
+  info      Information @relation(fields: [infoId], references: [id])
+  infoId    String      @unique
+  place     String
+  attendees Attendee[]
+}
+
+model Information {
+  id          String    @id @default(cuid())
+  author      User?     @relation(fields: [authorId], references: [id])
+  authorId    String?   @default(cuid())
   title       String
   description String
-  place       String
-  date        DateTime
+  date        DateTime  @default(now())
   image       String?
   tag         Tag
-  author      User       @relation(fields: [authorId], references: [id])
-  authorId    String
-  comments    Comment[]
-  attendees   Attendee[]
   hashtags    String[]
+  official    Boolean   @default(false)
+  comments    Comment[]
+  event       Event?
 }
 
 model Attendee {
-  user    User   @relation(fields: [userId], references: [id])
-  userId  String
-  event   Event  @relation(fields: [eventId], references: [id])
-  eventId String
+  user     User     @relation(fields: [userId], references: [id])
+  userId   String
+  event    Event    @relation(fields: [eventId], references: [id])
+  eventId  String
+  dateTime DateTime @default(now())
 
   @@id([userId, eventId])
 }
 
 model Comment {
-  id       String   @id @default(cuid())
+  id       String      @id @default(cuid())
   text     String
-  dateTime DateTime @default(now())
-  user     User     @relation(fields: [userId], references: [id])
+  dateTime DateTime    @default(now())
+  user     User        @relation(fields: [userId], references: [id])
   userId   String
-  event    Event    @relation(fields: [eventId], references: [id])
-  eventId  String
+  info     Information @relation(fields: [infoId], references: [id])
+  infoId   String
+}
+
+model CommentSentiment {
+  id         String    @unique
+  sentiment  Sentiment
+  confidence Float
+  commentTag Tag
+  dateTime   DateTime  @default(now())
+}
+
+model Role {
+  userId String  @unique
+  role   RoleTag
+}
+
+model Report {
+  userId   String   
+  eventId  String   
+  reason   String
+  dateTime DateTime @default(now())
+  @@id([userId, eventId])
 }

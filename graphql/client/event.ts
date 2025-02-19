@@ -1,7 +1,7 @@
 import { gql } from 'graphql-tag';
 import { Event } from "@/prisma/generated/type-graphql"
 
-export interface ExtendedEvent extends Event{
+export interface ExtendedEvent extends Event {
     minutes: string,
     hours: string,
     day: string,
@@ -10,103 +10,186 @@ export interface ExtendedEvent extends Event{
     attendeesCount: number,
 }
 
-const CREATE_EVENT =gql`
+export const CREATE_EVENT = gql`
 mutation Mutation($title: String!, $description: String!, $place: String!, $date: DateTime!, $image: String!, $tag: String!, $authorId: String!) {
     createEvent(title: $title, description: $description, place: $place, date: $date, image: $image, tag: $tag, authorId: $authorId) {
       id
     }
   }
 `
+export const DELETE_EVENT_BY_ADMIN = gql`
+    mutation DeleteEventByAdmin($eventId: String!, $adminId: String!) {
+        deleteEventByAdmin(eventId: $eventId, adminId: $adminId)
+    }
+`
+export const DELETE_EVENT_BY_OWNER = gql`
+    mutation DeleteEventByOwner($eventId: String!, $ownerId: String!) {
+        deleteEventByOwner(eventId: $eventId, ownerId: $ownerId)
+    }
+`
 
-
-const GET_EVENTS_PREVIEW = gql`
-    query Events($tag: String, $hashtags: [String]) {
-        events(tag: $tag, hashtags: $hashtags){
+export const GET_OFFICIAL_EVENTS_PREVIEW = gql`
+    query OfficialEvents {
+        officialEvents {
             id
-            tag
+            place
+            attendeesCount
             author {
                 id
                 name
                 image
             }
-            title
-            image
-            date
-            attendeesCount
-            minutes
-            hours
-            day
-            month
-            year
+            info {
+                title
+                image
+                date
+                minutes
+                hours
+                day
+                month
+                year
+                tag
+                official
+            }
         }
     }
 `
-
-const GET_EVENT_BY_ID = gql`
-    query Event($id: String!) {
-    event(id: $id) {
-        comments {
-            text
-            dateTime
-            user {
+export const GET_EVENTS_PREVIEW = gql`  
+    query Events($sessionUserId: String!, $tag: String, $hashtags: [String]) {
+        events(sessionUserId: $sessionUserId, tag: $tag, hashtags: $hashtags) {
+            id
+            place
+            attendeesCount
+            author {
                 id
                 name
                 image
             }
-            id
+            info {
+                title
+                image
+                date
+                minutes
+                hours
+                day
+                month
+                year
+                tag
+                official
+            }
         }
-        place
-        description
-        hashtags
-        attendeesCount
     }
+`
+export const GET_FULL_EVENT_BY_ID = gql`
+    query Event($eventId: String!) {
+        event(id: $eventId) {
+            id
+            author {
+                id
+                image
+                name
+            }
+            info {
+                title
+                description
+                date
+                minutes
+                hours
+                day
+                month
+                year
+                image
+                tag
+                official
+                comments {
+                    id
+                    text
+                    dateTime
+                    user {
+                        id
+                        image
+                        name
+                    }
+                }
+                hashtags
+            }
+            place
+            attendeesCount
+        }
     }
 `
 
-const GET_EVENTS_ATTENDING = gql`
+export const GET_EVENT_BY_ID = gql`
+    query Event($eventId: String!) {
+        event(id: $eventId) {
+            place
+            attendeesCount
+            info {
+                description
+                hashtags
+                comments {
+                    id
+                    text
+                    dateTime
+                    user {
+                    id
+                    name
+                    image
+                    }
+                }
+            }
+        }
+    }
+`
+export const GET_EVENTS_ATTENDING = gql`
     query Query($userId: String!) {
         eventsAttending(userId: $userId) {
             id
-            tag
+            place
+            attendeesCount
             author {
                 id
-                image
                 name
+                image
             }
-            title
-            image
-            date
-            attendeesCount
-            minutes
-            hours
-            day
-            month
-            year
+            info {
+                title
+                image
+                date
+                minutes
+                hours
+                day
+                month
+                year
+                tag
+                official
+            }
         }
     }
 `
-
-const GET_EVENTS_CREATED = gql`
-    query Query($userId: String!) {
+export const GET_EVENTS_CREATED = gql`
+    query EventsCreated($userId: String!) {
         eventsCreated(userId: $userId) {
             id
-            tag
+            place
+            attendeesCount
             author {
                 id
-                image
                 name
+                image
             }
-            title
-            image
-            date
-            attendeesCount
-            minutes
-            hours
-            day
-            month
-            year
+            info {
+                title
+                image
+                date
+                minutes
+                hours
+                day
+                month
+                year
+                tag
+                official
+            }
         }
     }
 `
-
-export { GET_EVENTS_PREVIEW, GET_EVENT_BY_ID, GET_EVENTS_ATTENDING, GET_EVENTS_CREATED, CREATE_EVENT }

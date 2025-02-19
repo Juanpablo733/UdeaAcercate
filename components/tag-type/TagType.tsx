@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface TypesProps {
-    type: "Deportivo" | "Cultural" | "Academico";
+    type: "Deportivo" | "Cultural" | "Academico" | "Noticia";
 }
 // interface TypesProps {
 //     type: any;
@@ -19,6 +19,10 @@ const TYPES = {
     Academico: {
         label: "Academico",
         color: "var(--blue-dark)",
+    },
+    Noticia: {
+        label: "Noticia",
+        color: "var(--violet-oficial)",
     },
 };
 

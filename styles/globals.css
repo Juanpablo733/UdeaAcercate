@@ -8,6 +8,8 @@
   --green-little: #43B649;
   --blue-dark: #205B70;
   --blue-mid: #0E7774;
+  --violet-oficial: #94357e;
+  /* --light-grey-try: #c9c9c9; */
   --light-grey: #5F5F5F;
   --dark-grey: #393636;
   --white: #fff;
@@ -15,6 +17,7 @@
   --bg-secondary: linear-gradient(306deg, #026937 0%, #35944b 100%);
   --bg-third: linear-gradient(90deg, #43b649 0%, #12803f 100%);
   --shadow: 4px 4px 23px 0px rgba(0, 0, 0, 0.3);
+  --accent-color: #1F1F3B;
 }
 
 h1{
@@ -48,7 +51,8 @@ label{
   border: 2px solid red;
 }
 .Yellow-little{
-  background-color: #f3f3e3;
+  /*background-color: #f3f3e3;*/
+  background-color: #D9D9D9
 }
 .Green-Hard{
   color: #026937;
@@ -71,6 +75,9 @@ label{
 .Dark-Grey{
   color: #393636;
 }
+.Title{
+  color: #1F1F3B;
+}
 .background-form{
   background-image: linear-gradient(306deg, #026937 0%, #35944B 100%);
   clip-path: polygon(5% 0, 100% 0, 100% 100%, 0% 100%);
@@ -88,8 +95,9 @@ label{
   position: fixed;
   bottom: 0;
   right: 0;
-  padding: 38px; /* Agrega un poco de espacio para que no esté demasiado pegado al borde */
+  padding: 32px;
 }
+
 
 .button-form{
   border-radius: 28px;
@@ -159,4 +167,19 @@ label{
   font-size: 1rem;
   font-weight: 500;
   color: var(--light-grey);
+}
+
+.InfoProfile {
+  @apply flex bg-white w-72 p-3 rounded-3xl shadow-xl flex-col items-center hover:scale-105 transition-transform duration-300;
+}
+
+.CardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 24px;
+  justify-items: center;
+}
+
+.sidebar-item {
+  @apply flex gap-4 text-white items-center text-2xl font-normal;
 }

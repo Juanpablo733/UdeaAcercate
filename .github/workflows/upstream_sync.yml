@@ -1,0 +1,25 @@
+name: Sync Fork with Upstream
+on:
+  push:
+    branches:
+      - upstream/dev 
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Git
+        run: |
+          git config --global user.email "jose.gonzalezg1@udea.edu.co"
+          git config --global user.name "JoseMAGG"
+
+      - name: Fetch upstream changes
+        run: git fetch upstream
+
+      - name: Merge upstream changes
+        run: git merge upstream/dev --no-edit
+
+      - name: Push changes to fork
+        run: git push origin dev-jose
