@@ -22,21 +22,42 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
     const minutes = date.getMinutes().toString().padStart(2, '0')
     const image = data.info.image == '' ? '/evento1.png' : data.info.image
     // console.log('url? ', image);
-    
+
     return (
         // <div className='w-full max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pr-4 pl-4 bg-white gap-4 flex flex-col pb-4 shadow-xl '>
-        <div className='hover:scale-105 transition-transform duration-300 w-full min-w-[360px] max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pb-4 px-4 bg-white gap-4 flex flex-col shadow-xl '>
+        <div className={styles.container}>
+            <div className="relative h-[246px] w-[419px]">
+                {
+                    image.includes('.mp4') ?
+                        <video
+                            // className="rounded-lg min-w-[280px] sm:min-w-[480px]"
+                            // width={360}
+                            className="rounded-lg"
+                            controls
+                            muted
+                        >
+                            <source
+                                type="video/mp4"
+                                src={image}
+                            />
+                        </video>
+                        :
+                        <Image className="rounded-t-xl" src={image} alt={'evento1'} layout="fill" objectFit="cover" />
+                }
+            </div>
+            <div className={styles.tag}>
+                <TagType type={data.info.tag} />
+            </div>
 
             {/* <div className='flex justify-between items-center'> */}
-            <header className='flex justify-between items-center gap-4 w-full'>
+            {/* <header className='flex justify-between items-center gap-4 w-full'>
                 <div className='flex gap-1 h-max w-full'>
                     {
-                    data.info.official ?
-                    <IoIosStarOutline className='h-8 w-8 ' />                 
-                    : 
-                    <MdOutlineLabel className="h-8 w-8" />
-                }
-                    <TagType type={data.info.tag} />
+                        data.info.official ?
+                            <IoIosStarOutline className='h-8 w-8 ' />
+                            :
+                            <MdOutlineLabel className="h-8 w-8" />
+                    }
                 </div>
                 <Link href={`/perfil/${data.author.id}`} className="w-3/5">
                     <div className='flex gap-2 items-center justify-end w-full'>
@@ -44,32 +65,13 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
                         <Image src={data.author.image} alt={'avatar-image'} height={30} width={30} className='rounded-full' />
                     </div>
                 </Link>
-            </header>
+            </header> */}
 
-            <section className="gap-1 flex flex-col justify-between h-full">
+            {/* <section className="gap-1 flex flex-col justify-between h-full">
 
                 <div className="flex flex-col h-auto items-center ">
                     <span className="text-sm font-semibold">{data.info.title}</span>
-                    {/* <div className="relative h-48 w-96"> */}
-                    <div className="relative h-48 w-80">
-                        {
-                            image.includes('.mp4') ? 
-                            <video
-                                // className="rounded-lg min-w-[280px] sm:min-w-[480px]"
-                                // width={360}
-                                className="rounded-lg"
-                                controls
-                                muted
-                            >
-                                <source
-                                type="video/mp4"
-                                src={image}
-                                />
-                            </video>
-                            :
-                            <Image className="rounded-lg" src={image} alt={'evento1'} layout="fill" objectFit="cover" />
-                        }
-                    </div>
+
                 </div>
 
                 <div className="flex gap-4 justify-between h-12 ">
@@ -128,19 +130,24 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
                                 imagenEvento={data.info.image}
                                 sessionUserId={sessionUserId}
                             /> */}
-                        </CardModal>
+                        {/* </CardModal>
                     </div>
                     <div className="w-1/4 flex justify-center items-center">
                         <MdOutlinePermIdentity className={'h-8 w-8'} />
                         <span className='font-bold'>{data.attendeesCount}</span>
                     </div>
 
-                </div>
+                </div> 
 
-            </section>
+            </section> */}
         </div>
         // </div>
     )
+}
+
+const styles = {
+    container: 'w-full min-w-[360px] max-w-[419px] mx-auto h-[400px] transition-transform duration-300  rounded-3xl bg-white flex flex-col',
+    tag: 'relative w-fit bottom-4',
 }
 
 export { MiniCard }
