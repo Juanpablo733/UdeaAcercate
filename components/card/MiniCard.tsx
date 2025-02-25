@@ -1,4 +1,3 @@
-import { MdOutlineLabel, MdOutlinePermIdentity } from "react-icons/md";
 import React, { useEffect, useState } from 'react'
 import { TagType } from '../tag-type/TagType'
 import Image from 'next/image';
@@ -6,8 +5,8 @@ import CardModal from "../modals/CardModal";
 import CompleteCard from "./CompleteCard";
 import Link from "next/link";
 import { ExtendedEvent } from "@/graphql/client/event";
-import { IoIosStarOutline } from "react-icons/io";
-import { formatName } from "@/util/nameFormatter";
+import { formatDateTime, formatName } from "@/util/stringFormatter";
+import { AttendButton } from '../buttons/AttendButton';
 interface MiniCardProps {
     data: ExtendedEvent,
     sessionUserId: string
@@ -15,23 +14,27 @@ interface MiniCardProps {
 
 const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
     const [open, setOpen] = useState<boolean>(false);
-    const [name, setName] = useState<string>('')
-    const date = new Date(data.info.date)
-    const day = date.getDate().toString().padStart(2, '0')
-    const month = (date.getMonth() + 1).toString().padStart(2, '0')
-    const year = date.getFullYear().toString()
-    const hours = date.getHours().toString().padStart(2, '0')
-    const minutes = date.getMinutes().toString().padStart(2, '0')
+    const [name, setName] = useState<string>('');
+    const [date, setDate] = useState<string>('');
+    const [time, setTime] = useState<string>('');
+
+
+
     const image = data.info.image == '' ? '/evento1.png' : data.info.image
-    // console.log('url? ', image);
+
+
+
 
     useEffect(() => {
         setName(formatName(data.author.name));
+        const { date, time } = formatDateTime(new Date(data.info.date));
+        setDate(date);
+        setTime(time);
     }, []);
 
     return (
         <div className={styles.container}>
-            <div className="relative h-[246px] w-[419px]">
+            <div className="relative h-[246px] w-[419px] cursor-pointer" onClick={() => setOpen(true)}>
                 {
                     image.includes('.mp4') ?
                         <video
@@ -59,10 +62,10 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
 
                     <div className="w-full flex flex-col items-start justify-start gap-1 text-[#3E4146] text-md">
                         <span>
-                            {`${year}-${month}-${day}`}
+                            {date}
                         </span>
                         <span>
-                            {`${hours}:${minutes}`}
+                            {time}
                         </span>
                     </div>
 
@@ -74,7 +77,7 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
                     </Link>
                 </div>
 
-                <div className="h-full w-fit flex flex-col items-end justify-between ">
+                <div className="h-[126px] w-[142px] flex flex-col items-end justify-between">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_732_1734)">
                             <path d="M6 10C4.9 10 4 10.9 4 12C4 13.1 4.9 14 6 14C7.1 14 8 13.1 8 12C8 10.9 7.1 10 6 10ZM18 10C16.9 10 16 10.9 16 12C16 13.1 16.9 14 18 14C19.1 14 20 13.1 20 12C20 10.9 19.1 10 18 10ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z" fill="#323232" />
@@ -100,52 +103,28 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
                         </svg>
                     </div>
 
-                    <button
-                        className='h-12 py-3 px-8 justify-center bg-[var(--green-hard)] text-white rounded-3xl'
-                        onClick={() => setOpen(true)}
-                    >
-                        <span className='text-md'>
-                            Asistir
-                        </span>
+                    <AttendButton sessionUserId={sessionUserId} eventId={data.id}></AttendButton>
 
-                    </button>
-                    <CardModal
-                        open={open}
-                        setOpen={setOpen}
-                        modalTitle={data.info.title}
-                        tagType={data.info.tag}
-                        date={date.toString()}
-                        minutes={minutes}
-                        day={day}
-                        hours={hours}
-                        month={month}
-                        year={year}>
-                        <CompleteCard
-                            id={data.id}
-                            nombre={data.author.name}
-                            asistentes={data.attendeesCount}
-                            imagenAutor={data.author.image}
-                            idAutor={data.author.id}
-                            imagenEvento={image}
-                            sessionUserId={sessionUserId}
-                            minutes={minutes}
-                            day={day}
-                            hours={hours}
-                            month={month}
-                            year={year}
-                        />
-                        {/* <CompleteCard
-                                id={data.id}
-                                nombre={data.author.name}
-                                asistentes={data.attendeesCount}
-                                imagenAutor={data.author.image}
-                                idAutor={data.author.id}
-                                imagenEvento={data.info.image}
-                                sessionUserId={sessionUserId}
-                            /> */}
-                    </CardModal>
                 </div>
             </div>
+            <CardModal
+                open={open}
+                setOpen={setOpen}
+                modalTitle={data.info.title}
+                tagType={data.info.tag}
+            >
+                <CompleteCard
+                    id={data.id}
+                    nombre={data.author.name}
+                    asistentes={data.attendeesCount}
+                    imagenAutor={data.author.image}
+                    idAutor={data.author.id}
+                    imagenEvento={image}
+                    sessionUserId={sessionUserId}
+                    date={date}
+                    time={time}
+                />
+            </CardModal>
         </div>
     )
 }

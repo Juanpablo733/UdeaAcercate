@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Session } from "next-auth";
 import SearchBar from "../searchbar/SearchBar";
 import { useRouter } from "next/router";
-import { formatName } from "@/util/nameFormatter";
+import { formatName } from "@/util/stringFormatter";
 
 interface NavbarProps {
   session: Session,

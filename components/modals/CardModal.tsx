@@ -20,26 +20,18 @@ interface CardModalProps {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
   modalTitle: string;
-  tagType:"Deportivo" | "Cultural" | "Academico" | "Noticia",
-    // tagType: string;
-  date: string
-  minutes: string,
-  hours: string,
-  day: string,
-  month: string,
-  year: string,
+  tagType: "Deportivo" | "Cultural" | "Academico" | "Noticia",
   children: JSX.Element;
 }
-const CardModal = ({ open, setOpen, modalTitle, tagType, date, children,
-  day, hours, minutes, month, year }: CardModalProps) => {
+const CardModal = ({ open, setOpen, modalTitle, tagType, children }: CardModalProps) => {
   return (
     <ThemeProvider theme={theme}>
       <Dialog open={open} onClose={() => setOpen(false)} fullScreen>
-      {/* <Dialog open={open} onClose={() => setOpen(false)} maxWidth={maxWidth} className='debug' fullScreen> */}
+        {/* <Dialog open={open} onClose={() => setOpen(false)} maxWidth={maxWidth} className='debug' fullScreen> */}
         {/* <div className='flex justify-end mt-2 mr-5'> */}
         <div className='flex justify-between pt-3 px-5'>
           <button className='p-0' onClick={() => setOpen(false)}>
-            <MdClose className="h-6 w-6"/>
+            <MdClose className="h-6 w-6" />
           </button>
           <DialogTitle>{modalTitle}</DialogTitle>
           <TagType type={tagType} />
