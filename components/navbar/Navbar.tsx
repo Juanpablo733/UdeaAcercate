@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Session } from "next-auth";
 import SearchBar from "../searchbar/SearchBar";
 import { useRouter } from "next/router";
+import { formatName } from "@/util/nameFormatter";
 
 interface NavbarProps {
   session: Session,
@@ -23,10 +24,7 @@ const Navbar = ({ userId, isUserAdmin, session }: NavbarProps) => {
   }, [router]);
 
   useEffect(() => {
-    const userNameArray = session.user.name.toLowerCase().split(" ");
-    const newUserName = []
-    userNameArray.forEach(value => newUserName.push(value.replace(value[0], value[0].toLocaleUpperCase())));
-    setUserName(newUserName.join(" "));
+    setUserName(formatName(session.user.name));
   }, [])
 
   return (

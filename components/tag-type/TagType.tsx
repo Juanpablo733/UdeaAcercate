@@ -30,7 +30,7 @@ const TYPES = {
 const TagType = ({ type }: TypesProps) => {
     const { label, color } = TYPES[type];
     return (
-        <div className={`px-4 py-1 bg-[var(--tag-color)] w-fit relative after:absolute after:top-1/2 after:right-[-16px] after:-translate-y-1/2 after:border-y-[16px] after:border-l-[16px] after:border-transparent after:border-l-[var(--tag-color)]`}
+        <div className={`px-4 py-1 bg-[var(--tag-color)] w-fit absolute after:absolute after:top-1/2 after:right-[-16px] after:-translate-y-1/2 after:border-y-[16px] after:border-l-[16px] after:border-transparent after:border-l-[var(--tag-color)]`}
         style={{ "--tag-color": color } as React.CSSProperties}>
             <span className='font-bold italic text-white'>{label}</span>
         </div>
