@@ -18,12 +18,7 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
     const [date, setDate] = useState<string>('');
     const [time, setTime] = useState<string>('');
 
-
-
     const image = data.info.image == '' ? '/evento1.png' : data.info.image
-
-
-
 
     useEffect(() => {
         setName(formatName(data.author.name));
@@ -58,7 +53,7 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
             </div>
             <div className="h-full w-full flex justify-between items-center gap-4  pt-6 pb-4 px-[15px]">
                 <div className="flex flex-col h-auto items-start gap-2">
-                    <span className="text-xl text-[#3E4146] font-bold">{data.info.title}</span>
+                    <span className="text-xl text-[#3E4146] font-bold cursor-pointer" onClick={() => setOpen(true)}>{data.info.title}</span>
 
                     <div className="w-full flex flex-col items-start justify-start gap-1 text-[#3E4146] text-md">
                         <span>
@@ -104,7 +99,6 @@ const MiniCard = ({ data, sessionUserId }: MiniCardProps) => {
                     </div>
 
                     <AttendButton sessionUserId={sessionUserId} eventId={data.id}></AttendButton>
-
                 </div>
             </div>
             <CardModal

@@ -1,5 +1,5 @@
 import { FIND_ATTENDEE, ADD_ATTENDEE, QUIT_ATTENDEE } from "@/graphql/client/attendee";
-import { GET_EVENT_BY_ID } from "@/graphql/client/event";
+import { GET_EVENT_BY_ID, GET_EVENTS_PREVIEW } from "@/graphql/client/event";
 import { Attendee } from "@/prisma/generated/client";
 import { useQuery, useMutation } from "@apollo/client";
 
@@ -24,7 +24,7 @@ const AttendButton = ({ sessionUserId, eventId }: { sessionUserId: string, event
     const executeAddAttendee = async () => {
         try {
             const resultado = await addAttendee({
-                refetchQueries: [GET_EVENT_BY_ID, FIND_ATTENDEE]
+                refetchQueries: [GET_EVENTS_PREVIEW, GET_EVENT_BY_ID, FIND_ATTENDEE]
             });
             console.log("AddAttendee: ", resultado);
 
@@ -36,7 +36,7 @@ const AttendButton = ({ sessionUserId, eventId }: { sessionUserId: string, event
     const executeQuitAttendee = async () => {
         try {
             await quitAttendee(
-                { refetchQueries: [GET_EVENT_BY_ID, FIND_ATTENDEE] }
+                { refetchQueries: [GET_EVENTS_PREVIEW, GET_EVENT_BY_ID, FIND_ATTENDEE] }
             )
         }
         catch (error) {
