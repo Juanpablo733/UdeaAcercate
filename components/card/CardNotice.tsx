@@ -1,5 +1,5 @@
 import { MdOutlineLabel } from "react-icons/md";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TagType } from '../tag-type/TagType';
 import Image from 'next/image';
 import CardModal from "../modals/CardModal";
@@ -7,6 +7,7 @@ import CompleteCard from "./CompleteCard";
 import Link from "next/link";
 import { Information } from "@/prisma/generated/type-graphql";
 import CompleteCardNotice from "./CompleteCardNotice";
+import { formatDateTime } from "@/util/stringFormatter";
 
 interface CardNoticeProps {
     data: Information
@@ -14,13 +15,15 @@ interface CardNoticeProps {
 
 const CardNotice: React.FC<CardNoticeProps> = ({ data }) => {
     const [open, setOpen] = useState<boolean>(false);
-    const date = new Date(data.date);
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const year = date.getFullYear().toString();
-    const hours = date.getHours().toString().padStart(2, '0');
-    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const [date, setDate] = useState<string>('');
+    const [time, setTime] = useState<string>('');
     const image = data.image === '' ? '/evento1.png' : data.image;
+
+    useEffect(() => {
+        const { date, time } = formatDateTime(new Date(data.date));
+        setDate(date);
+        setTime(time);
+    }, [data.date]);
 
     return (
         <div className='hover:scale-105 transition-transform duration-300 w-full min-w-[360px] max-w-[600px] mx-auto h-[350px] rounded-3xl pt-5 pb-4 px-4 bg-white gap-4 flex flex-col shadow-xl '>
@@ -48,10 +51,10 @@ const CardNotice: React.FC<CardNoticeProps> = ({ data }) => {
                 <div className="flex gap-4 justify-between h-12 ">
                     <div className="w-1/4 flex flex-col items-center justify-center">
                         <span className="font-bold text-sm">
-                            {`${year}-${month}-${day}`}
+                            {date}
                         </span>
                         <span className="font-bold text-sm">
-                            {`${hours}:${minutes}`}
+                            {time}
                         </span>
                     </div>
                     <div className="w-1/3">
@@ -71,20 +74,12 @@ const CardNotice: React.FC<CardNoticeProps> = ({ data }) => {
                             setOpen={setOpen}
                             modalTitle={data.title}
                             tagType={data.tag}
-                            date={date.toString()}
-                            minutes={minutes}
-                            day={day}
-                            hours={hours}
-                            month={month}
-                            year={year}>
+                        >
                             <CompleteCardNotice
                                 id={data.id}
                                 imagenEvento={image}
-                                minutes={minutes}
-                                day={day}
-                                hours={hours}
-                                month={month}
-                                year={year}
+                                date={date}
+                                time={time}
                                 nombre={data.author.name}
                                 imagenAutor={data.author.image}
                                 idAutor={data.author.id}

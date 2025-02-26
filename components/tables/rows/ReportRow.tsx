@@ -5,9 +5,10 @@ import { Loading } from '@/components/ui/Loading'
 import { DELETE_EVENT_BY_ADMIN, GET_FULL_EVENT_BY_ID } from '@/graphql/client/event'
 import { GET_REPORTED_EVENTS } from '@/graphql/client/report'
 import { GRANT_ADMIN_TO_USER, IS_USER_ADMIN } from '@/graphql/client/role'
+import { formatDateTime } from '@/util/stringFormatter'
 import { useMutation, useQuery } from '@apollo/client'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
 interface ReportRowProps {
@@ -22,22 +23,25 @@ interface ReportRowProps {
 export const ReportRow = ({ eventId, eventTitle, authorId, authorName, sessionUserId, reportCount }: ReportRowProps) => {
     const [open, setOpen] = useState<boolean>(false);
     const [openDetail, setOpenDetail] = useState<boolean>(false);
+    const [date, setDate] = useState<string>('');
+    const [time, setTime] = useState<string>('');
     const { data: eventData, loading, error } = useQuery(GET_FULL_EVENT_BY_ID,
         { variables: { eventId } }
     )
     const [deleteEvent] = useMutation(DELETE_EVENT_BY_ADMIN,
         { variables: { eventId, adminId: sessionUserId } }
     )
+
+    const data = eventData?.event
+    useEffect(() => {
+        const { date, time } = formatDateTime(new Date(data?.info.date));
+        setDate(date);
+        setTime(time);
+    }, [data?.info.date]);
     if (loading)
         return (<></>)
-    const data = eventData?.event
     console.log("Event data:", data)
-    const date = new Date(data?.info.date)
-    const day = date.getDay().toString().padStart(2, '0')
-    const month = (date.getMonth() + 1).toString().padStart(2, '0')
-    const year = date.getFullYear().toString()
-    const hours = date.getHours().toString().padStart(2, '0')
-    const minutes = date.getMinutes().toString().padStart(2, '0')
+
     const image = data?.info.image == '' ? '/evento1.png' : data?.info.image
 
     const executeDeleteEvent = async () => {
@@ -53,6 +57,7 @@ export const ReportRow = ({ eventId, eventTitle, authorId, authorName, sessionUs
         console.log("Borrando evento")
     }
 
+
     return (
         <tr>
             <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
@@ -65,12 +70,7 @@ export const ReportRow = ({ eventId, eventTitle, authorId, authorName, sessionUs
                     setOpen={setOpen}
                     modalTitle={data?.info.title}
                     tagType={data?.info.tag}
-                    date={date.toString()}
-                    minutes={minutes}
-                    day={day}
-                    hours={hours}
-                    month={month}
-                    year={year}>
+                >
                     <CompleteCard
                         id={data?.id}
                         nombre={data?.author.name}
@@ -79,11 +79,8 @@ export const ReportRow = ({ eventId, eventTitle, authorId, authorName, sessionUs
                         idAutor={data?.author.id}
                         imagenEvento={image}
                         sessionUserId={sessionUserId}
-                        minutes={minutes}
-                        day={day}
-                        hours={hours}
-                        month={month}
-                        year={year}
+                        date={date}
+                        time={time}
                     />
                 </CardModal>
             </td>
