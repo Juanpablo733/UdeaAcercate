@@ -9,6 +9,9 @@
   --blue-dark: #205B70;
   --blue-mid: #0E7774;
   --violet-oficial: #94357e;
+  --secondary: #F9A12C;
+  --complementary: #137598;
+  --tertiary: #70205B;
   /* --light-grey-try: #c9c9c9; */
   --light-grey: #5F5F5F;
   --dark-grey: #393636;
@@ -181,5 +184,5 @@ label{
 }
 
 .sidebar-item {
-  @apply flex gap-4 text-white font-bold items-center;
+  @apply flex gap-4 text-white items-center text-2xl font-normal;
 }
