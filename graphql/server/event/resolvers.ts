@@ -44,9 +44,7 @@ const eventResolvers: Resolver = {
     Query: {
         events: async (parent, args, context) => {
             const { db } = context;
-            console.log("[Events-server] tag:", args.tag)
             const filter = args.hashtags
-            console.log("[Events-server] hashtags:", filter)
             const options = {
                 where: {
                     NOT: {
@@ -67,7 +65,6 @@ const eventResolvers: Resolver = {
                 delete options["where"]["info"]["hashtags"]
             }
 
-            console.log("[events] options:", options)
             return await db.event.findMany(options)
                 .catch((e) => {
                     console.log(e)
@@ -98,7 +95,6 @@ const eventResolvers: Resolver = {
         },
         event: async (parent, args, context) => {
             const { db } = context;
-            console.log("Resolver event id: ", args.id)
             return await db.event.findUnique({
                 where: {
                     id: args.id

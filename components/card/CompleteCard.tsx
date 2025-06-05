@@ -20,15 +20,12 @@ interface completeCardProps {
     imagenAutor?: string,
     imagenEvento: string,
     sessionUserId?: string,
-    minutes: string,
-    hours: string,
-    day: string,
-    month: string,
-    year: string,
+    date: string,
+    time: string,
 }
 
 // const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEvento, sessionUserId }: completeCardProps) => {
-const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEvento, sessionUserId, day, hours, minutes, month, year }: completeCardProps) => {
+const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEvento, sessionUserId, date, time }: completeCardProps) => {
     const [comentario, setComentario] = useState('');
     const { data, loading, error } = useQuery<{ event: ExtendedEvent }>(GET_EVENT_BY_ID, {
         variables: { eventId: id },
@@ -112,25 +109,25 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
                 {/* <div className='w-[100%] h-[50%] rounded-lg debug'> */}
                 <div className='w-[100%] rounded-lg'>
                     {
-                        image.includes('.mp4') ? 
-                        <video
-                            // className="rounded-lg min-w-[280px] sm:min-w-[480px]"
-                            // width={360}
-                            className="rounded-lg"
-                            controls
-                            muted
-                        >
-                            <source
-                            type="video/mp4"
-                            src={image}
+                        image.includes('.mp4') ?
+                            <video
+                                // className="rounded-lg min-w-[280px] sm:min-w-[480px]"
+                                // width={360}
+                                className="rounded-lg"
+                                controls
+                                muted
+                            >
+                                <source
+                                    type="video/mp4"
+                                    src={image}
+                                />
+                            </video> :
+                            <Image className='rounded-lg'
+                                width={1000}
+                                height={0}
+                                src={image}
+                                alt={'Imagen de evento'}
                             />
-                        </video> :
-                        <Image className='rounded-lg'
-                            width={1000}
-                            height={0}
-                            src={image}
-                            alt={'Imagen de evento'} 
-                        />
 
                     }
                 </div>
@@ -157,8 +154,8 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
                         idAutor={idAutor}
                         sessionUserId={sessionUserId}
                         eventId={id}
-                        // imagenEvento={imagenEvento}
-                        />
+                    // imagenEvento={imagenEvento}
+                    />
                 </div>
             </div>
             {/* lado derecho */}
@@ -171,10 +168,10 @@ const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEven
                 />
                 <div className='flex gap-4'>
                     <span className="text-black font-bold">
-                        {`${year}-${month}-${day}`}
+                        {date}
                     </span>
                     <span className="text-black font-bold">
-                        {`${hours}:${minutes}`}
+                        {time}
                     </span>
                 </div>
                 <div>

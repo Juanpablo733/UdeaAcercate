@@ -21,21 +21,18 @@ interface CompleteCardNoticeProps {
     imagenAutor?: string,
     imagenEvento: string,
     sessionUserId?: string,
-    minutes: string,
-    hours: string,
-    day: string,
-    month: string,
-    year: string,
+    date: string,
+    time: string,
 }
 
 // const CompleteCard = ({ id, nombre, asistentes, imagenAutor, idAutor, imagenEvento, sessionUserId }: completeCardProps) => {
-const CompleteCardNotice = ({ id, nombre, imagenAutor, idAutor, imagenEvento, sessionUserId, day, hours, minutes, month, year }: CompleteCardNoticeProps) => {
+const CompleteCardNotice = ({ id, nombre, imagenAutor, idAutor, imagenEvento, sessionUserId, date, time }: CompleteCardNoticeProps) => {
     const [comentario, setComentario] = useState('');
     const { data, loading, error } = useQuery<{ noticeById: Information }>(GET_NOTICE_BY_ID, {
         variables: { infoId: id },
         fetchPolicy: 'cache-first'
     })
-    console.log("card completa",data)
+    console.log("card completa", data)
     const [createComment] = useMutation(CREATE_COMMENT,
         { variables: { userId: sessionUserId, eventId: id, text: comentario } });
 
@@ -91,10 +88,10 @@ const CompleteCardNotice = ({ id, nombre, imagenAutor, idAutor, imagenEvento, se
                 />
                 <div className='flex gap-4'>
                     <span className="text-black font-bold">
-                        {`${year}-${month}-${day}`}
+                        {date}
                     </span>
                     <span className="text-black font-bold">
-                        {`${hours}:${minutes}`}
+                        {time}
                     </span>
                 </div>
                 <div>

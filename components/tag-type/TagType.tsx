@@ -1,3 +1,4 @@
+import zIndex from '@mui/material/styles/zIndex';
 import React from 'react'
 
 interface TypesProps {
@@ -10,15 +11,15 @@ interface TypesProps {
 const TYPES = {
     Deportivo: {
         label: "Deportivo",
-        color: "var(--blue-mid)",
+        color: "var(--complementary)",
     },
     Cultural: {
         label: "Cultural",
-        color: "var(--green-little)",
+        color: "var(--secondary)",
     },
     Academico: {
         label: "Academico",
-        color: "var(--blue-dark)",
+        color: "var(--tertiary)",
     },
     Noticia: {
         label: "Noticia",
@@ -26,27 +27,14 @@ const TYPES = {
     },
 };
 
-const TagType = ({type} : TypesProps) => {
-    // const {label, color} = TYPES[type];
-    // let tipo = type.charAt(0).toUpperCase();
-    // let aux = '';
-    // if (tipo==='Deportivo'){
-    //     aux = 'Deportivo'
-    // } else if(tipo === 'Academico'){
-    //     aux = 'Academico'
-    // } else {
-    //     aux = 'Cultural'
-    // }
-    const {label, color} = TYPES[type];
-    const style = {
-        color: "white",
-        border: '1px solid black',
-        borderRadius: "9px",
-        backgroundColor: `${color}`,
-        padding: "2px 5px",
-        fontSize: "bold",
-      };
-      return <span style={style}>{label}</span>;
+const TagType = ({ type }: TypesProps) => {
+    const { label, color } = TYPES[type];
+    return (
+        <div className={`px-4 py-1 bg-[var(--tag-color)] w-fit absolute after:absolute after:top-1/2 after:right-[-16px] after:-translate-y-1/2 after:border-y-[16px] after:border-l-[16px] after:border-transparent after:border-l-[var(--tag-color)]`}
+        style={{ "--tag-color": color } as React.CSSProperties}>
+            <span className='font-bold italic text-white'>{label}</span>
+        </div>
+    );
 }
 
-export {TagType};
+export { TagType };

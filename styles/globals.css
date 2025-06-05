@@ -9,6 +9,9 @@
   --blue-dark: #205B70;
   --blue-mid: #0E7774;
   --violet-oficial: #94357e;
+  --secondary: #F9A12C;
+  --complementary: #137598;
+  --tertiary: #70205B;
   /* --light-grey-try: #c9c9c9; */
   --light-grey: #5F5F5F;
   --dark-grey: #393636;
@@ -52,7 +55,7 @@ label{
 }
 .Yellow-little{
   /*background-color: #f3f3e3;*/
-  background-color: #D9D9D9
+  background-color: #E2EDE8;
 }
 .Green-Hard{
   color: #026937;
