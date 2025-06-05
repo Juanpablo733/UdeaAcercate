@@ -68,7 +68,7 @@ const Perfil = () => {
     <>
       <PrivateLayout isAdminPage={false}>
         <title>Perfil | UdeAcercate</title>
-        <div className="Yellow-little gap-15 flex flex-col min-h-screen">
+        <div className="Yellow-little gap-15 flex flex-col min-h-screen p-4">
           <main className="flex flex-col sm:flex-row mt-16 gap-8">
             <section className="flex flex-col sm:hidden bg-[var(--green-hard)] items-center justify-center pb-4">
               <div className="flex items-center gap-4 p-4">
